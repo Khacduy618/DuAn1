@@ -13,5 +13,6 @@ git commit -m 'text' (Commit lại thay đổi)
 git checkout main ( rời khỏi nhánh vừa thay đổi) 
 git push origin feature (Đẩy lên github với nhánh feature mới tạo và commit code)
 git branch -D feature (xóa nhánh feature tại máy) 
-s
+
+Mỗi lần sửa đổi phải tạo nhánh feature, sửa đổi trong nhánh đó rồi git add và commit rồi push lại , sau đó xóa nhánh đó tại máy. 
 //Mọi thắc mắc comment vô đây!!!!
