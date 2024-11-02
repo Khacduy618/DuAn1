@@ -16,3 +16,4 @@ git branch -D feature (xóa nhánh feature tại máy)
 
 Mỗi lần sửa đổi phải tạo nhánh feature, sửa đổi trong nhánh đó rồi git add và commit rồi push lại , sau đó xóa nhánh đó tại máy. 
 //Mọi thắc mắc comment vô đây!!!!
+
