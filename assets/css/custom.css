@@ -1,0 +1,303 @@
+/* Custom CSS cho giao diện hiện đại theo phong cách Electro */
+
+/* Căn chỉnh độ rộng container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    /* Nền trắng cho container */
+    border-radius: 8px;
+    /* Bo góc cho container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Bóng đổ nhẹ cho container */
+    display: flex;
+    /* Sử dụng flex để cho phép mở rộng */
+    flex-direction: column;
+    /* Chiều dọc */
+    align-items: stretch;
+    /* Căng đều phần tử */
+}
+
+/* Tiêu đề trang */
+h1 {
+    font-size: 2rem;
+    color: #D10024;
+    /* Màu hồng */
+    margin-bottom: 30px;
+    /* Khoảng cách lớn hơn */
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 1px;
+    /* Khoảng cách chữ */
+}
+
+/* Style cho bảng */
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    color: #333;
+    /* Màu chữ tối */
+    background-color: #f9f9f9;
+    /* Nền bảng sáng hơn */
+    border-radius: 8px;
+    /* Bo góc cho bảng */
+    overflow: hidden;
+    /* Bo góc cho border */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Bóng đổ nhẹ cho bảng */
+    margin-bottom: 20px;
+    /* Khoảng cách dưới để bóng không bị che */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f2f2f2;
+    /* Màu nền xen kẽ nhạt hơn */
+}
+
+.table-hover tbody tr:hover {
+    background-color: #e0e0e0;
+    /* Màu nền khi hover sáng hơn */
+}
+
+.table thead {
+    background-color: #D10024;
+    /* Màu hồng */
+    color: #ffffff;
+}
+
+.table th,
+.table td {
+    padding: 15px;
+    /* Tăng padding cho cell */
+    border: none;
+    /* Xóa border cho gọn gàng */
+    text-align: center;
+}
+
+.table th {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Style cho các nút */
+.btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    /* Tăng kích thước chữ */
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s;
+    /* Thêm hiệu ứng cho chuyển động */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    /* Con trỏ khi hover */
+}
+
+.btn-primary {
+    background-color: #D10024;
+    /* Hồng chính */
+}
+
+.btn-primary:hover {
+    background-color: #A50020;
+    /* Hồng đậm */
+    transform: translateY(-2px);
+    /* Nâng lên khi hover */
+}
+
+.btn-secondary {
+    background-color: #555;
+    /* Xám đậm */
+}
+
+.btn-secondary:hover {
+    background-color: #444;
+    transform: translateY(-2px);
+}
+
+/* Thay đổi màu cho các loại nút khác */
+.btn-warning {
+    background-color: #ffc107;
+    /* Hổ phách */
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.btn-success {
+    background-color: #28a745;
+    /* Xanh lá */
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    /* Xanh da trời */
+}
+
+.btn-info:hover {
+    background-color: #138496;
+}
+
+.btn-danger {
+    background-color: #D10024;
+    /* Đỏ */
+}
+
+.btn-danger:hover {
+    background-color: #be0020;
+}
+
+.btn-dark {
+    background-color: #908a8a;
+    /* Đen nhạt */
+}
+
+.btn-dark:hover {
+    background-color: #6f6e6e;
+    /* Đen đậm */
+}
+
+/* Form control styling */
+.form-control {
+    width: 100%;
+    padding: 12px;
+    /* Tăng padding */
+    border: 1px solid #ddd;
+    /* Border nhạt hơn */
+    background-color: #f9f9f9;
+    /* Nền sáng */
+    color: #333;
+    /* Màu chữ cho dễ đọc */
+    border-radius: 5px;
+    margin-bottom: 20px;
+    /* Khoảng cách dưới lớn hơn */
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    /* Hiệu ứng cho border khi focus */
+}
+
+.form-control:focus {
+    border-color: #D10024;
+    /* Màu hồng khi focus */
+    box-shadow: 0 0 5px rgba(209, 0, 36, 0.5);
+    /* Bóng đổ nhẹ khi focus */
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #D10024;
+    /* Màu hồng */
+}
+
+/* Alert styling */
+.alert {
+    padding: 15px;
+    color: #fff;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.alert-success {
+    background-color: #28a745;
+}
+
+.alert-danger {
+    background-color: #b61530;
+}
+
+.alert-warning {
+    background-color: #ffc107;
+    color: #333;
+}
+
+/* Checkbox alignment in table */
+input[type="checkbox"] {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+
+    .table th,
+    .table td {
+        font-size: 0.9rem;
+        padding: 10px;
+        /* Điều chỉnh padding cho nhỏ hơn */
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        /* Kích thước chữ nút nhỏ hơn */
+        padding: 8px 16px;
+        /* Điều chỉnh padding */
+    }
+}
+
+/* Footer styles */
+#footer {
+    background: #15161D;
+    color: #B9BABC;
+}
+
+#bottom-footer {
+    background: #1E1F29;
+}
+
+.footer {
+    margin: 30px 0px;
+}
+
+.footer .footer-title {
+    color: #FFF;
+    text-transform: uppercase;
+    font-size: 18px;
+    margin: 0px 0px 30px;
+}
+
+.footer-links li+li {
+    margin-top: 15px;
+}
+
+.footer-links li a {
+    color: #B9BABC;
+}
+
+.footer-links li i {
+    margin-right: 15px;
+    color: #D10024;
+    /* Màu hồng */
+    width: 14px;
+    text-align: center;
+}
+
+.footer-links li a:hover {
+    color: #D10024;
+    /* Màu hồng khi hover */
+}
+
+.copyright {
+    margin-top: 30px;
+    display: block;
+    font-size: 12px;
+}
+
+.footer-payments li {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.footer-payments li a {
+    color: #15161D;
+    /* Màu chính */
+    font-size: 36px;
+    display: block;
+}
