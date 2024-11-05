@@ -1,14 +1,19 @@
 <?php
 function pdo_get_connection()
 {
-    $dburl = "mysql:host=localhost;dbname=tedes;charset=utf8";
-    $username = 'root';
-    $password = '';
-
-    $conn = new PDO($dburl, $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    return $conn;
+    $dburl = "mysql:host=s103d190-u2.interdata.vn;port=3306;dbname=testconnect;charset=utf8";
+    $username = 'dichvun3';
+    $password = '3VwORS+87-jl4d'; 
+    try {
+        $conn = new PDO($dburl, $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $conn;
+    } catch (PDOException $e) {
+        echo 'Connection failed: ' . $e->getMessage();
+        return null; 
+    }
 }
+
 
 function pdo_query($sql, ...$args)
 {

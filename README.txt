@@ -17,3 +17,11 @@ git branch -D feature (xóa nhánh feature tại máy)
 Mỗi lần sửa đổi phải tạo nhánh feature, sửa đổi trong nhánh đó rồi git add và commit rồi push lại , sau đó xóa nhánh đó tại máy. 
 //Mọi thắc mắc comment vô đây!!!!
 
+/// cụ thể hơn 
+- git init 
+- git remote add origin https://github.com/Khacduy618/DuAn1.git 
+- ssh-keygen -t ed25519 -C "your_email@example.com" 
+- cat ~/.ssh/id_ed25519.pub 
+được keys vào cài đặt Nhập key xong 
+- git clone git@github.com:Khacduy618/DuAn1.git
+là đươc

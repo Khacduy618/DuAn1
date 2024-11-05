@@ -1,4 +1,21 @@
 <?php
+
+spl_autoload_register(function ($class) {
+    $file = 'model/' . $class . '.php';
+    if (file_exists($file)) {
+        require_once $file;
+    }
+});
+include_once 'model/pdo.php';
+$conn = pdo_get_connection();
+
+if ($conn === null) {
+    die('Không thể kết nối đến cơ sở dữ liệu.');
+}
+$result = $conn->query("SELECT * FROM user")->fetchAll();
+
+
+
 session_start();
 
 $controller = $_GET['controller'] ?? 'account';
