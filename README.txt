@@ -15,4 +15,3 @@ git push origin feature (Đẩy lên github với nhánh feature mới tạo và
 
 Mỗi lần sửa đổi phải tạo nhánh feature, sửa đổi trong nhánh đó rồi git add và commit rồi push lại , sau đó xóa nhánh đó tại máy. 
 //Mọi thắc mắc comment vô đây!!!!
-
