@@ -18,8 +18,8 @@
                             <figure class="slide-image">
                                 <picture>
                                     <source media="(max-width: 480px)"
-                                        srcset="assets/images/demos/demo-3/slider/slide-1-480w.jpg">
-                                    <img src="assets/images/demos/demo-3/slider/slide-1.jpg" alt="Image Desc">
+                                        srcset="../assets/site/images/demos/demo-3/slider/slide-1-480w.jpg">
+                                    <img src="../assets/site/images/demos/demo-3/slider/slide-1.jpg" alt="Image Desc">
                                 </picture>
                             </figure><!-- End .slide-image -->
 
@@ -48,8 +48,8 @@
                             <figure class="slide-image">
                                 <picture>
                                     <source media="(max-width: 480px)"
-                                        srcset="assets/images/demos/demo-3/slider/slide-2-480w.jpg">
-                                    <img src="assets/images/demos/demo-3/slider/slide-2.jpg" alt="Image Desc">
+                                        srcset="../assets/site/images/demos/demo-3/slider/slide-2-480w.jpg">
+                                    <img src="../assets/site/images/demos/demo-3/slider/slide-2.jpg" alt="Image Desc">
                                 </picture>
                             </figure><!-- End .slide-image -->
 
@@ -83,7 +83,7 @@
                 <div class="intro-banners">
                     <div class="banner mb-lg-1 mb-xl-2">
                         <a href="#">
-                            <img src="assets/images/demos/demo-3/banners/banner-1.jpg" alt="Banner">
+                            <img src="../assets/site/images/demos/demo-3/banners/banner-1.jpg" alt="Banner">
                         </a>
 
                         <div class="banner-content">
@@ -97,7 +97,7 @@
 
                     <div class="banner mb-lg-1 mb-xl-2">
                         <a href="#">
-                            <img src="assets/images/demos/demo-3/banners/banner-2.jpg" alt="Banner">
+                            <img src="../assets/site/images/demos/demo-3/banners/banner-2.jpg" alt="Banner">
                         </a>
 
                         <div class="banner-content">
@@ -111,7 +111,7 @@
 
                     <div class="banner mb-0">
                         <a href="#">
-                            <img src="assets/images/demos/demo-3/banners/banner-3.jpg" alt="Banner">
+                            <img src="../assets/site/images/demos/demo-3/banners/banner-3.jpg" alt="Banner">
                         </a>
 
                         <div class="banner-content">
