@@ -13,27 +13,27 @@
     <meta name="description" content="Molla - Bootstrap eCommerce Template">
     <meta name="author" content="p-themes">
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/site/images/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/site/images/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/site/images/icons/favicon-16x16.png">
-    <link rel="manifest" href="../assets/site/images/icons/site.html">
-    <link rel="mask-icon" href="../assets/site/images/icons/safari-pinned-tab.svg" color="#666666">
-    <link rel="shortcut icon" href="../assets/site/images/icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/site/images/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/site/images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/site/images/icons/favicon-16x16.png">
+    <link rel="manifest" href="assets/site/images/icons/site.html">
+    <link rel="mask-icon" href="assets/site/images/icons/safari-pinned-tab.svg" color="#666666">
+    <link rel="shortcut icon" href="assets/site/images/icons/favicon.ico">
     <meta name="apple-mobile-web-app-title" content="Molla">
     <meta name="application-name" content="Molla">
     <meta name="msapplication-TileColor" content="#cc9966">
-    <meta name="msapplication-config" content="../assets/site/images/icons/browserconfig.xml">
+    <meta name="msapplication-config" content="assets/site/images/icons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="../assets/site/vendor/line-awesome/line-awesome/line-awesome/css/line-awesome.min.css">
+    <link rel="stylesheet" href="assets/site/vendor/line-awesome/line-awesome/line-awesome/css/line-awesome.min.css">
     <!-- Plugins CSS File -->
-    <link rel="stylesheet" href="../assets/site/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/site/css/plugins/owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="../assets/site/css/plugins/magnific-popup/magnific-popup.css">
-    <link rel="stylesheet" href="../assets/site/css/plugins/jquery.countdown.css">
+    <link rel="stylesheet" href="assets/site/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/site/css/plugins/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="assets/site/css/plugins/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="assets/site/css/plugins/jquery.countdown.css">
     <!-- Main CSS File -->
-    <link rel="stylesheet" href="../assets/site/css/style.css">
-    <link rel="stylesheet" href="../assets/site/css/skins/skin-demo-3.css">
-    <link rel="stylesheet" href="../assets/site/css/demos/demo-3.css">
+    <link rel="stylesheet" href="assets/site/css/style.css">
+    <link rel="stylesheet" href="assets/site/css/skins/skin-demo-3.css">
+    <link rel="stylesheet" href="assets/site/css/demos/demo-3.css">
 </head>
 
 <body>
@@ -390,7 +390,7 @@
                 <div class="row no-gutters bg-white newsletter-popup-content">
                     <div class="col-xl-3-5col col-lg-7 banner-content-wrap">
                         <div class="banner-content text-center">
-                            <img src="../assets/site/images/logo.png" class="logo" alt="logo"
+                            <img src="assets/site/images/logo.png" class="logo" alt="logo"
                                 width="60" height="15">
                             <h2 class="banner-title">get <span>25<light>%</light></span> off</h2>
                             <p>Subscribe to the Molla eCommerce newsletter to receive timely updates from your favorite
@@ -412,7 +412,7 @@
                         </div>
                     </div>
                     <div class="col-xl-2-5col col-lg-5 ">
-                        <img src="../assets/site/images/img-1.jpg" class="newsletter-img"
+                        <img src="assets/site/images/img-1.jpg" class="newsletter-img"
                             alt="newsletter">
                     </div>
                 </div>
@@ -420,19 +420,19 @@
         </div>
     </div>
     <!-- Plugins JS File -->
-    <script src="../assets/site/js/jquery.min.js"></script>
-    <script src="../assets/site/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/site/js/jquery.hoverIntent.min.js"></script>
-    <script src="../assets/site/js/jquery.waypoints.min.js"></script>
-    <script src="../assets/site/js/superfish.min.js"></script>
-    <script src="../assets/site/js/owl.carousel.min.js"></script>
-    <script src="../assets/site/js/bootstrap-input-spinner.js"></script>
-    <script src="../assets/site/js/jquery.plugin.min.js"></script>
-    <script src="../assets/site/js/jquery.magnific-popup.min.js"></script>
-    <script src="../assets/site/js/jquery.countdown.min.js"></script>
+    <script src="assets/site/js/jquery.min.js"></script>
+    <script src="assets/site/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/site/js/jquery.hoverIntent.min.js"></script>
+    <script src="assets/site/js/jquery.waypoints.min.js"></script>
+    <script src="assets/site/js/superfish.min.js"></script>
+    <script src="assets/site/js/owl.carousel.min.js"></script>
+    <script src="assets/site/js/bootstrap-input-spinner.js"></script>
+    <script src="assets/site/js/jquery.plugin.min.js"></script>
+    <script src="assets/site/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/site/js/jquery.countdown.min.js"></script>
     <!-- Main JS File -->
-    <script src="../assets/site/js/main.js"></script>
-    <script src="../assets/site/js/demos/demo-3.js"></script>
+    <script src="assets/site/js/main.js"></script>
+    <script src="assets/site/js/demos/demo-3.js"></script>
 </body>
 
 

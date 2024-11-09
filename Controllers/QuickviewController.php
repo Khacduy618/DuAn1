@@ -14,6 +14,6 @@ class QuickviewController
 
         // $data = $this->quickview_model->detail_sp($id);
 
-        require_once('view/quickview.php');
+        require_once('Views/quickview.php');
     }
 }

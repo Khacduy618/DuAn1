@@ -10,7 +10,7 @@ class LoginController
     function login()
     {
         //xử lý data
-        require_once('view/index.php');
+        require_once('Views/index.php');
     }
     // function login_action()
     // {
@@ -76,7 +76,7 @@ class LoginController
     //     }
     //     $data = $this->login_model->account();
 
-    //     require_once('view/index.php');
+    //     require_once('Views/index.php');
     // }
     // function update()
     // {

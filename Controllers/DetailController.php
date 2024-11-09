@@ -17,6 +17,6 @@ class DetailController
         $data = $this->detail_model->detail_sp($id);
 
         // Xử lý data sp liên quan
-        require_once('view/index.php');
+        require_once('Views/index.php');
     }
 }

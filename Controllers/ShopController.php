@@ -72,6 +72,6 @@ class ShopController
         //     }
         // }
 
-        require_once('view/index.php');
+        require_once('Views/index.php');
     }
 }

@@ -43,7 +43,7 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-1.jpg" alt="Product image"
+                            <img src="assets/site/images/demos/demo-3/products/product-1.jpg" alt="Product image"
                                 class="product-image">
                         </a>
 
@@ -82,9 +82,9 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-2.jpg" alt="Product image"
+                            <img src="assets/site/images/demos/demo-3/products/product-2.jpg" alt="Product image"
                                 class="product-image">
-                            <img src="../assets/site/images/demos/demo-3/products/product-2-2.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-2-2.jpg"
                                 alt="Product image" class="product-image-hover">
                         </a>
 
@@ -131,7 +131,7 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-3.jpg" alt="Product image"
+                            <img src="assets/site/images/demos/demo-3/products/product-3.jpg" alt="Product image"
                                 class="product-image">
                         </a>
 
@@ -170,7 +170,7 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-4.jpg" alt="Product image"
+                            <img src="assets/site/images/demos/demo-3/products/product-4.jpg" alt="Product image"
                                 class="product-image">
                         </a>
 
@@ -208,7 +208,7 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-1.jpg" alt="Product image"
+                            <img src="assets/site/images/demos/demo-3/products/product-1.jpg" alt="Product image"
                                 class="product-image">
                         </a>
 
@@ -270,7 +270,7 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-4.jpg" alt="Product image"
+                            <img src="assets/site/images/demos/demo-3/products/product-4.jpg" alt="Product image"
                                 class="product-image">
                         </a>
 
@@ -308,7 +308,7 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-1.jpg" alt="Product image"
+                            <img src="assets/site/images/demos/demo-3/products/product-1.jpg" alt="Product image"
                                 class="product-image">
                         </a>
 
@@ -346,7 +346,7 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-3.jpg" alt="Product image"
+                            <img src="assets/site/images/demos/demo-3/products/product-3.jpg" alt="Product image"
                                 class="product-image">
                         </a>
 
@@ -386,9 +386,9 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-2.jpg" alt="Product image"
+                            <img src="assets/site/images/demos/demo-3/products/product-2.jpg" alt="Product image"
                                 class="product-image">
-                            <img src="../assets/site/images/demos/demo-3/products/product-2-2.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-2-2.jpg"
                                 alt="Product image" class="product-image-hover">
                         </a>
 
@@ -459,7 +459,7 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-3.jpg" alt="Product image"
+                            <img src="assets/site/images/demos/demo-3/products/product-3.jpg" alt="Product image"
                                 class="product-image">
                         </a>
 
@@ -498,7 +498,7 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-1.jpg" alt="Product image"
+                            <img src="assets/site/images/demos/demo-3/products/product-1.jpg" alt="Product image"
                                 class="product-image">
                         </a>
 
@@ -536,7 +536,7 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-4.jpg" alt="Product image"
+                            <img src="assets/site/images/demos/demo-3/products/product-4.jpg" alt="Product image"
                                 class="product-image">
                         </a>
 
@@ -575,9 +575,9 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-2.jpg" alt="Product image"
+                            <img src="assets/site/images/demos/demo-3/products/product-2.jpg" alt="Product image"
                                 class="product-image">
-                            <img src="../assets/site/images/demos/demo-3/products/product-2-2.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-2-2.jpg"
                                 alt="Product image" class="product-image-hover">
                         </a>
 
@@ -624,7 +624,7 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-1.jpg" alt="Product image"
+                            <img src="assets/site/images/demos/demo-3/products/product-1.jpg" alt="Product image"
                                 class="product-image">
                         </a>
 
@@ -667,7 +667,7 @@
 
 <div class="container">
     <div class="cta cta-border cta-border-image mb-5 mb-lg-7"
-        style="background-image: url(../assets/site/images/demos/demo-3/bg-1.jpg);">
+        style="background-image: url(assets/site/images/demos/demo-3/bg-1.jpg);">
         <div class="cta-border-wrapper bg-white">
             <div class="row justify-content-center">
                 <div class="col-md-11 col-xl-11">
@@ -701,7 +701,7 @@
         <div class="row">
             <div class="col-lg-6 deal-col">
                 <div class="deal"
-                    style="background-image: url('../assets/site/images/demos/demo-3/deal/bg-1.jpg');">
+                    style="background-image: url('assets/site/images/demos/demo-3/deal/bg-1.jpg');">
                     <div class="deal-top">
                         <h2>Deal of the Day.</h2>
                         <h4>Limited quantities. </h4>
@@ -734,7 +734,7 @@
                                     <span class="product-label label-circle label-top">Top</span>
                                     <span class="product-label label-circle label-sale">Sale</span>
                                     <a href="product.html">
-                                        <img src="../assets/site/images/demos/demo-3/products/product-5.jpg"
+                                        <img src="assets/site/images/demos/demo-3/products/product-5.jpg"
                                             alt="Product image" class="product-image">
                                     </a>
 
@@ -778,7 +778,7 @@
                                 <figure class="product-media">
                                     <span class="product-label label-circle label-sale">Sale</span>
                                     <a href="product.html">
-                                        <img src="../assets/site/images/demos/demo-3/products/product-6.jpg"
+                                        <img src="assets/site/images/demos/demo-3/products/product-6.jpg"
                                             alt="Product image" class="product-image">
                                     </a>
 
@@ -853,27 +853,27 @@
                 }
             }'>
         <a href="#" class="brand">
-            <img src="../assets/site/images/brands/1.png" alt="Brand Name">
+            <img src="assets/site/images/brands/1.png" alt="Brand Name">
         </a>
 
         <a href="#" class="brand">
-            <img src="../assets/site/images/brands/2.png" alt="Brand Name">
+            <img src="assets/site/images/brands/2.png" alt="Brand Name">
         </a>
 
         <a href="#" class="brand">
-            <img src="../assets/site/images/brands/3.png" alt="Brand Name">
+            <img src="assets/site/images/brands/3.png" alt="Brand Name">
         </a>
 
         <a href="#" class="brand">
-            <img src="../assets/site/images/brands/4.png" alt="Brand Name">
+            <img src="assets/site/images/brands/4.png" alt="Brand Name">
         </a>
 
         <a href="#" class="brand">
-            <img src="../assets/site/images/brands/5.png" alt="Brand Name">
+            <img src="assets/site/images/brands/5.png" alt="Brand Name">
         </a>
 
         <a href="#" class="brand">
-            <img src="../assets/site/images/brands/6.png" alt="Brand Name">
+            <img src="assets/site/images/brands/6.png" alt="Brand Name">
         </a>
     </div><!-- End .owl-carousel -->
 </div><!-- End .container -->
@@ -926,7 +926,7 @@
         <div class="col-xl-5col d-none d-xl-block">
             <div class="banner">
                 <a href="#">
-                    <img src="../assets/site/images/demos/demo-3/banners/banner-4.jpg" alt="banner">
+                    <img src="assets/site/images/demos/demo-3/banners/banner-4.jpg" alt="banner">
                 </a>
             </div><!-- End .banner -->
         </div><!-- End .col-xl-5col -->
@@ -960,7 +960,7 @@
                             <figure class="product-media">
                                 <span class="product-label label-circle label-top">Top</span>
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-7.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-7.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -1009,7 +1009,7 @@
                         <div class="product product-2">
                             <figure class="product-media">
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-8.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-8.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -1050,7 +1050,7 @@
                             <figure class="product-media">
                                 <span class="product-label label-circle label-new">New</span>
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-9.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-9.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -1101,7 +1101,7 @@
                                 <span class="product-label label-circle label-top">Top</span>
                                 <span class="product-label label-circle label-sale">Sale</span>
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-10.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-10.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -1143,7 +1143,7 @@
                             <figure class="product-media">
                                 <span class="product-label label-circle label-top">Top</span>
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-15.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-15.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -1184,7 +1184,7 @@
                             <figure class="product-media">
                                 <span class="product-label label-circle label-top">Top</span>
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-11.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-11.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -1249,7 +1249,7 @@
                             <figure class="product-media">
                                 <span class="product-label label-circle label-new">New</span>
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-13.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-13.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -1298,7 +1298,7 @@
                         <div class="product product-2">
                             <figure class="product-media">
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-12.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-12.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -1340,7 +1340,7 @@
                                 <span class="product-label label-circle label-top">Top</span>
                                 <span class="product-label label-circle label-sale">Sale</span>
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-14.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-14.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -1391,7 +1391,7 @@
                             <figure class="product-media">
                                 <span class="product-label label-circle label-top">Top</span>
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-15.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-15.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -1432,7 +1432,7 @@
                             <figure class="product-media">
                                 <span class="product-label label-circle label-top">Top</span>
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-11.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-11.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -1497,7 +1497,7 @@
                             <figure class="product-media">
                                 <span class="product-label label-circle label-top">Top</span>
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-15.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-15.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -1538,7 +1538,7 @@
                             <figure class="product-media">
                                 <span class="product-label label-circle label-top">Top</span>
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-11.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-11.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -1579,7 +1579,7 @@
                             <figure class="product-media">
                                 <span class="product-label label-circle label-new">New</span>
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-13.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-13.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -1628,7 +1628,7 @@
                         <div class="product product-2">
                             <figure class="product-media">
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-12.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-12.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -1670,7 +1670,7 @@
                                 <span class="product-label label-circle label-top">Top</span>
                                 <span class="product-label label-circle label-sale">Sale</span>
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-14.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-14.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -1745,7 +1745,7 @@
                             <figure class="product-media">
                                 <span class="product-label label-circle label-top">Top</span>
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-11.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-11.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -1785,7 +1785,7 @@
                         <div class="product product-2">
                             <figure class="product-media">
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-12.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-12.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -1826,7 +1826,7 @@
                             <figure class="product-media">
                                 <span class="product-label label-circle label-new">New</span>
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-13.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-13.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -1876,7 +1876,7 @@
                             <figure class="product-media">
                                 <span class="product-label label-circle label-top">Top</span>
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-15.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-15.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -1917,7 +1917,7 @@
                             <figure class="product-media">
                                 <span class="product-label label-circle label-top">Top</span>
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-11.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-11.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -1959,7 +1959,7 @@
                                 <span class="product-label label-circle label-top">Top</span>
                                 <span class="product-label label-circle label-sale">Sale</span>
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-14.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-14.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -2035,7 +2035,7 @@
                                 <span class="product-label label-circle label-top">Top</span>
                                 <span class="product-label label-circle label-sale">Sale</span>
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-14.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-14.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -2086,7 +2086,7 @@
                             <figure class="product-media">
                                 <span class="product-label label-circle label-top">Top</span>
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-11.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-11.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -2126,7 +2126,7 @@
                         <div class="product product-2">
                             <figure class="product-media">
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-12.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-12.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -2167,7 +2167,7 @@
                             <figure class="product-media">
                                 <span class="product-label label-circle label-new">New</span>
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-13.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-13.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -2241,7 +2241,7 @@
                             <figure class="product-media">
                                 <span class="product-label label-circle label-top">Top</span>
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-11.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-11.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -2282,7 +2282,7 @@
                             <figure class="product-media">
                                 <span class="product-label label-circle label-top">Top</span>
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-15.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-15.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -2323,7 +2323,7 @@
                             <figure class="product-media">
                                 <span class="product-label label-circle label-top">Top</span>
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-11.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-11.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -2363,7 +2363,7 @@
                         <div class="product product-2">
                             <figure class="product-media">
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-12.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-12.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -2404,7 +2404,7 @@
                             <figure class="product-media">
                                 <span class="product-label label-circle label-new">New</span>
                                 <a href="product.html">
-                                    <img src="../assets/site/images/demos/demo-3/products/product-13.jpg"
+                                    <img src="assets/site/images/demos/demo-3/products/product-13.jpg"
                                         alt="Product image" class="product-image">
                                 </a>
 
@@ -2528,7 +2528,7 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-11.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -2567,7 +2567,7 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-12.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -2606,7 +2606,7 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-13.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -2655,7 +2655,7 @@
                         <span class="product-label label-circle label-top">Top</span>
                         <span class="product-label label-circle label-sale">Sale</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-14.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-14.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -2705,7 +2705,7 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-15.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-15.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -2744,7 +2744,7 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-11.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -2810,7 +2810,7 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-13.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -2857,7 +2857,7 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-12.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -2897,7 +2897,7 @@
                         <span class="product-label label-circle label-top">Top</span>
                         <span class="product-label label-circle label-sale">Sale</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-14.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-14.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -2947,7 +2947,7 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-15.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-15.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -2986,7 +2986,7 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-11.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -3053,7 +3053,7 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-15.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-15.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -3092,7 +3092,7 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-11.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -3132,7 +3132,7 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-13.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -3179,7 +3179,7 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-12.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -3219,7 +3219,7 @@
                         <span class="product-label label-circle label-top">Top</span>
                         <span class="product-label label-circle label-sale">Sale</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-14.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-14.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -3296,7 +3296,7 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-11.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -3335,7 +3335,7 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-12.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -3374,7 +3374,7 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-13.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -3422,7 +3422,7 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-15.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-15.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -3461,7 +3461,7 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-11.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -3502,7 +3502,7 @@
                         <span class="product-label label-circle label-top">Top</span>
                         <span class="product-label label-circle label-sale">Sale</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-14.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-14.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -3580,7 +3580,7 @@
                         <span class="product-label label-circle label-top">Top</span>
                         <span class="product-label label-circle label-sale">Sale</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-14.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-14.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -3630,7 +3630,7 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-11.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -3669,7 +3669,7 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-12.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -3708,7 +3708,7 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-13.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -3782,7 +3782,7 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-11.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -3822,7 +3822,7 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-15.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-15.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -3861,7 +3861,7 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-11.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -3900,7 +3900,7 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-12.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -3939,7 +3939,7 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
                         <a href="product.html">
-                            <img src="../assets/site/images/demos/demo-3/products/product-13.jpg"
+                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg"
                                 alt="Product image" class="product-image">
                         </a>
 
@@ -4050,7 +4050,7 @@
 
 <div class="container">
     <div class="cta cta-separator cta-border-image cta-half mb-0"
-        style="background-image: url(../assets/site/images/demos/demo-3/bg-2.jpg);">
+        style="background-image: url(assets/site/images/demos/demo-3/bg-2.jpg);">
         <div class="cta-border-wrapper bg-white">
             <div class="row">
                 <div class="col-lg-6">

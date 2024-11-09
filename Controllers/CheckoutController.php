@@ -18,6 +18,6 @@ class CheckoutController
     function order_complete()
     {
        //
-        require_once('view/index.php');
+        require_once('Views/index.php');
     }
 }
