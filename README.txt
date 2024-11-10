@@ -25,3 +25,11 @@ Mỗi lần sửa đổi phải tạo nhánh feature, sửa đổi trong nhánh 
 được keys vào cài đặt Nhập key xong 
 - git clone git@github.com:Khacduy618/DuAn1.git
 là đươc
+
+// tạo và lên code cho branch của mình 
+cd DuAn1 
+git add . 
+git commit -m "ngày làm" 
+git branch HoTen 
+git check out HoTen 
+git push -u origin HoTen
