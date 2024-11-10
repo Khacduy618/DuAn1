@@ -41,7 +41,7 @@
                 }'>
 
                 <?php 
-                    if($data_sanpham1!=NULL){ 
+                    if($data_product1!=NULL){ 
                         for($r=0;$r<2;$r++){
                 ?>
                 <div class="product product-2">

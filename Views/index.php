@@ -46,7 +46,7 @@
             <?php require_once 'router.php' ?>
         </main><!-- End .main -->
 
-       <?php require_once 'header_footer/footer.php' ?>
+        <?php require_once 'header_footer/footer.php' ?>
     </div><!-- End .page-wrapper -->
     <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
 
@@ -390,8 +390,7 @@
                 <div class="row no-gutters bg-white newsletter-popup-content">
                     <div class="col-xl-3-5col col-lg-7 banner-content-wrap">
                         <div class="banner-content text-center">
-                            <img src="assets/site/images/logo.png" class="logo" alt="logo"
-                                width="60" height="15">
+                            <img src="assets/site/images/logo.png" class="logo" alt="logo" width="60" height="15">
                             <h2 class="banner-title">get <span>25<light>%</light></span> off</h2>
                             <p>Subscribe to the Molla eCommerce newsletter to receive timely updates from your favorite
                                 products.</p>
@@ -412,13 +411,17 @@
                         </div>
                     </div>
                     <div class="col-xl-2-5col col-lg-5 ">
-                        <img src="assets/site/images/img-1.jpg" class="newsletter-img"
-                            alt="newsletter">
+                        <img src="assets/site/images/img-1.jpg" class="newsletter-img" alt="newsletter">
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+
+    </script>
+
     <!-- Plugins JS File -->
     <script src="assets/site/js/jquery.min.js"></script>
     <script src="assets/site/js/bootstrap.bundle.min.js"></script>
