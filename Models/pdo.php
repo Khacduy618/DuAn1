@@ -12,9 +12,7 @@
            echo 'Connection failed: ' . $e->getMessage();
            return null; 
        }
-   }
-   
-   
+   }  
    function pdo_query($sql, ...$args)
    {
        try {

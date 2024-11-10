@@ -2,13 +2,12 @@
 <div class="container featured">
     <ul class="nav nav-pills nav-border-anim nav-big justify-content-center mb-3" role="tablist">
         <li class="nav-item">
-            <a class="nav-link active" id="products-featured-link" data-toggle="tab"
-                href="#products-featured-tab" role="tab" aria-controls="products-featured-tab"
-                aria-selected="true">Featured</a>
+            <a class="nav-link active" id="products-featured-link" data-toggle="tab" href="#products-featured-tab"
+                role="tab" aria-controls="products-featured-tab" aria-selected="true">Featured</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="products-sale-link" data-toggle="tab" href="#products-sale-tab"
-                role="tab" aria-controls="products-sale-tab" aria-selected="false">On Sale</a>
+            <a class="nav-link" id="products-sale-link" data-toggle="tab" href="#products-sale-tab" role="tab"
+                aria-controls="products-sale-tab" aria-selected="false">On Sale</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="products-top-link" data-toggle="tab" href="#products-top-tab" role="tab"
@@ -40,6 +39,11 @@
                         }
                     }
                 }'>
+
+                <?php 
+                    if($data_sanpham1!=NULL){ 
+                        for($r=0;$r<2;$r++){
+                ?>
                 <div class="product product-2">
                     <figure class="product-media">
                         <a href="product.html">
@@ -77,175 +81,12 @@
                         </div><!-- End .rating-container -->
                     </div><!-- End .product-body -->
                 </div><!-- End .product -->
-
-                <div class="product product-2">
-                    <figure class="product-media">
-                        <span class="product-label label-circle label-new">New</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-2.jpg" alt="Product image"
-                                class="product-image">
-                            <img src="assets/site/images/demos/demo-3/products/product-2-2.jpg"
-                                alt="Product image" class="product-image-hover">
-                        </a>
-
-                        <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                    wishlist</span></a>
-                        </div><!-- End .product-action -->
-
-                        <div class="product-action product-action-dark">
-                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
-                                    cart</span></a>
-                            <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                title="Quick view"><span>quick view</span></a>
-                        </div><!-- End .product-action -->
-                    </figure><!-- End .product-media -->
-
-                    <div class="product-body">
-                        <div class="product-cat">
-                            <a href="#">Smartwatches</a>
-                        </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Apple - Apple Watch Series 3 with
-                                White Sport Band</a></h3><!-- End .product-title -->
-                        <div class="product-price">
-                            $214.99
-                        </div><!-- End .product-price -->
-                        <div class="ratings-container">
-                            <div class="ratings">
-                                <div class="ratings-val" style="width: 0%;"></div><!-- End .ratings-val -->
-                            </div><!-- End .ratings -->
-                            <span class="ratings-text">( 0 Reviews )</span>
-                        </div><!-- End .rating-container -->
-
-                        <div class="product-nav product-nav-dots">
-                            <a href="#" class="active" style="background: #e2e2e2;"><span
-                                    class="sr-only">Color name</span></a>
-                            <a href="#" style="background: #333333;"><span class="sr-only">Color
-                                    name</span></a>
-                            <a href="#" style="background: #f2bc9e;"><span class="sr-only">Color
-                                    name</span></a>
-                        </div><!-- End .product-nav -->
-                    </div><!-- End .product-body -->
-                </div><!-- End .product -->
-
-                <div class="product product-2">
-                    <figure class="product-media">
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-3.jpg" alt="Product image"
-                                class="product-image">
-                        </a>
-
-                        <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                    wishlist</span></a>
-                        </div><!-- End .product-action -->
-
-                        <div class="product-action product-action-dark">
-                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
-                                    cart</span></a>
-                            <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                title="Quick view"><span>quick view</span></a>
-                        </div><!-- End .product-action -->
-                    </figure><!-- End .product-media -->
-
-                    <div class="product-body">
-                        <div class="product-cat">
-                            <a href="#">Laptops</a>
-                        </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Lenovo - 330-15IKBR 15.6"</a></h3>
-                        <!-- End .product-title -->
-                        <div class="product-price">
-                            <span class="out-price">$339.99</span>
-                            <span class="out-text">Out of Stock</span>
-                        </div><!-- End .product-price -->
-                        <div class="ratings-container">
-                            <div class="ratings">
-                                <div class="ratings-val" style="width: 60%;"></div><!-- End .ratings-val -->
-                            </div><!-- End .ratings -->
-                            <span class="ratings-text">( 3 Reviews )</span>
-                        </div><!-- End .rating-container -->
-                    </div><!-- End .product-body -->
-                </div><!-- End .product -->
-
-                <div class="product product-2">
-                    <figure class="product-media">
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-4.jpg" alt="Product image"
-                                class="product-image">
-                        </a>
-
-                        <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                    wishlist</span></a>
-                        </div><!-- End .product-action -->
-
-                        <div class="product-action product-action-dark">
-                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
-                                    cart</span></a>
-                            <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                title="Quick view"><span>quick view</span></a>
-                        </div><!-- End .product-action -->
-                    </figure><!-- End .product-media -->
-
-                    <div class="product-body">
-                        <div class="product-cat">
-                            <a href="#">Digital Cameras</a>
-                        </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Sony - Alpha a5100 Mirrorless
-                                Camera</a></h3><!-- End .product-title -->
-                        <div class="product-price">
-                            $499.99
-                        </div><!-- End .product-price -->
-                        <div class="ratings-container">
-                            <div class="ratings">
-                                <div class="ratings-val" style="width: 70%;"></div><!-- End .ratings-val -->
-                            </div><!-- End .ratings -->
-                            <span class="ratings-text">( 11 Reviews )</span>
-                        </div><!-- End .rating-container -->
-                    </div><!-- End .product-body -->
-                </div><!-- End .product -->
-
-                <div class="product product-2">
-                    <figure class="product-media">
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-1.jpg" alt="Product image"
-                                class="product-image">
-                        </a>
-
-                        <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                    wishlist</span></a>
-                        </div><!-- End .product-action -->
-
-                        <div class="product-action product-action-dark">
-                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
-                                    cart</span></a>
-                            <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                title="Quick view"><span>quick view</span></a>
-                        </div><!-- End .product-action -->
-                    </figure><!-- End .product-media -->
-
-                    <div class="product-body">
-                        <div class="product-cat">
-                            <a href="#">Cameras & Camcorders</a>
-                        </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">GoPro - HERO7 Black HD Waterproof
-                                Action</a></h3><!-- End .product-title -->
-                        <div class="product-price">
-                            $349.99
-                        </div><!-- End .product-price -->
-                        <div class="ratings-container">
-                            <div class="ratings">
-                                <div class="ratings-val" style="width: 60%;"></div><!-- End .ratings-val -->
-                            </div><!-- End .ratings -->
-                            <span class="ratings-text">( 2 Reviews )</span>
-                        </div><!-- End .rating-container -->
-                    </div><!-- End .product-body -->
-                </div><!-- End .product -->
+                <?php 
+                            }
+                        }?>
             </div><!-- End .owl-carousel -->
         </div><!-- .End .tab-pane -->
-        <div class="tab-pane p-0 fade" id="products-sale-tab" role="tabpanel"
-            aria-labelledby="products-sale-link">
+        <div class="tab-pane p-0 fade" id="products-sale-tab" role="tabpanel" aria-labelledby="products-sale-link">
             <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                 data-owl-options='{
                     "nav": true, 
@@ -388,8 +229,8 @@
                         <a href="product.html">
                             <img src="assets/site/images/demos/demo-3/products/product-2.jpg" alt="Product image"
                                 class="product-image">
-                            <img src="assets/site/images/demos/demo-3/products/product-2-2.jpg"
-                                alt="Product image" class="product-image-hover">
+                            <img src="assets/site/images/demos/demo-3/products/product-2-2.jpg" alt="Product image"
+                                class="product-image-hover">
                         </a>
 
                         <div class="product-action-vertical">
@@ -422,8 +263,8 @@
                         </div><!-- End .rating-container -->
 
                         <div class="product-nav product-nav-dots">
-                            <a href="#" class="active" style="background: #e2e2e2;"><span
-                                    class="sr-only">Color name</span></a>
+                            <a href="#" class="active" style="background: #e2e2e2;"><span class="sr-only">Color
+                                    name</span></a>
                             <a href="#" style="background: #333333;"><span class="sr-only">Color
                                     name</span></a>
                             <a href="#" style="background: #f2bc9e;"><span class="sr-only">Color
@@ -433,8 +274,7 @@
                 </div><!-- End .product -->
             </div><!-- End .owl-carousel -->
         </div><!-- .End .tab-pane -->
-        <div class="tab-pane p-0 fade" id="products-top-tab" role="tabpanel"
-            aria-labelledby="products-top-link">
+        <div class="tab-pane p-0 fade" id="products-top-tab" role="tabpanel" aria-labelledby="products-top-link">
             <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                 data-owl-options='{
                     "nav": true, 
@@ -577,8 +417,8 @@
                         <a href="product.html">
                             <img src="assets/site/images/demos/demo-3/products/product-2.jpg" alt="Product image"
                                 class="product-image">
-                            <img src="assets/site/images/demos/demo-3/products/product-2-2.jpg"
-                                alt="Product image" class="product-image-hover">
+                            <img src="assets/site/images/demos/demo-3/products/product-2-2.jpg" alt="Product image"
+                                class="product-image-hover">
                         </a>
 
                         <div class="product-action-vertical">
@@ -611,8 +451,8 @@
                         </div><!-- End .rating-container -->
 
                         <div class="product-nav product-nav-dots">
-                            <a href="#" class="active" style="background: #e2e2e2;"><span
-                                    class="sr-only">Color name</span></a>
+                            <a href="#" class="active" style="background: #e2e2e2;"><span class="sr-only">Color
+                                    name</span></a>
                             <a href="#" style="background: #333333;"><span class="sr-only">Color
                                     name</span></a>
                             <a href="#" style="background: #f2bc9e;"><span class="sr-only">Color
@@ -700,8 +540,7 @@
 
         <div class="row">
             <div class="col-lg-6 deal-col">
-                <div class="deal"
-                    style="background-image: url('assets/site/images/demos/demo-3/deal/bg-1.jpg');">
+                <div class="deal" style="background-image: url('assets/site/images/demos/demo-3/deal/bg-1.jpg');">
                     <div class="deal-top">
                         <h2>Deal of the Day.</h2>
                         <h4>Limited quantities. </h4>
@@ -739,14 +578,13 @@
                                     </a>
 
                                     <div class="product-action-vertical">
-                                        <a href="#"
-                                            class="btn-product-icon btn-wishlist btn-expandable"><span>add
+                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add
                                                 to wishlist</span></a>
                                     </div><!-- End .product-action -->
 
                                     <div class="product-action product-action-dark">
-                                        <a href="#" class="btn-product btn-cart"
-                                            title="Add to cart"><span>add to cart</span></a>
+                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
+                                                cart</span></a>
                                         <a href="popup/quick_view.php" class="btn-product btn-quickview"
                                             title="Quick view"><span>quick view</span></a>
                                     </div><!-- End .product-action -->
@@ -783,14 +621,13 @@
                                     </a>
 
                                     <div class="product-action-vertical">
-                                        <a href="#"
-                                            class="btn-product-icon btn-wishlist btn-expandable"><span>add
+                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add
                                                 to wishlist</span></a>
                                     </div><!-- End .product-action -->
 
                                     <div class="product-action product-action-dark">
-                                        <a href="#" class="btn-product btn-cart"
-                                            title="Add to cart"><span>add to cart</span></a>
+                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
+                                                cart</span></a>
                                         <a href="popup/quick_view.php" class="btn-product btn-quickview"
                                             title="Quick view"><span>quick view</span></a>
                                     </div><!-- End .product-action -->
@@ -891,32 +728,28 @@
         <div class="heading-right">
             <ul class="nav nav-pills nav-border-anim justify-content-center" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="trending-all-link" data-toggle="tab"
-                        href="#trending-all-tab" role="tab" aria-controls="trending-all-tab"
-                        aria-selected="true">All</a>
+                    <a class="nav-link active" id="trending-all-link" data-toggle="tab" href="#trending-all-tab"
+                        role="tab" aria-controls="trending-all-tab" aria-selected="true">All</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="trending-tv-link" data-toggle="tab" href="#trending-tv-tab"
-                        role="tab" aria-controls="trending-tv-tab" aria-selected="false">TV</a>
+                    <a class="nav-link" id="trending-tv-link" data-toggle="tab" href="#trending-tv-tab" role="tab"
+                        aria-controls="trending-tv-tab" aria-selected="false">TV</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="trending-computers-link" data-toggle="tab"
-                        href="#trending-computers-tab" role="tab" aria-controls="trending-computers-tab"
-                        aria-selected="false">Computers</a>
+                    <a class="nav-link" id="trending-computers-link" data-toggle="tab" href="#trending-computers-tab"
+                        role="tab" aria-controls="trending-computers-tab" aria-selected="false">Computers</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="trending-phones-link" data-toggle="tab"
-                        href="#trending-phones-tab" role="tab" aria-controls="trending-phones-tab"
-                        aria-selected="false">Tablets & Cell Phones</a>
+                    <a class="nav-link" id="trending-phones-link" data-toggle="tab" href="#trending-phones-tab"
+                        role="tab" aria-controls="trending-phones-tab" aria-selected="false">Tablets & Cell Phones</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="trending-watches-link" data-toggle="tab"
-                        href="#trending-watches-tab" role="tab" aria-controls="trending-watches-tab"
-                        aria-selected="false">Smartwatches</a>
+                    <a class="nav-link" id="trending-watches-link" data-toggle="tab" href="#trending-watches-tab"
+                        role="tab" aria-controls="trending-watches-tab" aria-selected="false">Smartwatches</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="trending-acc-link" data-toggle="tab" href="#trending-acc-tab"
-                        role="tab" aria-controls="trending-acc-tab" aria-selected="false">Accessories</a>
+                    <a class="nav-link" id="trending-acc-link" data-toggle="tab" href="#trending-acc-tab" role="tab"
+                        aria-controls="trending-acc-tab" aria-selected="false">Accessories</a>
                 </li>
             </ul>
         </div><!-- End .heading-right -->
@@ -935,8 +768,8 @@
             <div class="tab-content tab-content-carousel just-action-icons-sm">
                 <div class="tab-pane p-0 fade show active" id="trending-all-tab" role="tabpanel"
                     aria-labelledby="trending-all-link">
-                    <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow"
-                        data-toggle="owl" data-owl-options='{
+                    <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
+                        data-owl-options='{
                             "nav": true, 
                             "dots": false,
                             "margin": 20,
@@ -965,8 +798,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -1000,8 +832,8 @@
                                             name</span></a>
                                     <a href="#" style="background: #ff887f;"><span class="sr-only">Color
                                             name</span></a>
-                                    <a href="#" class="active" style="background: #333333;"><span
-                                            class="sr-only">Color name</span></a>
+                                    <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
+                                            name</span></a>
                                 </div><!-- End .product-nav -->
                             </div><!-- End .product-body -->
                         </div><!-- End .product -->
@@ -1014,8 +846,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -1055,8 +886,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -1090,8 +920,8 @@
                                             name</span></a>
                                     <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
                                             name</span></a>
-                                    <a href="#" class="active" style="background: #333333;"><span
-                                            class="sr-only">Color name</span></a>
+                                    <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
+                                            name</span></a>
                                 </div><!-- End .product-nav -->
                             </div><!-- End .product-body -->
                         </div><!-- End .product -->
@@ -1106,8 +936,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -1148,8 +977,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -1189,8 +1017,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -1222,10 +1049,9 @@
                         </div><!-- End .product -->
                     </div><!-- End .owl-carousel -->
                 </div><!-- .End .tab-pane -->
-                <div class="tab-pane p-0 fade" id="trending-tv-tab" role="tabpanel"
-                    aria-labelledby="trending-tv-link">
-                    <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow"
-                        data-toggle="owl" data-owl-options='{
+                <div class="tab-pane p-0 fade" id="trending-tv-tab" role="tabpanel" aria-labelledby="trending-tv-link">
+                    <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
+                        data-owl-options='{
                             "nav": true, 
                             "dots": false,
                             "margin": 20,
@@ -1254,8 +1080,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -1289,8 +1114,8 @@
                                             name</span></a>
                                     <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
                                             name</span></a>
-                                    <a href="#" class="active" style="background: #333333;"><span
-                                            class="sr-only">Color name</span></a>
+                                    <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
+                                            name</span></a>
                                 </div><!-- End .product-nav -->
                             </div><!-- End .product-body -->
                         </div><!-- End .product -->
@@ -1303,8 +1128,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -1345,8 +1169,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -1377,8 +1200,8 @@
                                 </div><!-- End .rating-container -->
 
                                 <div class="product-nav product-nav-dots">
-                                    <a href="#" class="active" style="background: #edd2c8;"><span
-                                            class="sr-only">Color name</span></a>
+                                    <a href="#" class="active" style="background: #edd2c8;"><span class="sr-only">Color
+                                            name</span></a>
                                     <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
                                             name</span></a>
                                     <a href="#" style="background: #333333;"><span class="sr-only">Color
@@ -1396,8 +1219,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -1437,8 +1259,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -1472,8 +1293,8 @@
                 </div><!-- .End .tab-pane -->
                 <div class="tab-pane p-0 fade" id="trending-computers-tab" role="tabpanel"
                     aria-labelledby="trending-computers-link">
-                    <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow"
-                        data-toggle="owl" data-owl-options='{
+                    <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
+                        data-owl-options='{
                             "nav": true, 
                             "dots": false,
                             "margin": 20,
@@ -1502,8 +1323,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -1543,8 +1363,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -1584,8 +1403,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -1619,8 +1437,8 @@
                                             name</span></a>
                                     <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
                                             name</span></a>
-                                    <a href="#" class="active" style="background: #333333;"><span
-                                            class="sr-only">Color name</span></a>
+                                    <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
+                                            name</span></a>
                                 </div><!-- End .product-nav -->
                             </div><!-- End .product-body -->
                         </div><!-- End .product -->
@@ -1633,8 +1451,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -1675,8 +1492,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -1707,8 +1523,8 @@
                                 </div><!-- End .rating-container -->
 
                                 <div class="product-nav product-nav-dots">
-                                    <a href="#" class="active" style="background: #edd2c8;"><span
-                                            class="sr-only">Color name</span></a>
+                                    <a href="#" class="active" style="background: #edd2c8;"><span class="sr-only">Color
+                                            name</span></a>
                                     <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
                                             name</span></a>
                                     <a href="#" style="background: #333333;"><span class="sr-only">Color
@@ -1720,8 +1536,8 @@
                 </div><!-- .End .tab-pane -->
                 <div class="tab-pane p-0 fade" id="trending-phones-tab" role="tabpanel"
                     aria-labelledby="trending-phones-link">
-                    <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow"
-                        data-toggle="owl" data-owl-options='{
+                    <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
+                        data-owl-options='{
                             "nav": true, 
                             "dots": false,
                             "margin": 20,
@@ -1750,8 +1566,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -1790,8 +1605,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -1831,8 +1645,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -1866,8 +1679,8 @@
                                             name</span></a>
                                     <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
                                             name</span></a>
-                                    <a href="#" class="active" style="background: #333333;"><span
-                                            class="sr-only">Color name</span></a>
+                                    <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
+                                            name</span></a>
                                 </div><!-- End .product-nav -->
                             </div><!-- End .product-body -->
                         </div><!-- End .product -->
@@ -1881,8 +1694,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -1922,8 +1734,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -1964,8 +1775,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -1996,8 +1806,8 @@
                                 </div><!-- End .rating-container -->
 
                                 <div class="product-nav product-nav-dots">
-                                    <a href="#" class="active" style="background: #edd2c8;"><span
-                                            class="sr-only">Color name</span></a>
+                                    <a href="#" class="active" style="background: #edd2c8;"><span class="sr-only">Color
+                                            name</span></a>
                                     <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
                                             name</span></a>
                                     <a href="#" style="background: #333333;"><span class="sr-only">Color
@@ -2009,8 +1819,8 @@
                 </div><!-- .End .tab-pane -->
                 <div class="tab-pane p-0 fade" id="trending-watches-tab" role="tabpanel"
                     aria-labelledby="trending-watches-link">
-                    <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow"
-                        data-toggle="owl" data-owl-options='{
+                    <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
+                        data-owl-options='{
                             "nav": true, 
                             "dots": false,
                             "margin": 20,
@@ -2040,8 +1850,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -2072,8 +1881,8 @@
                                 </div><!-- End .rating-container -->
 
                                 <div class="product-nav product-nav-dots">
-                                    <a href="#" class="active" style="background: #edd2c8;"><span
-                                            class="sr-only">Color name</span></a>
+                                    <a href="#" class="active" style="background: #edd2c8;"><span class="sr-only">Color
+                                            name</span></a>
                                     <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
                                             name</span></a>
                                     <a href="#" style="background: #333333;"><span class="sr-only">Color
@@ -2091,8 +1900,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -2131,8 +1939,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -2172,8 +1979,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -2207,8 +2013,8 @@
                                             name</span></a>
                                     <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
                                             name</span></a>
-                                    <a href="#" class="active" style="background: #333333;"><span
-                                            class="sr-only">Color name</span></a>
+                                    <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
+                                            name</span></a>
                                 </div><!-- End .product-nav -->
                             </div><!-- End .product-body -->
                         </div><!-- End .product -->
@@ -2216,8 +2022,8 @@
                 </div><!-- .End .tab-pane -->
                 <div class="tab-pane p-0 fade" id="trending-acc-tab" role="tabpanel"
                     aria-labelledby="trending-acc-link">
-                    <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow"
-                        data-toggle="owl" data-owl-options='{
+                    <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
+                        data-owl-options='{
                             "nav": true, 
                             "dots": false,
                             "margin": 20,
@@ -2246,8 +2052,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -2287,8 +2092,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -2328,8 +2132,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -2368,8 +2171,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -2409,8 +2211,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#"
-                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                             wishlist</span></a>
                                 </div><!-- End .product-action -->
 
@@ -2444,8 +2245,8 @@
                                             name</span></a>
                                     <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
                                             name</span></a>
-                                    <a href="#" class="active" style="background: #333333;"><span
-                                            class="sr-only">Color name</span></a>
+                                    <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
+                                            name</span></a>
                                 </div><!-- End .product-nav -->
                             </div><!-- End .product-body -->
                         </div><!-- End .product -->
@@ -2469,25 +2270,25 @@
         <div class="heading-right">
             <ul class="nav nav-pills nav-border-anim justify-content-center" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="top-all-link" data-toggle="tab" href="#top-all-tab"
-                        role="tab" aria-controls="top-all-tab" aria-selected="true">All</a>
+                    <a class="nav-link active" id="top-all-link" data-toggle="tab" href="#top-all-tab" role="tab"
+                        aria-controls="top-all-tab" aria-selected="true">All</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="top-tv-link" data-toggle="tab" href="#top-tv-tab" role="tab"
                         aria-controls="top-tv-tab" aria-selected="false">TV</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="top-computers-link" data-toggle="tab" href="#top-computers-tab"
-                        role="tab" aria-controls="top-computers-tab" aria-selected="false">Computers</a>
+                    <a class="nav-link" id="top-computers-link" data-toggle="tab" href="#top-computers-tab" role="tab"
+                        aria-controls="top-computers-tab" aria-selected="false">Computers</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="top-phones-link" data-toggle="tab" href="#top-phones-tab"
-                        role="tab" aria-controls="top-phones-tab" aria-selected="false">Tablets & Cell
+                    <a class="nav-link" id="top-phones-link" data-toggle="tab" href="#top-phones-tab" role="tab"
+                        aria-controls="top-phones-tab" aria-selected="false">Tablets & Cell
                         Phones</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="top-watches-link" data-toggle="tab" href="#top-watches-tab"
-                        role="tab" aria-controls="top-watches-tab" aria-selected="false">Smartwatches</a>
+                    <a class="nav-link" id="top-watches-link" data-toggle="tab" href="#top-watches-tab" role="tab"
+                        aria-controls="top-watches-tab" aria-selected="false">Smartwatches</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="top-acc-link" data-toggle="tab" href="#top-acc-tab" role="tab"
@@ -2498,8 +2299,7 @@
     </div><!-- End .heading -->
 
     <div class="tab-content tab-content-carousel just-action-icons-sm">
-        <div class="tab-pane p-0 fade show active" id="top-all-tab" role="tabpanel"
-            aria-labelledby="top-all-link">
+        <div class="tab-pane p-0 fade show active" id="top-all-tab" role="tabpanel" aria-labelledby="top-all-link">
             <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                 data-owl-options='{
                     "nav": true, 
@@ -2528,8 +2328,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2567,8 +2367,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2606,8 +2406,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2644,8 +2444,8 @@
                                     name</span></a>
                             <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
                                     name</span></a>
-                            <a href="#" class="active" style="background: #333333;"><span
-                                    class="sr-only">Color name</span></a>
+                            <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
+                                    name</span></a>
                         </div><!-- End .product-nav -->
                     </div><!-- End .product-body -->
                 </div><!-- End .product -->
@@ -2655,8 +2455,8 @@
                         <span class="product-label label-circle label-top">Top</span>
                         <span class="product-label label-circle label-sale">Sale</span>
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-14.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-14.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2691,8 +2491,8 @@
                         </div><!-- End .rating-container -->
 
                         <div class="product-nav product-nav-dots">
-                            <a href="#" class="active" style="background: #edd2c8;"><span
-                                    class="sr-only">Color name</span></a>
+                            <a href="#" class="active" style="background: #edd2c8;"><span class="sr-only">Color
+                                    name</span></a>
                             <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
                                     name</span></a>
                             <a href="#" style="background: #333333;"><span class="sr-only">Color
@@ -2705,8 +2505,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-15.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-15.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2744,8 +2544,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2810,8 +2610,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2848,8 +2648,8 @@
                                     name</span></a>
                             <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
                                     name</span></a>
-                            <a href="#" class="active" style="background: #333333;"><span
-                                    class="sr-only">Color name</span></a>
+                            <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
+                                    name</span></a>
                         </div><!-- End .product-nav -->
                     </div><!-- End .product-body -->
                 </div><!-- End .product -->
@@ -2857,8 +2657,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2897,8 +2697,8 @@
                         <span class="product-label label-circle label-top">Top</span>
                         <span class="product-label label-circle label-sale">Sale</span>
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-14.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-14.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2933,8 +2733,8 @@
                         </div><!-- End .rating-container -->
 
                         <div class="product-nav product-nav-dots">
-                            <a href="#" class="active" style="background: #edd2c8;"><span
-                                    class="sr-only">Color name</span></a>
+                            <a href="#" class="active" style="background: #edd2c8;"><span class="sr-only">Color
+                                    name</span></a>
                             <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
                                     name</span></a>
                             <a href="#" style="background: #333333;"><span class="sr-only">Color
@@ -2947,8 +2747,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-15.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-15.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2986,8 +2786,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -3023,8 +2823,7 @@
                 </div><!-- End .product -->
             </div><!-- End .owl-carousel -->
         </div><!-- .End .tab-pane -->
-        <div class="tab-pane p-0 fade" id="top-computers-tab" role="tabpanel"
-            aria-labelledby="top-computers-link">
+        <div class="tab-pane p-0 fade" id="top-computers-tab" role="tabpanel" aria-labelledby="top-computers-link">
             <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                 data-owl-options='{
                     "nav": true, 
@@ -3053,8 +2852,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-15.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-15.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -3092,8 +2891,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -3132,8 +2931,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -3170,8 +2969,8 @@
                                     name</span></a>
                             <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
                                     name</span></a>
-                            <a href="#" class="active" style="background: #333333;"><span
-                                    class="sr-only">Color name</span></a>
+                            <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
+                                    name</span></a>
                         </div><!-- End .product-nav -->
                     </div><!-- End .product-body -->
                 </div><!-- End .product -->
@@ -3179,8 +2978,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -3219,8 +3018,8 @@
                         <span class="product-label label-circle label-top">Top</span>
                         <span class="product-label label-circle label-sale">Sale</span>
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-14.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-14.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -3255,8 +3054,8 @@
                         </div><!-- End .rating-container -->
 
                         <div class="product-nav product-nav-dots">
-                            <a href="#" class="active" style="background: #edd2c8;"><span
-                                    class="sr-only">Color name</span></a>
+                            <a href="#" class="active" style="background: #edd2c8;"><span class="sr-only">Color
+                                    name</span></a>
                             <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
                                     name</span></a>
                             <a href="#" style="background: #333333;"><span class="sr-only">Color
@@ -3266,8 +3065,7 @@
                 </div><!-- End .product -->
             </div><!-- End .owl-carousel -->
         </div><!-- .End .tab-pane -->
-        <div class="tab-pane p-0 fade" id="top-phones-tab" role="tabpanel"
-            aria-labelledby="top-phones-link">
+        <div class="tab-pane p-0 fade" id="top-phones-tab" role="tabpanel" aria-labelledby="top-phones-link">
             <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                 data-owl-options='{
                     "nav": true, 
@@ -3296,8 +3094,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -3335,8 +3133,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -3374,8 +3172,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -3412,8 +3210,8 @@
                                     name</span></a>
                             <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
                                     name</span></a>
-                            <a href="#" class="active" style="background: #333333;"><span
-                                    class="sr-only">Color name</span></a>
+                            <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
+                                    name</span></a>
                         </div><!-- End .product-nav -->
                     </div><!-- End .product-body -->
                 </div><!-- End .product -->
@@ -3422,8 +3220,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-15.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-15.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -3461,8 +3259,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -3502,8 +3300,8 @@
                         <span class="product-label label-circle label-top">Top</span>
                         <span class="product-label label-circle label-sale">Sale</span>
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-14.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-14.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -3538,8 +3336,8 @@
                         </div><!-- End .rating-container -->
 
                         <div class="product-nav product-nav-dots">
-                            <a href="#" class="active" style="background: #edd2c8;"><span
-                                    class="sr-only">Color name</span></a>
+                            <a href="#" class="active" style="background: #edd2c8;"><span class="sr-only">Color
+                                    name</span></a>
                             <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
                                     name</span></a>
                             <a href="#" style="background: #333333;"><span class="sr-only">Color
@@ -3549,8 +3347,7 @@
                 </div><!-- End .product -->
             </div><!-- End .owl-carousel -->
         </div><!-- .End .tab-pane -->
-        <div class="tab-pane p-0 fade" id="top-watches-tab" role="tabpanel"
-            aria-labelledby="top-watches-link">
+        <div class="tab-pane p-0 fade" id="top-watches-tab" role="tabpanel" aria-labelledby="top-watches-link">
             <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
                 data-owl-options='{
                     "nav": true, 
@@ -3580,8 +3377,8 @@
                         <span class="product-label label-circle label-top">Top</span>
                         <span class="product-label label-circle label-sale">Sale</span>
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-14.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-14.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -3616,8 +3413,8 @@
                         </div><!-- End .rating-container -->
 
                         <div class="product-nav product-nav-dots">
-                            <a href="#" class="active" style="background: #edd2c8;"><span
-                                    class="sr-only">Color name</span></a>
+                            <a href="#" class="active" style="background: #edd2c8;"><span class="sr-only">Color
+                                    name</span></a>
                             <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
                                     name</span></a>
                             <a href="#" style="background: #333333;"><span class="sr-only">Color
@@ -3630,8 +3427,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -3669,8 +3466,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -3708,8 +3505,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -3746,8 +3543,8 @@
                                     name</span></a>
                             <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
                                     name</span></a>
-                            <a href="#" class="active" style="background: #333333;"><span
-                                    class="sr-only">Color name</span></a>
+                            <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
+                                    name</span></a>
                         </div><!-- End .product-nav -->
                     </div><!-- End .product-body -->
                 </div><!-- End .product -->
@@ -3782,8 +3579,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -3822,8 +3619,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-15.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-15.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -3861,8 +3658,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -3900,8 +3697,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -3939,8 +3736,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg"
-                                alt="Product image" class="product-image">
+                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg" alt="Product image"
+                                class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -3977,8 +3774,8 @@
                                     name</span></a>
                             <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
                                     name</span></a>
-                            <a href="#" class="active" style="background: #333333;"><span
-                                    class="sr-only">Color name</span></a>
+                            <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
+                                    name</span></a>
                         </div><!-- End .product-nav -->
                     </div><!-- End .product-body -->
                 </div><!-- End .product -->
@@ -4060,16 +3857,16 @@
                             porttitor mauris sit amet orci. </p><!-- End .cta-desc -->
 
                         <div class="social-icons social-icons-colored justify-content-center">
-                            <a href="#" class="social-icon social-facebook" title="Facebook"
-                                target="_blank"><i class="icon-facebook-f"></i></a>
-                            <a href="#" class="social-icon social-twitter" title="Twitter"
-                                target="_blank"><i class="icon-twitter"></i></a>
-                            <a href="#" class="social-icon social-instagram" title="Instagram"
-                                target="_blank"><i class="icon-instagram"></i></a>
-                            <a href="#" class="social-icon social-youtube" title="Youtube"
-                                target="_blank"><i class="icon-youtube"></i></a>
-                            <a href="#" class="social-icon social-pinterest" title="Pinterest"
-                                target="_blank"><i class="icon-pinterest"></i></a>
+                            <a href="#" class="social-icon social-facebook" title="Facebook" target="_blank"><i
+                                    class="icon-facebook-f"></i></a>
+                            <a href="#" class="social-icon social-twitter" title="Twitter" target="_blank"><i
+                                    class="icon-twitter"></i></a>
+                            <a href="#" class="social-icon social-instagram" title="Instagram" target="_blank"><i
+                                    class="icon-instagram"></i></a>
+                            <a href="#" class="social-icon social-youtube" title="Youtube" target="_blank"><i
+                                    class="icon-youtube"></i></a>
+                            <a href="#" class="social-icon social-pinterest" title="Pinterest" target="_blank"><i
+                                    class="icon-pinterest"></i></a>
                         </div><!-- End .soial-icons -->
                     </div><!-- End .cta-wrapper -->
                 </div><!-- End .col-lg-6 -->
@@ -4082,9 +3879,8 @@
 
                         <form action="#">
                             <div class="input-group">
-                                <input type="email" class="form-control"
-                                    placeholder="Enter your Email Address" aria-label="Email Adress"
-                                    required>
+                                <input type="email" class="form-control" placeholder="Enter your Email Address"
+                                    aria-label="Email Adress" required>
                                 <div class="input-group-append">
                                     <button class="btn btn-primary btn-rounded" type="submit"><i
                                             class="icon-long-arrow-right"></i></button>
