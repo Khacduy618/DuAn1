@@ -8,6 +8,11 @@ switch ($mod) {
         $controller_obj = new HomeController();
         $controller_obj->list();
         break;
+     case 'shop':
+        require_once('Controllers/ShopController.php');
+        $controller_obj = new ShopController();
+        $controller_obj->list();
+        break;
     default:
         require_once('Controllers/HomeController.php');
         $controller_obj = new Homecontroller();

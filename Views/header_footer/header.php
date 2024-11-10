@@ -213,21 +213,21 @@
             <div class="header-center">
                 <nav class="main-nav">
                     <ul class="menu sf-arrows">
-                        <li class="megamenu-container active">
-                            <a href="index.html">Home</a>
+                        <li>
+                            <a href="?act=home">Home</a>
                         </li>
                         <li>
-                            <a href="category.html" class="sf-with-ul">Shop</a>
+                            <a href="?act=shop" class="sf-with-ul">Shop</a>
                         </li>
                         <li>
-                            <a href="product.html">About Us</a>
+                            <a href="?act=about">About Us</a>
 
                         </li>
                         <li>
-                            <a href="#" class="sf-with-ul">Contact</a>
+                            <a href="?act=contact">Contact</a>
                         </li>
                         <li>
-                            <a href="blog.html" class="sf-with-ul">Blog</a>
+                            <a href="?act=blog">Blog</a>
                         </li>
                     </ul><!-- End .menu -->
                 </nav><!-- End .main-nav -->

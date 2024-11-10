@@ -4,9 +4,9 @@ switch ($act) {
     case "home":
         require_once "home/home.php";
         break;
-    // case "shop":
-    //     require_once("shop/shop.php");
-    //     break;
+    case "shop":
+        require_once("shop/shop.php");
+        break;
     // case "checkout":
     //     $act = isset($_GET['xuli']) ? $_GET['xuli'] : "list";
     //     switch ($act) {
@@ -24,12 +24,12 @@ switch ($act) {
     // case "detail":
     //     require_once("product-detail/product-detail.php");
     //     break;
-    // case "about":
-    //     require_once("introduce/about.php");
-    //     break;
-    // case "contact":
-    //     require_once("introduce/contact.php");
-    //     break;
+    case "about":
+        require_once("introduce/about.php");
+        break;
+    case "contact":
+        require_once("introduce/contact.php");
+        break;
     // case "cart":
     //     require_once("cart/cart.php");
     //     break;
