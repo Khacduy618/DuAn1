@@ -19,7 +19,8 @@
                 <div class="toolbox">
                     <div class="toolbox-left">
                         <div class="toolbox-info">
-                            Showing <span>9 of 56</span> Products
+                            Showing <span> <?= $orderdata['itemPerPage'] ?> of <?= $data_sum;?></span>
+                            Products
                         </div><!-- End .toolbox-info -->
                     </div><!-- End .toolbox-left -->
 

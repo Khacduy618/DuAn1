@@ -6,6 +6,12 @@ class Model
    var $table;
    var $contents;
    
+   function limit( $offset, $limit) 
+    {
+        $sql = "SELECT * FROM $this->table ORDER BY $this->contents DESC LIMIT $offset, $limit";
+        return pdo_query($sql); // Chỉ bind tham số cho product_cat
+    }
+
    function list(){
        $sql = "SELECT * FROM $this->table ORDER BY $this->contents DESC";
        return pdo_query($sql);
@@ -39,5 +45,7 @@ class Model
        $sql = "UPDATE $this->table SET  $v   WHERE $this->contens = " . $data[$this->contents];
        return pdo_execute($sql, $data[$this->contents]);
    }
+   
+
 }
 ?>

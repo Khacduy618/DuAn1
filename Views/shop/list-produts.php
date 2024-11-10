@@ -64,21 +64,78 @@
         <!-- single product end -->
     </div><!-- End .row -->
 </div><!-- End .products -->
+<?php 
+                    if($orderdata['totalRecord']>12){
+                ?>
 <nav aria-label="Page navigation">
     <ul class="pagination justify-content-center">
-        <li class="page-item disabled">
-            <a class="page-link page-link-prev" href="#" aria-label="Previous" tabindex="-1" aria-disabled="true">
-                <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>Prev
-            </a>
+        <?php
+            if ($orderdata['currentPage'] > 2) {
+                $first_page = 1;
+                ?>
+        <li class="page-item"><a class="page-link"
+                href="<?php if (isset($_GET['product_cat']) && ($_GET['product_cat'] > 0)) { ?>index.php?act=shop&product_cat=<?= $_GET['product_cat'] ?>&per_page=<?= $orderdata['itemPerPage'] ?>&page=<?= $first_page ?>
+                                    <?php }else{?>index.php?act=shop&per_page=<?= $orderdata['itemPerPage'] ?>&page=<?= $first_page ?><?php } ?>">First</a>
         </li>
-        <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item-total">of 6</li>
-        <li class="page-item">
-            <a class="page-link page-link-next" href="#" aria-label="Next">
-                Next <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
-            </a>
+        <?php
+            }
+            if ($orderdata['currentPage'] > 1) {
+                $prev_page = $orderdata['currentPage'] - 1;
+                ?>
+        <li class="page-item"><a class="page-link page-link-prev"
+                href="<?php if (isset($_GET['product_cat']) && ($_GET['product_cat'] > 0)) { ?>index.php?act=shop&product_cat=<?= $_GET['product_cat'] ?>&per_page=<?= $orderdata['itemPerPage'] ?>&page=<?= $prev_page ?>
+                                        <?php }else{?>index.php?act=shop&per_page=<?= $orderdata['itemPerPage'] ?>&page=<?= $prev_page ?><?php } ?>"><i
+                    class="icon-long-arrow-left"></i>Prev</a></li>
+        <?php }
+                                ?>
+        <?php for ($num = 1; $num <= $orderdata['totalPages']; $num++) { ?>
+        <?php if ($num != $orderdata['currentPage']) { ?>
+        <?php if ($num > $orderdata['currentPage'] - 3 && $num < $orderdata['currentPage'] + 3) { ?>
+        <li class="page-item"><a class="page-link"
+                href="<?php if (isset($_GET['product_cat']) && ($_GET['product_cat'] > 0)) { ?>index.php?act=shop&product_cat=<?= $_GET['product_cat'] ?>&per_page=<?= $orderdata['itemPerPage'] ?>&page=<?= $num ?>
+                                                <?php }else{?>index.php?act=shop&per_page=<?= $orderdata['itemPerPage'] ?>&page=<?= $num ?> <?php } ?>"><?= $num ?></a>
         </li>
+        <?php } ?>
+        <?php } else { ?>
+        <li class="page-item active"><a class="page-link"><?= $num ?></a></li>
+        <?php } ?>
+        <?php } ?>
+        <?php
+                                if ($orderdata['currentPage'] < $orderdata['totalPages'] - 0) {
+                                    $next_page = $orderdata['currentPage'] + 1;
+                                    ?>
+        <li class="page-item"><a class="page-link page-link-next"
+                href="<?php if (isset($_GET['product_cat']) && ($_GET['product_cat'] > 0)) { ?>index.php?act=shop&product_cat=<?= $_GET['product_cat'] ?>&per_page=<?= $orderdata['itemPerPage'] ?>&page=<?= $next_page ?>
+                                    <?php }else{ ?>index.php?act=shop&per_page=<?= $orderdata['itemPerPage'] ?>&page=<?= $next_page ?> <?php } ?>">Next<span><i
+                        class="icon-long-arrow-right"></i></span></a></li>
+        <?php
+                                }
+                                if ($orderdata['currentPage'] < $orderdata['totalPages'] - 2) {
+                                    $end_page = $orderdata['totalPages'];
+                                    ?>
+        <li class="page-item"><a class="page-link"
+                href="<?php if (isset($_GET['product_cat']) && ($_GET['product_cat'] > 0)) { ?>index.php?act=shop&product_cat=<?= $_GET['product_cat'] ?>&per_page=<?= $orderdata['itemPerPage'] ?>&page=<?= $end_page ?>
+                                        <?php }else{ ?>index.php?act=shop&per_page=<?= $orderdata['itemPerPage'] ?>&page=<?= $end_page ?> <?php } ?>">Last</a>
+        </li>
+        <?php
+                                }
+                                ?>
+        <!-- <li class="page-item disabled">
+                                <a class="page-link page-link-prev" href="#" aria-label="Previous" tabindex="-1" aria-disabled="true">
+                                    <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>Prev
+                                </a>
+                            </li>
+                            <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item-total">of 6</li>
+                            <li class="page-item">
+                                <a class="page-link page-link-next" href="#" aria-label="Next">
+                                    Next <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
+                                </a>
+                            </li> -->
     </ul>
 </nav>
+<?php
+                    }
+                ?>
