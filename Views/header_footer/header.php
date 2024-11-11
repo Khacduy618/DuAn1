@@ -34,7 +34,15 @@
                                     </div><!-- End .header-menu -->
                                 </div>
                             </li>
-                            <li><a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a></li>
+                            <?php
+                            if (isset($_SESSION['user'])) {
+                            ?>
+                                <li>
+                                    <div class="user"><span><?= $_SESSION['user']['user_name'] ?></span></div>
+                                </li>
+                            <?php } else { ?>
+                                <li><a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a></li>
+                            <?php } ?>
                         </ul>
                     </li>
                 </ul><!-- End .top-menu -->
