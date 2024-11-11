@@ -1,15 +1,20 @@
 <?php
 $act = isset($_GET['act']) ? $_GET['act'] : "home";
-$singin_email = isset($_GET['singin-email']) ? $_GET['singin-email'] : "home";
-$singin_password = isset($_GET['singin-password']) ? $_GET['singin-password'] : "home";
-switch($singin_email){
-    case "admin":
-        require_once __DIR__."\..\admin\index.php";
-        break;
-}
+// $singin_email = isset($_GET['singin-email']) ? $_GET['singin-email'] : "home";
+// $singin_password = isset($_GET['singin-password']) ? $_GET['singin-password'] : "home";
+// switch($singin_email){
+//     case "admin":
+//         require_once __DIR__."\..\admin\index.php";
+//         break;
+// }
 switch ($act) {
     case "home":
         require_once "home/home.php";
+        break;
+    case 'login':
+        require_once 'Controllers/Login.php';
+        $controller_obj = new Login();
+        $controller_obj->login();
         break;
     case "shop":
         require_once("shop/shop.php");
@@ -36,12 +41,6 @@ switch ($act) {
         break;
     case "contact":
         require_once("introduce/contact.php");
-        break;
-    case "login":
-        require_once("signup-signin/login.php");
-        break;
-    case "signup":
-        require_once("signup-signin/signup.php");
         break;
     case "blog":
         require_once("blog/blog.php");
