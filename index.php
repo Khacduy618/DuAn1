@@ -105,6 +105,16 @@ switch ($mod) {
                 break;
             }
         }
+    case 'product':
+        require_once('Controllers/ProductController.php');
+        $controller_obj = new ProductController();
+        $controller_obj->list();
+        break;
+    // case 'checkout':
+    //     require_once('Controllers/CheckoutController.php');
+    //     $controller_obj = new CheckoutController();
+    //     $controller_obj->list();
+    //     break;
     default:
         require_once('Controllers/HomeController.php');
         $controller_obj = new Homecontroller();
