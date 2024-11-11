@@ -22,7 +22,7 @@
             }
             ?>
 
-            <a class="product-pager-link product-pager-next" href="?act=product&id=<?=$data['product_id']-1?>"
+            <a class="product-pager-link product-pager-next" href="?act=product&id=<?=$data['product_id']+1?>"
                 aria-label="Next" tabindex="-1">
                 <span>Next</span>
                 <i class="icon-angle-right"></i>
