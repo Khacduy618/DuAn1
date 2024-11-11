@@ -50,12 +50,12 @@ switch ($mod) {
     //     break;
     case 'account':
         $act = isset($_GET['xuli']) ? $_GET['xuli'] : "account";
-        require_once('Controllers/LoginController.php');
-        $controller_obj = new LoginController();
+        require_once('Controllers/AccountController.php');
+        $controller_obj = new AccountController();
         if ((isset($_SESSION['isLogin']) && $_SESSION['isLogin'] == true)) {
             switch ($act) {
                 case 'dangxuat':
-                    unset($_SESSION['sanpham']);
+                    unset($_SESSION['product']);
                     $controller_obj->dangxuat();
                     
                     break;
@@ -105,6 +105,16 @@ switch ($mod) {
                 break;
             }
         }
+    case 'product':
+        require_once('Controllers/ProductController.php');
+        $controller_obj = new ProductController();
+        $controller_obj->list();
+        break;
+    // case 'checkout':
+    //     require_once('Controllers/CheckoutController.php');
+    //     $controller_obj = new CheckoutController();
+    //     $controller_obj->list();
+    //     break;
     default:
         require_once('Controllers/HomeController.php');
         $controller_obj = new Homecontroller();
