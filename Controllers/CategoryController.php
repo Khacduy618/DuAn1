@@ -74,12 +74,12 @@ class CategoryController {
                 if ($hasChildren) {
                     // Parent category with subcategories
                     $output .= '<div class="filter-item">';
-                    $output .= '<div class="custom-control custom-checkbox parent-category">';
+                    $output .= '<div class="custom-control  parent-category">';
                               '" name="category[]" value="' . $value['category_id'] . '">';
                     $output .= '<label class="custom-control-label" for="cat-' . $value['category_id'] . '">' . 
                               ucfirst($value['category_name']) . '</label>';
                     $output .= '<span class="Categories-count">' . $totalProducts . '</span>';
-                    $output .= '<a class="toggle-icon"></a>';
+                    $output .= '<p class="toggle-icon"></p>';
                     $output .= '</div>';
                     
                     // Sub categories container
@@ -90,13 +90,15 @@ class CategoryController {
                 } else {
                     // Single category without subcategories
                     $output .= '<div class="filter-item sub-cat">';
-                    $output .= '<div class="custom-control custom-checkbox">';
-                              '" name="category[]" value="' . $value['category_id'] . '">';
+                    $output .= '<div class="custom-control">';
+                    $output .= '<a href="index.php?act=shop&product_cat=' . $value['category_id'] . '" class="category-link">';
                     $output .= '<label class="custom-control-label" for="cat-' . $value['category_id'] . '">' . 
-                              ucfirst($value['category_name']) . '</label>';
+                            ucfirst($value['category_name']) . '</label>';
                     $output .= '<span class="subCategories-count">' . $value['product_count'] . '</span>';
+                    $output .= '</a>';
                     $output .= '</div>';
                     $output .= '</div>';
+
                 }
             }
         }

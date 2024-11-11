@@ -14,22 +14,20 @@
 
             <div class="collapse show" id="widget-1">
                 <div class="widget-body">
-                    <form id="categoryForm" method="GET" action="index.php">
-                        <div class="filter-items filter-items-count">
-                            <?php
+                    <div class="filter-items filter-items-count">
+                        <?php
                             require_once 'Controllers/CategoryController.php';
                             $category = new CategoryController();
                             echo $category->list_cat();
                         ?>
-                            <!-- <div class="filter-item">
+                        <!-- <div class="filter-item">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="cat-1">
                                 <label class="custom-control-label" for="cat-1">Dresses</label>
                             </div>
                             <span class="subCategories-count">3</span>
                         </div> -->
-                        </div><!-- End .filter-items -->
-                    </form>
+                    </div><!-- End .filter-items -->
                 </div><!-- End.widget-body -->
             </div><!-- End .widget-body -->
         </div><!-- End .collapse -->

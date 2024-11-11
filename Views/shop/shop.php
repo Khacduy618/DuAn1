@@ -19,8 +19,19 @@
                 <div class="toolbox">
                     <div class="toolbox-left">
                         <div class="toolbox-info">
-                            Showing <span> <?= $orderdata['itemPerPage'] ?> of <?= $data_sum;?></span>
-                            Products
+                            <?php
+                                // Calculate the total number of products to display based on pagination
+                                $total_products = $orderdata['totalRecord'];
+                                $current_start = ($orderdata['currentPage'] - 1) * $per_page + 1;
+                                $current_end = min($current_start + count($data) - 1, $total_products); // end index for current page
+
+                                // Display total products count and range
+                                if ($total_products > 0) {
+                                    echo "<p class='product-count'>Showing <span>$current_end</span> of <span>$total_products</span> products</p>";
+                                } else {
+                                    echo "<span class='product-count'>No products available</span>";
+                                }
+                                ?>
                         </div><!-- End .toolbox-info -->
                     </div><!-- End .toolbox-left -->
 
@@ -28,10 +39,29 @@
                         <div class="toolbox-sort">
                             <label for="sortby">Sort by:</label>
                             <div class="select-custom">
-                                <select name="sortby" id="sortby" class="form-control">
-                                    <option value="popularity" selected="selected">Most Popular</option>
-                                    <option value="rating">Most Rated</option>
-                                    <option value="date">Date</option>
+                                <select name="sortby" id="sortby" class="form-control"
+                                    onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                                    <option value="0" selected="selected">Choose</option>
+                                    <option
+                                        value="index.php?act=shop&product_cat=<?= $_GET['product_cat'] ?? 0 ?>&per_page=<?= $_GET['per_page'] ?? 12 ?>&page=<?= $_GET['page'] ?? 1 ?>&field=created_at&sort=desc"
+                                        <?= (isset($_GET['field']) && $_GET['field'] == 'created_at' && isset($_GET['sort']) && $_GET['sort'] == 'desc') ? 'selected' : '' ?>>
+                                        Newest
+                                    </option>
+                                    <option
+                                        value="index.php?act=shop&product_cat=<?= $_GET['product_cat'] ?? 0 ?>&per_page=<?= $_GET['per_page'] ?? 12 ?>&page=<?= $_GET['page'] ?? 1 ?>&field=total_sold&sort=desc"
+                                        <?= (isset($_GET['field']) && $_GET['field'] == 'total_sold' && isset($_GET['sort']) && $_GET['sort'] == 'desc') ? 'selected' : '' ?>>
+                                        Best Selling
+                                    </option>
+                                    <option
+                                        value="index.php?act=shop&product_cat=<?= $_GET['product_cat'] ?? 0 ?>&per_page=<?= $_GET['per_page'] ?? 12 ?>&page=<?= $_GET['page'] ?? 1 ?>&field=product_price&sort=asc"
+                                        <?= (isset($_GET['field']) && $_GET['field'] == 'product_price' && isset($_GET['sort']) && $_GET['sort'] == 'asc') ? 'selected' : '' ?>>
+                                        Price: Low to High
+                                    </option>
+                                    <option
+                                        value="index.php?act=shop&product_cat=<?= $_GET['product_cat'] ?? 0 ?>&per_page=<?= $_GET['per_page'] ?? 12 ?>&page=<?= $_GET['page'] ?? 1 ?>&field=product_price&sort=desc"
+                                        <?= (isset($_GET['field']) && $_GET['field'] == 'product_price' && isset($_GET['sort']) && $_GET['sort'] == 'desc') ? 'selected' : '' ?>>
+                                        Price: High to Low
+                                    </option>
                                 </select>
                             </div>
                         </div><!-- End .toolbox-sort -->

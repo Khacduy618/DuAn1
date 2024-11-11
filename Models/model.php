@@ -17,7 +17,7 @@ class Model
        return pdo_query($sql);
    }
    function findBy($id){
-       $sql = "SELECT * FROM $this->table WHERE $this->contents = $id";
+       $sql = "SELECT * FROM $this->table WHERE $this->contents = ?";
        return pdo_query_one($sql,$id);
    }
    function delete($id){

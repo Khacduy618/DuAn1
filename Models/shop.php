@@ -6,18 +6,25 @@ class Shop extends Model
     var $table = "products";
     var $contents = "product_id";
 
-    function loadall_product($kyw="", $orderCondition="", $product_cat=0, $item_per_page="", $offset=""){
-        $sql = "SELECT * FROM products WHERE 1";
+   function loadall_product($kyw="", $orderCondition="", $product_cat=0, $item_per_page="", $offset=""){
+        $sql = "SELECT p.*, COALESCE(SUM(bd.pro_count), 0) as total_sold 
+                FROM products p 
+                LEFT JOIN bill_details bd ON p.product_id = bd.pro_id 
+                WHERE 1";
+        
         if($product_cat > 0){
-            $sql .= " AND product_cat = ".$product_cat;
+            $sql .= " AND product_cat=".$product_cat;
         }
         if($kyw != ""){
             $sql .= " AND product_name LIKE '%".$kyw."%'";
         }
-        $sql .= " ".$orderCondition." LIMIT ".$item_per_page." OFFSET ".$offset;
-        return pdo_query($sql);  
-    }
+        
+        $sql .= " GROUP BY p.product_id ";
+        $sql .= $orderCondition;
+        $sql .= " LIMIT ".$item_per_page." OFFSET ".$offset;
 
+        return pdo_query($sql);
+    }
     function keywork($a) {
         $a = "'%".$a."%'";
         $query = "SELECT * FROM products WHERE product_name LIKE $a LIMIT 0,12";
@@ -36,7 +43,7 @@ class Shop extends Model
     }
 
     function products_topSell() {
-        $query = "SELECT p.*, SUM(bd.pro_count) AS total_sold FROM products p JOIN bill_details bd ON p.product_id = bd.pro_id GROUP BY p.product_id ORDER BY total_sold DESC LIMIT 2;";
+        $query = "SELECT p.*, SUM(bd.pro_count) AS total_sold FROM products p JOIN bill_details bd ON p.product_id = bd.pro_id GROUP BY p.product_id ORDER BY total_sold DESC";
         return pdo_query($query);
     }
 
@@ -47,14 +54,19 @@ class Shop extends Model
     }
 
     function getPaginationAndOrderData() {
-        $orderCondition = "ORDER BY product_id DESC";
+        $orderCondition = "ORDER BY p.product_id DESC";
         $itemPerPage = !empty($_GET['per_page']) ? $_GET['per_page'] : 12;
         $currentPage = !empty($_GET['page']) ? $_GET['page'] : 1;
 
         $orderField = isset($_GET['field']) ? $_GET['field'] : "";
         $orderSort = isset($_GET['sort']) ? $_GET['sort'] : "";
+        
         if (!empty($orderField) && !empty($orderSort)) {
-            $orderCondition = "ORDER BY `products`.`" . $orderField . "` " . $orderSort;
+            if ($orderField === 'total_sold') {
+                $orderCondition = "ORDER BY total_sold " . $orderSort;
+            } else {
+                $orderCondition = "ORDER BY p.`" . $orderField . "` " . $orderSort;
+            }
         }
 
         $offset = ($currentPage - 1) * $itemPerPage;
