@@ -56,24 +56,22 @@
                                 </a>
 
                                 <a class="product-gallery-item" href="#"
-                                    data-image="assets/site/images/shop/<?=$data['product_img']?>/single/2.jpg"
-                                    data-zoom-image="assets/site/images/shop/<?=$data['product_img']?>/single/2-big.jpg">
-                                    <img src="assets/site/images/shop/<?=$data['product_img']?>/single/2-small.jpg"
-                                        alt="product cross">
+                                    data-image="assets/site/images/shop/<?=$data['product_img']?>"
+                                    data-zoom-image="assets/site/images/shop/<?=$data['product_img']?>">
+                                    <img src="assets/site/images/shop/<?=$data['product_img']?>" alt="product cross">
                                 </a>
 
                                 <a class="product-gallery-item" href="#"
-                                    data-image="assets/site/images/shop/<?=$data['product_img']?>/single/3.jpg"
-                                    data-zoom-image="assets/site/images/shop/<?=$data['product_img']?>/single/3-big.jpg">
-                                    <img src="assets/site/images/shop/<?=$data['product_img']?>/single/3-small.jpg"
+                                    data-image="assets/site/images/shop/<?=$data['product_img']?>"
+                                    data-zoom-image="assets/site/images/shop/<?=$data['product_img']?>">
+                                    <img src="assets/site/images/shop/<?=$data['product_img']?>"
                                         alt="product with model">
                                 </a>
 
                                 <a class="product-gallery-item" href="#"
-                                    data-image="assets/site/images/shop/<?=$data['product_img']?>/single/4.jpg"
-                                    data-zoom-image="assets/site/images/shop/<?=$data['product_img']?>/single/4-big.jpg">
-                                    <img src="assets/site/images/shop/<?=$data['product_img']?>/single/4-small.jpg"
-                                        alt="product back">
+                                    data-image="assets/site/images/shop/<?=$data['product_img']?>"
+                                    data-zoom-image="assets/site/images/shop/<?=$data['product_img']?>">
+                                    <img src="assets/site/images/shop/<?=$data['product_img']?>" alt="product back">
                                 </a>
                             </div><!-- End .product-image-gallery -->
                         </div><!-- End .row -->
@@ -82,7 +80,7 @@
 
                 <div class="col-md-6">
                     <div class="product-details">
-                        <h1 class="product-title">Dark yellow lace cut out swing dress</h1><!-- End .product-title -->
+                        <h1 class="product-title"><?=$data['product_name']?></h1><!-- End .product-title -->
 
                         <div class="ratings-container">
                             <div class="ratings">
@@ -105,12 +103,10 @@
 
                             <div class="product-nav product-nav-thumbs">
                                 <a href="#" class="active">
-                                    <img src="assets/site/images/shop/<?=$data['product_img']?>/single/1-thumb.jpg"
-                                        alt="product desc">
+                                    <img src="assets/site/images/shop/<?=$data['product_img']?>" alt="product desc">
                                 </a>
                                 <a href="#">
-                                    <img src="assets/site/images/shop/<?=$data['product_img']?>/single/2-thumb.jpg"
-                                        alt="product desc">
+                                    <img src="assets/site/images/shop/<?=$data['product_img']?>" alt="product desc">
                                 </a>
                             </div><!-- End .product-nav -->
                         </div><!-- End .details-filter-row -->
@@ -139,7 +135,8 @@
                         </div><!-- End .details-filter-row -->
 
                         <div class="product-details-action">
-                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                            <a href="?act=cart&xuli=add&product_id=<?=$data['product_id']?>"
+                                class="btn-product btn-cart"><span>add to cart</span></a>
 
                             <div class="details-action-wrapper">
                                 <a href="#" class="btn-product btn-wishlist" title="Wishlist"><span>Add to
