@@ -11,18 +11,18 @@ switch ($act) {
         $act = isset($_GET['xuli']) ? $_GET['xuli'] : "list";
         switch ($act) {
             case 'list':
-                require_once("order/checkout.php");
+                require_once("checkout/checkout.php");
                 break;
-            case 'order_complete':
-                require_once("order/order_complete.php");
+            case 'checkout_complete':
+                require_once("checkout/checkout_complete.php");
                 break;
             default:
-                require_once("order/checkout.php");
+                require_once("checkout/checkout.php");
                 break;
         }
         break;
-    case "detail":
-        require_once("product-detail/product-detail.php");
+    case "product":
+        require_once("product/product.php");
         break;
     case "about":
         require_once("introduce/about.php");
@@ -60,5 +60,11 @@ switch ($act) {
                     break;
             }
         }
+    case "blog":
+        require_once("blog/blog.php");
+        break;
+       }
+    default:
+        require_once("error-404.php");
         break;
 }
