@@ -5,9 +5,9 @@ class HomeController
      var $home_model;
     public function __construct()
     {
-       $this->home_model = new Home();
+        $this->home_model = new Home();
     }
-    
+
     function list()
     {
         // $cat = $this->home_model->getSubCategories()
