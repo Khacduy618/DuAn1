@@ -46,10 +46,10 @@ class User
         // Kiểm tra mật khẩu nếu người dùng tồn tại
         if ($user && password_verify($password, $user['user_password'])) {
             return $user;
-            $_SESSION['user'] = $user;
         }
         return false;
     }
+
 
     // Cập nhật thông tin người dùng
     public function update($email, $newPassword = null)

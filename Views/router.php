@@ -39,25 +39,25 @@ switch ($act) {
         if (isset($_SESSION['isLogin']) && $_SESSION['isLogin'] == true) {
             switch ($act) {
                 case 'login':
-                    require_once("Views/account/login.php");
+                    require_once("Views/account/index.php");
                     break;
                 case 'account':
                     require_once("Views/my-account.php");
                     break;
                 default:
-                    require_once("Views/account/login.php");
+                    require_once("Views/account/index.php");
                     break;
             }
         } else {
             switch ($act) {
                 case 'login':
-                    require_once("Views/account/login.php");
+                    require_once("Views/account/index.php");
                     break;
                 case 'dangky':  // Xử lý đăng ký
-                    require_once("Views/account/register.php");
+                    require_once("Views/account/index.php");
                     break;
                 default:
-                    require_once("Views/account/login.php");
+                    require_once("Views/account/index.php");
                     break;
             }
         }
