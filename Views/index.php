@@ -1,6 +1,3 @@
-<!-- <?php
-        require_once('Models/user.php')
-        ?> -->
 <!DOCTYPE html>
 <html lang="en">
 

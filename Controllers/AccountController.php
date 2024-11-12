@@ -12,12 +12,12 @@ class AccountController
     {
         if (!$this->isAdmin()) {
             $_SESSION['message'] = "Bạn không có quyền truy cập trang này.";
-            header("Location: Views/account/index.php");
+            header("Location: Views/index.php");
             exit;
         }
 
         $account = User::getAll();
-        include __DIR__ . '/../Views/home/index.php';
+        include __DIR__ . '/../Views/index.php';
     }
 
     // Hàm xử lý đăng ký
