@@ -35,13 +35,13 @@
                                 </div>
                             </li>
                             <?php
-                            if (isset($_SESSION['user'])) {
+                            if (isset($_SESSION['login'])) {
                             ?>
-                                <li>
-                                    <div class="user"><span><?= $_SESSION['user']['user_name'] ?></span></div>
-                                </li>
+                            <li>
+                                <div class="user"><span><?= $_SESSION['login']['user_name'] ?></span></div>
+                            </li>
                             <?php } else { ?>
-                                <li><a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a></li>
+                            <li><a href="?act=taikhoan">Sign in / Sign up</a></li>
                             <?php } ?>
                         </ul>
                     </li>
