@@ -12,7 +12,7 @@ class AccountController
     {
         if (!$this->isAdmin()) {
             $_SESSION['message'] = "Bạn không có quyền truy cập trang này.";
-            header("Location: views/account/index.php");
+            header("Location: Views/account/index.php");
             exit;
         }
 
@@ -86,55 +86,12 @@ class AccountController
         include __DIR__ . '/../Views/home/index.php';
     }
 
-    public function bulkAction()
-    {
-        if (isset($_POST['action'])) {
-            $action = $_POST['action'];
-            $selectedEmails = $_POST['selected_emails'] ?? [];
-
-            switch ($action) {
-                case 'select_all':
-                    header("Location: index.php?controller=account&action=index&select_all=1");
-                    break;
-
-                case 'deselect_all':
-                    header("Location: index.php?controller=account&action=index&deselect_all=1");
-                    break;
-
-                case 'delete_selected':
-                    if (!empty($selectedEmails)) {
-                        foreach ($selectedEmails as $email) {
-                            User::delete($email);
-                        }
-                        $_SESSION['message'] = "Đã xóa các mục đã chọn.";
-                    } else {
-                        $_SESSION['message'] = "Vui lòng chọn ít nhất một mục để xóa.";
-                    }
-                    header("Location: index.php?controller=account&action=index");
-                    break;
-            }
-        }
-    }
-
     public function logout()
     {
         session_unset();
         session_destroy();
         header("Location: index.php?controller=account&action=login");
         exit();
-    }
-
-    public function delete()
-    {
-        if (isset($_GET['email'])) {
-            $email = $_GET['email'];
-            User::delete($email);
-            $_SESSION['message'] = "Tài khoản đã được xóa thành công.";
-            header("Location: index.php?controller=account&action=index");
-        } else {
-            $_SESSION['message'] = "Email không hợp lệ.";
-            header("Location: index.php?controller=account&action=index");
-        }
     }
 
     public function edit()
