@@ -1,15 +1,28 @@
 <?php
+require_once 'Models/cart.php';
+require_once("Models/address.php");
 require_once("Models/checkout.php");
 class CheckoutController
 {
-    var $checkout_model;
+    private $checkout_model;
+    private $cartModel;
+    private $addressModel;
     public function __construct()
     {
         $this->checkout_model = new Checkout();
+        $this->cartModel = new Cart();
+        $this->addressModel = new Address();
     }
     function list()
     {
-      //Xử lý
+      if (isset($_SESSION['login'])) {
+            $userEmail = $_SESSION['login']['user_email'];
+            $cartItems = $this->cartModel->getCartItems($userEmail);
+            $address = $this->addressModel->getOneAdress($userEmail);
+            require_once 'Views/index.php';
+        } else {
+            header('location: ?act=taikhoan');
+        }
     }
     function  save()
     {

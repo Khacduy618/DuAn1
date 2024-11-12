@@ -12,6 +12,16 @@ body {
     height: 100%
 }
 
+ol,
+ul,
+li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    list-style-image: none;
+}
+
 body {
     font-family: "Open Sans", sans-serif !important;
     color: #666;
@@ -16104,7 +16114,7 @@ button:focus {
 .table.table-summary thead th:last-child,
 .table.table-summary tbody td:last-child {
     text-align: right;
-    min-width: 100px
+    min-width: 110px
 }
 
 .table.table-summary .summary-total td {

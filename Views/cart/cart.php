@@ -31,23 +31,28 @@
                         <tbody>
                             <?php
 							if (isset($cartItems)) {
-                                $tong = 0;
+                                $_SESSON['tong'] = 0;
+                                $shipping = 20000;
+                                $_SESSON['shipping'] = $shipping;
+                                
 								foreach ($cartItems as $value) {
                                     $ttien=$value['product_price']*$value['quantity'];
-                                    $tong+=$ttien; 
+                                    $_SESSON['tong']+=$ttien; 
+                                    $_SESSION['checkout'] = $_SESSON['tong'] + $shipping;
                             ?>
                             <tr>
                                 <td class="product-col">
                                     <div class="product">
                                         <figure class="product-media">
-                                            <a href="#">
+                                            <a href="?act=product&id=<?=$value['pro_id']?>">
                                                 <img src="assets/images/products/table/product-1.jpg"
                                                     alt="Product image">
                                             </a>
                                         </figure>
 
                                         <h3 class="product-title">
-                                            <a href="#"><?= $value['product_name'] ?></a>
+                                            <a
+                                                href="?act=product&id=<?=$value['pro_id']?>"><?= $value['product_name'] ?></a>
                                         </h3><!-- End .product-title -->
                                     </div><!-- End .product -->
                                 </td>
@@ -100,7 +105,8 @@
                             <tbody>
                                 <tr class="summary-subtotal">
                                     <td>Subtotal:</td>
-                                    <td><?=number_format($tong,0,",",".")?> đ</td>
+                                    <td><?=number_format($_SESSON['tong'],0,",",".")?> đ
+                                        <?php $_SESSION['tong_new'] = $_SESSON['tong'] ?></td>
                                 </tr><!-- End .summary-subtotal -->
                                 <tr class="summary-shipping">
                                     <td>Shipping:</td>
@@ -112,11 +118,10 @@
                                         <div class="custom-control custom-radio">
                                             <input type="radio" id="free-shipping" name="shipping"
                                                 class="custom-control-input">
-                                            <label class="custom-control-label" for="free-shipping">Free
-                                                Shipping</label>
+                                            <label class="custom-control-label" for="free-shipping">Shipping</label>
                                         </div><!-- End .custom-control -->
                                     </td>
-                                    <td>$0.00</td>
+                                    <td><?=number_format($shipping,0,",",".")?> đ</td>
                                 </tr><!-- End .summary-shipping-row -->
 
                                 <tr class="summary-shipping-row">
@@ -144,17 +149,27 @@
 
                                 <tr class="summary-shipping-estimate">
                                     <td>Estimate for Your Country<br> <a href="dashboard.html">Change address</a></td>
-                                    <td>&nbsp;</td>
+                                    <td>
+                                        <?php
+                                            if($address){
+                                                    ?>
+                                        <li><?=$address['address_name']?> - <?=$address['address_city']?>,
+                                            <?=$address['address_street']?></li>
+                                        <?php
+                                                }
+                                            
+                                        ?>
+                                    </td>
                                 </tr><!-- End .summary-shipping-estimate -->
 
                                 <tr class="summary-total">
                                     <td>Total:</td>
-                                    <td>$160.00</td>
+                                    <td><?=number_format($_SESSION['checkout'],0,",",".")?> đ</td>
                                 </tr><!-- End .summary-total -->
                             </tbody>
                         </table><!-- End .table table-summary -->
 
-                        <a href="checkout.html" class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO
+                        <a href="?act=checkout" class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO
                             CHECKOUT</a>
                     </div><!-- End .summary -->
 

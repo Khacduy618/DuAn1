@@ -90,6 +90,9 @@ switch ($mod) {
             case 'add':
                 $controller_obj->add_cart();
                 break;
+            case 'update':
+                $cartController->update_cart();
+                break;
             case 'delete':
                 $controller_obj->delete_cart();
                 break;
@@ -98,6 +101,25 @@ switch ($mod) {
                 break;
             default:
                 $controller_obj->list_cart();
+                break;
+        }
+        break;
+    case 'checkout':
+        $act = isset($_GET['xuli']) ? $_GET['xuli'] : "list";
+        require_once('Controllers/CheckoutController.php');
+        $controller_obj = new CheckoutController();
+        switch ($act) {
+            case 'list':
+                $controller_obj->list();
+                break;
+            case 'save':
+                $controller_obj->save();
+                break;
+            case 'order_complete':
+                $controller_obj->order_complete();
+                break;
+            default:
+                $controller_obj->list();
                 break;
         }
         break;

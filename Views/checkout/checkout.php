@@ -23,69 +23,68 @@
                             your code</span></label>
                 </form>
             </div><!-- End .checkout-discount -->
-            <form action="#">
+            <form action="#" id='form_thanhtoan'>
                 <div class="row">
                     <div class="col-lg-9">
                         <h2 class="checkout-title">Billing Details</h2><!-- End .checkout-title -->
                         <div class="row">
-                            <div class="col-sm-6">
-                                <label>First Name *</label>
-                                <input type="text" class="form-control" required>
+                            <div class="col-sm-12">
+                                <label>Full Name *</label>
+                                <input type="text" class="form-control"
+                                    placeholder="<?=$_SESSION['login']['user_name']?>" readonly>
                             </div><!-- End .col-sm-6 -->
 
-                            <div class="col-sm-6">
-                                <label>Last Name *</label>
-                                <input type="text" class="form-control" required>
-                            </div><!-- End .col-sm-6 -->
                         </div><!-- End .row -->
 
                         <label>Company Name (Optional)</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" placeholder="<?=$address['address_name']?>" readonly>
 
-                        <label>Country *</label>
-                        <input type="text" class="form-control" required>
+                        <label>City *</label>
+                        <input type="text" class="form-control" placeholder="<?=$address['address_city']?>" readonly>
 
                         <label>Street address *</label>
-                        <input type="text" class="form-control" placeholder="House number and Street name" required>
-                        <input type="text" class="form-control" placeholder="Appartments, suite, unit etc ..." required>
+                        <input type="text" class="form-control" placeholder="<?=$address['address_street']?>" readonly>
 
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-sm-6">
                                 <label>Town / City *</label>
                                 <input type="text" class="form-control" required>
-                            </div><!-- End .col-sm-6 -->
+                            </div>
 
                             <div class="col-sm-6">
                                 <label>State / County *</label>
                                 <input type="text" class="form-control" required>
-                            </div><!-- End .col-sm-6 -->
-                        </div><!-- End .row -->
+                            </div>
+                        </div>
 
                         <div class="row">
                             <div class="col-sm-6">
                                 <label>Postcode / ZIP *</label>
                                 <input type="text" class="form-control" required>
-                            </div><!-- End .col-sm-6 -->
+                            </div>
 
                             <div class="col-sm-6">
                                 <label>Phone *</label>
                                 <input type="tel" class="form-control" required>
-                            </div><!-- End .col-sm-6 -->
-                        </div><!-- End .row -->
+                            </div>
+                        </div> -->
 
                         <label>Email address *</label>
-                        <input type="email" class="form-control" required>
-
+                        <input type="email" class="form-control" placeholder="<?=$_SESSION['login']['user_email']?>"
+                            readonly>
+                        <?php if(!isset($_SESSION['login'])) {
+                        ?>
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="checkout-create-acc">
                             <label class="custom-control-label" for="checkout-create-acc">Create an account?</label>
                         </div><!-- End .custom-checkbox -->
-
-                        <div class="custom-control custom-checkbox">
+                        <?php }
+                        ?>
+                        <!-- <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="checkout-diff-address">
                             <label class="custom-control-label" for="checkout-diff-address">Ship to a different
                                 address?</label>
-                        </div><!-- End .custom-checkbox -->
+                        </div> -->
 
                         <label>Order notes (optional)</label>
                         <textarea class="form-control" cols="30" rows="4"
@@ -99,31 +98,39 @@
                                 <thead>
                                     <tr>
                                         <th>Product</th>
+                                        <th class="widthTH"></th>
                                         <th>Total</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
+                                    <?php
+                                        foreach ($cartItems as $item) {
+                                            $ttien = $item['product_price'] * $item['quantity'];
+                                    ?>
                                     <tr>
-                                        <td><a href="#">Beige knitted elastic runner shoes</a></td>
-                                        <td>$84.00</td>
+                                        <td><a
+                                                href="?act=product&id=<?=$item['pro_id']?>"><?=$item['product_name']?></a>
+                                        </td>
+                                        <td>x <?=$item['quantity']?></td>
+                                        <td><?=number_format($ttien,0,",",".")?> đ</td>
                                     </tr>
-
-                                    <tr>
-                                        <td><a href="#">Blue utility pinafore denimdress</a></td>
-                                        <td>$76,00</td>
-                                    </tr>
+                                    <?php }
+                                ?>
                                     <tr class="summary-subtotal">
                                         <td>Subtotal:</td>
-                                        <td>$160.00</td>
+                                        <td></td>
+                                        <td><?=number_format($_SESSION['tong_new'],0,",",".")?> đ</td>
                                     </tr><!-- End .summary-subtotal -->
                                     <tr>
                                         <td>Shipping:</td>
-                                        <td>Free shipping</td>
+                                        <td></td>
+                                        <td><?=number_format($_SESSION['shipping'],0,",",".")?> đ</td>
                                     </tr>
-                                    <tr class="summary-total">
+                                    <tr class=" summary-total">
                                         <td>Total:</td>
-                                        <td>$160.00</td>
+                                        <td></td>
+                                        <td><?=number_format($_SESSION['checkout'],0,",",".")?> đ</td>
                                     </tr><!-- End .summary-total -->
                                 </tbody>
                             </table><!-- End .table table-summary -->

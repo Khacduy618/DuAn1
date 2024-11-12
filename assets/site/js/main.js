@@ -781,9 +781,27 @@ $(document).ready(function () {
     }
 });
 
-document.getElementById('form_thanhtoan').addEventListener('submit', function(event) {
-	var confirmation = confirm('Bạn có chắc chắn muốn đặt hàng?');
-	if (!confirmation) {
-	  event.preventDefault();
-	}
-  });
+document.getElementById('form_thanhtoan').addEventListener('submit', function (event) {
+    var confirmation = confirm('Bạn có chắc chắn muốn đặt hàng?');
+    if (!confirmation) {
+        event.preventDefault();
+    }
+});
+
+document.querySelectorAll('.update-cart-form').forEach(form => {
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        fetch('?act=cart&xuli=update', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.text())
+            .then(data => {
+                // Cập nhật giao diện hoặc hiển thị thông báo
+                alert('Cart updated successfully!');
+                location.reload(); // Hoặc cập nhật động số lượng hiển thị
+            })
+            .catch(error => console.error('Error:', error));
+    });
+});

@@ -125,27 +125,29 @@
 
                             <a href="#" class="size-guide"><i class="icon-th-list"></i>size guide</a>
                         </div><!-- End .details-filter-row -->
+                        <form action="index.php" method="GET">
+                            <div class="details-filter-row details-row-size">
+                                <label for="qty">Qty:</label>
+                                <div class="product-details-quantity">
+                                    <input type="hidden" name="act" value="cart">
+                                    <input type="hidden" name="xuli" value="add">
+                                    <input type="hidden" name="product_id" value="<?=$data['product_id']?>">
+                                    <input type="number" id="qty" name="quantity" class="form-control" value="1" min="1"
+                                        max="10" step="1" required>
+                                </div><!-- End .product-details-quantity -->
+                            </div><!-- End .details-filter-row -->
 
-                        <div class="details-filter-row details-row-size">
-                            <label for="qty">Qty:</label>
-                            <div class="product-details-quantity">
-                                <input type="number" id="qty" class="form-control" value="1" min="1" max="10" step="1"
-                                    data-decimals="0" required>
-                            </div><!-- End .product-details-quantity -->
-                        </div><!-- End .details-filter-row -->
+                            <div class="product-details-action">
+                                <button type="submit" class="btn-product btn-cart"><span>add to cart</span></button>
 
-                        <div class="product-details-action">
-                            <a href="?act=cart&xuli=add&product_id=<?=$data['product_id']?>"
-                                class="btn-product btn-cart"><span>add to cart</span></a>
-
-                            <div class="details-action-wrapper">
-                                <a href="#" class="btn-product btn-wishlist" title="Wishlist"><span>Add to
-                                        Wishlist</span></a>
-                                <a href="#" class="btn-product btn-compare" title="Compare"><span>Add to
-                                        Compare</span></a>
-                            </div><!-- End .details-action-wrapper -->
-                        </div><!-- End .product-details-action -->
-
+                                <div class="details-action-wrapper">
+                                    <a href="#" class="btn-product btn-wishlist" title="Wishlist"><span>Add to
+                                            Wishlist</span></a>
+                                    <a href="#" class="btn-product btn-compare" title="Compare"><span>Add to
+                                            Compare</span></a>
+                                </div><!-- End .details-action-wrapper -->
+                            </div><!-- End .product-details-action -->
+                        </form>
                         <div class="product-details-footer">
                             <div class="product-cat">
                                 <span>Category:</span>
