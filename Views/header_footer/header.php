@@ -38,7 +38,25 @@
                             if (isset($_SESSION['login'])) {
                             ?>
                             <li>
-                                <div class="user"><span><?= $_SESSION['login']['user_name'] ?></span></div>
+                                <div class="header-dropdown">
+                                    <a class="row align-items-center">
+                                        <strong><span><?= $_SESSION['login']['user_name'] ?></span></strong>
+                                    </a>
+                                    <div class="header-menu">
+                                        <ul>
+                                            <li><a href="?act=taikhoan&xuli=account">Tài khoản</a></li>
+                                            <li><a href="<?=$SITE_URL?>/taikhoan/capnhatTK.php">Cập nhật tài khoản</a>
+                                            </li>
+                                            <?php
+                                                    if(isset($_SESSION['isLogin_Admin']) || isset($_SESSION['isLogin_Nhanvien'])){
+                                                        echo '<li><a href="admin/?mod=login">Trang quản lý</a></li>';
+                                                    }
+                                                ?>
+                                            <li><a href="?act=taikhoan&xuli=dangxuat">Đăng xuất</a>
+                                            </li>
+                                        </ul>
+                                    </div><!-- End .dropdown-menu -->
+                                </div><!-- End .user-dropdown -->
                             </li>
                             <?php } else { ?>
                             <li><a href="?act=taikhoan">Sign in / Sign up</a></li>

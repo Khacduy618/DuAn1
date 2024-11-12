@@ -81,11 +81,11 @@ switch ($mod) {
         require_once('Controllers/CartController.php');
         $controller_obj = new CartController();
         switch ($act) {
-            case 'list':
-                $controller_obj->list_cart();
-                break;
+        case 'list':
+            $controller_obj->list_cart();
+            break;
             case 'update':
-                $controller_obj->update_cart();
+                $controller_obj->add_cart();
                 break;
             case 'add':
                 $controller_obj->add_cart();
