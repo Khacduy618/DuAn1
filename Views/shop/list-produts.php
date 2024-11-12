@@ -22,7 +22,7 @@
                     </div><!-- End .product-action-vertical -->
 
                     <div class="product-action">
-                        <a href="?act=cart&xuli=add&product_id=<?=$value['product_id']?>"
+                        <a href="?act=cart&xuli=add&product_id=<?=$value['product_id']?>&quantity=1"
                             class="btn-product btn-cart"><span>add to cart</span></a>
                     </div><!-- End .product-action -->
                 </figure><!-- End .product-media -->

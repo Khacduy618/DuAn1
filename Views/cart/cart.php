@@ -6,8 +6,7 @@
 <nav aria-label="breadcrumb" class="breadcrumb-nav">
     <div class="container">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Shop</a></li>
+            <li class="breadcrumb-item"><a href="?act=home">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
         </ol>
     </div><!-- End .container -->
@@ -30,6 +29,13 @@
                         </thead>
 
                         <tbody>
+                            <?php
+							if (isset($cartItems)) {
+                                $tong = 0;
+								foreach ($cartItems as $value) {
+                                    $ttien=$value['product_price']*$value['quantity'];
+                                    $tong+=$ttien; 
+                            ?>
                             <tr>
                                 <td class="product-col">
                                     <div class="product">
@@ -41,47 +47,31 @@
                                         </figure>
 
                                         <h3 class="product-title">
-                                            <a href="#">Beige knitted elastic runner shoes</a>
+                                            <a href="#"><?= $value['product_name'] ?></a>
                                         </h3><!-- End .product-title -->
                                     </div><!-- End .product -->
                                 </td>
-                                <td class="price-col">$84.00</td>
+                                <td class="price-col"><?=number_format($value['product_price'],0,",",".")?> đ</td>
                                 <td class="quantity-col">
                                     <div class="cart-product-quantity">
-                                        <input type="number" class="form-control" value="1" min="1" max="10" step="1"
-                                            data-decimals="0" required>
+                                        <input type="number" class="form-control" value="<?= $value['quantity'] ?>"
+                                            min="1" max="10" step="1" data-decimals="0" required>
                                     </div><!-- End .cart-product-quantity -->
                                 </td>
-                                <td class="total-col">$84.00</td>
-                                <td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button>
+                                <td class="total-col"><?=number_format($ttien,0,",",".")?> đ</td>
+                                <td class="remove-col"><a class="btn-remove"
+                                        href="?act=cart&xuli=delete&product_id=<?= $value['pro_id'] ?>"><i
+                                            class="icon-close"></i></a>
                                 </td>
                             </tr>
+                            <?php }
+							} else{?>
                             <tr>
-                                <td class="product-col">
-                                    <div class="product">
-                                        <figure class="product-media">
-                                            <a href="#">
-                                                <img src="assets/images/products/table/product-2.jpg"
-                                                    alt="Product image">
-                                            </a>
-                                        </figure>
-
-                                        <h3 class="product-title">
-                                            <a href="#">Blue utility pinafore denim dress</a>
-                                        </h3><!-- End .product-title -->
-                                    </div><!-- End .product -->
-                                </td>
-                                <td class="price-col">$76.00</td>
-                                <td class="quantity-col">
-                                    <div class="cart-product-quantity">
-                                        <input type="number" class="form-control" value="1" min="1" max="10" step="1"
-                                            data-decimals="0" required>
-                                    </div><!-- End .cart-product-quantity -->
-                                </td>
-                                <td class="total-col">$76.00</td>
-                                <td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button>
-                                </td>
+                                <td colspan="5" class="text-center">No products in the cart.</td>
                             </tr>
+                            <?php
+                            }
+                            ?>
                         </tbody>
                     </table><!-- End .table table-wishlist -->
 
@@ -110,7 +100,7 @@
                             <tbody>
                                 <tr class="summary-subtotal">
                                     <td>Subtotal:</td>
-                                    <td>$160.00</td>
+                                    <td><?=number_format($tong,0,",",".")?> đ</td>
                                 </tr><!-- End .summary-subtotal -->
                                 <tr class="summary-shipping">
                                     <td>Shipping:</td>
