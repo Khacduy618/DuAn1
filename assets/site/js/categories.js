@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     li.classList.add(category.parent_id ? "subcategory-item" : "item-lead");
 
                     const link = document.createElement('a');
-                    link.href = "#";
+                    link.href = data[0].imternal_link;
                     link.textContent = category.category_name;
 
                     li.appendChild(link);
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 categoryItem.classList.add("item-lead");
 
                 const categoryLink = document.createElement('a');
-                categoryLink.href = "#";
+                categoryLink.href = data[0].imternal_link;
                 categoryLink.textContent = category.category_name;
 
                 categoryItem.appendChild(categoryLink);
