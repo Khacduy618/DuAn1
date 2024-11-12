@@ -11,18 +11,18 @@ switch ($act) {
         $act = isset($_GET['xuli']) ? $_GET['xuli'] : "list";
         switch ($act) {
             case 'list':
-                require_once("order/checkout.php");
+                require_once("checkout/checkout.php");
                 break;
-            case 'order_complete':
-                require_once("order/order_complete.php");
+            case 'checkout_complete':
+                require_once("checkout/checkout_complete.php");
                 break;
             default:
-                require_once("order/checkout.php");
+                require_once("checkout/checkout.php");
                 break;
         }
         break;
-    case "detail":
-        require_once("product-detail/product-detail.php");
+    case "product":
+        require_once("product/product.php");
         break;
     case "about":
         require_once("introduce/about.php");
@@ -33,33 +33,10 @@ switch ($act) {
     case "cart":
         require_once("cart/cart.php");
         break;
-    case "taikhoan":
-        $act = isset($_GET['xuli']) ? $_GET['xuli'] : "login";
-
-        if (isset($_SESSION['isLogin']) && $_SESSION['isLogin'] == true) {
-            switch ($act) {
-                case 'login':
-                    require_once("Views/account/index.php");
-                    break;
-                case 'account':
-                    require_once("Views/my-account.php");
-                    break;
-                default:
-                    require_once("Views/account/index.php");
-                    break;
-            }
-        } else {
-            switch ($act) {
-                case 'login':
-                    require_once("Views/account/index.php");
-                    break;
-                case 'dangky':  // Xử lý đăng ký
-                    require_once("Views/account/index.php");
-                    break;
-                default:
-                    require_once("Views/account/index.php");
-                    break;
-            }
-        }
+    case "blog":
+        require_once("blog/blog.php");
+        break;
+    default:
+        require_once("error-404.php");
         break;
 }

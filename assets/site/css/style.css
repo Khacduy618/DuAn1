@@ -7663,6 +7663,7 @@ p {
 .product-media {
     position: relative;
     display: block;
+    height: 200px;
     background-color: #d7d7d7;
     margin-bottom: 0;
     overflow: hidden
@@ -12419,6 +12420,73 @@ button:focus {
     content: '\e802'
 }
 
+.filter-items .sub-cat {
+    padding-left: 20px;
+}
+
+.filter-items .parent-category {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.filter-items .sub-categories {
+    margin-bottom: 10px;
+}
+
+.filter-item {
+    margin-bottom: 8px;
+}
+
+/* Ẩn các sub-categories ban đầu */
+.sub-categories {
+    display: none;
+    margin-left: 20px;
+    /* Thụt lề để phân biệt với category cha */
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    /* Thời gian hiệu ứng chuyển đổi */
+    max-height: 0;
+    /* Đặt max-height bằng 0 để ẩn */
+}
+
+/* Khi parent-category có lớp .open thì hiển thị sub-categories */
+.parent-category.open+.sub-categories {
+    display: block;
+    max-height: 500px;
+    /* Đặt giá trị max-height đủ lớn để hiển thị toàn bộ nội dung */
+}
+
+/* Style cho parent category có thể mở dropdown */
+.parent-category {
+    cursor: pointer;
+}
+
+.parent-category .arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.parent-category.open .arrow {
+    transform: rotate(90deg);
+}
+
+.filter-items .filter-item p:after {
+    color: #333;
+    content: '\e802';
+    display: block;
+    font-family: 'molla';
+    font-size: 1.4rem;
+    line-height: 1;
+    position: absolute;
+    top: 50%;
+    right: 1.6rem;
+    margin-top: -.7rem
+}
+
+.filter-items .filter-item p.collapsed:after {
+    content: '\f110'
+}
+
 .widget-collapsible .widget-title a:focus {
     outline: none !important
 }
@@ -12445,12 +12513,30 @@ button:focus {
     padding-right: 4rem
 }
 
-.filter-items-count .item-count {
+.filter-items-count .Categories-count {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    right: 1rem;
+    right: 3rem;
+    top: 50%;
+    min-width: 2.5rem;
+    height: 2rem;
+    margin-top: -1rem;
+    font-weight: 300;
+    font-size: 1.3rem;
+    line-height: 1;
+    border-radius: .6rem;
+    color: #000;
+    background-color: #f8f8f8
+}
+
+.filter-items-count .subCategories-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 2rem;
     top: 50%;
     min-width: 2.5rem;
     height: 2rem;
