@@ -36,45 +36,45 @@ switch ($act) {
     case "blog":
         require_once("blog/blog.php");
         break;
-    // case "taikhoan":
-    //     $act = isset($_GET['xuli']) ? $_GET['xuli'] : "login";
-    //     if (isset($_SESSION['isLogin']) && $_SESSION['isLogin'] == true) {
-    //         switch ($act) {
-    //             case 'login':
-    //                 require_once("login/login.php");
-    //                 break;
-    //             case 'account':
-    //                 require_once("login/my-account.php");
-    //                 break;
-    //             default:
-    //                 require_once("login/login.php");
-    //                 break;
-    //         }
-    //     } else {
-    //         if ((isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) || (isset($_SESSION['isLogin_Nhanvien']) && $_SESSION['isLogin_Nhanvien'] == true)) {
-    //             switch ($act) {
-    //                 case 'login':
-    //                     require_once("login/login.php");
-    //                     break;
-    //                 case 'account':
-    //                     require_once("login/my-account.php");
-    //                     break;
-    //                 default:
-    //                     require_once("login/login.php");
-    //                     break;
-    //             }
-    //         } else {
-    //             switch ($act) {
-    //                 case 'login':
-    //                     require_once("login/login.php");
-    //                     break;
-    //                 default:
-    //                     require_once("login/login.php");
-    //                     break;
-    //             }
-    //         }
-    //         break;
-    //     }
+    case "taikhoan":
+        $act = isset($_GET['xuli']) ? $_GET['xuli'] : "login";
+        if (isset($_SESSION['isLogin']) && $_SESSION['isLogin'] == true) {
+            switch ($act) {
+                case 'login':
+                    require_once("login/login.php");
+                    break;
+                case 'account':
+                    require_once("login/my-account.php");
+                    break;
+                default:
+                    require_once("login/login.php");
+                    break;
+            }
+        } else {
+            if ((isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) || (isset($_SESSION['isLogin_Nhanvien']) && $_SESSION['isLogin_Nhanvien'] == true)) {
+                switch ($act) {
+                    case 'login':
+                        require_once("login/login.php");
+                        break;
+                    case 'account':
+                        require_once("login/my-account.php");
+                        break;
+                    default:
+                        require_once("login/login.php");
+                        break;
+                }
+            } else {
+                switch ($act) {
+                    case 'login':
+                        require_once("login/login.php");
+                        break;
+                    default:
+                        require_once("login/login.php");
+                        break;
+                }
+            }
+            break;
+        }
     default:
         require_once("error-404.php");
         break;
