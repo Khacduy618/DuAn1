@@ -59,7 +59,10 @@ switch ($act) {
                 default:
                     require_once("Views/index.php");
                     break;
-            }
-        }
+              }
+          }
+      break;
+    case "blog":
+        require_once("blog/blog.php");
         break;
 }

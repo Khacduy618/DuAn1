@@ -3,29 +3,49 @@ require_once("pdo.php");
 
 class Model
 {
-    private $conn;
-
-    function __construct()
+   var $table;
+   var $contents;
+   
+   function limit( $offset, $limit) 
     {
-        $this->conn = pdo_get_connection();
+        $sql = "SELECT * FROM $this->table ORDER BY $this->contents DESC LIMIT $offset, $limit";
+        return pdo_query($sql); // Chỉ bind tham số cho product_cat
     }
 
-    function limit($a, $b)
-    {
-        $sql = "SELECT * FROM products WHERE product_count > 0 ORDER BY product_id DESC LIMIT ?, ?";
-        return pdo_query($sql, $a, $b);
-    }
+   function list(){
+       $sql = "SELECT * FROM $this->table ORDER BY $this->contents DESC";
+       return pdo_query($sql);
+   }
+   function findBy($id){
+       $sql = "SELECT * FROM $this->table WHERE $this->contents = ?";
+       return pdo_query_one($sql,$id);
+   }
+   function delete($id){
+       $sql = "DELETE FROM $this->table WHERE $this->contents = $id";
+       return pdo_execute($sql,$id);
+   }
+   function create($data){
+       $f = "";
+       $v = "";
+       foreach($data as $key => $value){
+           $f.= $key.",";
+           $v.= "'".$value."',";
+       }
+       $f = trim($f,",");
+       $v = trim($v,",");
+       $sql = "INSERT INTO $this->table($f) VALUES($v)";
+       return pdo_execute($sql);
+   }
+   function update($data){
+       $v = "";
+       foreach($data as $key => $value){
+           $v.= $key." = '". $value."',";
+       }
+       $v = trim($v,",");
+       $sql = "UPDATE $this->table SET  $v   WHERE $this->contens = " . $data[$this->contents];
+       return pdo_execute($sql, $data[$this->contents]);
+   }
+   
 
-    function categories()
-    {
-        $sql = "SELECT * FROM categories WHERE parent_id IS NULL";
-        return pdo_query($sql);
-    }
-    
-    function product_byCategory($a, $b, $category)
-    {
-        $sql = "SELECT * FROM products WHERE product_cat = ? ORDER BY product_id DESC LIMIT ?, ?";
-        return pdo_query($sql, $category, $a, $b);
-    }
 }
 ?>

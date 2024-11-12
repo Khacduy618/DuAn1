@@ -9,7 +9,7 @@ class CartController
     }
     function list_cart()
     {
-        //Xử lý hiển thị data cart
+        
         require_once('Views/index.php');
     }
     function add_cart()
