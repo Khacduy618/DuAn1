@@ -1155,33 +1155,39 @@
 
             </div><!-- End .owl-carousel -->
         </div><!-- .End .tab-pane -->
-        <div class="tab-pane p-0 fade" id="top-tv-tab" role="tabpanel" aria-labelledby="top-tv-link">
-            <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
-                data-owl-options='{
-                    "nav": true, 
-                    "dots": false,
-                    "margin": 20,
-                    "loop": false,
-                    "responsive": {
-                        "0": {
-                            "items":2
-                        },
-                        "480": {
-                            "items":2
-                        },
-                        "768": {
-                            "items":3
-                        },
-                        "992": {
-                            "items":4
-                        },
-                        "1200": {
-                            "items":5
+
+        <?php for($ifor = 0 ; $ifor < count($trendingSell) ; $ifor++): ?>
+            <div class="tab-pane p-0 fade" id="<?=reset($trendingSell[$ifor])[0]?>" role="tabpanel" aria-labelledby="<?=end($trendingSell[$ifor])[0]?>">
+            
+                <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
+                    data-owl-options='{
+                        "nav": true, 
+                        "dots": false,
+                        "margin": 20,
+                        "loop": false,
+                        "responsive": {
+                            "0": {
+                                "items":2
+                            },
+                            "480": {
+                                "items":2
+                            },
+                            "768": {
+                                "items":3
+                            },
+                            "992": {
+                                "items":4
+                            },
+                            "1200": {
+                                "items":5
+                            }
                         }
-                    }
-                }'>
-                <?php if (!empty($trendingSell) ){
-                    foreach($trendingSell[0] as $key => $value ){
+                    }'>
+                    <?php if (!empty($trendingSell[$ifor]) && count($trendingSell[$ifor]) > 2) { 
+                        $products = $trendingSell[$ifor]; 
+                        array_shift($products);
+                        array_pop($products);
+                        foreach($products  as $key => $value){
                             extract($value);
                     ?>
                     <div class="product product-2">
@@ -1225,312 +1231,13 @@
                     </div><!-- End .product -->
                     <?php 
                     }   
-                    }else{
+                    } else {
                         echo "No data available";
                     } ?>
-            </div>
-        </div><!-- End .owl-carousel -->
-        <div class="tab-pane p-0 fade" id="top-computers-tab" role="tabpanel" aria-labelledby="top-computers-link">
-            <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
-                data-owl-options='{
-                    "nav": true, 
-                    "dots": false,
-                    "margin": 20,
-                    "loop": false,
-                    "responsive": {
-                        "0": {
-                            "items":2
-                        },
-                        "480": {
-                            "items":2
-                        },
-                        "768": {
-                            "items":3
-                        },
-                        "992": {
-                            "items":4
-                        },
-                        "1200": {
-                            "items":5
-                        }
-                    }
-                }'>
-                <?php if (!empty($trendingSell) ){
-                    foreach($trendingSell[1] as $key => $value ){
-                            extract($value);
-                    ?>
-                    <div class="product product-2">
-                        <figure class="product-media">
-                            <span class="product-label label-circle label-top">Top</span>
-                            <a href="product.html">
-                                <img src="assets/site/images/shop/<?=$product_img?>" alt="Product image"
-                                    class="product-image">
-                            </a>
+                </div><!-- End .owl-carousel -->
+            </div><!-- End .tab-pane -->
+        <?php endfor; ?>
 
-                            <div class="product-action-vertical">
-                                <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                        wishlist</span></a>
-                            </div><!-- End .product-action -->
-
-                            <div class="product-action product-action-dark">
-                                <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
-                                        cart</span></a>
-                                <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                    title="Quick view"><span>quick view</span></a>
-                            </div><!-- End .product-action -->
-                        </figure><!-- End .product-media -->
-
-                        <div class="product-body">
-                            <div class="product-cat">
-                                <a href="#"><?=$category_name;?></a>
-                            </div><!-- End .product-cat -->
-                            <h3 class="product-title"><a href="#"><?=$product_name;?></a>
-                            </h3><!-- End .product-title -->
-                            <div class="product-price">
-                            <?=$product_price;?>
-                            </div><!-- End .product-price -->
-                            <div class="ratings-container">
-                                <div class="ratings">
-                                    <div class="ratings-val" style="width: 100%;"></div>
-                                    <!-- End .ratings-val -->
-                                </div><!-- End .ratings -->
-                                <span class="ratings-text">( 4 Reviews )</span>
-                            </div><!-- End .rating-container -->
-                        </div><!-- End .product-body -->
-                    </div><!-- End .product -->
-                    <?php 
-                    }   
-                    }else{
-                        echo "No data available";
-                    } ?>
-            </div>
-        </div><!-- .End .tab-pane -->
-        <div class="tab-pane p-0 fade" id="top-phones-tab" role="tabpanel" aria-labelledby="top-phones-link">
-            <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
-                data-owl-options='{
-                    "nav": true, 
-                    "dots": false,
-                    "margin": 20,
-                    "loop": false,
-                    "responsive": {
-                        "0": {
-                            "items":2
-                        },
-                        "480": {
-                            "items":2
-                        },
-                        "768": {
-                            "items":3
-                        },
-                        "992": {
-                            "items":4
-                        },
-                        "1200": {
-                            "items":5
-                        }
-                    }
-                }'>
-                <?php if (!empty($trendingSell) ){
-                    foreach($trendingSell[2] as $key => $value ){
-                            extract($value);
-                    ?>
-                    <div class="product product-2">
-                        <figure class="product-media">
-                            <span class="product-label label-circle label-top">Top</span>
-                            <a href="product.html">
-                                <img src="assets/site/images/shop/<?=$product_img?>" alt="Product image"
-                                    class="product-image">
-                            </a>
-
-                            <div class="product-action-vertical">
-                                <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                        wishlist</span></a>
-                            </div><!-- End .product-action -->
-
-                            <div class="product-action product-action-dark">
-                                <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
-                                        cart</span></a>
-                                <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                    title="Quick view"><span>quick view</span></a>
-                            </div><!-- End .product-action -->
-                        </figure><!-- End .product-media -->
-
-                        <div class="product-body">
-                            <div class="product-cat">
-                                <a href="#"><?=$category_name;?></a>
-                            </div><!-- End .product-cat -->
-                            <h3 class="product-title"><a href="#"><?=$product_name;?></a>
-                            </h3><!-- End .product-title -->
-                            <div class="product-price">
-                            <?=$product_price;?>
-                            </div><!-- End .product-price -->
-                            <div class="ratings-container">
-                                <div class="ratings">
-                                    <div class="ratings-val" style="width: 100%;"></div>
-                                    <!-- End .ratings-val -->
-                                </div><!-- End .ratings -->
-                                <span class="ratings-text">( 4 Reviews )</span>
-                            </div><!-- End .rating-container -->
-                        </div><!-- End .product-body -->
-                    </div><!-- End .product -->
-                    <?php 
-                    }   
-                    }else{
-                        echo "No data available";
-                    } ?>
-            </div>
-        </div><!-- .End .tab-pane -->
-        <div class="tab-pane p-0 fade" id="top-watches-tab" role="tabpanel" aria-labelledby="top-watches-link">
-            <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
-                data-owl-options='{
-                    "nav": true, 
-                    "dots": false,
-                    "margin": 20,
-                    "loop": false,
-                    "responsive": {
-                        "0": {
-                            "items":2
-                        },
-                        "480": {
-                            "items":2
-                        },
-                        "768": {
-                            "items":3
-                        },
-                        "992": {
-                            "items":4
-                        },
-                        "1200": {
-                            "items":5
-                        }
-                    }
-                }'>
-                <?php if (!empty($trendingSell) ){
-                    foreach($trendingSell[3] as $key => $value ){
-                            extract($value);
-                    ?>
-                    <div class="product product-2">
-                        <figure class="product-media">
-                            <span class="product-label label-circle label-top">Top</span>
-                            <a href="product.html">
-                                <img src="assets/site/images/shop/<?=$product_img?>" alt="Product image"
-                                    class="product-image">
-                            </a>
-
-                            <div class="product-action-vertical">
-                                <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                        wishlist</span></a>
-                            </div><!-- End .product-action -->
-
-                            <div class="product-action product-action-dark">
-                                <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
-                                        cart</span></a>
-                                <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                    title="Quick view"><span>quick view</span></a>
-                            </div><!-- End .product-action -->
-                        </figure><!-- End .product-media -->
-
-                        <div class="product-body">
-                            <div class="product-cat">
-                                <a href="#"><?=$category_name;?></a>
-                            </div><!-- End .product-cat -->
-                            <h3 class="product-title"><a href="#"><?=$product_name;?></a>
-                            </h3><!-- End .product-title -->
-                            <div class="product-price">
-                            <?=$product_price;?>
-                            </div><!-- End .product-price -->
-                            <div class="ratings-container">
-                                <div class="ratings">
-                                    <div class="ratings-val" style="width: 100%;"></div>
-                                    <!-- End .ratings-val -->
-                                </div><!-- End .ratings -->
-                                <span class="ratings-text">( 4 Reviews )</span>
-                            </div><!-- End .rating-container -->
-                        </div><!-- End .product-body -->
-                    </div><!-- End .product -->
-                    <?php 
-                    }   
-                    }else{
-                        echo "No data available";
-                    } ?>
-            </div>
-        </div><!-- .End .tab-pane -->
-        <div class="tab-pane p-0 fade" id="top-acc-tab" role="tabpanel" aria-labelledby="top-acc-link">
-            <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
-                data-owl-options='{
-                    "nav": true, 
-                    "dots": false,
-                    "margin": 20,
-                    "loop": false,
-                    "responsive": {
-                        "0": {
-                            "items":2
-                        },
-                        "480": {
-                            "items":2
-                        },
-                        "768": {
-                            "items":3
-                        },
-                        "992": {
-                            "items":4
-                        },
-                        "1200": {
-                            "items":5
-                        }
-                    }
-                }'>
-                <?php if (!empty($trendingSell) ){
-                    foreach($trendingSell[4] as $key => $value ){
-                            extract($value);
-                    ?>
-                    <div class="product product-2">
-                        <figure class="product-media">
-                            <span class="product-label label-circle label-top">Top</span>
-                            <a href="product.html">
-                                <img src="assets/site/images/shop/<?=$product_img?>" alt="Product image"
-                                    class="product-image">
-                            </a>
-
-                            <div class="product-action-vertical">
-                                <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                        wishlist</span></a>
-                            </div><!-- End .product-action -->
-
-                            <div class="product-action product-action-dark">
-                                <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
-                                        cart</span></a>
-                                <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                    title="Quick view"><span>quick view</span></a>
-                            </div><!-- End .product-action -->
-                        </figure><!-- End .product-media -->
-
-                        <div class="product-body">
-                            <div class="product-cat">
-                                <a href="#"><?=$category_name;?></a>
-                            </div><!-- End .product-cat -->
-                            <h3 class="product-title"><a href="#"><?=$product_name;?></a>
-                            </h3><!-- End .product-title -->
-                            <div class="product-price">
-                            <?=$product_price;?>
-                            </div><!-- End .product-price -->
-                            <div class="ratings-container">
-                                <div class="ratings">
-                                    <div class="ratings-val" style="width: 100%;"></div>
-                                    <!-- End .ratings-val -->
-                                </div><!-- End .ratings -->
-                                <span class="ratings-text">( 4 Reviews )</span>
-                            </div><!-- End .rating-container -->
-                        </div><!-- End .product-body -->
-                    </div><!-- End .product -->
-                    <?php 
-                    }   
-                    }else{
-                        echo "No data available";
-                    } ?>
-            </div>
-        </div><!-- .End .tab-pane -->
- 
         
         
     </div><!-- End .tab-content -->

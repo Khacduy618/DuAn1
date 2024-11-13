@@ -1,7 +1,14 @@
 <?php
-// require_once("model.php");
 
-class HomeModel{
+class BillDetailModel_v2 extends Dmodel{
+    public function __construct()
+    {
+        parent::__construct();
+    }
+    
+}
+
+class BillDetailModel{
     var $table = "products";
     var $contents = "product_id";
 
@@ -52,9 +59,6 @@ class HomeModel{
         return pdo_query($sql, $category_id);
     }
     
-    
-
-
     function listproduct_trendingSell_All($limt = 6,$ofset = 0) {
         $sql = "SELECT DISTINCT  products.*, categories.category_name
         FROM products 

@@ -28,36 +28,39 @@ class HomeModel{
             WHERE c.parent_id IS NOT NULL AND c.category_id = ?";
         return pdo_query($sqlcate, $category_id); 
     }
+
     function listproduct_trendingView($limt = 6,$ofset = 0,int $category_id = 4) {
-        $sql = "SELECT products.*, categories.category_name
+        $sql = "SELECT DISTINCT  products.*, categories.category_name
         FROM products
         JOIN categories ON products.product_cat = categories.category_id
         Where categories.category_id = $category_id
         ORDER BY products.view_count DESC
         LIMIT $limt OFFSET $ofset";
-        return pdo_query($sql); // PDO đâng sida nè sao mà stmt đơn giản vậy được
+        return pdo_query($sql); 
     }
 
-    function listproduct_trendingSell($limt = 6,$ofset = 0,int $category_id = 4) {
-        $sql = "SELECT products.*, categories.category_name
-        FROM products 
-        JOIN categories ON products.product_cat = categories.category_id 
-        Where categories.category_id = $category_id
-        LIMIT $limt OFFSET $ofset";
-        // $params = [':limit' => $limt, ':ofset' => $ofset];
-        // return pdo_query($sql,$params); // PDO đâng sida nè sao mà stmt đơn giản vậy được
-        return pdo_query($sql); // PDO đâng sida nè sao mà stmt đơn giản vậy được
-        
+    function listproduct_trendingSell($limit = 6, $offset = 0, int $category_id = 4) {
+        $sql = "SELECT DISTINCT  products.*, categories.category_name, COUNT(bill_details.id_bill) AS bill_count
+                FROM products
+                JOIN categories ON products.product_cat = categories.category_id
+                JOIN bill_details ON products.product_id = bill_details.pro_id
+                WHERE categories.category_id = ?
+                GROUP BY products.product_id
+                ORDER BY bill_count DESC
+                LIMIT 6 OFFSET 0"; 
+    
+        return pdo_query($sql, $category_id);
     }
+    
+    
+
 
     function listproduct_trendingSell_All($limt = 6,$ofset = 0) {
-        $sql = "SELECT products.*, categories.category_name
+        $sql = "SELECT DISTINCT  products.*, categories.category_name
         FROM products 
         JOIN categories ON products.product_cat = categories.category_id 
         LIMIT $limt OFFSET $ofset";
-        // $params = [':limit' => $limt, ':ofset' => $ofset];
-        // return pdo_query($sql,$params); // PDO đâng sida nè sao mà stmt đơn giản vậy được
-        return pdo_query($sql); // PDO đâng sida nè sao mà stmt đơn giản vậy được
+        return pdo_query($sql); 
         
     }
     
