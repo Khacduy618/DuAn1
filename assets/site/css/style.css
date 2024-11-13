@@ -7663,6 +7663,7 @@ p {
 .product-media {
     position: relative;
     display: block;
+    height: 200px;
     background-color: #d7d7d7;
     margin-bottom: 0;
     overflow: hidden
@@ -12469,7 +12470,7 @@ button:focus {
     transform: rotate(90deg);
 }
 
-.filter-items .filter-item a:after {
+.filter-items .filter-item p:after {
     color: #333;
     content: '\e802';
     display: block;
@@ -12482,7 +12483,7 @@ button:focus {
     margin-top: -.7rem
 }
 
-.filter-items .filter-item a.collapsed:after {
+.filter-items .filter-item p.collapsed:after {
     content: '\f110'
 }
 
