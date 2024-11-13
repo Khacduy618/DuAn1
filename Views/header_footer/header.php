@@ -78,7 +78,7 @@
                 </button>
 
                 <a href="index.html" class="logo">
-                    <img src="../assets/site/images/demos/demo-3/logo.png" alt="Molla Logo" width="105" height="25">
+                    <img src="uploaded/logo500x500.png" alt="Tede Logo" width="105" height="25">
                 </a>
             </div><!-- End .header-left -->
 
