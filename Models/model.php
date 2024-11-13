@@ -6,12 +6,18 @@ class Model
    var $table;
    var $contents;
    
+   function limit( $offset, $limit) 
+    {
+        $sql = "SELECT * FROM $this->table ORDER BY $this->contents DESC LIMIT $offset, $limit";
+        return pdo_query($sql); // Chỉ bind tham số cho product_cat
+    }
+
    function list(){
        $sql = "SELECT * FROM $this->table ORDER BY $this->contents DESC";
        return pdo_query($sql);
    }
    function findBy($id){
-       $sql = "SELECT * FROM $this->table WHERE $this->contents = $id";
+       $sql = "SELECT * FROM $this->table WHERE $this->contents = ?";
        return pdo_query_one($sql,$id);
    }
    function delete($id){
@@ -39,5 +45,7 @@ class Model
        $sql = "UPDATE $this->table SET  $v   WHERE $this->contens = " . $data[$this->contents];
        return pdo_execute($sql, $data[$this->contents]);
    }
+   
+
 }
 ?>

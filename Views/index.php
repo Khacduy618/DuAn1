@@ -40,15 +40,13 @@
 
 <body>
     <div class="page-wrapper">
-        <?php
-            require_once 'header_footer/header.php';
-       ?>
+        <?php require_once('Views/header_footer/header.php'); ?>
 
         <main class="main">
-            <?php require_once 'router.php' ?>
+            <?php require_once 'Views/router.php' ?>
         </main><!-- End .main -->
 
-       <?php require_once 'header_footer/footer.php' ?>
+        <?php require_once 'header_footer/footer.php' ?>
     </div><!-- End .page-wrapper -->
     <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
 
@@ -261,7 +259,6 @@
         </div><!-- End .mobile-menu-wrapper -->
     </div><!-- End .mobile-menu-container -->
 
- 
     <!-- Plugins JS File -->
     <script src="assets/site/js/jquery.min.js"></script>
     <script src="assets/site/js/bootstrap.bundle.min.js"></script>

@@ -29,5 +29,4 @@ class Home extends Model
         return pdo_query($sqlcate, $category_id); 
     }
     
-    
 }
