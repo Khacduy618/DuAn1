@@ -68,15 +68,16 @@
                                     }
                                 }
                             }'>
-                        <?php if (isset($iphone) && $iphone != NULL){
-                                foreach ($iphone as $item){?>
+                        <?php if (!empty($trendingView) ){
+                        foreach($trendingView[0] as $key => $value ){
+                                extract($value);
+                        ?>
 
                         <div class="product product-2">
                             <figure class="product-media">
                                 <span class="product-label label-circle label-top">Top</span>
-                                <a href="?act=product&id=<?=$item['product_id']?>">
-                                    <img src="uploaded/<?=$item['product_img']?>" alt="Product image"
-                                        class="product-image">
+                                <a href="?act=product&id=<?=$product_id?>">
+                                    <img src="uploaded/<?=$product_img?>" alt="Product image" class="product-image">
                                 </a>
 
                                 <div class="product-action-vertical">
@@ -94,12 +95,12 @@
 
                             <div class="product-body">
                                 <div class="product-cat">
-                                    <a href="#"><?= $item ['category_name'];?></a>
+                                    <a href="#"><?= $category_name?></a>
                                 </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="#"><?= $item ['product_name'];?></a></h3>
+                                <h3 class="product-title"><a href="#"><?= $product_name?></a></h3>
                                 <!-- End .product-title -->
                                 <div class="product-price">
-                                    <?= $item ['product_price'];?>
+                                    <?= $product_price?>
                                 </div><!-- End .product-price -->
                                 <div class="ratings-container">
                                     <div class="ratings">

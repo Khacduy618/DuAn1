@@ -18,4 +18,5 @@ class Product extends Model
         return pdo_query_one($sql, $id);
     }
    
+   
 }

@@ -3,7 +3,6 @@ require_once "Models/home.php";
 class HomeController
 {
      var $home_model;
-     var $categoryController;
     public function __construct()
     {
         $this->home_model = new Home();
@@ -24,6 +23,20 @@ class HomeController
         $samsungtablet =$this->home_model->cateproducts(9);
         $macbook =$this->home_model->cateproducts(11);
 
+        $trendingView[] =$this->home_model->listproduct_trendingView(6,0,4);
+        $trendingView[] =$this->home_model->listproduct_trendingView(6,0,5);
+        $trendingView[] =$this->home_model->listproduct_trendingView(6,0,6);
+        $trendingView[] =$this->home_model->listproduct_trendingView(6,0,7);
+        $trendingView[] =$this->home_model->listproduct_trendingView(6,0,11);
+
+        $trendingSellAll =$this->home_model->listproduct_trendingSell_all();
+        
+        $trendingSell[] =$this->home_model->takeHotSell(6,0,4);
+        $trendingSell[] =$this->home_model->takeHotSell(6,0,5);
+        $trendingSell[] =$this->home_model->takeHotSell(6,0,6);
+        
+        $trendingSell[] =$this->home_model->takeHotSell(6,0,7);
+        $trendingSell[] =$this->home_model->takeHotSell(6,0,11);
         require_once('Views/index.php');
     }
 }
