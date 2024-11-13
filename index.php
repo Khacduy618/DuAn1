@@ -16,7 +16,7 @@ switch ($mod) {
     case 'login':
         require_once 'Controllers/Login.php';
         $controller_obj = new Login();
-        $controller_obj->login();
+        $controller_obj->list();
         break;
     case 'controller':
         spl_autoload_register(function($class){
@@ -28,7 +28,7 @@ switch ($mod) {
         break;
      case 'shop':
         require_once('Controllers/ShopController.php');
-        // $controller_obj = new ShopController();
+        $controller_obj = new ShopController();
         $controller_obj->list();
         break;
     default:

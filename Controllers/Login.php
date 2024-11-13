@@ -57,9 +57,9 @@ use Random\Engine\Secure;
         // }
 
         public function auttc_login(){ // authentication_login
-            $username = md5($_POST['user_name']);
-            $password = md5($_POST['user_password']);
-            $table_admin = 'user';
+            $username = md5($_POST['username']);
+            $password = md5($_POST['password']);
+            $table_admin = 'tbl_admin';
             $loginmodel = $this->load->callModel('LoginModels');
 
             $count = $loginmodel->login($table_admin,$username,$password);

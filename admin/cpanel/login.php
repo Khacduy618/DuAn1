@@ -165,11 +165,11 @@
                 // }
                 ?>
                 <div class="input-box">
-                    <input type="text" name="user_name"  placeholder=" " require/>
+                    <input type="text" name="username"  placeholder=" " require/>
                     <label >Username</label>
                 </div>     
                 <div class="input-box">
-                    <input type="password" name="user_password"  placeholder=" " require/>
+                    <input type="password" name="password"  placeholder=" " require/>
                     <label >Password</label>
                 </div>
                 <div class="forgot-pass">
