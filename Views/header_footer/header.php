@@ -85,12 +85,13 @@
             <div class="header-center">
                 <div class="header-search header-search-extended header-search-visible d-none d-lg-block">
                     <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
-                    <form action="#" method="get">
+                    <form action="" method="GET">
                         <div class="header-search-wrapper search-wrapper-wide">
                             <label for="q" class="sr-only">Search</label>
                             <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
-                            <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..."
-                                required>
+                            <input type="hidden" name="act" value="shop">
+                            <input type="search" class="form-control" name="keyword" id="q"
+                                placeholder="Search product ..." required>
                         </div><!-- End .header-search-wrapper -->
                     </form>
                 </div><!-- End .header-search -->
@@ -223,21 +224,15 @@
 
                     <div class="dropdown-menu">
                         <nav class="side-nav">
-                            <ul class="menu-vertical sf-arrows">
-                                <li class="item-lead"><a href="#">Daily offers</a></li>
-                                <li class="item-lead"><a href="#">Gift Ideas</a></li>
-                                <li><a href="#">Beds</a></li>
-                                <li><a href="#">Lighting</a></li>
-                                <li><a href="#">Sofas & Sleeper sofas</a></li>
-                                <li><a href="#">Storage</a></li>
-                                <li><a href="#">Armchairs & Chaises</a></li>
-                                <li><a href="#">Decoration </a></li>
-                                <li><a href="#">Kitchen Cabinets</a></li>
-                                <li><a href="#">Coffee & Tables</a></li>
-                                <li><a href="#">Outdoor Furniture </a></li>
-                            </ul><!-- End .menu-vertical -->
-                        </nav><!-- End .side-nav -->
-                    </div><!-- End .dropdown-menu -->
+                            <ul class="category-menu">
+                                <?php
+                                require_once 'Controllers/CategoryController.php';
+                                $category = new CategoryController();
+                                echo $category->list_cat_home();
+                            ?>
+                            </ul>
+                        </nav>
+                    </div>
                 </div><!-- End .category-dropdown -->
             </div><!-- End .header-left -->
 

@@ -44,10 +44,7 @@
                                 <td class="product-col">
                                     <div class="product">
                                         <figure class="product-media">
-                                            <a href="?act=product&id=<?=$value['pro_id']?>">
-                                                <img src="assets/images/products/table/product-1.jpg"
-                                                    alt="Product image">
-                                            </a>
+                                            <img src="uploaded/<?=$value['product_img']?>" alt="Product image">
                                         </figure>
 
                                         <h3 class="product-title">

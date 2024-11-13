@@ -9,8 +9,7 @@
                 <figure class="product-media">
                     <span class="product-label label-new">New</span>
                     <a href="?act=product&id=<?=$value['product_id']?>">
-                        <img src="assets/site/images/shop/<?=$value['product_img']?>" alt="Product image"
-                            class="product-image">
+                        <img src="uploaded/<?=$value['product_img']?>" alt="Product image" class="product-image">
                     </a>
 
                     <div class="product-action-vertical">
@@ -46,14 +45,14 @@
 
                     <div class="product-nav product-nav-thumbs">
                         <a href="#" class="active">
-                            <img src="assets/site/images/shop/product-4-thumb.jpg" alt="product desc">
+                            <img src="uploaded/product-4-thumb.jpg" alt="product desc">
                         </a>
                         <a href="#">
-                            <img src="assets/site/images/shop/product-4-2-thumb.jpg" alt="product desc">
+                            <img src="uploaded/product-4-2-thumb.jpg" alt="product desc">
                         </a>
 
                         <a href="#">
-                            <img src="assets/site/images/shop/product-4-3-thumb.jpg" alt="product desc">
+                            <img src="uploaded/product-4-3-thumb.jpg" alt="product desc">
                         </a>
                     </div><!-- End .product-nav -->
                 </div><!-- End .product-body -->

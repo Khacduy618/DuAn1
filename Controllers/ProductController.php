@@ -1,8 +1,10 @@
 <?php
 require_once("Models/product.php");
+
 class ProductController
 {
     var $product_model;
+
     public function __construct()
     {
        $this->product_model = new Product();

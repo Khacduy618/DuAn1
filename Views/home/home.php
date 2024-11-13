@@ -1,17 +1,18 @@
 <?php require_once 'banner.php' ?>
+
 <div class="container featured">
     <ul class="nav nav-pills nav-border-anim nav-big justify-content-center mb-3" role="tablist">
         <li class="nav-item">
             <a class="nav-link active" id="products-featured-link" data-toggle="tab" href="#products-featured-tab"
-                role="tab" aria-controls="products-featured-tab" aria-selected="true">Featured</a>
+                role="tab" aria-controls="products-featured-tab" aria-selected="true">Smartphones</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="products-sale-link" data-toggle="tab" href="#products-sale-tab" role="tab"
-                aria-controls="products-sale-tab" aria-selected="false">On Sale</a>
+                aria-controls="products-sale-tab" aria-selected="false">Tablets</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="products-top-link" data-toggle="tab" href="#products-top-tab" role="tab"
-                aria-controls="products-top-tab" aria-selected="false">Top Rated</a>
+                aria-controls="products-top-tab" aria-selected="false">Laptops</a>
         </li>
     </ul>
 
@@ -39,16 +40,17 @@
                         }
                     }
                 }'>
-
                 <?php 
-                    if($data_product1!=NULL){ 
-                        for($r=0;$r<2;$r++){
+                    if(isset($smartphone) && $smartphone != NULL){
+                        foreach($smartphone as $item){
+                    
                 ?>
+
                 <div class="product product-2">
                     <figure class="product-media">
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-1.jpg" alt="Product image"
-                                class="product-image">
+                        <span class="product-label label-circle label-new">New</span>
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/<?=$item['product_img']?>" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -57,8 +59,8 @@
                         </div><!-- End .product-action -->
 
                         <div class="product-action product-action-dark">
-                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
-                                    cart</span></a>
+                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add
+                                    to cart</span></a>
                             <a href="popup/quick_view.php" class="btn-product btn-quickview"
                                 title="Quick view"><span>quick view</span></a>
                         </div><!-- End .product-action -->
@@ -66,24 +68,36 @@
 
                     <div class="product-body">
                         <div class="product-cat">
-                            <a href="#">Cameras & Camcorders</a>
+                            <a href="#"><?=$item['category_name'];?></a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">GoPro - HERO7 Black HD Waterproof
-                                Action</a></h3><!-- End .product-title -->
+                        <h3 class="product-title"><a href="#"><?=$item['product_name'];?> </a></h3>
+                        <!-- End .product-title -->
                         <div class="product-price">
-                            $349.99
+                            <?=$item['product_price'];?>
                         </div><!-- End .product-price -->
                         <div class="ratings-container">
                             <div class="ratings">
-                                <div class="ratings-val" style="width: 60%;"></div><!-- End .ratings-val -->
+                                <div class="ratings-val" style="width: 80%;"></div>
+                                <!-- End .ratings-val -->
                             </div><!-- End .ratings -->
-                            <span class="ratings-text">( 2 Reviews )</span>
+                            <span class="ratings-text">( 4 Reviews )</span>
                         </div><!-- End .rating-container -->
+
+                        <div class="product-nav product-nav-dots">
+                            <a href="#" style="background: #edd2c8;"><span class="sr-only">Color
+                                    name</span></a>
+                            <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
+                                    name</span></a>
+                            <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
+                                    name</span></a>
+                        </div><!-- End .product-nav -->
                     </div><!-- End .product-body -->
                 </div><!-- End .product -->
-                <?php 
-                            }
-                        }?>
+                <?php
+            }}else{
+            echo "No data found";
+            }
+            ?>
             </div><!-- End .owl-carousel -->
         </div><!-- .End .tab-pane -->
         <div class="tab-pane p-0 fade" id="products-sale-tab" role="tabpanel" aria-labelledby="products-sale-link">
@@ -108,129 +122,17 @@
                         }
                     }
                 }'>
-                <div class="product product-2">
-                    <figure class="product-media">
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-4.jpg" alt="Product image"
-                                class="product-image">
-                        </a>
-
-                        <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                    wishlist</span></a>
-                        </div><!-- End .product-action -->
-
-                        <div class="product-action product-action-dark">
-                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
-                                    cart</span></a>
-                            <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                title="Quick view"><span>quick view</span></a>
-                        </div><!-- End .product-action -->
-                    </figure><!-- End .product-media -->
-
-                    <div class="product-body">
-                        <div class="product-cat">
-                            <a href="#">Digital Cameras</a>
-                        </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Sony - Alpha a5100 Mirrorless
-                                Camera</a></h3><!-- End .product-title -->
-                        <div class="product-price">
-                            $499.99
-                        </div><!-- End .product-price -->
-                        <div class="ratings-container">
-                            <div class="ratings">
-                                <div class="ratings-val" style="width: 70%;"></div><!-- End .ratings-val -->
-                            </div><!-- End .ratings -->
-                            <span class="ratings-text">( 11 Reviews )</span>
-                        </div><!-- End .rating-container -->
-                    </div><!-- End .product-body -->
-                </div><!-- End .product -->
-
-                <div class="product product-2">
-                    <figure class="product-media">
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-1.jpg" alt="Product image"
-                                class="product-image">
-                        </a>
-
-                        <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                    wishlist</span></a>
-                        </div><!-- End .product-action -->
-
-                        <div class="product-action product-action-dark">
-                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
-                                    cart</span></a>
-                            <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                title="Quick view"><span>quick view</span></a>
-                        </div><!-- End .product-action -->
-                    </figure><!-- End .product-media -->
-
-                    <div class="product-body">
-                        <div class="product-cat">
-                            <a href="#">Cameras & Camcorders</a>
-                        </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">GoPro - HERO7 Black HD Waterproof
-                                Action</a></h3><!-- End .product-title -->
-                        <div class="product-price">
-                            $349.99
-                        </div><!-- End .product-price -->
-                        <div class="ratings-container">
-                            <div class="ratings">
-                                <div class="ratings-val" style="width: 60%;"></div><!-- End .ratings-val -->
-                            </div><!-- End .ratings -->
-                            <span class="ratings-text">( 2 Reviews )</span>
-                        </div><!-- End .rating-container -->
-                    </div><!-- End .product-body -->
-                </div><!-- End .product -->
-
-                <div class="product product-2">
-                    <figure class="product-media">
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-3.jpg" alt="Product image"
-                                class="product-image">
-                        </a>
-
-                        <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                    wishlist</span></a>
-                        </div><!-- End .product-action -->
-
-                        <div class="product-action product-action-dark">
-                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
-                                    cart</span></a>
-                            <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                title="Quick view"><span>quick view</span></a>
-                        </div><!-- End .product-action -->
-                    </figure><!-- End .product-media -->
-
-                    <div class="product-body">
-                        <div class="product-cat">
-                            <a href="#">Laptops</a>
-                        </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Lenovo - 330-15IKBR 15.6"</a></h3>
-                        <!-- End .product-title -->
-                        <div class="product-price">
-                            <span class="out-price">$339.99</span>
-                            <span class="out-text">Out of Stock</span>
-                        </div><!-- End .product-price -->
-                        <div class="ratings-container">
-                            <div class="ratings">
-                                <div class="ratings-val" style="width: 60%;"></div><!-- End .ratings-val -->
-                            </div><!-- End .ratings -->
-                            <span class="ratings-text">( 3 Reviews )</span>
-                        </div><!-- End .rating-container -->
-                    </div><!-- End .product-body -->
-                </div><!-- End .product -->
+                <?php 
+                    if(isset($tablet) && $tablet != NULL){
+                        foreach($tablet as $item){
+                    
+                ?>
 
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-2.jpg" alt="Product image"
-                                class="product-image">
-                            <img src="assets/site/images/demos/demo-3/products/product-2-2.jpg" alt="Product image"
-                                class="product-image-hover">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/<?=$item['product_img']?>" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -239,8 +141,8 @@
                         </div><!-- End .product-action -->
 
                         <div class="product-action product-action-dark">
-                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
-                                    cart</span></a>
+                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add
+                                    to cart</span></a>
                             <a href="popup/quick_view.php" class="btn-product btn-quickview"
                                 title="Quick view"><span>quick view</span></a>
                         </div><!-- End .product-action -->
@@ -248,30 +150,36 @@
 
                     <div class="product-body">
                         <div class="product-cat">
-                            <a href="#">Smartwatches</a>
+                            <a href="#"><?=$item['category_name'];?></a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Apple - Apple Watch Series 3 with
-                                White Sport Band</a></h3><!-- End .product-title -->
+                        <h3 class="product-title"><a href="#"><?=$item['product_name'];?> </a></h3>
+                        <!-- End .product-title -->
                         <div class="product-price">
-                            $214.99
+                            <?=$item['product_price'];?>
                         </div><!-- End .product-price -->
                         <div class="ratings-container">
                             <div class="ratings">
-                                <div class="ratings-val" style="width: 0%;"></div><!-- End .ratings-val -->
+                                <div class="ratings-val" style="width: 80%;"></div>
+                                <!-- End .ratings-val -->
                             </div><!-- End .ratings -->
-                            <span class="ratings-text">( 0 Reviews )</span>
+                            <span class="ratings-text">( 4 Reviews )</span>
                         </div><!-- End .rating-container -->
 
                         <div class="product-nav product-nav-dots">
-                            <a href="#" class="active" style="background: #e2e2e2;"><span class="sr-only">Color
+                            <a href="#" style="background: #edd2c8;"><span class="sr-only">Color
                                     name</span></a>
-                            <a href="#" style="background: #333333;"><span class="sr-only">Color
+                            <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
                                     name</span></a>
-                            <a href="#" style="background: #f2bc9e;"><span class="sr-only">Color
+                            <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
                                     name</span></a>
                         </div><!-- End .product-nav -->
                     </div><!-- End .product-body -->
                 </div><!-- End .product -->
+                <?php
+            }}else{
+            echo "No data found";
+            }
+            ?>
             </div><!-- End .owl-carousel -->
         </div><!-- .End .tab-pane -->
         <div class="tab-pane p-0 fade" id="products-top-tab" role="tabpanel" aria-labelledby="products-top-link">
@@ -296,129 +204,17 @@
                         }
                     }
                 }'>
-                <div class="product product-2">
-                    <figure class="product-media">
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-3.jpg" alt="Product image"
-                                class="product-image">
-                        </a>
-
-                        <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                    wishlist</span></a>
-                        </div><!-- End .product-action -->
-
-                        <div class="product-action product-action-dark">
-                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
-                                    cart</span></a>
-                            <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                title="Quick view"><span>quick view</span></a>
-                        </div><!-- End .product-action -->
-                    </figure><!-- End .product-media -->
-
-                    <div class="product-body">
-                        <div class="product-cat">
-                            <a href="#">Laptops</a>
-                        </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Lenovo - 330-15IKBR 15.6"</a></h3>
-                        <!-- End .product-title -->
-                        <div class="product-price">
-                            <span class="out-price">$339.99</span>
-                            <span class="out-text">Out of Stock</span>
-                        </div><!-- End .product-price -->
-                        <div class="ratings-container">
-                            <div class="ratings">
-                                <div class="ratings-val" style="width: 60%;"></div><!-- End .ratings-val -->
-                            </div><!-- End .ratings -->
-                            <span class="ratings-text">( 3 Reviews )</span>
-                        </div><!-- End .rating-container -->
-                    </div><!-- End .product-body -->
-                </div><!-- End .product -->
-
-                <div class="product product-2">
-                    <figure class="product-media">
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-1.jpg" alt="Product image"
-                                class="product-image">
-                        </a>
-
-                        <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                    wishlist</span></a>
-                        </div><!-- End .product-action -->
-
-                        <div class="product-action product-action-dark">
-                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
-                                    cart</span></a>
-                            <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                title="Quick view"><span>quick view</span></a>
-                        </div><!-- End .product-action -->
-                    </figure><!-- End .product-media -->
-
-                    <div class="product-body">
-                        <div class="product-cat">
-                            <a href="#">Cameras & Camcorders</a>
-                        </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">GoPro - HERO7 Black HD Waterproof
-                                Action</a></h3><!-- End .product-title -->
-                        <div class="product-price">
-                            $349.99
-                        </div><!-- End .product-price -->
-                        <div class="ratings-container">
-                            <div class="ratings">
-                                <div class="ratings-val" style="width: 60%;"></div><!-- End .ratings-val -->
-                            </div><!-- End .ratings -->
-                            <span class="ratings-text">( 2 Reviews )</span>
-                        </div><!-- End .rating-container -->
-                    </div><!-- End .product-body -->
-                </div><!-- End .product -->
-
-                <div class="product product-2">
-                    <figure class="product-media">
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-4.jpg" alt="Product image"
-                                class="product-image">
-                        </a>
-
-                        <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                    wishlist</span></a>
-                        </div><!-- End .product-action -->
-
-                        <div class="product-action product-action-dark">
-                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
-                                    cart</span></a>
-                            <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                title="Quick view"><span>quick view</span></a>
-                        </div><!-- End .product-action -->
-                    </figure><!-- End .product-media -->
-
-                    <div class="product-body">
-                        <div class="product-cat">
-                            <a href="#">Digital Cameras</a>
-                        </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Sony - Alpha a5100 Mirrorless
-                                Camera</a></h3><!-- End .product-title -->
-                        <div class="product-price">
-                            $499.99
-                        </div><!-- End .product-price -->
-                        <div class="ratings-container">
-                            <div class="ratings">
-                                <div class="ratings-val" style="width: 70%;"></div><!-- End .ratings-val -->
-                            </div><!-- End .ratings -->
-                            <span class="ratings-text">( 11 Reviews )</span>
-                        </div><!-- End .rating-container -->
-                    </div><!-- End .product-body -->
-                </div><!-- End .product -->
+                <?php 
+                    if(isset($Laptop) && $Laptop != NULL){
+                        foreach($Laptop as $item){
+                    
+                ?>
 
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-2.jpg" alt="Product image"
-                                class="product-image">
-                            <img src="assets/site/images/demos/demo-3/products/product-2-2.jpg" alt="Product image"
-                                class="product-image-hover">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/<?=$item['product_img']?>" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -427,8 +223,8 @@
                         </div><!-- End .product-action -->
 
                         <div class="product-action product-action-dark">
-                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
-                                    cart</span></a>
+                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add
+                                    to cart</span></a>
                             <a href="popup/quick_view.php" class="btn-product btn-quickview"
                                 title="Quick view"><span>quick view</span></a>
                         </div><!-- End .product-action -->
@@ -436,68 +232,36 @@
 
                     <div class="product-body">
                         <div class="product-cat">
-                            <a href="#">Smartwatches</a>
+                            <a href="#"><?=$item['category_name'];?></a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Apple - Apple Watch Series 3 with
-                                White Sport Band</a></h3><!-- End .product-title -->
+                        <h3 class="product-title"><a href="#"><?=$item['product_name'];?> </a></h3>
+                        <!-- End .product-title -->
                         <div class="product-price">
-                            $214.99
+                            <?=$item['product_price'];?>
                         </div><!-- End .product-price -->
                         <div class="ratings-container">
                             <div class="ratings">
-                                <div class="ratings-val" style="width: 0%;"></div><!-- End .ratings-val -->
+                                <div class="ratings-val" style="width: 80%;"></div>
+                                <!-- End .ratings-val -->
                             </div><!-- End .ratings -->
-                            <span class="ratings-text">( 0 Reviews )</span>
+                            <span class="ratings-text">( 4 Reviews )</span>
                         </div><!-- End .rating-container -->
 
                         <div class="product-nav product-nav-dots">
-                            <a href="#" class="active" style="background: #e2e2e2;"><span class="sr-only">Color
+                            <a href="#" style="background: #edd2c8;"><span class="sr-only">Color
                                     name</span></a>
-                            <a href="#" style="background: #333333;"><span class="sr-only">Color
+                            <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
                                     name</span></a>
-                            <a href="#" style="background: #f2bc9e;"><span class="sr-only">Color
+                            <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
                                     name</span></a>
                         </div><!-- End .product-nav -->
                     </div><!-- End .product-body -->
                 </div><!-- End .product -->
-
-                <div class="product product-2">
-                    <figure class="product-media">
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-1.jpg" alt="Product image"
-                                class="product-image">
-                        </a>
-
-                        <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                    wishlist</span></a>
-                        </div><!-- End .product-action -->
-
-                        <div class="product-action product-action-dark">
-                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
-                                    cart</span></a>
-                            <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                title="Quick view"><span>quick view</span></a>
-                        </div><!-- End .product-action -->
-                    </figure><!-- End .product-media -->
-
-                    <div class="product-body">
-                        <div class="product-cat">
-                            <a href="#">Cameras & Camcorders</a>
-                        </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">GoPro - HERO7 Black HD Waterproof
-                                Action</a></h3><!-- End .product-title -->
-                        <div class="product-price">
-                            $349.99
-                        </div><!-- End .product-price -->
-                        <div class="ratings-container">
-                            <div class="ratings">
-                                <div class="ratings-val" style="width: 60%;"></div><!-- End .ratings-val -->
-                            </div><!-- End .ratings -->
-                            <span class="ratings-text">( 2 Reviews )</span>
-                        </div><!-- End .rating-container -->
-                    </div><!-- End .product-body -->
-                </div><!-- End .product -->
+                <?php
+            }}else{
+            echo "No data found";
+            }
+            ?>
             </div><!-- End .owl-carousel -->
         </div><!-- .End .tab-pane -->
     </div><!-- End .tab-content -->
@@ -506,8 +270,7 @@
 <div class="mb-7 mb-lg-11"></div><!-- End .mb-7 -->
 
 <div class="container">
-    <div class="cta cta-border cta-border-image mb-5 mb-lg-7"
-        style="background-image: url(assets/site/images/demos/demo-3/bg-1.jpg);">
+    <div class="cta cta-border cta-border-image mb-5 mb-lg-7" style="background-image: url(uploaded/bg-1.jpg);">
         <div class="cta-border-wrapper bg-white">
             <div class="row justify-content-center">
                 <div class="col-md-11 col-xl-11">
@@ -540,14 +303,15 @@
 
         <div class="row">
             <div class="col-lg-6 deal-col">
-                <div class="deal" style="background-image: url('assets/site/images/demos/demo-3/deal/bg-1.jpg');">
+                <div class="deal" style="background-image: url('uploaded/deal/bg-1.jpg');">
                     <div class="deal-top">
                         <h2>Deal of the Day.</h2>
                         <h4>Limited quantities. </h4>
                     </div><!-- End .deal-top -->
 
                     <div class="deal-content">
-                        <h3 class="product-title"><a href="product.html">Home Smart Speaker with Google
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Home Smart Speaker
+                                with Google
                                 Assistant</a></h3><!-- End .product-title -->
 
                         <div class="product-price">
@@ -555,7 +319,7 @@
                             <span class="old-price">Was $150.99</span>
                         </div><!-- End .product-price -->
 
-                        <a href="product.html" class="btn btn-link"><span>Shop Now</span><i
+                        <a href="?act=product&id=<?=$item['product_id']?>" class="btn btn-link"><span>Shop Now</span><i
                                 class="icon-long-arrow-right"></i></a>
                     </div><!-- End .deal-content -->
 
@@ -572,9 +336,8 @@
                                 <figure class="product-media">
                                     <span class="product-label label-circle label-top">Top</span>
                                     <span class="product-label label-circle label-sale">Sale</span>
-                                    <a href="product.html">
-                                        <img src="assets/site/images/demos/demo-3/products/product-5.jpg"
-                                            alt="Product image" class="product-image">
+                                    <a href="?act=product&id=<?=$item['product_id']?>">
+                                        <img src="uploaded/product-5.jpg" alt="Product image" class="product-image">
                                     </a>
 
                                     <div class="product-action-vertical">
@@ -594,7 +357,8 @@
                                     <div class="product-cat">
                                         <a href="#">Digital Cameras</a>
                                     </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">Canon - EOS 5D Mark IV
+                                    <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Canon -
+                                            EOS 5D Mark IV
                                             DSLR Camera</a></h3><!-- End .product-title -->
                                     <div class="product-price">
                                         <span class="new-price">$3,599.99</span>
@@ -615,9 +379,8 @@
                             <div class="product product-2">
                                 <figure class="product-media">
                                     <span class="product-label label-circle label-sale">Sale</span>
-                                    <a href="product.html">
-                                        <img src="assets/site/images/demos/demo-3/products/product-6.jpg"
-                                            alt="Product image" class="product-image">
+                                    <a href="?act=product&id=<?=$item['product_id']?>">
+                                        <img src="uploaded/product-6.jpg" alt="Product image" class="product-image">
                                     </a>
 
                                     <div class="product-action-vertical">
@@ -637,7 +400,8 @@
                                     <div class="product-cat">
                                         <a href="#">Computers & Tablets</a>
                                     </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">Apple - Smart Keyboard
+                                    <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Apple -
+                                            Smart Keyboard
                                             Folio for 11-inch iPad Pro</a></h3><!-- End .product-title -->
                                     <div class="product-price">
                                         <span class="new-price">$179.00</span>
@@ -719,7 +483,12 @@
     <hr class="mt-3 mb-6">
 </div><!-- End .container -->
 
-<?php require_once 'trending.php' ?>
+<?php require_once 'trending.php'; ?>
+
+<div class="container">
+    <hr class="mt-5 mb-6">
+</div><!-- End .container -->
+
 <div class="container">
     <hr class="mt-5 mb-6">
 </div><!-- End .container -->
@@ -790,9 +559,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-11.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -812,7 +580,8 @@
                         <div class="product-cat">
                             <a href="#">Laptops</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">MacBook Pro 13"
+                                Display, i5</a>
                         </h3><!-- End .product-title -->
                         <div class="product-price">
                             $1,199.99
@@ -829,9 +598,8 @@
 
                 <div class="product product-2">
                     <figure class="product-media">
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-12.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -851,7 +619,8 @@
                         <div class="product-cat">
                             <a href="#">Audio</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Bose - SoundLink Bluetooth
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Bose - SoundLink
+                                Bluetooth
                                 Speaker</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $79.99
@@ -868,9 +637,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-13.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -890,7 +658,8 @@
                         <div class="product-cat">
                             <a href="#">Tablets</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro with Wi-Fi
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Apple - 11 Inch
+                                iPad Pro with Wi-Fi
                                 256GB </a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $899.99
@@ -917,9 +686,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <span class="product-label label-circle label-sale">Sale</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-14.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-14.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -939,7 +707,8 @@
                         <div class="product-cat">
                             <a href="#">Cell Phone</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Google - Pixel 3 XL 128GB</a></h3>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Google - Pixel 3 XL
+                                128GB</a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             <span class="new-price">$35.41</span>
@@ -967,9 +736,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-15.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-15.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -989,7 +757,8 @@
                         <div class="product-cat">
                             <a href="#">TV & Home Theater</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Samsung - 55" Class LED 2160p
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Samsung - 55" Class
+                                LED 2160p
                                 Smart</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $899.99
@@ -1006,9 +775,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-11.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1028,7 +796,8 @@
                         <div class="product-cat">
                             <a href="#">Laptops</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">MacBook Pro 13"
+                                Display, i5</a>
                         </h3><!-- End .product-title -->
                         <div class="product-price">
                             $1,199.99
@@ -1072,9 +841,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-13.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1094,7 +862,8 @@
                         <div class="product-cat">
                             <a href="#">Tablets</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro with Wi-Fi
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Apple - 11 Inch
+                                iPad Pro with Wi-Fi
                                 256GB </a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $899.99
@@ -1119,9 +888,8 @@
 
                 <div class="product product-2">
                     <figure class="product-media">
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-12.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1141,7 +909,8 @@
                         <div class="product-cat">
                             <a href="#">Audio</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Bose - SoundLink Bluetooth
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Bose - SoundLink
+                                Bluetooth
                                 Speaker</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $79.99
@@ -1159,9 +928,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <span class="product-label label-circle label-sale">Sale</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-14.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-14.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1181,7 +949,8 @@
                         <div class="product-cat">
                             <a href="#">Cell Phone</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Google - Pixel 3 XL 128GB</a></h3>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Google - Pixel 3 XL
+                                128GB</a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             <span class="new-price">$35.41</span>
@@ -1209,9 +978,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-15.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-15.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1231,7 +999,8 @@
                         <div class="product-cat">
                             <a href="#">TV & Home Theater</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Samsung - 55" Class LED 2160p
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Samsung - 55" Class
+                                LED 2160p
                                 Smart</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $899.99
@@ -1248,9 +1017,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-11.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1270,7 +1038,8 @@
                         <div class="product-cat">
                             <a href="#">Laptops</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">MacBook Pro 13"
+                                Display, i5</a>
                         </h3><!-- End .product-title -->
                         <div class="product-price">
                             $1,199.99
@@ -1314,9 +1083,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-15.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-15.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1336,7 +1104,8 @@
                         <div class="product-cat">
                             <a href="#">TV & Home Theater</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Samsung - 55" Class LED 2160p
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Samsung - 55" Class
+                                LED 2160p
                                 Smart</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $899.99
@@ -1353,9 +1122,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-11.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1375,7 +1143,8 @@
                         <div class="product-cat">
                             <a href="#">Laptops</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">MacBook Pro 13"
+                                Display, i5</a>
                         </h3><!-- End .product-title -->
                         <div class="product-price">
                             $1,199.99
@@ -1393,9 +1162,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-13.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1415,7 +1183,8 @@
                         <div class="product-cat">
                             <a href="#">Tablets</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro with Wi-Fi
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Apple - 11 Inch
+                                iPad Pro with Wi-Fi
                                 256GB </a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $899.99
@@ -1440,9 +1209,8 @@
 
                 <div class="product product-2">
                     <figure class="product-media">
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-12.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1462,7 +1230,8 @@
                         <div class="product-cat">
                             <a href="#">Audio</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Bose - SoundLink Bluetooth
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Bose - SoundLink
+                                Bluetooth
                                 Speaker</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $79.99
@@ -1480,9 +1249,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <span class="product-label label-circle label-sale">Sale</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-14.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-14.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1502,7 +1270,8 @@
                         <div class="product-cat">
                             <a href="#">Cell Phone</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Google - Pixel 3 XL 128GB</a></h3>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Google - Pixel 3 XL
+                                128GB</a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             <span class="new-price">$35.41</span>
@@ -1556,9 +1325,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-11.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1578,7 +1346,8 @@
                         <div class="product-cat">
                             <a href="#">Laptops</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">MacBook Pro 13"
+                                Display, i5</a>
                         </h3><!-- End .product-title -->
                         <div class="product-price">
                             $1,199.99
@@ -1595,9 +1364,8 @@
 
                 <div class="product product-2">
                     <figure class="product-media">
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-12.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1617,7 +1385,8 @@
                         <div class="product-cat">
                             <a href="#">Audio</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Bose - SoundLink Bluetooth
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Bose - SoundLink
+                                Bluetooth
                                 Speaker</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $79.99
@@ -1634,9 +1403,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-13.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1656,7 +1424,8 @@
                         <div class="product-cat">
                             <a href="#">Tablets</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro with Wi-Fi
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Apple - 11 Inch
+                                iPad Pro with Wi-Fi
                                 256GB </a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $899.99
@@ -1682,9 +1451,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-15.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-15.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1704,7 +1472,8 @@
                         <div class="product-cat">
                             <a href="#">TV & Home Theater</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Samsung - 55" Class LED 2160p
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Samsung - 55" Class
+                                LED 2160p
                                 Smart</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $899.99
@@ -1721,9 +1490,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-11.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1743,7 +1511,8 @@
                         <div class="product-cat">
                             <a href="#">Laptops</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">MacBook Pro 13"
+                                Display, i5</a>
                         </h3><!-- End .product-title -->
                         <div class="product-price">
                             $1,199.99
@@ -1762,9 +1531,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <span class="product-label label-circle label-sale">Sale</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-14.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-14.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1784,7 +1552,8 @@
                         <div class="product-cat">
                             <a href="#">Cell Phone</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Google - Pixel 3 XL 128GB</a></h3>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Google - Pixel 3 XL
+                                128GB</a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             <span class="new-price">$35.41</span>
@@ -1839,9 +1608,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <span class="product-label label-circle label-sale">Sale</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-14.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-14.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1861,7 +1629,8 @@
                         <div class="product-cat">
                             <a href="#">Cell Phone</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Google - Pixel 3 XL 128GB</a></h3>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Google - Pixel 3 XL
+                                128GB</a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             <span class="new-price">$35.41</span>
@@ -1889,9 +1658,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-11.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1911,7 +1679,8 @@
                         <div class="product-cat">
                             <a href="#">Laptops</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">MacBook Pro 13"
+                                Display, i5</a>
                         </h3><!-- End .product-title -->
                         <div class="product-price">
                             $1,199.99
@@ -1928,9 +1697,8 @@
 
                 <div class="product product-2">
                     <figure class="product-media">
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-12.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1950,7 +1718,8 @@
                         <div class="product-cat">
                             <a href="#">Audio</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Bose - SoundLink Bluetooth
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Bose - SoundLink
+                                Bluetooth
                                 Speaker</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $79.99
@@ -1967,9 +1736,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-13.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1989,7 +1757,8 @@
                         <div class="product-cat">
                             <a href="#">Tablets</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro with Wi-Fi
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Apple - 11 Inch
+                                iPad Pro with Wi-Fi
                                 256GB </a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $899.99
@@ -2041,9 +1810,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-11.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2063,7 +1831,8 @@
                         <div class="product-cat">
                             <a href="#">Laptops</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">MacBook Pro 13"
+                                Display, i5</a>
                         </h3><!-- End .product-title -->
                         <div class="product-price">
                             $1,199.99
@@ -2081,9 +1850,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-15.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-15.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2103,7 +1871,8 @@
                         <div class="product-cat">
                             <a href="#">TV & Home Theater</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Samsung - 55" Class LED 2160p
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Samsung - 55" Class
+                                LED 2160p
                                 Smart</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $899.99
@@ -2120,9 +1889,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-11.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2142,7 +1910,8 @@
                         <div class="product-cat">
                             <a href="#">Laptops</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">MacBook Pro 13"
+                                Display, i5</a>
                         </h3><!-- End .product-title -->
                         <div class="product-price">
                             $1,199.99
@@ -2159,9 +1928,8 @@
 
                 <div class="product product-2">
                     <figure class="product-media">
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-12.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2181,7 +1949,8 @@
                         <div class="product-cat">
                             <a href="#">Audio</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Bose - SoundLink Bluetooth
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Bose - SoundLink
+                                Bluetooth
                                 Speaker</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $79.99
@@ -2198,9 +1967,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-13.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2220,7 +1988,8 @@
                         <div class="product-cat">
                             <a href="#">Tablets</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro with Wi-Fi
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Apple - 11 Inch
+                                iPad Pro with Wi-Fi
                                 256GB </a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $899.99
@@ -2309,8 +2078,7 @@
 </div><!-- End .icon-boxes-container -->
 
 <div class="container">
-    <div class="cta cta-separator cta-border-image cta-half mb-0"
-        style="background-image: url(assets/site/images/demos/demo-3/bg-2.jpg);">
+    <div class="cta cta-separator cta-border-image cta-half mb-0" style="background-image: url(uploaded/bg-2.jpg);">
         <div class="cta-border-wrapper bg-white">
             <div class="row">
                 <div class="col-lg-6">

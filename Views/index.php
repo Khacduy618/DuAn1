@@ -34,7 +34,10 @@
     <link rel="stylesheet" href="assets/site/css/style.css">
     <link rel="stylesheet" href="assets/site/css/skins/skin-demo-3.css">
     <link rel="stylesheet" href="assets/site/css/demos/demo-3.css">
+    <link rel="stylesheet" href="assets/site/css/style_categories.css">
+
 </head>
+
 
 <body>
     <div class="page-wrapper">
@@ -257,13 +260,6 @@
         </div><!-- End .mobile-menu-wrapper -->
     </div><!-- End .mobile-menu-container -->
 
-
-    <!-- Sign in / Register Modal -->
-
-
-
-
-
     <!-- Plugins JS File -->
     <script src="assets/site/js/jquery.min.js"></script>
     <script src="assets/site/js/bootstrap.bundle.min.js"></script>
@@ -278,6 +274,7 @@
     <!-- Main JS File -->
     <script src="assets/site/js/main.js"></script>
     <script src="assets/site/js/demos/demo-3.js"></script>
+
 </body>
 
 
