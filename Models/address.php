@@ -8,7 +8,7 @@ class Address extends Model {
         $this->conn = pdo_get_connection();
     }
 
-    function getOneAdress($userEmail) {
+    function getOneAddress($userEmail) {
         $sql = "SELECT * FROM address WHERE address_userEmail = ?";
         return pdo_query_one($sql, $userEmail);
     }

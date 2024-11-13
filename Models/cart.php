@@ -8,7 +8,11 @@ class Cart extends Model
         $this->conn = pdo_get_connection();
     }
 
-   public function addToCart($userEmail, $productId, $quantity) {
+    /**
+     * @throws Exception
+     */
+    public function addToCart($userEmail, $productId, $quantity): int
+   {
     // Kiểm tra xem người dùng đã có cart chưa
     $checkCartSql = "SELECT cart_id FROM cart WHERE cart_userEmail = ?";
     $cart = pdo_query_one($checkCartSql, $userEmail);
@@ -59,7 +63,8 @@ class Cart extends Model
         return pdo_query($sql, $userEmail);
     }
 
-    public function updateQuantity($userEmail, $productId, $quantity) {
+    public function updateQuantity($userEmail, $productId, $quantity): int
+    {
         $sql = "UPDATE cart_item 
                 SET quantity = ? 
                 WHERE cart_id = (SELECT cart_id FROM cart WHERE cart_userEmail = ?) 
@@ -67,12 +72,14 @@ class Cart extends Model
         return pdo_execute($sql, $quantity, $userEmail, $productId);
     }
 
-    public function removeFromCart($userEmail, $productId) {
+    public function removeFromCart($userEmail, $productId): int
+    {
         $sql = "DELETE FROM cart_item WHERE cart_id = (SELECT cart_id FROM cart WHERE cart_userEmail = ?) AND pro_id = ?";
         return pdo_execute($sql, $userEmail, $productId);
     }
 
-    public function clearCart($userEmail) {
+    public function clearCart($userEmail): int
+    {
         $sql = "DELETE FROM cart_item WHERE cart_id = (SELECT cart_id FROM cart WHERE cart_userEmail = ?)";
         return pdo_execute($sql, $userEmail);
     }

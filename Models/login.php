@@ -2,7 +2,9 @@
 require_once("model.php");
 class Login extends Model
 {
-     function login_action($user_email, $user_password)
+    protected $conn;
+
+    function login_action($user_email, $user_password)
     {
         $query = "SELECT * from user WHERE user_email = ? AND user_password = ?";
         
@@ -52,18 +54,17 @@ class Login extends Model
     {
         if ($check1 == 0) {
             if ($check2 == 0) {
-                $f = "";
-                $v = "";
-                foreach ($data as $key => $value) {
-                    $f .= $key . ",";
-                    $v .= "'" . $value . "',";
-                }
-                $f = trim($f, ",");
-                $v = trim($v, ",");
-                $query = "INSERT INTO user($f) VALUES ($v);";
+                $this->create($data);
+                $f = "user_email, user_name, user_password";
+                $v = ":email, :name, :password";
+                $query = "INSERT INTO $this->table($f) VALUES ($v);";
 
-                $status = pdo_execute($query);
-                if ($status == true) {
+                $status = pdo_execute($query, [
+                    ':email' => $data['email'],
+                    ':name' => $data['name'],
+                    ':password' => $data['password']
+                ]);
+                if ($status) {
                     setcookie('msg', 'Đăng ký thành công! Vui lòng đăng nhập.', time() + 5);
                 } else {
                     setcookie('msg1', 'Đăng ký không thành công. Vui lòng thử lại!', time() + 5);
@@ -93,13 +94,12 @@ class Login extends Model
 
         $result = pdo_execute($query);
         
-        if ($result == true) {
+        if ($result) {
             setcookie('doimk', 'Cập nhật tài khoản thành công', time() + 2);
-            header('Location: ?act=taikhoan&xuli=account#doitk');
         } else {
             setcookie('doimk', 'Mật khẩu xác nhận không đúng', time() + 2);
-            header('Location: ?act=taikhoan&xuli=account#doitk');
         }
+        header('Location: ?act=taikhoan&xuli=account#doitk');
     }
     function error()
     {

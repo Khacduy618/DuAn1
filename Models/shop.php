@@ -25,7 +25,7 @@ class Shop extends Model
 
         return pdo_query($sql);
     }
-    function keywork($a) {
+    function keyword($a) {
         $a = "'%".$a."%'";
         $query = "SELECT * FROM products WHERE product_name LIKE $a LIMIT 0,12";
         return pdo_query($query, $a);
@@ -53,13 +53,14 @@ class Shop extends Model
         return $result[0]['sum'] ?? 0;  // Make sure to return the actual count value
     }
 
-    function getPaginationAndOrderData() {
+    function getPaginationAndOrderData(): array
+    {
         $orderCondition = "ORDER BY p.product_id DESC";
         $itemPerPage = !empty($_GET['per_page']) ? $_GET['per_page'] : 12;
         $currentPage = !empty($_GET['page']) ? $_GET['page'] : 1;
 
-        $orderField = isset($_GET['field']) ? $_GET['field'] : "";
-        $orderSort = isset($_GET['sort']) ? $_GET['sort'] : "";
+        $orderField = $_GET['field'] ?? "";
+        $orderSort = $_GET['sort'] ?? "";
         
         if (!empty($orderField) && !empty($orderSort)) {
             if ($orderField === 'total_sold') {
