@@ -6,7 +6,7 @@ class Shop extends Model
     var $table = "products";
     var $contents = "product_id";
 
-   function loadall_product($kyw="", $orderCondition="", $product_cat=0, $item_per_page="", $offset=""){
+   function loadall_product($keyword="", $orderCondition="", $product_cat=0, $item_per_page="", $offset=""){
         $sql = "SELECT p.*, COALESCE(SUM(bd.pro_count), 0) as total_sold 
                 FROM products p 
                 LEFT JOIN bill_details bd ON p.product_id = bd.pro_id 
@@ -15,8 +15,8 @@ class Shop extends Model
         if($product_cat > 0){
             $sql .= " AND product_cat=".$product_cat;
         }
-        if($kyw != ""){
-            $sql .= " AND product_name LIKE '%".$kyw."%'";
+        if($keyword != ""){
+            $sql .= " AND product_name LIKE '%".$keyword."%'";
         }
         
         $sql .= " GROUP BY p.product_id ";
