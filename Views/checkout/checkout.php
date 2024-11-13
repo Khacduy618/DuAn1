@@ -6,8 +6,8 @@
 <nav aria-label="breadcrumb" class="breadcrumb-nav">
     <div class="container">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Shop</a></li>
+            <li class="breadcrumb-item"><a href="?act=home">Home</a></li>
+            <li class="breadcrumb-item"><a href="?act=cart">Cart</a></li>
             <li class="breadcrumb-item active" aria-current="page">Checkout</li>
         </ol>
     </div><!-- End .container -->
@@ -17,8 +17,10 @@
     <div class="checkout">
         <div class="container">
             <div class="checkout-discount">
-                <form action="#">
-                    <input type="text" class="form-control" required id="checkout-discount-input">
+                <form action="" method="GET">
+                    <input type="hidden" name="act" value="checkout">
+                    <input type="hidden" name="shipping" value="20000">
+                    <input type="text" class="form-control" name="coupon_name" required id="checkout-discount-input">
                     <label for="checkout-discount-input" class="text-truncate">Have a coupon? <span>Click here to enter
                             your code</span></label>
                 </form>
@@ -105,8 +107,12 @@
 
                                 <tbody>
                                     <?php
+                                    $tong = 0;
+                                    
                                         foreach ($cartItems as $item) {
+                                            
                                             $ttien = $item['product_price'] * $item['quantity'];
+                                            $tong += $ttien;
                                     ?>
                                     <tr>
                                         <td><a
@@ -117,20 +123,37 @@
                                     </tr>
                                     <?php }
                                 ?>
+                                    <?php
+                                    $discount = $tong * ($coupon['coupon_discount'] / 100);
+                                    $total = $tong - $discount + $shipping;
+                                    ?>
                                     <tr class="summary-subtotal">
                                         <td>Subtotal:</td>
                                         <td></td>
-                                        <td><?=number_format($_SESSION['tong_new'],0,",",".")?> đ</td>
+                                        <td><?=number_format($tong,0,",",".")?> đ</td>
                                     </tr><!-- End .summary-subtotal -->
                                     <tr>
                                         <td>Shipping:</td>
                                         <td></td>
-                                        <td><?=number_format($_SESSION['shipping'],0,",",".")?> đ</td>
+                                        <td><?=number_format($shipping,0,",",".")?>
+                                            đ</td>
                                     </tr>
+                                    <?php
+                                    if($coupon){
+                                ?>
+                                    <tr>
+                                        <td>Coupon:</td>
+                                        <td><?=$coupon['coupon_name']?></td>
+                                        <td><?=number_format($discount,0,",",".")?>
+                                            đ</td>
+                                    </tr>
+                                    <?php }
+                                ?>
                                     <tr class=" summary-total">
                                         <td>Total:</td>
                                         <td></td>
-                                        <td><?=number_format($_SESSION['checkout'],0,",",".")?> đ</td>
+                                        <td><?=number_format($total,0,",",".")?>
+                                            đ</td>
                                     </tr><!-- End .summary-total -->
                                 </tbody>
                             </table><!-- End .table table-summary -->

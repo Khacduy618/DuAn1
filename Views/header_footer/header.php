@@ -197,9 +197,14 @@
                         </div><!-- End .dropdown-cart-total -->
 
                         <div class="dropdown-cart-action">
-                            <a href="?act=cart" class="btn btn-primary">View Cart</a>
-                            <a href="?act=checkout" class="btn btn-outline-primary-2"><span>Checkout</span><i
-                                    class="icon-long-arrow-right"></i></a>
+                            <a href="?act=cart" class="btn btn-primary">View Cart</a>\
+                            <form action="" method="GET">
+                                <input type="hidden" name="act" value="checkout">
+                                <input type="hidden" name="shipping" value="20000">
+                                <button type="submit" class="btn btn-outline-primary-2"><span>Checkout</span><i
+                                        class="icon-long-arrow-right"></i>
+                                </button>
+                            </form>
                         </div><!-- End .dropdown-cart-total -->
                     </div><!-- End .dropdown-menu -->
                 </div><!-- End .cart-dropdown -->

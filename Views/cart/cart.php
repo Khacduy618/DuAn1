@@ -31,14 +31,14 @@
                         <tbody>
                             <?php
 							if (isset($cartItems)) {
-                                $_SESSON['tong'] = 0;
+                                $tong = 0;
                                 $shipping = 20000;
                                 $_SESSON['shipping'] = $shipping;
                                 
 								foreach ($cartItems as $value) {
                                     $ttien=$value['product_price']*$value['quantity'];
-                                    $_SESSON['tong']+=$ttien; 
-                                    $_SESSION['checkout'] = $_SESSON['tong'] + $shipping;
+                                    $tong+=$ttien; 
+                                    $checkout = $tong + $shipping;
                             ?>
                             <tr>
                                 <td class="product-col">
@@ -105,8 +105,7 @@
                             <tbody>
                                 <tr class="summary-subtotal">
                                     <td>Subtotal:</td>
-                                    <td><?=number_format($_SESSON['tong'],0,",",".")?> đ
-                                        <?php $_SESSION['tong_new'] = $_SESSON['tong'] ?></td>
+                                    <td><?=number_format($tong,0,",",".")?> đ</td>
                                 </tr><!-- End .summary-subtotal -->
                                 <tr class="summary-shipping">
                                     <td>Shipping:</td>
@@ -164,16 +163,19 @@
 
                                 <tr class="summary-total">
                                     <td>Total:</td>
-                                    <td><?=number_format($_SESSION['checkout'],0,",",".")?> đ</td>
+                                    <td><?=number_format($checkout,0,",",".")?> đ</td>
                                 </tr><!-- End .summary-total -->
                             </tbody>
                         </table><!-- End .table table-summary -->
-
-                        <a href="?act=checkout" class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO
-                            CHECKOUT</a>
+                        <form action="" method="GET">
+                            <input type="hidden" name="act" value="checkout">
+                            <input type="hidden" name="shipping" value="<?=$shipping?>">
+                            <button type='submit' class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO
+                                CHECKOUT</button>
+                        </form>
                     </div><!-- End .summary -->
 
-                    <a href="category.html" class="btn btn-outline-dark-2 btn-block mb-3"><span>CONTINUE
+                    <a href="?act=shop" class="btn btn-outline-dark-2 btn-block mb-3"><span>CONTINUE
                             SHOPPING</span><i class="icon-refresh"></i></a>
                 </aside><!-- End .col-lg-3 -->
             </div><!-- End .row -->
