@@ -1,5 +1,6 @@
 <?php
 require_once("Models/quickview.php");
+
 class QuickviewController
 {
     var $quickview_model;
@@ -10,9 +11,7 @@ class QuickviewController
     
     function list()
     {
-        // $id = $_GET['id'];
-
-        // $data = $this->quickview_model->detail_sp($id);
+    $this->categoryController->renderCategoryMenu();
 
         require_once('Views/quickview.php');
     }

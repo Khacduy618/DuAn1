@@ -45,55 +45,55 @@
                         foreach($smartphone as $item){
                     
                 ?>
-            
-            <div class="product product-2">
-                            <figure class="product-media">
-                                <span class="product-label label-circle label-new">New</span>
-                                <a href="product.html">
-                                    <img src="assets/site/images/demos/demo-3/products/product-13.jpg"
-                                        alt="Product image" class="product-image">
-                                </a>
 
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                            wishlist</span></a>
-                                </div><!-- End .product-action -->
+                <div class="product product-2">
+                    <figure class="product-media">
+                        <span class="product-label label-circle label-new">New</span>
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/<?=$item['product_img']?>" alt="Product image" class="product-image">
+                        </a>
 
-                                <div class="product-action product-action-dark">
-                                    <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add
-                                            to cart</span></a>
-                                    <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                        title="Quick view"><span>quick view</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
+                        <div class="product-action-vertical">
+                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    wishlist</span></a>
+                        </div><!-- End .product-action -->
 
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#"><?=$item['category_name'];?></a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="#"><?=$item['product_name'];?> </a></h3><!-- End .product-title -->
-                                <div class="product-price">
-                                <?=$item['product_price'];?>
-                                </div><!-- End .product-price -->
-                                <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: 80%;"></div>
-                                        <!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 4 Reviews )</span>
-                                </div><!-- End .rating-container -->
+                        <div class="product-action product-action-dark">
+                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add
+                                    to cart</span></a>
+                            <a href="popup/quick_view.php" class="btn-product btn-quickview"
+                                title="Quick view"><span>quick view</span></a>
+                        </div><!-- End .product-action -->
+                    </figure><!-- End .product-media -->
 
-                                <div class="product-nav product-nav-dots">
-                                    <a href="#" style="background: #edd2c8;"><span class="sr-only">Color
-                                            name</span></a>
-                                    <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
-                                            name</span></a>
-                                    <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
-                                            name</span></a>
-                                </div><!-- End .product-nav -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product --> 
-            <?php
+                    <div class="product-body">
+                        <div class="product-cat">
+                            <a href="#"><?=$item['category_name'];?></a>
+                        </div><!-- End .product-cat -->
+                        <h3 class="product-title"><a href="#"><?=$item['product_name'];?> </a></h3>
+                        <!-- End .product-title -->
+                        <div class="product-price">
+                            <?=$item['product_price'];?>
+                        </div><!-- End .product-price -->
+                        <div class="ratings-container">
+                            <div class="ratings">
+                                <div class="ratings-val" style="width: 80%;"></div>
+                                <!-- End .ratings-val -->
+                            </div><!-- End .ratings -->
+                            <span class="ratings-text">( 4 Reviews )</span>
+                        </div><!-- End .rating-container -->
+
+                        <div class="product-nav product-nav-dots">
+                            <a href="#" style="background: #edd2c8;"><span class="sr-only">Color
+                                    name</span></a>
+                            <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
+                                    name</span></a>
+                            <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
+                                    name</span></a>
+                        </div><!-- End .product-nav -->
+                    </div><!-- End .product-body -->
+                </div><!-- End .product -->
+                <?php
             }}else{
             echo "No data found";
             }
@@ -127,55 +127,55 @@
                         foreach($tablet as $item){
                     
                 ?>
-            
-            <div class="product product-2">
-                            <figure class="product-media">
-                                <span class="product-label label-circle label-new">New</span>
-                                <a href="product.html">
-                                    <img src="assets/site/images/demos/demo-3/products/product-13.jpg"
-                                        alt="Product image" class="product-image">
-                                </a>
 
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                            wishlist</span></a>
-                                </div><!-- End .product-action -->
+                <div class="product product-2">
+                    <figure class="product-media">
+                        <span class="product-label label-circle label-new">New</span>
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/<?=$item['product_img']?>" alt="Product image" class="product-image">
+                        </a>
 
-                                <div class="product-action product-action-dark">
-                                    <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add
-                                            to cart</span></a>
-                                    <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                        title="Quick view"><span>quick view</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
+                        <div class="product-action-vertical">
+                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    wishlist</span></a>
+                        </div><!-- End .product-action -->
 
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#"><?=$item['category_name'];?></a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="#"><?=$item['product_name'];?> </a></h3><!-- End .product-title -->
-                                <div class="product-price">
-                                <?=$item['product_price'];?>
-                                </div><!-- End .product-price -->
-                                <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: 80%;"></div>
-                                        <!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 4 Reviews )</span>
-                                </div><!-- End .rating-container -->
+                        <div class="product-action product-action-dark">
+                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add
+                                    to cart</span></a>
+                            <a href="popup/quick_view.php" class="btn-product btn-quickview"
+                                title="Quick view"><span>quick view</span></a>
+                        </div><!-- End .product-action -->
+                    </figure><!-- End .product-media -->
 
-                                <div class="product-nav product-nav-dots">
-                                    <a href="#" style="background: #edd2c8;"><span class="sr-only">Color
-                                            name</span></a>
-                                    <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
-                                            name</span></a>
-                                    <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
-                                            name</span></a>
-                                </div><!-- End .product-nav -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product --> 
-            <?php
+                    <div class="product-body">
+                        <div class="product-cat">
+                            <a href="#"><?=$item['category_name'];?></a>
+                        </div><!-- End .product-cat -->
+                        <h3 class="product-title"><a href="#"><?=$item['product_name'];?> </a></h3>
+                        <!-- End .product-title -->
+                        <div class="product-price">
+                            <?=$item['product_price'];?>
+                        </div><!-- End .product-price -->
+                        <div class="ratings-container">
+                            <div class="ratings">
+                                <div class="ratings-val" style="width: 80%;"></div>
+                                <!-- End .ratings-val -->
+                            </div><!-- End .ratings -->
+                            <span class="ratings-text">( 4 Reviews )</span>
+                        </div><!-- End .rating-container -->
+
+                        <div class="product-nav product-nav-dots">
+                            <a href="#" style="background: #edd2c8;"><span class="sr-only">Color
+                                    name</span></a>
+                            <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
+                                    name</span></a>
+                            <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
+                                    name</span></a>
+                        </div><!-- End .product-nav -->
+                    </div><!-- End .product-body -->
+                </div><!-- End .product -->
+                <?php
             }}else{
             echo "No data found";
             }
@@ -209,55 +209,55 @@
                         foreach($Laptop as $item){
                     
                 ?>
-            
-            <div class="product product-2">
-                            <figure class="product-media">
-                                <span class="product-label label-circle label-new">New</span>
-                                <a href="product.html">
-                                    <img src="assets/site/images/demos/demo-3/products/product-13.jpg"
-                                        alt="Product image" class="product-image">
-                                </a>
 
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                            wishlist</span></a>
-                                </div><!-- End .product-action -->
+                <div class="product product-2">
+                    <figure class="product-media">
+                        <span class="product-label label-circle label-new">New</span>
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/<?=$item['product_img']?>" alt="Product image" class="product-image">
+                        </a>
 
-                                <div class="product-action product-action-dark">
-                                    <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add
-                                            to cart</span></a>
-                                    <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                        title="Quick view"><span>quick view</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
+                        <div class="product-action-vertical">
+                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                    wishlist</span></a>
+                        </div><!-- End .product-action -->
 
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#"><?=$item['category_name'];?></a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="#"><?=$item['product_name'];?> </a></h3><!-- End .product-title -->
-                                <div class="product-price">
-                                <?=$item['product_price'];?>
-                                </div><!-- End .product-price -->
-                                <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: 80%;"></div>
-                                        <!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 4 Reviews )</span>
-                                </div><!-- End .rating-container -->
+                        <div class="product-action product-action-dark">
+                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add
+                                    to cart</span></a>
+                            <a href="popup/quick_view.php" class="btn-product btn-quickview"
+                                title="Quick view"><span>quick view</span></a>
+                        </div><!-- End .product-action -->
+                    </figure><!-- End .product-media -->
 
-                                <div class="product-nav product-nav-dots">
-                                    <a href="#" style="background: #edd2c8;"><span class="sr-only">Color
-                                            name</span></a>
-                                    <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
-                                            name</span></a>
-                                    <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
-                                            name</span></a>
-                                </div><!-- End .product-nav -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product --> 
-            <?php
+                    <div class="product-body">
+                        <div class="product-cat">
+                            <a href="#"><?=$item['category_name'];?></a>
+                        </div><!-- End .product-cat -->
+                        <h3 class="product-title"><a href="#"><?=$item['product_name'];?> </a></h3>
+                        <!-- End .product-title -->
+                        <div class="product-price">
+                            <?=$item['product_price'];?>
+                        </div><!-- End .product-price -->
+                        <div class="ratings-container">
+                            <div class="ratings">
+                                <div class="ratings-val" style="width: 80%;"></div>
+                                <!-- End .ratings-val -->
+                            </div><!-- End .ratings -->
+                            <span class="ratings-text">( 4 Reviews )</span>
+                        </div><!-- End .rating-container -->
+
+                        <div class="product-nav product-nav-dots">
+                            <a href="#" style="background: #edd2c8;"><span class="sr-only">Color
+                                    name</span></a>
+                            <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
+                                    name</span></a>
+                            <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
+                                    name</span></a>
+                        </div><!-- End .product-nav -->
+                    </div><!-- End .product-body -->
+                </div><!-- End .product -->
+                <?php
             }}else{
             echo "No data found";
             }
@@ -270,8 +270,7 @@
 <div class="mb-7 mb-lg-11"></div><!-- End .mb-7 -->
 
 <div class="container">
-    <div class="cta cta-border cta-border-image mb-5 mb-lg-7"
-        style="background-image: url(assets/site/images/demos/demo-3/bg-1.jpg);">
+    <div class="cta cta-border cta-border-image mb-5 mb-lg-7" style="background-image: url(uploaded/bg-1.jpg);">
         <div class="cta-border-wrapper bg-white">
             <div class="row justify-content-center">
                 <div class="col-md-11 col-xl-11">
@@ -304,14 +303,15 @@
 
         <div class="row">
             <div class="col-lg-6 deal-col">
-                <div class="deal" style="background-image: url('assets/site/images/demos/demo-3/deal/bg-1.jpg');">
+                <div class="deal" style="background-image: url('uploaded/deal/bg-1.jpg');">
                     <div class="deal-top">
                         <h2>Deal of the Day.</h2>
                         <h4>Limited quantities. </h4>
                     </div><!-- End .deal-top -->
 
                     <div class="deal-content">
-                        <h3 class="product-title"><a href="product.html">Home Smart Speaker with Google
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Home Smart Speaker
+                                with Google
                                 Assistant</a></h3><!-- End .product-title -->
 
                         <div class="product-price">
@@ -319,7 +319,7 @@
                             <span class="old-price">Was $150.99</span>
                         </div><!-- End .product-price -->
 
-                        <a href="product.html" class="btn btn-link"><span>Shop Now</span><i
+                        <a href="?act=product&id=<?=$item['product_id']?>" class="btn btn-link"><span>Shop Now</span><i
                                 class="icon-long-arrow-right"></i></a>
                     </div><!-- End .deal-content -->
 
@@ -336,9 +336,8 @@
                                 <figure class="product-media">
                                     <span class="product-label label-circle label-top">Top</span>
                                     <span class="product-label label-circle label-sale">Sale</span>
-                                    <a href="product.html">
-                                        <img src="assets/site/images/demos/demo-3/products/product-5.jpg"
-                                            alt="Product image" class="product-image">
+                                    <a href="?act=product&id=<?=$item['product_id']?>">
+                                        <img src="uploaded/product-5.jpg" alt="Product image" class="product-image">
                                     </a>
 
                                     <div class="product-action-vertical">
@@ -358,7 +357,8 @@
                                     <div class="product-cat">
                                         <a href="#">Digital Cameras</a>
                                     </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">Canon - EOS 5D Mark IV
+                                    <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Canon -
+                                            EOS 5D Mark IV
                                             DSLR Camera</a></h3><!-- End .product-title -->
                                     <div class="product-price">
                                         <span class="new-price">$3,599.99</span>
@@ -379,9 +379,8 @@
                             <div class="product product-2">
                                 <figure class="product-media">
                                     <span class="product-label label-circle label-sale">Sale</span>
-                                    <a href="product.html">
-                                        <img src="assets/site/images/demos/demo-3/products/product-6.jpg"
-                                            alt="Product image" class="product-image">
+                                    <a href="?act=product&id=<?=$item['product_id']?>">
+                                        <img src="uploaded/product-6.jpg" alt="Product image" class="product-image">
                                     </a>
 
                                     <div class="product-action-vertical">
@@ -401,7 +400,8 @@
                                     <div class="product-cat">
                                         <a href="#">Computers & Tablets</a>
                                     </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">Apple - Smart Keyboard
+                                    <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Apple -
+                                            Smart Keyboard
                                             Folio for 11-inch iPad Pro</a></h3><!-- End .product-title -->
                                     <div class="product-price">
                                         <span class="new-price">$179.00</span>
@@ -483,583 +483,7 @@
     <hr class="mt-3 mb-6">
 </div><!-- End .container -->
 
-<div class="container trending">
-    <div class="heading heading-flex mb-3">
-        <div class="heading-left">
-            <h2 class="title">Trending Products</h2><!-- End .title -->
-        </div><!-- End .heading-left -->
-
-        <div class="heading-right">
-            <ul class="nav nav-pills nav-border-anim justify-content-center" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="trending-all-link" data-toggle="tab" href="#trending-all-tab"
-                        role="tab" aria-controls="trending-all-tab" aria-selected="true">Iphone</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="trending-tv-link" data-toggle="tab" href="#trending-tv-tab" role="tab"
-                        aria-controls="trending-tv-tab" aria-selected="false">samsung</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="trending-computers-link" data-toggle="tab" href="#trending-computers-tab"
-                        role="tab" aria-controls="trending-computers-tab" aria-selected="false">xiaomi</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="trending-phones-link" data-toggle="tab" href="#trending-phones-tab"
-                        role="tab" aria-controls="trending-phones-tab" aria-selected="false">oppo</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="trending-watches-link" data-toggle="tab" href="#trending-watches-tab"
-                        role="tab" aria-controls="trending-watches-tab" aria-selected="false">ipad</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="trending-acc-link" data-toggle="tab" href="#trending-acc-tab" role="tab"
-                        aria-controls="trending-acc-tab" aria-selected="false">Macbook</a>
-                </li>
-            </ul>
-        </div><!-- End .heading-right -->
-    </div><!-- End .heading -->
-
-    <div class="row">
-        <div class="col-xl-5col d-none d-xl-block">
-            <div class="banner">
-                <a href="#">
-                    <img src="assets/site/images/demos/demo-3/banners/banner-4.jpg" alt="banner">
-                </a>
-            </div><!-- End .banner -->
-        </div><!-- End .col-xl-5col -->
-
-        <div class="col-xl-4-5col">
-            <div class="tab-content tab-content-carousel just-action-icons-sm">
-                <div class="tab-pane p-0 fade show active" id="trending-all-tab" role="tabpanel"
-                    aria-labelledby="trending-all-link">
-                    <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
-                        data-owl-options='{
-                            "nav": true, 
-                            "dots": false,
-                            "margin": 20,
-                            "loop": false,
-                            "responsive": {
-                                "0": {
-                                    "items":2
-                                },
-                                "480": {
-                                    "items":2
-                                },
-                                "768": {
-                                    "items":3
-                                },
-                                "992": {
-                                    "items":4
-                                }
-                            }
-                        }'>
-                        <?php if (isset($iphone) && $iphone != NULL){
-                            foreach ($iphone as $item){?>
-                       
-                        <div class="product product-2">
-                            <figure class="product-media">
-                                <span class="product-label label-circle label-top">Top</span>
-                                <a href="product.html">
-                                    <img src="assets/site/images/demos/demo-3/products/product-7.jpg"
-                                        alt="Product image" class="product-image">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                            wishlist</span></a>
-                                </div><!-- End .product-action -->
-
-                                <div class="product-action product-action-dark">
-                                    <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add
-                                            to cart</span></a>
-                                    <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                        title="Quick view"><span>quick view</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#"><?= $item ['category_name'];?></a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="#"><?= $item ['product_name'];?></a></h3><!-- End .product-title -->
-                                <div class="product-price">
-                                <?= $item ['product_price'];?>
-                                </div><!-- End .product-price -->
-                                <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: 100%;"></div>
-                                        <!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 4 Reviews )</span>
-                                </div><!-- End .rating-container -->
-
-                                <div class="product-nav product-nav-dots">
-                                    <a href="#" style="background: #69b4ff;"><span class="sr-only">Color
-                                            name</span></a>
-                                    <a href="#" style="background: #ff887f;"><span class="sr-only">Color
-                                            name</span></a>
-                                    <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
-                                            name</span></a>
-                                </div><!-- End .product-nav -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-                        <?php 
-                        }   
-                        }else{
-                            echo "No data available";
-                        } ?>
-                    </div><!-- End .owl-carousel -->
-                </div><!-- .End .tab-pane -->
-                <div class="tab-pane p-0 fade" id="trending-tv-tab" role="tabpanel" aria-labelledby="trending-tv-link">
-                    <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
-                        data-owl-options='{
-                            "nav": true, 
-                            "dots": false,
-                            "margin": 20,
-                            "loop": false,
-                            "responsive": {
-                                "0": {
-                                    "items":2
-                                },
-                                "480": {
-                                    "items":2
-                                },
-                                "768": {
-                                    "items":3
-                                },
-                                "992": {
-                                    "items":4
-                                }
-                            }
-                        }'>
-                        <?php if (isset($samsung) && $samsung != NULL){
-                            foreach ($samsung as $item){?>
-                       
-                        <div class="product product-2">
-                            <figure class="product-media">
-                                <span class="product-label label-circle label-top">Top</span>
-                                <a href="product.html">
-                                    <img src="assets/site/images/demos/demo-3/products/product-7.jpg"
-                                        alt="Product image" class="product-image">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                            wishlist</span></a>
-                                </div><!-- End .product-action -->
-
-                                <div class="product-action product-action-dark">
-                                    <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add
-                                            to cart</span></a>
-                                    <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                        title="Quick view"><span>quick view</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#"><?= $item ['category_name'];?></a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="#"><?= $item ['product_name'];?></a></h3><!-- End .product-title -->
-                                <div class="product-price">
-                                <?= $item ['product_price'];?>
-                                </div><!-- End .product-price -->
-                                <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: 100%;"></div>
-                                        <!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 4 Reviews )</span>
-                                </div><!-- End .rating-container -->
-
-                                <div class="product-nav product-nav-dots">
-                                    <a href="#" style="background: #69b4ff;"><span class="sr-only">Color
-                                            name</span></a>
-                                    <a href="#" style="background: #ff887f;"><span class="sr-only">Color
-                                            name</span></a>
-                                    <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
-                                            name</span></a>
-                                </div><!-- End .product-nav -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-                        <?php 
-                        }   
-                        }else{
-                            echo "No data available";
-                        } ?>
-                    </div><!-- End .owl-carousel -->
-                </div><!-- .End .tab-pane -->
-                <div class="tab-pane p-0 fade" id="trending-computers-tab" role="tabpanel"
-                    aria-labelledby="trending-computers-link">
-                    <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
-                        data-owl-options='{
-                            "nav": true, 
-                            "dots": false,
-                            "margin": 20,
-                            "loop": false,
-                            "responsive": {
-                                "0": {
-                                    "items":2
-                                },
-                                "480": {
-                                    "items":2
-                                },
-                                "768": {
-                                    "items":3
-                                },
-                                "992": {
-                                    "items":4
-                                }
-                            }
-                        }'>
-                        <?php if (isset($xiaomi) && $xiaomi != NULL){
-                            foreach ($xiaomi as $item){?>
-                       
-                        <div class="product product-2">
-                            <figure class="product-media">
-                                <span class="product-label label-circle label-top">Top</span>
-                                <a href="product.html">
-                                    <img src="assets/site/images/demos/demo-3/products/product-7.jpg"
-                                        alt="Product image" class="product-image">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                            wishlist</span></a>
-                                </div><!-- End .product-action -->
-
-                                <div class="product-action product-action-dark">
-                                    <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add
-                                            to cart</span></a>
-                                    <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                        title="Quick view"><span>quick view</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#"><?= $item ['category_name'];?></a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="#"><?= $item ['product_name'];?></a></h3><!-- End .product-title -->
-                                <div class="product-price">
-                                <?= $item ['product_price'];?>
-                                </div><!-- End .product-price -->
-                                <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: 100%;"></div>
-                                        <!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 4 Reviews )</span>
-                                </div><!-- End .rating-container -->
-
-                                <div class="product-nav product-nav-dots">
-                                    <a href="#" style="background: #69b4ff;"><span class="sr-only">Color
-                                            name</span></a>
-                                    <a href="#" style="background: #ff887f;"><span class="sr-only">Color
-                                            name</span></a>
-                                    <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
-                                            name</span></a>
-                                </div><!-- End .product-nav -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-                        <?php 
-                        }   
-                        }else{
-                            echo "No data available";
-                        } ?>
-                    </div><!-- End .owl-carousel -->
-                </div><!-- .End .tab-pane -->
-                <div class="tab-pane p-0 fade" id="trending-phones-tab" role="tabpanel"
-                    aria-labelledby="trending-phones-link">
-                    <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
-                        data-owl-options='{
-                            "nav": true, 
-                            "dots": false,
-                            "margin": 20,
-                            "loop": false,
-                            "responsive": {
-                                "0": {
-                                    "items":2
-                                },
-                                "480": {
-                                    "items":2
-                                },
-                                "768": {
-                                    "items":3
-                                },
-                                "992": {
-                                    "items":4
-                                }
-                            }
-                        }'>
-                        <?php if (isset($oppo) && $oppo != NULL){
-                            foreach ($oppo as $item){?>
-                       
-                        <div class="product product-2">
-                            <figure class="product-media">
-                                <span class="product-label label-circle label-top">Top</span>
-                                <a href="product.html">
-                                    <img src="assets/site/images/demos/demo-3/products/product-7.jpg"
-                                        alt="Product image" class="product-image">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                            wishlist</span></a>
-                                </div><!-- End .product-action -->
-
-                                <div class="product-action product-action-dark">
-                                    <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add
-                                            to cart</span></a>
-                                    <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                        title="Quick view"><span>quick view</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#"><?= $item ['category_name'];?></a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="#"><?= $item ['product_name'];?></a></h3><!-- End .product-title -->
-                                <div class="product-price">
-                                <?= $item ['product_price'];?>
-                                </div><!-- End .product-price -->
-                                <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: 100%;"></div>
-                                        <!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 4 Reviews )</span>
-                                </div><!-- End .rating-container -->
-
-                                <div class="product-nav product-nav-dots">
-                                    <a href="#" style="background: #69b4ff;"><span class="sr-only">Color
-                                            name</span></a>
-                                    <a href="#" style="background: #ff887f;"><span class="sr-only">Color
-                                            name</span></a>
-                                    <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
-                                            name</span></a>
-                                </div><!-- End .product-nav -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-                        <?php 
-                        }   
-                        }else{
-                            echo "No data available";
-                        } ?>
-                    </div><!-- End .owl-carousel -->
-                </div><!-- .End .tab-pane -->
-                <div class="tab-pane p-0 fade" id="trending-watches-tab" role="tabpanel"
-                    aria-labelledby="trending-watches-link">
-                    <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
-                        data-owl-options='{
-                            "nav": true, 
-                            "dots": false,
-                            "margin": 20,
-                            "loop": false,
-                            "responsive": {
-                                "0": {
-                                    "items":2
-                                },
-                                "480": {
-                                    "items":2
-                                },
-                                "768": {
-                                    "items":3
-                                },
-                                "992": {
-                                    "items":4
-                                }
-                            }
-                        }'>
-                        <?php if (isset($ipad) && $ipad != NULL){
-                            foreach ($ipad as $item){?>
-                       
-                        <div class="product product-2">
-                            <figure class="product-media">
-                                <span class="product-label label-circle label-top">Top</span>
-                                <a href="product.html">
-                                    <img src="assets/site/images/demos/demo-3/products/product-7.jpg"
-                                        alt="Product image" class="product-image">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                            wishlist</span></a>
-                                </div><!-- End .product-action -->
-
-                                <div class="product-action product-action-dark">
-                                    <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add
-                                            to cart</span></a>
-                                    <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                        title="Quick view"><span>quick view</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#"><?= $item ['category_name'];?></a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="#"><?= $item ['product_name'];?></a></h3><!-- End .product-title -->
-                                <div class="product-price">
-                                <?= $item ['product_price'];?>
-                                </div><!-- End .product-price -->
-                                <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: 100%;"></div>
-                                        <!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 4 Reviews )</span>
-                                </div><!-- End .rating-container -->
-
-                                <div class="product-nav product-nav-dots">
-                                    <a href="#" style="background: #69b4ff;"><span class="sr-only">Color
-                                            name</span></a>
-                                    <a href="#" style="background: #ff887f;"><span class="sr-only">Color
-                                            name</span></a>
-                                    <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
-                                            name</span></a>
-                                </div><!-- End .product-nav -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-                        <?php 
-                        }   
-                        }else{
-                            echo "No data available";
-                        } ?>
-                    </div><!-- End .owl-carousel -->
-                </div><!-- .End .tab-pane -->
-                <div class="tab-pane p-0 fade" id="trending-acc-tab" role="tabpanel"
-                    aria-labelledby="trending-acc-link">
-                    <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
-                        data-owl-options='{
-                            "nav": true, 
-                            "dots": false,
-                            "margin": 20,
-                            "loop": false,
-                            "responsive": {
-                                "0": {
-                                    "items":2
-                                },
-                                "480": {
-                                    "items":2
-                                },
-                                "768": {
-                                    "items":3
-                                },
-                                "992": {
-                                    "items":4
-                                }
-                            }
-                        }'>
-                        <?php if (isset($macbook) && $macbook != NULL){
-                            foreach ($macbook as $item){?>
-                       
-                        <div class="product product-2">
-                            <figure class="product-media">
-                                <span class="product-label label-circle label-top">Top</span>
-                                <a href="product.html">
-                                    <img src="assets/site/images/demos/demo-3/products/product-7.jpg"
-                                        alt="Product image" class="product-image">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                            wishlist</span></a>
-                                </div><!-- End .product-action -->
-
-                                <div class="product-action product-action-dark">
-                                    <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add
-                                            to cart</span></a>
-                                    <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                        title="Quick view"><span>quick view</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#"><?= $item ['category_name'];?></a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="#"><?= $item ['product_name'];?></a></h3><!-- End .product-title -->
-                                <div class="product-price">
-                                <?= $item ['product_price'];?>
-                                </div><!-- End .product-price -->
-                                <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: 100%;"></div>
-                                        <!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 4 Reviews )</span>
-                                </div><!-- End .rating-container -->
-
-                                <div class="product-nav product-nav-dots">
-                                    <a href="#" style="background: #69b4ff;"><span class="sr-only">Color
-                                            name</span></a>
-                                    <a href="#" style="background: #ff887f;"><span class="sr-only">Color
-                                            name</span></a>
-                                    <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
-                                            name</span></a>
-                                </div><!-- End .product-nav -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-                        <?php 
-                        }   
-                        }else{
-                            echo "No data available";
-                        } ?>
-                            <figure class="product-media">
-                                <span class="product-label label-circle label-new">New</span>
-                                <a href="product.html">
-                                    <img src="assets/site/images/demos/demo-3/products/product-13.jpg"
-                                        alt="Product image" class="product-image">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                            wishlist</span></a>
-                                </div><!-- End .product-action -->
-
-                                <div class="product-action product-action-dark">
-                                    <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add
-                                            to cart</span></a>
-                                    <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                        title="Quick view"><span>quick view</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">Tablets</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro
-                                        with Wi-Fi 256GB </a></h3><!-- End .product-title -->
-                                <div class="product-price">
-                                    $899.99
-                                </div><!-- End .product-price -->
-                                <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: 80%;"></div>
-                                        <!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 4 Reviews )</span>
-                                </div><!-- End .rating-container -->
-
-                                <div class="product-nav product-nav-dots">
-                                    <a href="#" style="background: #edd2c8;"><span class="sr-only">Color
-                                            name</span></a>
-                                    <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
-                                            name</span></a>
-                                    <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
-                                            name</span></a>
-                                </div><!-- End .product-nav -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-                    </div><!-- End .owl-carousel -->
-                </div><!-- .End .tab-pane -->
-            </div><!-- End .tab-content -->
-        </div><!-- End .col-xl-4-5col -->
-    </div><!-- End .row -->
-</div><!-- End .container -->
+<?php require_once 'trending.php'; ?>
 
 <div class="container">
     <hr class="mt-5 mb-6">
@@ -1135,9 +559,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-11.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1157,7 +580,8 @@
                         <div class="product-cat">
                             <a href="#">Laptops</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">MacBook Pro 13"
+                                Display, i5</a>
                         </h3><!-- End .product-title -->
                         <div class="product-price">
                             $1,199.99
@@ -1174,9 +598,8 @@
 
                 <div class="product product-2">
                     <figure class="product-media">
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-12.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1196,7 +619,8 @@
                         <div class="product-cat">
                             <a href="#">Audio</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Bose - SoundLink Bluetooth
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Bose - SoundLink
+                                Bluetooth
                                 Speaker</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $79.99
@@ -1213,9 +637,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-13.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1235,7 +658,8 @@
                         <div class="product-cat">
                             <a href="#">Tablets</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro with Wi-Fi
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Apple - 11 Inch
+                                iPad Pro with Wi-Fi
                                 256GB </a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $899.99
@@ -1262,9 +686,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <span class="product-label label-circle label-sale">Sale</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-14.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-14.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1284,7 +707,8 @@
                         <div class="product-cat">
                             <a href="#">Cell Phone</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Google - Pixel 3 XL 128GB</a></h3>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Google - Pixel 3 XL
+                                128GB</a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             <span class="new-price">$35.41</span>
@@ -1312,9 +736,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-15.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-15.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1334,7 +757,8 @@
                         <div class="product-cat">
                             <a href="#">TV & Home Theater</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Samsung - 55" Class LED 2160p
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Samsung - 55" Class
+                                LED 2160p
                                 Smart</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $899.99
@@ -1351,9 +775,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-11.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1373,7 +796,8 @@
                         <div class="product-cat">
                             <a href="#">Laptops</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">MacBook Pro 13"
+                                Display, i5</a>
                         </h3><!-- End .product-title -->
                         <div class="product-price">
                             $1,199.99
@@ -1417,9 +841,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-13.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1439,7 +862,8 @@
                         <div class="product-cat">
                             <a href="#">Tablets</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro with Wi-Fi
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Apple - 11 Inch
+                                iPad Pro with Wi-Fi
                                 256GB </a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $899.99
@@ -1464,9 +888,8 @@
 
                 <div class="product product-2">
                     <figure class="product-media">
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-12.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1486,7 +909,8 @@
                         <div class="product-cat">
                             <a href="#">Audio</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Bose - SoundLink Bluetooth
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Bose - SoundLink
+                                Bluetooth
                                 Speaker</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $79.99
@@ -1504,9 +928,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <span class="product-label label-circle label-sale">Sale</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-14.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-14.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1526,7 +949,8 @@
                         <div class="product-cat">
                             <a href="#">Cell Phone</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Google - Pixel 3 XL 128GB</a></h3>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Google - Pixel 3 XL
+                                128GB</a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             <span class="new-price">$35.41</span>
@@ -1554,9 +978,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-15.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-15.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1576,7 +999,8 @@
                         <div class="product-cat">
                             <a href="#">TV & Home Theater</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Samsung - 55" Class LED 2160p
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Samsung - 55" Class
+                                LED 2160p
                                 Smart</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $899.99
@@ -1593,9 +1017,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-11.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1615,7 +1038,8 @@
                         <div class="product-cat">
                             <a href="#">Laptops</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">MacBook Pro 13"
+                                Display, i5</a>
                         </h3><!-- End .product-title -->
                         <div class="product-price">
                             $1,199.99
@@ -1659,9 +1083,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-15.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-15.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1681,7 +1104,8 @@
                         <div class="product-cat">
                             <a href="#">TV & Home Theater</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Samsung - 55" Class LED 2160p
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Samsung - 55" Class
+                                LED 2160p
                                 Smart</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $899.99
@@ -1698,9 +1122,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-11.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1720,7 +1143,8 @@
                         <div class="product-cat">
                             <a href="#">Laptops</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">MacBook Pro 13"
+                                Display, i5</a>
                         </h3><!-- End .product-title -->
                         <div class="product-price">
                             $1,199.99
@@ -1738,9 +1162,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-13.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1760,7 +1183,8 @@
                         <div class="product-cat">
                             <a href="#">Tablets</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro with Wi-Fi
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Apple - 11 Inch
+                                iPad Pro with Wi-Fi
                                 256GB </a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $899.99
@@ -1785,9 +1209,8 @@
 
                 <div class="product product-2">
                     <figure class="product-media">
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-12.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1807,7 +1230,8 @@
                         <div class="product-cat">
                             <a href="#">Audio</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Bose - SoundLink Bluetooth
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Bose - SoundLink
+                                Bluetooth
                                 Speaker</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $79.99
@@ -1825,9 +1249,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <span class="product-label label-circle label-sale">Sale</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-14.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-14.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1847,7 +1270,8 @@
                         <div class="product-cat">
                             <a href="#">Cell Phone</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Google - Pixel 3 XL 128GB</a></h3>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Google - Pixel 3 XL
+                                128GB</a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             <span class="new-price">$35.41</span>
@@ -1901,9 +1325,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-11.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1923,7 +1346,8 @@
                         <div class="product-cat">
                             <a href="#">Laptops</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">MacBook Pro 13"
+                                Display, i5</a>
                         </h3><!-- End .product-title -->
                         <div class="product-price">
                             $1,199.99
@@ -1940,9 +1364,8 @@
 
                 <div class="product product-2">
                     <figure class="product-media">
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-12.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -1962,7 +1385,8 @@
                         <div class="product-cat">
                             <a href="#">Audio</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Bose - SoundLink Bluetooth
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Bose - SoundLink
+                                Bluetooth
                                 Speaker</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $79.99
@@ -1979,9 +1403,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-13.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2001,7 +1424,8 @@
                         <div class="product-cat">
                             <a href="#">Tablets</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro with Wi-Fi
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Apple - 11 Inch
+                                iPad Pro with Wi-Fi
                                 256GB </a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $899.99
@@ -2027,9 +1451,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-15.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-15.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2049,7 +1472,8 @@
                         <div class="product-cat">
                             <a href="#">TV & Home Theater</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Samsung - 55" Class LED 2160p
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Samsung - 55" Class
+                                LED 2160p
                                 Smart</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $899.99
@@ -2066,9 +1490,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-11.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2088,7 +1511,8 @@
                         <div class="product-cat">
                             <a href="#">Laptops</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">MacBook Pro 13"
+                                Display, i5</a>
                         </h3><!-- End .product-title -->
                         <div class="product-price">
                             $1,199.99
@@ -2107,9 +1531,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <span class="product-label label-circle label-sale">Sale</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-14.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-14.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2129,7 +1552,8 @@
                         <div class="product-cat">
                             <a href="#">Cell Phone</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Google - Pixel 3 XL 128GB</a></h3>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Google - Pixel 3 XL
+                                128GB</a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             <span class="new-price">$35.41</span>
@@ -2184,9 +1608,8 @@
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
                         <span class="product-label label-circle label-sale">Sale</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-14.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-14.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2206,7 +1629,8 @@
                         <div class="product-cat">
                             <a href="#">Cell Phone</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Google - Pixel 3 XL 128GB</a></h3>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Google - Pixel 3 XL
+                                128GB</a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             <span class="new-price">$35.41</span>
@@ -2234,9 +1658,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-11.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2256,7 +1679,8 @@
                         <div class="product-cat">
                             <a href="#">Laptops</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">MacBook Pro 13"
+                                Display, i5</a>
                         </h3><!-- End .product-title -->
                         <div class="product-price">
                             $1,199.99
@@ -2273,9 +1697,8 @@
 
                 <div class="product product-2">
                     <figure class="product-media">
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-12.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2295,7 +1718,8 @@
                         <div class="product-cat">
                             <a href="#">Audio</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Bose - SoundLink Bluetooth
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Bose - SoundLink
+                                Bluetooth
                                 Speaker</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $79.99
@@ -2312,9 +1736,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-13.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2334,7 +1757,8 @@
                         <div class="product-cat">
                             <a href="#">Tablets</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro with Wi-Fi
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Apple - 11 Inch
+                                iPad Pro with Wi-Fi
                                 256GB </a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $899.99
@@ -2386,9 +1810,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-11.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2408,7 +1831,8 @@
                         <div class="product-cat">
                             <a href="#">Laptops</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">MacBook Pro 13"
+                                Display, i5</a>
                         </h3><!-- End .product-title -->
                         <div class="product-price">
                             $1,199.99
@@ -2426,9 +1850,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-15.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-15.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2448,7 +1871,8 @@
                         <div class="product-cat">
                             <a href="#">TV & Home Theater</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Samsung - 55" Class LED 2160p
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Samsung - 55" Class
+                                LED 2160p
                                 Smart</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $899.99
@@ -2465,9 +1889,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-11.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-11.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2487,7 +1910,8 @@
                         <div class="product-cat">
                             <a href="#">Laptops</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">MacBook Pro 13" Display, i5</a>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">MacBook Pro 13"
+                                Display, i5</a>
                         </h3><!-- End .product-title -->
                         <div class="product-price">
                             $1,199.99
@@ -2504,9 +1928,8 @@
 
                 <div class="product product-2">
                     <figure class="product-media">
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-12.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-12.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2526,7 +1949,8 @@
                         <div class="product-cat">
                             <a href="#">Audio</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Bose - SoundLink Bluetooth
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Bose - SoundLink
+                                Bluetooth
                                 Speaker</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $79.99
@@ -2543,9 +1967,8 @@
                 <div class="product product-2">
                     <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/product-13.jpg" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
@@ -2565,7 +1988,8 @@
                         <div class="product-cat">
                             <a href="#">Tablets</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro with Wi-Fi
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Apple - 11 Inch
+                                iPad Pro with Wi-Fi
                                 256GB </a></h3><!-- End .product-title -->
                         <div class="product-price">
                             $899.99
@@ -2654,8 +2078,7 @@
 </div><!-- End .icon-boxes-container -->
 
 <div class="container">
-    <div class="cta cta-separator cta-border-image cta-half mb-0"
-        style="background-image: url(assets/site/images/demos/demo-3/bg-2.jpg);">
+    <div class="cta cta-separator cta-border-image cta-half mb-0" style="background-image: url(uploaded/bg-2.jpg);">
         <div class="cta-border-wrapper bg-white">
             <div class="row">
                 <div class="col-lg-6">

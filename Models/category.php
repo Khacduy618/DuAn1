@@ -14,4 +14,5 @@ class Category extends Model {
                     c.category_id";
         return pdo_query($sql);
     }
+    
 }

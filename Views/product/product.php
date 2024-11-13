@@ -39,9 +39,8 @@
                     <div class="product-gallery product-gallery-vertical">
                         <div class="row">
                             <figure class="product-main-image">
-                                <img id="product-zoom" src="assets/site/images/shop/<?=$data['product_img']?>"
-                                    data-zoom-image="assets/site/images/shop/<?=$data['product_img']?>"
-                                    alt="product image">
+                                <img id="product-zoom" src="uploaded/<?=$data['product_img']?>"
+                                    data-zoom-image="uploaded/<?=$data['product_img']?>" alt="product image">
 
                                 <a href="#" id="btn-product-gallery" class="btn-product-gallery">
                                     <i class="icon-arrows"></i>
@@ -50,28 +49,24 @@
 
                             <div id="product-zoom-gallery" class="product-image-gallery">
                                 <a class="product-gallery-item active" href="#"
-                                    data-image="assets/site/images/shop/<?=$data['product_img']?>"
-                                    data-zoom-image="assets/site/images/shop/<?=$data['product_img']?>">
-                                    <img src="assets/site/images/shop/<?=$data['product_img']?>" alt="product side">
+                                    data-image="uploaded/<?=$data['product_img']?>"
+                                    data-zoom-image="uploaded/<?=$data['product_img']?>">
+                                    <img src="uploaded/<?=$data['product_img']?>" alt="product side">
                                 </a>
 
-                                <a class="product-gallery-item" href="#"
-                                    data-image="assets/site/images/shop/<?=$data['product_img']?>"
-                                    data-zoom-image="assets/site/images/shop/<?=$data['product_img']?>">
-                                    <img src="assets/site/images/shop/<?=$data['product_img']?>" alt="product cross">
+                                <a class="product-gallery-item" href="#" data-image="uploaded/<?=$data['product_img']?>"
+                                    data-zoom-image="uploaded/<?=$data['product_img']?>">
+                                    <img src="uploaded/<?=$data['product_img']?>" alt="product cross">
                                 </a>
 
-                                <a class="product-gallery-item" href="#"
-                                    data-image="assets/site/images/shop/<?=$data['product_img']?>"
-                                    data-zoom-image="assets/site/images/shop/<?=$data['product_img']?>">
-                                    <img src="assets/site/images/shop/<?=$data['product_img']?>"
-                                        alt="product with model">
+                                <a class="product-gallery-item" href="#" data-image="uploaded/<?=$data['product_img']?>"
+                                    data-zoom-image="uploaded/<?=$data['product_img']?>">
+                                    <img src="uploaded/<?=$data['product_img']?>" alt="product with model">
                                 </a>
 
-                                <a class="product-gallery-item" href="#"
-                                    data-image="assets/site/images/shop/<?=$data['product_img']?>"
-                                    data-zoom-image="assets/site/images/shop/<?=$data['product_img']?>">
-                                    <img src="assets/site/images/shop/<?=$data['product_img']?>" alt="product back">
+                                <a class="product-gallery-item" href="#" data-image="uploaded/<?=$data['product_img']?>"
+                                    data-zoom-image="uploaded/<?=$data['product_img']?>">
+                                    <img src="uploaded/<?=$data['product_img']?>" alt="product back">
                                 </a>
                             </div><!-- End .product-image-gallery -->
                         </div><!-- End .row -->
@@ -103,10 +98,10 @@
 
                             <div class="product-nav product-nav-thumbs">
                                 <a href="#" class="active">
-                                    <img src="assets/site/images/shop/<?=$data['product_img']?>" alt="product desc">
+                                    <img src="uploaded/<?=$data['product_img']?>" alt="product desc">
                                 </a>
                                 <a href="#">
-                                    <img src="assets/site/images/shop/<?=$data['product_img']?>" alt="product desc">
+                                    <img src="uploaded/<?=$data['product_img']?>" alt="product desc">
                                 </a>
                             </div><!-- End .product-nav -->
                         </div><!-- End .details-filter-row -->

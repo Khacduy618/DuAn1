@@ -223,11 +223,15 @@
 
                     <div class="dropdown-menu">
                         <nav class="side-nav">
-                            <ul class="menu-vertical sf-arrows" id="category-menu">
-                                
-                            </ul><!-- End .menu-vertical -->
-                        </nav><!-- End .side-nav -->
-                    </div><!-- End .dropdown-menu -->
+                            <ul class="category-menu">
+                                <?php
+                                require_once 'Controllers/CategoryController.php';
+                                $category = new CategoryController();
+                                echo $category->list_cat_home();
+                            ?>
+                            </ul>
+                        </nav>
+                    </div>
                 </div><!-- End .category-dropdown -->
             </div><!-- End .header-left -->
 

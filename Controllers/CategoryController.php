@@ -104,9 +104,65 @@ class CategoryController {
         }
         return $output;
     }
-
     public function list_cat() {
         $data = $this->categoryModel->list();
         return $this->menu($data);
+    }
+
+    //menu cate home
+
+    private function findSubCategories_home($data, $parent_id) {
+        $subs = [];
+        foreach ($data as $item) {
+            if ($item['parent_id'] == $parent_id) {
+                $subs[] = $item;
+                $subs = array_merge($subs, $this->findSubCategories($data, $item['category_id']));
+            }
+        }
+        return $subs;
+    }
+
+    function menu_home($data, $parent_id = NULL) {
+        $output = '';
+
+        foreach ($data as $value) {
+            
+            if ($value['parent_id'] == $parent_id) {
+                // Check if category has children
+                $hasChildren = false;
+                foreach ($data as $child) {
+                    if ($child['parent_id'] == $value['category_id']) {
+                        $hasChildren = true;
+                        break;
+                    }
+                }
+
+                // Start list item
+                $output .= '<li class="' . ($hasChildren ? 'has-submenu' : '') . '">';
+               
+                // Add category link
+                $output .= '<a href="index.php?act=shop&product_cat=' . $value['category_id'] . '">';
+                $output .= ucfirst($value['category_name']);
+                if ($hasChildren) {
+                    $output .= '<i class="icon-angle-right"></i>';
+                }
+                $output .= '</a>';
+
+                // If has children, add submenu
+                if ($hasChildren) {
+                    $output .= '<ul>';
+                    $output .= $this->menu_home($data, $value['category_id']);
+                    $output .= '</ul>';
+                }
+
+                $output .= '</li>';
+            }
+        }
+        
+        return $output;
+    }
+    public function list_cat_home() {
+        $data = $this->categoryModel->list();
+        return $this->menu_home($data);
     }
 }

@@ -38,6 +38,7 @@
 
 </head>
 
+
 <body>
     <div class="page-wrapper">
         <?php require_once('Views/header_footer/header.php'); ?>
@@ -273,7 +274,6 @@
     <!-- Main JS File -->
     <script src="assets/site/js/main.js"></script>
     <script src="assets/site/js/demos/demo-3.js"></script>
-    <script src="assets/site/js/categories.js"></script>
 
 </body>
 
