@@ -4,7 +4,7 @@ require_once("Models/address.php");
 class CartController
 {
         private $cartModel;
-        private $addressModel;
+        private $addressModel;  
 
     public function __construct()
     {
@@ -17,7 +17,7 @@ class CartController
         if (isset($_SESSION['isLogin']) && $_SESSION['isLogin'] == true) {
            $userEmail = $_SESSION['login']['user_email'];
             $cartItems = $this->cartModel->getCartItems($userEmail);
-            $address = $this->addressModel->getOneAdress($userEmail);
+            $address = $this->addressModel->getOneAddress($userEmail);
             require_once 'Views/index.php';
         } else {
             header('location: ?act=taikhoan&xuli=login');

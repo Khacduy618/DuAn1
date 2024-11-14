@@ -1,12 +1,12 @@
 <?php
+require_once("Models/checkout.php");
 require_once 'Models/cart.php';
 require_once("Models/address.php");
-require_once("Models/checkout.php");
 class CheckoutController
 {
     private $checkout_model;
     private $cartModel;
-    private $addressModel;
+    private $addressModel;  
     public function __construct()
     {
         $this->checkout_model = new Checkout();
@@ -21,7 +21,7 @@ class CheckoutController
             $name = $_GET['coupon_name'];
             $coupon = $this->checkout_model->coupon($name);
             $cartItems = $this->cartModel->getCartItems($userEmail);
-            $address = $this->addressModel->getOneAdress($userEmail);
+            $address = $this->addressModel->getOneAddress($userEmail);
             require_once 'Views/index.php';
         } else {
             header('location: ?act=taikhoan');
