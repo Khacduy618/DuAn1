@@ -18,7 +18,6 @@ switch ($mod) {
             switch ($act) {
                 case 'dangxuat':
                     $controller_obj->dangxuat();
-                    
                     break;
                 case 'account':
                     $controller_obj->account();
@@ -81,9 +80,9 @@ switch ($mod) {
         require_once('Controllers/CartController.php');
         $controller_obj = new CartController();
         switch ($act) {
-        case 'list':
-            $controller_obj->list_cart();
-            break;
+            case 'list':
+                $controller_obj->list_cart();
+                break;
             case 'update':
                 $controller_obj->add_cart();
                 break;
