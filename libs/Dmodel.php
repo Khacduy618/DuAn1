@@ -1,5 +1,5 @@
 <?php
-class Dmodel{
+abstract class Dmodel{
     private $conn ;
     private $dbs = "mysql:host=s103d190-u2.interdata.vn;port=3306;dbname=Tede_Shop;charset=utf8";
     private $user = 'dichvun3';
@@ -15,5 +15,6 @@ class Dmodel{
         
     }
     protected function getConn(){return $this->conn;}
+    // abstract public function check_ip(string $ip,array $session,array $cookie): Dcontroller;
 }
 ?>

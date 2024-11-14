@@ -5,20 +5,28 @@ class Model
 {
    var $table;
    var $contents;
-   
+
+   function limit( $offset, $limit)
+    {
+        $sql = "SELECT * FROM $this->table ORDER BY $this->contents DESC LIMIT $offset, $limit";
+        return pdo_query($sql); // Chỉ bind tham số cho product_cat
+    }
+
    function list(){
        $sql = "SELECT * FROM $this->table ORDER BY $this->contents DESC";
        return pdo_query($sql);
    }
    function findBy($id){
-       $sql = "SELECT * FROM $this->table WHERE $this->contents = $id";
+       $sql = "SELECT * FROM $this->table WHERE $this->contents = ?";
        return pdo_query_one($sql,$id);
    }
-   function delete($id){
+   function delete($id): int
+   {
        $sql = "DELETE FROM $this->table WHERE $this->contents = $id";
        return pdo_execute($sql,$id);
    }
-   function create($data){
+   function create($data): int
+   {
        $f = "";
        $v = "";
        foreach($data as $key => $value){
@@ -30,15 +38,17 @@ class Model
        $sql = "INSERT INTO $this->table($f) VALUES($v)";
        return pdo_execute($sql);
    }
-   function update($data){
-        $temp = $this->contents;
+   function update($data): int
+   {
        $v = "";
        foreach($data as $key => $value){
            $v.= $key." = '". $value."',";
        }
        $v = trim($v,",");
-       $sql = "UPDATE $this->table SET  $v   WHERE $temp = " . $data[$this->contents];
+       $sql = "UPDATE $this->table SET  $v   WHERE $this->contents = " . $data[$this->contents];
        return pdo_execute($sql, $data[$this->contents]);
    }
+   
+
 }
 ?>

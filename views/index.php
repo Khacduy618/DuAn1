@@ -2,27 +2,27 @@
 <html lang="en">
 
 
-<!-- molla/index-3.html  22 Nov 2019 09:55:42 GMT -->
+<!-- TeDe/index-3.html  22 Nov 2019 09:55:42 GMT -->
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Molla - Bootstrap eCommerce Template</title>
+    <title>TeDeShop - Electronic</title>
     <meta name="keywords" content="HTML5 Template">
-    <meta name="description" content="Molla - Bootstrap eCommerce Template">
+    <meta name="description" content="TeDeShop - Electronic">
     <meta name="author" content="p-themes">
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/site/images/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/site/images/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/site/images/icons/favicon-16x16.png">
-    <link rel="manifest" href="assets/site/images/icons/site.html">
-    <link rel="mask-icon" href="assets/site/images/icons/safari-pinned-tab.svg" color="#666666">
-    <link rel="shortcut icon" href="assets/site/images/icons/favicon.ico">
-    <meta name="apple-mobile-web-app-title" content="Molla">
-    <meta name="application-name" content="Molla">
+    <link rel="apple-touch-icon" sizes="180x180" href="uploaded/logo500x500.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="uploaded/logo500x500.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="uploaded/logo500x500.png">
+    <link rel="manifest" href="uploaded/logo500x500.png">
+    <link rel="mask-icon" href="uploaded/logo500x500.png" color="#666666">
+    <link rel="shortcut icon" href="uploaded/logo500x500.png">
+    <meta name="apple-mobile-web-app-title" content="TeDe">
+    <meta name="application-name" content="TeDe">
     <meta name="msapplication-TileColor" content="#cc9966">
-    <meta name="msapplication-config" content="assets/site/images/icons/browserconfig.xml">
+    <meta name="msapplication-config" content="uploaded/logo500x500.png">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="assets/site/vendor/line-awesome/line-awesome/line-awesome/css/line-awesome.min.css">
     <!-- Plugins CSS File -->
@@ -38,17 +38,16 @@
 
 </head>
 
+
 <body>
     <div class="page-wrapper">
-        <?php
-            require_once 'header_footer/header.php';
-       ?>
+        <?php require_once('Views/header_footer/header.php'); ?>
 
         <main class="main">
-            <?php require_once 'router.php' ?>
+            <?php require_once 'Views/router.php' ?>
         </main><!-- End .main -->
 
-       <?php require_once 'header_footer/footer.php' ?>
+        <?php require_once 'header_footer/footer.php' ?>
     </div><!-- End .page-wrapper -->
     <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
 
@@ -261,7 +260,6 @@
         </div><!-- End .mobile-menu-wrapper -->
     </div><!-- End .mobile-menu-container -->
 
- 
     <!-- Plugins JS File -->
     <script src="assets/site/js/jquery.min.js"></script>
     <script src="assets/site/js/bootstrap.bundle.min.js"></script>
@@ -276,11 +274,10 @@
     <!-- Main JS File -->
     <script src="assets/site/js/main.js"></script>
     <script src="assets/site/js/demos/demo-3.js"></script>
-    <script src="assets/site/js/categories.js"></script>
 
 </body>
 
 
-<!-- molla/index-3.html  22 Nov 2019 09:55:58 GMT -->
+<!-- TeDe/index-3.html  22 Nov 2019 09:55:58 GMT -->
 
 </html>

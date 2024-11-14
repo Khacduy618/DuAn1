@@ -1,3 +1,4 @@
+
 <?php 
    function pdo_get_connection()
    {
@@ -43,7 +44,7 @@
        }
    }
    
-   function pdo_execute($sql, ...$args)
+   function pdo_execute($sql, ...$args): int
    {
        try {
            $conn = pdo_get_connection();
@@ -57,4 +58,4 @@
            unset($conn);
        }
    }
-?>
+

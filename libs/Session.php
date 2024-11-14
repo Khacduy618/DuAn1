@@ -18,10 +18,12 @@
         }
 
         public static function checkSession(){
-            self::init();
-            if(self::get('login')== false){
+            // self::init();
+            $userrole = self::get('userrole');
+            $username = self::get('username');
+            if(self::get('login')== false || $userrole !== 9 || $username !== "leduylong"){
                 self::destroy();
-                // header("Location:"._ba."/Login");
+                header("Location:");
             }else{
 
             }

@@ -12,6 +12,16 @@ body {
     height: 100%
 }
 
+ol,
+ul,
+li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    list-style-image: none;
+}
+
 body {
     font-family: "Open Sans", sans-serif !important;
     color: #666;
@@ -20,6 +30,150 @@ body {
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden
 }
+
+/* menu */
+
+/* Main category menu styles */
+.category-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-width: 230px;
+}
+
+.category-menu li {
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+.category-menu li a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid #eee;
+}
+
+.category-menu li a:hover {
+    background-color: #f8f9fa;
+    color: #0088cc;
+}
+
+/* Submenu styles */
+.category-menu li ul {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    width: 230px;
+    background: white;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+/* Show submenu on hover */
+.category-menu li:hover>ul {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+/* Parent menu item indicator */
+.category-menu li.has-submenu>a i {
+    font-size: 10px;
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.category-menu li.has-submenu:hover>a i {
+    transform: rotate(90deg);
+}
+
+/* Main dropdown styles */
+.category-dropdown {
+    position: relative;
+}
+
+.category-dropdown .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.category-dropdown .dropdown-toggle i {
+    margin-left: 8px;
+}
+
+.category-dropdown .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    margin: 0;
+    z-index: 1000;
+}
+
+/* Show main dropdown on hover */
+.category-dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    .category-menu li ul {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        display: none;
+        transform: none;
+    }
+
+    .category-menu li:hover>ul {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .category-menu li.has-submenu>a i {
+        transform: rotate(90deg);
+    }
+
+    .category-menu li.has-submenu:hover>a i {
+        transform: rotate(-90deg);
+    }
+}
+
+/* Animation for smooth transitions */
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* end menu */
 
 .product-action.product-action-dark form {
     width: 100%;
@@ -679,12 +833,11 @@ blockquote.text-white cite span {
     margin-top: 2.55rem;
     margin-bottom: 2.95rem;
     flex-shrink: 0;
-    min-height: 25px
 }
 
 .logo img {
     display: block;
-    width: 150px;
+    max-width: 20%;
     height: auto
 }
 
@@ -7663,7 +7816,6 @@ p {
 .product-media {
     position: relative;
     display: block;
-    height: 200px;
     background-color: #d7d7d7;
     margin-bottom: 0;
     overflow: hidden
@@ -16104,7 +16256,7 @@ button:focus {
 .table.table-summary thead th:last-child,
 .table.table-summary tbody td:last-child {
     text-align: right;
-    min-width: 100px
+    min-width: 110px
 }
 
 .table.table-summary .summary-total td {

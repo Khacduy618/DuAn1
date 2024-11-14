@@ -34,7 +34,33 @@
                                     </div><!-- End .header-menu -->
                                 </div>
                             </li>
-                            <li><a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a></li>
+                            <?php
+                            if (isset($_SESSION['login'])) {
+                            ?>
+                            <li>
+                                <div class="header-dropdown">
+                                    <a class="row align-items-center">
+                                        <strong><span><?= $_SESSION['login']['user_name'] ?></span></strong>
+                                    </a>
+                                    <div class="header-menu">
+                                        <ul>
+                                            <li><a href="?act=taikhoan&xuli=account">Tài khoản</a></li>
+                                            <li><a href="<?=$SITE_URL?>/taikhoan/capnhatTK.php">Cập nhật tài khoản</a>
+                                            </li>
+                                            <?php
+                                                    if(isset($_SESSION['isLogin_Admin']) || isset($_SESSION['isLogin_Nhanvien'])){
+                                                        echo '<li><a href="admin/?mod=login">Trang quản lý</a></li>';
+                                                    }
+                                                ?>
+                                            <li><a href="?act=taikhoan&xuli=dangxuat">Đăng xuất</a>
+                                            </li>
+                                        </ul>
+                                    </div><!-- End .dropdown-menu -->
+                                </div><!-- End .user-dropdown -->
+                            </li>
+                            <?php } else { ?>
+                            <li><a href="?act=taikhoan">Sign in / Sign up</a></li>
+                            <?php } ?>
                         </ul>
                     </li>
                 </ul><!-- End .top-menu -->
@@ -52,19 +78,20 @@
                 </button>
 
                 <a href="index.html" class="logo">
-                    <img src="../assets/site/images/demos/demo-3/logo.png" alt="Molla Logo" width="105" height="25">
+                    <img src="uploaded/logo500x500.png" alt="Tede Logo" width="105" height="25">
                 </a>
             </div><!-- End .header-left -->
 
             <div class="header-center">
                 <div class="header-search header-search-extended header-search-visible d-none d-lg-block">
                     <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
-                    <form action="#" method="get">
+                    <form action="" method="GET">
                         <div class="header-search-wrapper search-wrapper-wide">
                             <label for="q" class="sr-only">Search</label>
                             <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
-                            <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..."
-                                required>
+                            <input type="hidden" name="act" value="shop">
+                            <input type="search" class="form-control" name="keyword" id="q"
+                                placeholder="Search product ..." required>
                         </div><!-- End .header-search-wrapper -->
                     </form>
                 </div><!-- End .header-search -->
@@ -171,9 +198,14 @@
                         </div><!-- End .dropdown-cart-total -->
 
                         <div class="dropdown-cart-action">
-                            <a href="cart.html" class="btn btn-primary">View Cart</a>
-                            <a href="checkout.html" class="btn btn-outline-primary-2"><span>Checkout</span><i
-                                    class="icon-long-arrow-right"></i></a>
+                            <a href="?act=cart" class="btn btn-primary">View Cart</a>\
+                            <form action="" method="GET">
+                                <input type="hidden" name="act" value="checkout">
+                                <input type="hidden" name="shipping" value="20000">
+                                <button type="submit" class="btn btn-outline-primary-2"><span>Checkout</span><i
+                                        class="icon-long-arrow-right"></i>
+                                </button>
+                            </form>
                         </div><!-- End .dropdown-cart-total -->
                     </div><!-- End .dropdown-menu -->
                 </div><!-- End .cart-dropdown -->
@@ -192,11 +224,15 @@
 
                     <div class="dropdown-menu">
                         <nav class="side-nav">
-                            <ul class="menu-vertical sf-arrows" id="category-menu">
-                                
-                            </ul><!-- End .menu-vertical -->
-                        </nav><!-- End .side-nav -->
-                    </div><!-- End .dropdown-menu -->
+                            <ul class="category-menu">
+                                <?php
+                                require_once 'Controllers/CategoryController.php';
+                                $category = new CategoryController();
+                                echo $category->list_cat_home();
+                            ?>
+                            </ul>
+                        </nav>
+                    </div>
                 </div><!-- End .category-dropdown -->
             </div><!-- End .header-left -->
 

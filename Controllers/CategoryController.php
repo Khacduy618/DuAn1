@@ -74,12 +74,12 @@ class CategoryController {
                 if ($hasChildren) {
                     // Parent category with subcategories
                     $output .= '<div class="filter-item">';
-                    $output .= '<div class="custom-control custom-checkbox parent-category">';
+                    $output .= '<div class="custom-control  parent-category">';
                               '" name="category[]" value="' . $value['category_id'] . '">';
                     $output .= '<label class="custom-control-label" for="cat-' . $value['category_id'] . '">' . 
                               ucfirst($value['category_name']) . '</label>';
                     $output .= '<span class="Categories-count">' . $totalProducts . '</span>';
-                    $output .= '<a class="toggle-icon"></a>';
+                    $output .= '<p class="toggle-icon"></p>';
                     $output .= '</div>';
                     
                     // Sub categories container
@@ -90,21 +90,79 @@ class CategoryController {
                 } else {
                     // Single category without subcategories
                     $output .= '<div class="filter-item sub-cat">';
-                    $output .= '<div class="custom-control custom-checkbox">';
-                              '" name="category[]" value="' . $value['category_id'] . '">';
+                    $output .= '<div class="custom-control">';
+                    $output .= '<a href="index.php?act=shop&product_cat=' . $value['category_id'] . '" class="category-link">';
                     $output .= '<label class="custom-control-label" for="cat-' . $value['category_id'] . '">' . 
-                              ucfirst($value['category_name']) . '</label>';
+                            ucfirst($value['category_name']) . '</label>';
                     $output .= '<span class="subCategories-count">' . $value['product_count'] . '</span>';
+                    $output .= '</a>';
                     $output .= '</div>';
                     $output .= '</div>';
+
                 }
             }
         }
         return $output;
     }
-
     public function list_cat() {
         $data = $this->categoryModel->list();
         return $this->menu($data);
+    }
+
+    //menu cate home
+
+    private function findSubCategories_home($data, $parent_id) {
+        $subs = [];
+        foreach ($data as $item) {
+            if ($item['parent_id'] == $parent_id) {
+                $subs[] = $item;
+                $subs = array_merge($subs, $this->findSubCategories($data, $item['category_id']));
+            }
+        }
+        return $subs;
+    }
+
+    function menu_home($data, $parent_id = NULL) {
+        $output = '';
+
+        foreach ($data as $value) {
+            
+            if ($value['parent_id'] == $parent_id) {
+                // Check if category has children
+                $hasChildren = false;
+                foreach ($data as $child) {
+                    if ($child['parent_id'] == $value['category_id']) {
+                        $hasChildren = true;
+                        break;
+                    }
+                }
+
+                // Start list item
+                $output .= '<li class="' . ($hasChildren ? 'has-submenu' : '') . '">';
+               
+                // Add category link
+                $output .= '<a href="index.php?act=shop&product_cat=' . $value['category_id'] . '">';
+                $output .= ucfirst($value['category_name']);
+                if ($hasChildren) {
+                    $output .= '<i class="icon-angle-right"></i>';
+                }
+                $output .= '</a>';
+
+                // If has children, add submenu
+                if ($hasChildren) {
+                    $output .= '<ul>';
+                    $output .= $this->menu_home($data, $value['category_id']);
+                    $output .= '</ul>';
+                }
+
+                $output .= '</li>';
+            }
+        }
+        
+        return $output;
+    }
+    public function list_cat_home() {
+        $data = $this->categoryModel->list();
+        return $this->menu_home($data);
     }
 }

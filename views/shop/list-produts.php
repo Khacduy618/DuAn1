@@ -2,15 +2,14 @@
     <div class="row justify-content-center">
         <?php 
 			if(isset($data) && $data != NULL){
-				foreach ($data as $value) {		
+				foreach ($data as $value) {
 		?>
         <div class="col-6 col-md-4 col-lg-4 col-xl-3">
             <div class="product product-7 text-center">
                 <figure class="product-media">
                     <span class="product-label label-new">New</span>
-                    <a href="?act=detail&id=<?=$value['product_id']?>">
-                        <img src="assets/site/images/products/<?=$value['HinhAnh1']?>" alt="Product image"
-                            class="product-image">
+                    <a href="?act=product&id=<?=$value['product_id']?>">
+                        <img src="uploaded/<?=$value['product_img']?>" alt="Product image" class="product-image">
                     </a>
 
                     <div class="product-action-vertical">
@@ -22,7 +21,8 @@
                     </div><!-- End .product-action-vertical -->
 
                     <div class="product-action">
-                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                        <a href="?act=cart&xuli=add&product_id=<?=$value['product_id']?>&quantity=1"
+                            class="btn-product btn-cart"><span>add to cart</span></a>
                     </div><!-- End .product-action -->
                 </figure><!-- End .product-media -->
 
@@ -31,7 +31,7 @@
                         <a href="#">Women</a>
                     </div><!-- End .product-cat -->
                     <h3 class="product-title"><a
-                            href="?act=detail&id=<?=$value['product_id']?>"><?=$value['product_name']?></a></h3>
+                            href="?act=product&id=<?=$value['product_id']?>"><?=$value['product_name']?></a></h3>
                     <!-- End .product-title -->
                     <div class="product-price">
                         <?=$value['product_price']?>
@@ -45,14 +45,14 @@
 
                     <div class="product-nav product-nav-thumbs">
                         <a href="#" class="active">
-                            <img src="assets/site/images/products/product-4-thumb.jpg" alt="product desc">
+                            <img src="uploaded/product-4-thumb.jpg" alt="product desc">
                         </a>
                         <a href="#">
-                            <img src="assets/site/images/products/product-4-2-thumb.jpg" alt="product desc">
+                            <img src="uploaded/product-4-2-thumb.jpg" alt="product desc">
                         </a>
 
                         <a href="#">
-                            <img src="assets/site/images/products/product-4-3-thumb.jpg" alt="product desc">
+                            <img src="uploaded/product-4-3-thumb.jpg" alt="product desc">
                         </a>
                     </div><!-- End .product-nav -->
                 </div><!-- End .product-body -->
@@ -64,21 +64,68 @@
         <!-- single product end -->
     </div><!-- End .row -->
 </div><!-- End .products -->
+<?php
+// Retrieve current sorting parameters
+$field = isset($_GET['field']) ? $_GET['field'] : '';
+$sort = isset($_GET['sort']) ? $_GET['sort'] : '';
+$product_cat = isset($_GET['product_cat']) ? $_GET['product_cat'] : 0;
+$per_page = isset($orderdata['itemPerPage']) ? $orderdata['itemPerPage'] : 12; // Default to 12 if not set
+
+if ($orderdata['totalRecord'] > 12) {
+?>
 <nav aria-label="Page navigation">
     <ul class="pagination justify-content-center">
-        <li class="page-item disabled">
-            <a class="page-link page-link-prev" href="#" aria-label="Previous" tabindex="-1" aria-disabled="true">
-                <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>Prev
-            </a>
+        <?php
+            // Link to first page
+            if ($orderdata['currentPage'] > 2) {
+                $first_page = 1;
+                ?>
+        <li class="page-item"><a class="page-link"
+                href="index.php?act=shop&product_cat=<?= $product_cat ?>&per_page=<?= $per_page ?>&page=<?= $first_page ?>&field=<?= $field ?>&sort=<?= $sort ?>">First</a>
         </li>
-        <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item-total">of 6</li>
-        <li class="page-item">
-            <a class="page-link page-link-next" href="#" aria-label="Next">
-                Next <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
-            </a>
+        <?php
+            }
+            // Link to previous page
+            if ($orderdata['currentPage'] > 1) {
+                $prev_page = $orderdata['currentPage'] - 1;
+                ?>
+        <li class="page-item"><a class="page-link page-link-prev"
+                href="index.php?act=shop&product_cat=<?= $product_cat ?>&per_page=<?= $per_page ?>&page=<?= $prev_page ?>&field=<?= $field ?>&sort=<?= $sort ?>"><i
+                    class="icon-long-arrow-left"></i>Prev</a></li>
+        <?php }
+        // Numbered page links
+        for ($num = 1; $num <= $orderdata['totalPages']; $num++) {
+            if ($num != $orderdata['currentPage']) {
+                if ($num > $orderdata['currentPage'] - 3 && $num < $orderdata['currentPage'] + 3) {
+                    ?>
+        <li class="page-item"><a class="page-link"
+                href="index.php?act=shop&product_cat=<?= $product_cat ?>&per_page=<?= $per_page ?>&page=<?= $num ?>&field=<?= $field ?>&sort=<?= $sort ?>"><?= $num ?></a>
         </li>
+        <?php 
+                }
+            } else { ?>
+        <li class="page-item active"><a class="page-link"><?= $num ?></a></li>
+        <?php }
+        }
+        // Link to next page
+        if ($orderdata['currentPage'] < $orderdata['totalPages']) {
+            $next_page = $orderdata['currentPage'] + 1;
+            ?>
+        <li class="page-item"><a class="page-link page-link-next"
+                href="index.php?act=shop&product_cat=<?= $product_cat ?>&per_page=<?= $per_page ?>&page=<?= $next_page ?>&field=<?= $field ?>&sort=<?= $sort ?>">Next<span><i
+                        class="icon-long-arrow-right"></i></span></a></li>
+        <?php
+        }
+        // Link to last page
+        if ($orderdata['currentPage'] < $orderdata['totalPages'] - 2) {
+            $end_page = $orderdata['totalPages'];
+            ?>
+        <li class="page-item"><a class="page-link"
+                href="index.php?act=shop&product_cat=<?= $product_cat ?>&per_page=<?= $per_page ?>&page=<?= $end_page ?>&field=<?= $field ?>&sort=<?= $sort ?>">Last</a>
+        </li>
+        <?php
+        }
+        ?>
     </ul>
 </nav>
+<?php } ?>

@@ -6,28 +6,16 @@ class Load{
     {
         
     }
-    public function callView($filename,$data = []){
+    public function view($filename,$data = []){
         if(isset($data)){
             extract($data);
         }
-        if(strpos($filename,'admin',0) !== false){
-            require $filename.'.php';
-        }else{
-            require 'Views/'.$filename.'.php';
-        }
-        
+        require 'Views/my_account/adminLong/'.$filename.'.php';
     }
     
-    public function callModel($filename){
-        if (strpos($filename, 'oop') !== false) {
-            $filename = str_replace('oop/', '', $filename);
-            require 'Models/oop/' . $filename . '.php';
+    public function model($filename){
+        require 'Models/' . $filename . '.php';
             return new $filename();
-        } elseif (strpos($filename, 'dao') !== false) {
-            require 'Models/dao/' . $filename . '.php';
-        } else {
-            throw new Exception("Invalid filename: $filename");
-        }
     }
         
         
