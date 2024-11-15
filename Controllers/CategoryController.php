@@ -7,6 +7,7 @@ class CategoryController {
 
     public function __construct() {
         $this->categoryModel = new Category();
+        
     }
 
     // Tính tổng số sản phẩm cho một category và tất cả subcategories của nó

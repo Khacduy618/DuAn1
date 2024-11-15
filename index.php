@@ -3,6 +3,7 @@ session_start();
 ob_start();
 $mod = isset($_GET['act']) ? $_GET['act'] : "home";
 
+
 switch ($mod) {
     case 'home':
         require_once 'Controllers/HomeController.php';
@@ -102,6 +103,21 @@ switch ($mod) {
                 $controller_obj->list_cart();
                 break;
         }
+        break;
+    case 'adminLong':
+        if ( isset($_GET['act']) && isset($_GET['ctlr']) && isset($_GET['method']) ){
+            require_once __DIR__.'/Controllers/'.$_GET['ctlr'].'.php';
+            $controller_obj = new $_GET['ctlr']();
+            $action = $_GET['method'];
+            $controller_obj->$action();
+        }
+        else{
+            require_once __DIR__.'/Controllers/AdminLongController.php';
+            $controller_obj = new AdminLongController();
+            $controller_obj->index();
+        }
+        
+        
         break;
     case 'checkout':
         $act = isset($_GET['xuli']) ? $_GET['xuli'] : "list";
