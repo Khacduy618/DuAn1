@@ -22,6 +22,7 @@
                             <?php
                                 // Calculate the total number of products to display based on pagination
                                 $total_products = $orderdata['totalRecord'];
+                                $per_page =0;
                                 $current_start = ($orderdata['currentPage'] - 1) * $per_page + 1;
                                 $current_end = min($current_start + count($data) - 1, $total_products); // end index for current page
 

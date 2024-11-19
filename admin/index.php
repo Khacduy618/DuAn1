@@ -34,7 +34,36 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                     break;
             }
             break;
-        
+        case 'banner':
+            require_once('MVC/controllers/BannerController.php');
+            $controller_obj = new BannerController();
+            switch ($act) {
+                case 'list':
+                    $controller_obj->list();
+                    break;
+                case 'add':
+                    $controller_obj->add();
+                    break;
+                case 'store':
+                    $controller_obj->store();
+                    break;
+                case 'detail':
+                    $controller_obj->detail();
+                    break;
+                case 'delete':
+                    $controller_obj->delete();
+                    break;
+                case 'edit':
+                    $controller_obj->edit();
+                    break;
+                case 'update':
+                    $controller_obj->update();
+                    break;
+                default:
+                    $controller_obj->list();
+                    break;
+            }
+            break;
         case 'nguoidung':
             require_once('MVC/controllers/NguoiDungController.php');
             $controller_obj = new NguoiDungController();
@@ -65,9 +94,9 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                     break;
             }
             break;
-        case 'sanpham':
-            require_once('MVC/controllers/SanphamController.php');
-            $controller_obj = new SanphamController();
+        case 'product':
+            require_once('MVC/controllers/ProductController.php');
+            $controller_obj = new ProductController();
             switch ($act) {
                 case 'list':
                     $controller_obj->list();

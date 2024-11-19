@@ -8,10 +8,7 @@ class Cart extends Model
         $this->conn = pdo_get_connection();
     }
 
-    /**
-     * @throws Exception
-     */
-    public function addToCart($userEmail, $productId, $quantity): int
+    public function addToCart($userEmail, $productId, $quantity)
    {
     // Kiểm tra xem người dùng đã có cart chưa
     $checkCartSql = "SELECT cart_id FROM cart WHERE cart_userEmail = ?";

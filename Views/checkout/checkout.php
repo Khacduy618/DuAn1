@@ -39,13 +39,13 @@
                         </div><!-- End .row -->
 
                         <label>Company Name (Optional)</label>
-                        <input type="text" class="form-control" placeholder="<?=$address['address_name']?>" readonly>
+                        <input type="text" class="form-control" placeholder="<?=isset($address['address_name'])?>" readonly>
 
                         <label>City *</label>
-                        <input type="text" class="form-control" placeholder="<?=$address['address_city']?>" readonly>
+                        <input type="text" class="form-control" placeholder="<?=isset($address['address_city'])?>" readonly>
 
                         <label>Street address *</label>
-                        <input type="text" class="form-control" placeholder="<?=$address['address_street']?>" readonly>
+                        <input type="text" class="form-control" placeholder="<?=isset($address['address_street'])?>" readonly>
 
                         <!-- <div class="row">
                             <div class="col-sm-6">
@@ -124,7 +124,7 @@
                                     <?php }
                                 ?>
                                     <?php
-                                    $discount = $tong * ($coupon['coupon_discount'] / 100);
+                                    $discount = $tong * (isset($coupon['coupon_discount']) / 100);
                                     $total = $tong - $discount + $shipping;
                                     ?>
                                     <tr class="summary-subtotal">
@@ -139,7 +139,7 @@
                                             đ</td>
                                     </tr>
                                     <?php
-                                    if($coupon){
+                                    if(isset($coupon)){
                                 ?>
                                     <tr>
                                         <td>Coupon:</td>

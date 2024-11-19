@@ -49,7 +49,7 @@
                                             </li>
                                             <?php
                                                     if(isset($_SESSION['isLogin_Admin']) || isset($_SESSION['isLogin_Nhanvien'])){
-                                                        echo '<li><a href="admin/?mod=login">Trang quản lý</a></li>';
+                                                        echo '<li><a href="Admin/?mod=login">Trang quản lý</a></li>';
                                                     }
                                                 ?>
                                             <li><a href="?act=taikhoan&xuli=dangxuat">Đăng xuất</a>

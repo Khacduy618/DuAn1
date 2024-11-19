@@ -32,21 +32,15 @@ abstract class Dcontroller{
         }
     }
                                                                                                                                                                                                                                                         function kiem_tra_co_ky_tu_dat_biet($input){
-                                                                                                                                                                                                                                                        if (preg_match('/[\'^£$%&*()}{#~?><>,|=_+¬-]/', $input)) { 
-                                                                                                                                                                                                                                                                return true;
-                                                                                                                                                                                                                                                            } else {
-                                                                                                                                                                                                                                                                return false;
-                                                                                                                                                                                                                                                            }
-                                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                                        function kiem_tra_soluong_kytu($input){
-                                                                                                                                                                                                                                                            if (strlen($input)<=5) { 
-                                                                                                                                                                                                                                                                    return true;
-                                                                                                                                                                                                                                                                } else {
-                                                                                                                                                                                                                                                                    return false;
-                                                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                                        function check_input_space($input){
-                                                                                                                                                                                                                                                            if (preg_match('/[\'^£$%&*()}{#~?><>,|=_+¬-]/', $input)) { 
+                                                                                                                                                                                                                                                        if (preg_match('/[\'^£$%&*()}{#~?>
+<>,|=_+¬-]/', $input)) {
+    return true;
+    } else {
+    return false;
+    }
+    }
+    function kiem_tra_soluong_kytu($input){
+    if (strlen($input)<=5) { return true; } else { return false; } } function check_input_space($input){ if (preg_match('/[\'^£$%&*()}{#~?><>,|=_+¬-]/', $input)) { 
                                                                                                                                                                                                                                                                     return true;
                                                                                                                                                                                                                                                                 } else {
                                                                                                                                                                                                                                                                     return false;
