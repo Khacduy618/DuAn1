@@ -36,7 +36,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="../sanpham/">
+        <a class="nav-link" href="?mod=product">
             <span class="icon">
                 <ion-icon name="pricetags-outline"></ion-icon>
             </span>

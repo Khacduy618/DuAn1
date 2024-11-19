@@ -94,9 +94,9 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                     break;
             }
             break;
-        case 'sanpham':
-            require_once('MVC/controllers/SanphamController.php');
-            $controller_obj = new SanphamController();
+        case 'product':
+            require_once('MVC/controllers/ProductController.php');
+            $controller_obj = new ProductController();
             switch ($act) {
                 case 'list':
                     $controller_obj->list();
