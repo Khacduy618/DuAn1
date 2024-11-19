@@ -3,9 +3,12 @@
         <a href="#" class="nav-link">
             <span class="icon">
                 <div class="user">
+                    <img src="<?=$UPLOAD_URL.$_SESSION['nguoidung']['Hinh']?>" alt="">
                 </div>
             </span>
-            <span class="title"><?=$_SESSION['login']['user_name']?></span>
+            <span class="title"><?=$_SESSION['nguoidung']['Ten']?></span>
+
+
         </a>
     </li>
     <li class="nav-item">
@@ -57,7 +60,7 @@
         </a>
     </li>
     <?php
-        if($_SESSION['login']['user_role'] == 1 ){
+        if($_SESSION['nguoidung']['Quyen_ID'] == 1 ){
     ?>
     <li class="nav-item">
         <a class="nav-link" href="../nguoidung/">
