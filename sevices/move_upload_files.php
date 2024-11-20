@@ -5,7 +5,7 @@ header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Authorization, X-Requested-With");
 
 if ($_FILES['file']) {
-    $uploadDir = 'vue_admin/src/assets/uploads/';
+    $uploadDir = __DIR__.'/../uploads/';
     $fileName = basename($_FILES['file']['name']);
     $uploadFile = $uploadDir . $fileName;
 
@@ -13,7 +13,7 @@ if ($_FILES['file']) {
         $response = array(
             'success' => true,
             'filename' => $fileName,
-            'url' => '/src/assets/uploads/' . $fileName
+            'url' => $uploadDir. $fileName
         );
         echo json_encode($response);
     } else {

@@ -22,10 +22,12 @@ function pdo_execute($sql){
     try{
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
-        $stmt->execute($sql_args);
+        $result = $stmt->execute($sql_args);
+        return $result;
     }
     catch(PDOException $e){
         throw $e;
+        return false;
     }
     finally{
         unset($conn);

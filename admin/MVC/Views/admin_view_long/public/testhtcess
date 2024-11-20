@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteRule ^(assets|dist) - [L]
+RewriteRule ^ index.php [QSA,L]
