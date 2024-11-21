@@ -1,5 +1,9 @@
 <?php
+
 session_start();
+
+define("BASE_URL","http://localhost/DuAn1/"); 
+
 //1 mod cua switch, 1 act cuar switch con
 if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
     $mod = isset($_GET['mod']) ? $_GET['mod'] : "login";
