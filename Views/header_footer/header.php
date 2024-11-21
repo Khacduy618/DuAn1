@@ -35,11 +35,15 @@
                                 </div>
                             </li>
                             <?php
-                            if (isset($_SESSION['login'])) {
+                                if (isset($_SESSION['login'])) {
                             ?>
                             <li>
                                 <div class="header-dropdown">
                                     <a class="row align-items-center">
+                                        <div class="avatar">
+                                            <img src="<?=BASE_URL?>uploaded/<?=$_SESSION['login']['user_images']?>"
+                                                alt="User Avatar">
+                                        </div>
                                         <strong><span><?= $_SESSION['login']['user_name'] ?></span></strong>
                                     </a>
                                     <div class="header-menu">
@@ -48,19 +52,19 @@
                                             <li><a href="<?=$SITE_URL?>/taikhoan/capnhatTK.php">Cập nhật tài khoản</a>
                                             </li>
                                             <?php
-                                                    if(isset($_SESSION['isLogin_Admin']) || isset($_SESSION['isLogin_Nhanvien'])){
-                                                        echo '<li><a href="Admin/?mod=login">Trang quản lý</a></li>';
-                                                    }
-                                                ?>
-                                            <li><a href="?act=taikhoan&xuli=dangxuat">Đăng xuất</a>
-                                            </li>
+                                                if(isset($_SESSION['isLogin_Admin']) || isset($_SESSION['isLogin_Nhanvien'])){
+                                                    echo '<li><a href="Admin/?mod=login">Trang quản lý</a></li>';
+                                                }
+                                            ?>
+                                            <li><a href="?act=taikhoan&xuli=dangxuat">Đăng xuất</a></li>
                                         </ul>
-                                    </div><!-- End .dropdown-menu -->
-                                </div><!-- End .user-dropdown -->
+                                    </div>
+                                </div>
                             </li>
                             <?php } else { ?>
                             <li><a href="?act=taikhoan">Sign in / Sign up</a></li>
                             <?php } ?>
+
                         </ul>
                     </li>
                 </ul><!-- End .top-menu -->
