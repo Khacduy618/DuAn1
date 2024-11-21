@@ -72,9 +72,11 @@ switch ($act) {
     case "cart":
         require_once("cart/cart.php");
         break;
-    
-    case "blog":
-        require_once("blog/blog.php");
+    case "blog": 
+        require_once "blog/blog.php";
+        break;
+    case "blog_detail":
+        require_once "blog/blog_detail.php";
         break;
     default:
         require_once("error-404.php");

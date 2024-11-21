@@ -140,6 +140,21 @@ switch ($mod) {
                 break;
         }
         break;
+     case 'blog': 
+        require_once('Controllers/BlogController.php');
+        $controller_obj = new BlogController() ;
+        $controller_obj->Blog_View();
+        break; 
+    case 'blog_detail':
+        require_once('Controllers/BlogController.php');
+        $controller_obj = new BlogController() ;
+        $controller_obj->Blog_Detail();
+        break;
+    case 'comment':
+        require_once('Controllers/CommentController.php');
+        $controller_obj = new commentControlller() ;
+        $controller_obj->comment_exc(); 
+        break; 
     default:
         require_once 'Controllers/HomeController.php';
         $controller_obj = new HomeController();
