@@ -40,7 +40,8 @@ class LoginController
         $data = array(
             'user_name' =>    $_POST['user_name'],
             'user_password' => md5($_POST['user_password']),
-            'user_email'  =>   $_POST['user_email']
+            'user_email'  =>   $_POST['user_email'],
+            'user_images' => 'user.png',
         );
         foreach ($data as $key => $value) {
             if (strpos($value, "'") != false) {
