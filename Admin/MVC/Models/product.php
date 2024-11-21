@@ -1,7 +1,6 @@
 <?php
 require("model.php");
-class Product extends model
+class Product extends Model
 {
-    var $table = "products";
-    var $contents = "product_id";
+    
 }

@@ -3,6 +3,20 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
     $mod = isset($_GET['mod']) ? $_GET['mod'] : "login";
     $act = isset($_GET['act']) ? $_GET['act'] : "admin";
     switch ($mod) {
+    case 'review' : 
+        switch ($act) {
+        case 'list':
+            require_once('MVC/Views/review/list.php');
+            break;
+        case 'detail':
+            require_once('MVC/Views/review/detail.php');
+            break;
+        default:
+            require_once('MVC/Views/review/list.php');
+            break;
+        }
+        break;
+    
     case 'khuyenmai':
         switch ($act) {
         case 'list':

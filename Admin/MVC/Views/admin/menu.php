@@ -20,19 +20,11 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="../danhmuc/">
+        <a class="nav-link" href="?mod=categories/">
             <span class="icon">
                 <ion-icon name="list-circle-outline"></ion-icon>
             </span>
-            <span class="title">Danh mục</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="../loaisanpham/">
-            <span class="icon">
-                <ion-icon name="albums-outline"></ion-icon>
-            </span>
-            <span class="title">Loại sản phẩm</span>
+            <span class="title">Categories</span>
         </a>
     </li>
     <li class="nav-item">
@@ -40,61 +32,64 @@
             <span class="icon">
                 <ion-icon name="pricetags-outline"></ion-icon>
             </span>
-            <span class="title">Sản phẩm</span>
+            <span class="title">Product</span>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="../binhluan/">
+        <a class="nav-link" href="?mod=comment">
             <span class="icon">
                 <i class="fa-regular fa-comment fa-xl"></i>
             </span>
-            <span class="title">Bình luận</span>
+            <span class="title">Comment</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="?mod=review">
+            <span class="icon">
+                <ion-icon name="albums-outline"></ion-icon>
+            </span>
+            <span class="title">Review</span>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="../donhang/">
+        <a class="nav-link" href="?mod=bill">
             <span class="icon">
                 <i class="fa-solid fa-bag-shopping fa-xl"></i>
             </span>
-            <span class="title">Đơn hàng</span>
+            <span class="title">Bill</span>
         </a>
     </li>
-    <?php
-        if($_SESSION['nguoidung']['Quyen_ID'] == 1 ){
-    ?>
     <li class="nav-item">
-        <a class="nav-link" href="../nguoidung/">
+        <a class="nav-link" href="?mod=user">
             <span class="icon">
                 <ion-icon name="people-outline"></ion-icon>
             </span>
-            <span class="title">Khách hàng</span>
+            <span class="title">User</span>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="../vaitro/">
+        <a class="nav-link" href="?mod=role">
             <span class="icon">
                 <ion-icon name="accessibility-outline"></ion-icon>
             </span>
-            <span class="title">Vai trò</span>
+            <span class="title">Role</span>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="../thongke/">
+        <a class="nav-link" href="?mod=analytics">
             <span class="icon">
                 <i class="fa-solid fa-square-poll-vertical fa-xl"></i>
             </span>
-            <span class="title">Thống kê</span>
+            <span class="title">Analytics</span>
         </a>
     </li>
-    <?php
-    }
-    ?>
     <li class="nav-item">
-        <a class="nav-link" href="<?=$SITE_URL?>/trangchinh">
+        <a class="nav-link" href="../?mod=login">
             <span class="icon">
                 <ion-icon name="log-out-outline"></ion-icon>
             </span>
-            <span class="title">Trang chủ SHOP</span>
+            <span class="title">SHOP</span>
         </a>
     </li>
 </ul>

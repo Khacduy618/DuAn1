@@ -1,9 +1,28 @@
 <?php
 session_start();
+//1 mod cua switch, 1 act cuar switch con
 if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
     $mod = isset($_GET['mod']) ? $_GET['mod'] : "login";
     $act = isset($_GET['act']) ? $_GET['act'] : "admin";
     switch ($mod) {
+        case 'review':
+            require_once('MVC/controllers/ReviewController.php');
+            $controller_obj = new ReviewController();
+            switch ($act) {
+                case 'list':
+                    $controller_obj->list();
+                    break;
+                case 'detail':
+                    $controller_obj->detail();
+                    break;
+                case 'delete':
+                    $controller_obj->delete();
+                    break;
+                default:
+                    $controller_obj->list();
+                    break;
+            }
+            break;
         case 'danhmuc':
             require_once('MVC/controllers/DanhmucController.php');
             $controller_obj = new DanhmucController();
@@ -94,33 +113,33 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                     break;
             }
             break;
-        case 'product':
-            require_once('MVC/controllers/ProductController.php');
-            $controller_obj = new ProductController();
-            switch ($act) {
-                case 'list':
-                    $controller_obj->list();
-                    break;
-                case 'add':
-                    $controller_obj->add();
-                    break;
-                case 'store':
-                    $controller_obj->store();
-                    break;
-                case 'delete':
-                    $controller_obj->delete();
-                    break;
-                case 'edit':
-                    $controller_obj->edit();
-                    break;
-                case 'update':
-                    $controller_obj->update();
-                    break;
-                default:
-                    $controller_obj->list();
-                    break;
-            }
-            break;
+        // case 'product':
+        //     require_once('MVC/controllers/ProductController.php');
+        //     $controller_obj = new ProductController();
+        //     switch ($act) {
+        //         case 'list':
+        //             $controller_obj->list();
+        //             break;
+        //         case 'add':
+        //             $controller_obj->add();
+        //             break;
+        //         case 'store':
+        //             $controller_obj->store();
+        //             break;
+        //         case 'delete':
+        //             $controller_obj->delete();
+        //             break;
+        //         case 'edit':
+        //             $controller_obj->edit();
+        //             break;
+        //         case 'update':
+        //             $controller_obj->update();
+        //             break;
+        //         default:
+        //             $controller_obj->list();
+        //             break;
+        //     }
+        //     break;
         case 'khuyenmai':
             require_once('MVC/controllers/KhuyenmaiController.php');
             $controller_obj = new KhuyenmaiController();
@@ -241,6 +260,33 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                         break;
                 }
                 break;
+            case 'product':
+            require_once('MVC/controllers/ProductController.php');
+            $controller_obj = new ProductController();
+            switch ($act) {
+                case 'list':
+                    $controller_obj->list();
+                    break;
+                case 'add':
+                    $controller_obj->add();
+                    break;
+                case 'store':
+                    $controller_obj->store();
+                    break;
+                case 'delete':
+                    $controller_obj->delete();
+                    break;
+                case 'edit':
+                    $controller_obj->edit();
+                    break;
+                case 'update':
+                    $controller_obj->update();
+                    break;
+                default:
+                    $controller_obj->list();
+                    break;
+            }
+            break;
             case 'danhmuc':
                 require_once('MVC/controllers/DanhmucController.php');
                 $controller_obj = new DanhmucController();
@@ -287,14 +333,14 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                 }
                 break;
                 case 'login':
-                    require_once('MVC/controllers/LoginController.php');
-                    $controller_obj = new LoginController();
+                    require_once('MVC/controllers/AdminLongController.php');
+                    $controller_obj = new AdminLongController();
                     switch ($act) {
                         case 'admin':
-                            $controller_obj->admin();
+                            $controller_obj->index();
                             break;
                         default:
-                            $controller_obj->admin();
+                            $controller_obj->index();
                             break;
                     }
                     break;
