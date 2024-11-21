@@ -13,12 +13,14 @@ class LoginController
     }
     function login_action()
     {
+        
         $user_email = $_POST['user_email'];
         $user_password = md5($_POST['user_password']);
         if (strpos($user_email, "'") != false) {
             $user_email = str_replace("'", "\'", $user_email);
         }
         $this->login_model->login_action($user_email, $user_password);
+        
     }
     function dangky()
     {

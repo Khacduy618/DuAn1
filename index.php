@@ -3,13 +3,59 @@ session_start();
 ob_start();
 $mod = isset($_GET['act']) ? $_GET['act'] : "home";
 
+
 switch ($mod) {
     case 'home':
         require_once 'Controllers/HomeController.php';
         $controller_obj = new HomeController();
         $controller_obj->list();
         break;
-
+    case 'login':
+        if(!empty($_SESSION['isLogin_Admin']) && isset($_SESSION['login'])){
+            require_once 'Admin/MVC/Controllers/LoginController.php';
+            $controller_obj = new LoginController();
+            $controller_obj->admin();
+        }
+        elseif(!empty($_SESSION['isLogin_Nhanvien']) && isset($_SESSION['login'])){
+            switch($_SESSION['login']['user_role']){
+                case 3:
+                    require_once 'Admin/MVC/Controllers/AdminVyController.php';
+                    $controller_obj = new AdminVyController();
+                    $controller_obj->index();
+                    break;
+                case 4:
+                    require_once 'Admin/MVC/Controllers/AdminCuongController.php';
+                    $controller_obj = new AdminCuongController();
+                    $controller_obj->index();
+                    break;
+                case 5:
+                    require_once 'Admin/MVC/Controllers/AdminThanhController.php';
+                    $controller_obj = new AdminThanhController();
+                    $controller_obj->index();
+                    break;
+                case 6:
+                    require_once 'Admin/MVC/Controllers/AdminKhoaController.php';
+                    $controller_obj = new AdminKhoaController();
+                    $controller_obj->index();
+                    break;
+                case 9:
+                    if ( isset($_GET['act']) && isset($_GET['ctlr']) && isset($_GET['method']) ){
+                        require_once __DIR__.'/Admin/MVC/Controllers/'.$_GET['ctlr'].'.php';
+                        $controller_obj = new $_GET['ctlr']();
+                        $action = $_GET['method'];
+                        $controller_obj->$action();
+                    }
+                    else{
+                        require_once __DIR__.'/Admin/MVC/Controllers/AdminLongController.php';
+                        $controller_obj = new AdminLongController();
+                        $controller_obj->index();
+                    }
+                    break;
+            }
+        }else{
+            header('location: ?act=home');
+        }
+        break;
     case 'taikhoan':
         $act = isset($_GET['xuli']) ? $_GET['xuli'] : "taikhoan";
         require_once('Controllers/LoginController.php');
@@ -102,6 +148,21 @@ switch ($mod) {
                 $controller_obj->list_cart();
                 break;
         }
+        break;
+    case 'adminLong':
+        if ( isset($_GET['act']) && isset($_GET['ctlr']) && isset($_GET['method']) ){
+            require_once __DIR__.'/Controllers/'.$_GET['ctlr'].'.php';
+            $controller_obj = new $_GET['ctlr']();
+            $action = $_GET['method'];
+            $controller_obj->$action();
+        }
+        else{
+            require_once __DIR__.'/Controllers/AdminLongController.php';
+            $controller_obj = new AdminLongController();
+            $controller_obj->index();
+        }
+        
+        
         break;
     case 'checkout':
         $act = isset($_GET['xuli']) ? $_GET['xuli'] : "list";

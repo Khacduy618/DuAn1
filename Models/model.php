@@ -9,7 +9,7 @@ class Model
    function limit( $offset, $limit)
     {
         $sql = "SELECT * FROM $this->table ORDER BY $this->contents DESC LIMIT $offset, $limit";
-        return pdo_query($sql); // Chỉ bind tham số cho product_cat
+        return pdo_query($sql); 
     }
 
    function list(){
@@ -20,34 +20,7 @@ class Model
        $sql = "SELECT * FROM $this->table WHERE $this->contents = ?";
        return pdo_query_one($sql,$id);
    }
-   function delete($id): int
-   {
-       $sql = "DELETE FROM $this->table WHERE $this->contents = $id";
-       return pdo_execute($sql,$id);
-   }
-   function create($data): int
-   {
-       $f = "";
-       $v = "";
-       foreach($data as $key => $value){
-           $f.= $key.",";
-           $v.= "'".$value."',";
-       }
-       $f = trim($f,",");
-       $v = trim($v,",");
-       $sql = "INSERT INTO $this->table($f) VALUES($v)";
-       return pdo_execute($sql);
-   }
-   function update($data): int
-   {
-       $v = "";
-       foreach($data as $key => $value){
-           $v.= $key." = '". $value."',";
-       }
-       $v = trim($v,",");
-       $sql = "UPDATE $this->table SET  $v   WHERE $this->contents = " . $data[$this->contents];
-       return pdo_execute($sql, $data[$this->contents]);
-   }
+   
    
 
 }

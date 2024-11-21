@@ -14,15 +14,19 @@ class Login extends Model
             if($login['user_role'] == 1){
                 $_SESSION['isLogin_Admin'] = true;
                 $_SESSION['login'] = $login;
-            } else if($login['user_role'] == 2){
+
+            } else if($login['user_role'] >= 2){
                 $_SESSION['isLogin_Nhanvien'] = true;
                 $_SESSION['login'] = $login;
+
             } else {
                 $_SESSION['isLogin'] = true;
                 $_SESSION['login'] = $login;
             }
-            setcookie('msg', 'Đăng nhập thành công!', time() + 5);
             header('Location: ?mod=login');
+
+            setcookie('msg', 'Đăng nhập thành công!', time() + 5);
+
         } else {
             setcookie('msg1', 'Đăng nhập không thành công', time() + 5);
             header('Location: ?act=taikhoan#dangnhap');

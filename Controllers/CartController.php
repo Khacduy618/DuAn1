@@ -10,6 +10,7 @@ class CartController
     {
         $this->cartModel = new Cart();
         $this->addressModel = new Address();
+        
     }
 
     public function list_cart()
