@@ -43,5 +43,5 @@
 
 
 <div class="btn-back">
-    <a href="index.php">Quay lại</a>
+    <a href="?mod=review">Quay lại</a>
 </div>

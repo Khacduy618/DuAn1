@@ -3,10 +3,10 @@
         <a href="#" class="nav-link">
             <span class="icon">
                 <div class="user">
-                    <img src="<?=$UPLOAD_URL.$_SESSION['nguoidung']['Hinh']?>" alt="">
+                    <img src="<?=BASE_URL?>uploaded/<?=$_SESSION['login']['user_images']?>" alt="">
                 </div>
             </span>
-            <span class="title"><?=$_SESSION['nguoidung']['Ten']?></span>
+            <span class="title"><?=$_SESSION['login']['user_name']?></span>
 
 
         </a>
