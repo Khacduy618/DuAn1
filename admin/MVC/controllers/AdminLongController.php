@@ -7,6 +7,7 @@ class AdminLongController extends Dcontroller{
     private $table = "user";
     private $tableProduct = "products";
     private $tableCategoryProduct = "categories";
+    private $tableProductsDetails = "products_details";
     private $controllerHasError = 'Admin/?mod=product';
     private $part_upload = __DIR__."/../../../uploaded/"; //"assets/upload/user_imgs/" bản không team
     
@@ -159,7 +160,7 @@ class AdminLongController extends Dcontroller{
             $result = $model->call_update_user($this->table, $data, Session::get('useremail'));
             if($result){
                 $_GET['msg'] = "Sua du lieu thanh cong!";
-                header("Location: " . BASE_URL . '?mod=product&act=proFile');
+                header("Location: " . BASE_URL . 'Admin/?mod=product&act=proFile');
                 exit();
             }else{
                 $_GET['msg'] = "Sua du lieu that bai!";
@@ -199,9 +200,11 @@ class AdminLongController extends Dcontroller{
             }
         }
         public function list_product(){
-            $loginmodel = $this->load->model($this->model);
-            $result = $loginmodel->call_list_product_index($this->tableProduct);
+            $model = $this->load->model($this->model);
+            $result = $model->call_list_product_index($this->tableProduct);
+            // $resultDecsBox = $model->call_list_product_index_jion_detail($this->tableProduct,$this->tableProductsDetails);
             $this->load->view('admin/index',['product' => $result]);
+            // $this->load->view('admin/index',['product' => $result,'descbox' => $resultDecsBox]);
             $this->load->view('admin/menu');
             // $this->load->view('product/list',['product' => $result]);
             
@@ -259,10 +262,8 @@ class AdminLongController extends Dcontroller{
         public function add_category(){
             $model = $this->load->model($this->model);
             $result = $model->call_list_category_product($this->tableCategoryProduct);
-            $this->load->view('cpanel/header');
-            $this->load->view('cpanel/menu');
-            $this->load->view('cpanel/category/add_category',['categorySelectBox'=>$result]);
-            $this->load->view('cpanel/footer');
+            $this->load->view('admin/index',['categorySelectBox'=>$result]);
+            $this->load->view('admin/menu');
         }
         public function insert_category(){
             $model = $this->load->model($this->model);
@@ -279,7 +280,7 @@ class AdminLongController extends Dcontroller{
             $result = $model->call_insert_category($this->tableCategoryProduct,$data);
             if($result){
                 $_SESSION['msg'] = "Them du lieu thanh cong!";
-                header("Location: " . BASE_URL . '?mod=product&act=list_category');
+                header("Location: " . BASE_URL . 'Admin/?mod=category&act=list_category');
                 exit();
             }else{
                 $_SESSION['msg'] = "Them du lieu that bai!";
@@ -300,22 +301,20 @@ class AdminLongController extends Dcontroller{
             $result = $model->call_delete_category_soft($this->tableCategoryProduct,$data,$param);
             if($result){
                 $_GET['msg'] = "Xóa mềm danh mục thành công!";
-                header("Location: " . BASE_URL . '?mod=product&act=list_category');
+                header("Location: " . BASE_URL . 'Admin/?mod=category&act=list_category');
                 exit();
             }else{
                 $_GET['msg'] = "Xóa mềm danh mục thất bại!";
-                header("Location: " . BASE_URL . '?mod=product&act=list_category');
+                header("Location: " . BASE_URL . 'Admin/?mod=category&act=list_category');
                 exit();
             }
         }
         public function edit_category($param){
             $model = $this->load->model($this->model);
             $result = $model->call_categoryById($this->tableCategoryProduct,$param);
-            $this->load->view('cpanel/header');
-            $this->load->view('cpanel/menu');
             $resultSelectBox = $model->call_list_category_product($this->tableCategoryProduct);
-            $this->load->view('cpanel/category/edit_category',['categorybyid' => $result,'categorySelectBox'=>$resultSelectBox]);
-            $this->load->view('cpanel/footer');
+            $this->load->view('admin/index',['categorybyid' => $result,'categorySelectBox'=>$resultSelectBox]);
+            $this->load->view('admin/menu');
         }
         public function update_category($param){
             $model = $this->load->model($this->model);
@@ -334,7 +333,7 @@ class AdminLongController extends Dcontroller{
             $result = $model->call_update_category($this->tableCategoryProduct,$data,$param);
             if($result){
                 $_SESSION['msg'] = "Sua du lieu thanh cong!";
-                header("Location: " . BASE_URL . '?mod=product&act=list_category');
+                header("Location: " . BASE_URL . 'Admin/?mod=category&act=list_category');
                 exit();
             }else{
                 $_SESSION['msg'] = "Sua du lieu that bai!";

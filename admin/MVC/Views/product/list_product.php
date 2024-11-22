@@ -49,7 +49,7 @@
             <!-- <button class="btn btn-danger" @click="openAddModal">
                 <i class="bi bi-plus-circle me-2"></i>Add new item
             </button> -->
-            <a class="btn btn-danger" href="?mod=product&act=add_product">
+            <a class="btn btn-danger" href="?mod=product&act=add_product&param=true">
                 <i class="bi bi-plus-circle me-2"></i>Add new item
             </a>
         </div>
@@ -118,6 +118,7 @@
             <tbody>
                 <?php
                 // var_dump($product);
+                // var_dump($descbox);
                 $i = 0;
                 foreach($product as $key => $pro){
                     extract($pro);
@@ -135,7 +136,8 @@
                     <!-- <td>{{ item.name }}</td> -->
                     <td class="text-truncate" style="max-width: 300px">
                         <!-- {{ item.description }} -->
-                        lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+                          
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit culpa dolorum recusandae, ipsa quam a vel aspernatur tempore officia voluptatem. Asperiores ab, mollitia pariatur earum obcaecati inventore? Quam, fugit at.
                     </td>
                     <!-- <td>${{ formatPrice(item.price) }}</td> -->
                     <td><?php echo number_format($product_price * (100 - $product_discount) / 100,0,',','.').'đ'?>(<?=$product_discount?>%)</td> 

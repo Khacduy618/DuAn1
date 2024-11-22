@@ -215,7 +215,7 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
         break;
         case 'category':
             if ( isset($_GET['act']) && isset($_GET['param']) ){
-                require_once('MVC/Views/product/'.$act.'.php');
+                require_once('MVC/Views/category/'.$act.'.php');
             }
             elseif(isset($_GET['act'])){
                 $act = $_GET['act'];
