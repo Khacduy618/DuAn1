@@ -1,5 +1,5 @@
 <?php 
-    // dùng pdo thì require_once vào
+require_once 'model.php';
     class AdminKhoaModel {
 
     }

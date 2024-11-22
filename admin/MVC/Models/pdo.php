@@ -1,119 +1,77 @@
-<?php
-/**
- * Mở kết nối đến CSDL sử dụng PDO
- */
-function pdo_get_connection(){
-    $dburl = "mysql:host=s103d190-u2.interdata.vn;port=3306;dbname=Tede_Shop;charset=utf8";
-    $username = 'dichvun3';
-    $password = '3VwORS+87-jl4d';
-
-    $conn = new PDO($dburl, $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    return $conn;
-}
-/**
- * Thực thi câu lệnh sql thao tác dữ liệu (INSERT, UPDATE, DELETE)
- * @param string $sql câu lệnh sql
- * @param array $args mảng giá trị cung cấp cho các tham số của $sql
- * @throws PDOException lỗi thực thi câu lệnh
- */
-function pdo_execute($sql){
-    $sql_args = array_slice(func_get_args(), 1);
-    try{
-        $conn = pdo_get_connection();
-        $stmt = $conn->prepare($sql);
-        $result = $stmt->execute($sql_args);
-        return $result;
+<?php 
+   function pdo_get_connection()
+   {
+       $dburl = "mysql:host=s103d190-u2.interdata.vn;port=3306;dbname=Tede_Shop;charset=utf8";
+       $username = 'dichvun3';
+       $password = '3VwORS+87-jl4d'; 
+       try {
+           $conn = new PDO($dburl, $username, $password);
+           $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+           return $conn;
+       } catch (PDOException $e) {
+           echo 'Connection failed: ' . $e->getMessage();
+           
+        error_log('Database connection failed: ' . $e->getMessage());
+        return null;
+         
+       }
+   }  
+   function pdo_query($sql, ...$args)
+   {
+       try {
+           $conn = pdo_get_connection();
+           $stmt = $conn->prepare($sql);
+           $stmt->execute($args);
+           return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: []; // Trả về mảng rỗng nếu không có kết quả
+       } catch (PDOException $e) {
+           error_log($e->getMessage()); // Ghi lại lỗi
+           return []; // Trả về mảng rỗng trong trường hợp lỗi
+       } finally {
+           
+    if ($conn !== null) {
+        $conn = null; // Explicitly close the connection.
     }
-    catch(PDOException $e){
-        throw $e;
-        return false;
+    
+       }
+   }
+   
+   function pdo_query_one($sql, ...$args)
+   {
+       try {
+           $conn = pdo_get_connection();
+           $stmt = $conn->prepare($sql);
+           $stmt->execute($args);
+           return $stmt->fetch(PDO::FETCH_ASSOC) ?: null; // Trả về null nếu không có kết quả
+       } catch (PDOException $e) {
+           error_log($e->getMessage()); // Ghi lại lỗi
+           
+        error_log('Database connection failed: ' . $e->getMessage());
+        return null;
+         // Trả về null trong trường hợp lỗi
+       } finally {
+           
+    if ($conn !== null) {
+        $conn = null; // Explicitly close the connection.
     }
-    finally{
-        unset($conn);
+    
+       }
+   }
+   
+   function pdo_execute($sql, ...$args)
+   {
+       try {
+           $conn = pdo_get_connection();
+           $stmt = $conn->prepare($sql);
+           $stmt->execute($args);
+           return $stmt->rowCount(); // Trả về số hàng đã thay đổi
+       } catch (PDOException $e) {
+           error_log($e->getMessage()); // Ghi lại lỗi
+           return 0; // Trả về 0 trong trường hợp lỗi
+       } finally {
+           
+    if ($conn !== null) {
+        $conn = null; // Explicitly close the connection.
     }
-}
-/**
- * Thực thi câu lệnh sql truy vấn dữ liệu (SELECT)
- * @param string $sql câu lệnh sql
- * @param array $args mảng giá trị cung cấp cho các tham số của $sql
- * @return array mảng các bản ghi
- * @throws PDOException lỗi thực thi câu lệnh
- */
-function pdo_query($sql){
-    $sql_args = array_slice(func_get_args(), 1);
-    try{
-        $conn = pdo_get_connection();
-        $stmt = $conn->prepare($sql);
-        $stmt->execute($sql_args);
-        $rows = $stmt->fetchAll();
-        return $rows;
-    }
-    catch(PDOException $e){
-        throw $e;
-    }
-    finally{
-        unset($conn);
-    }
-}
-/**
- * Thực thi câu lệnh sql truy vấn một bản ghi
- * @param string $sql câu lệnh sql
- * @param array $args mảng giá trị cung cấp cho các tham số của $sql
- * @return array mảng chứa bản ghi
- * @throws PDOException lỗi thực thi câu lệnh
- */
-function pdo_query_one($sql){
-    $sql_args = array_slice(func_get_args(), 1);
-    try{
-        $conn = pdo_get_connection();
-        $stmt = $conn->prepare($sql);
-        $stmt->execute($sql_args);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $row;
-    }
-    catch(PDOException $e){
-        throw $e;
-    }
-    finally{
-        unset($conn);
-    }
-}
-/**
- * Thực thi câu lệnh sql truy vấn một giá trị
- * @param string $sql câu lệnh sql
- * @param array $args mảng giá trị cung cấp cho các tham số của $sql
- * @return giá trị
- * @throws PDOException lỗi thực thi câu lệnh
- */
-function pdo_query_value($sql){
-    $sql_args = array_slice(func_get_args(), 1);
-    try{
-        $conn = pdo_get_connection();
-        $stmt = $conn->prepare($sql);
-        $stmt->execute($sql_args);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        return array_values($row)[0];
-    }
-    catch(PDOException $e){
-        throw $e;
-    }
-    finally{
-        unset($conn);
-    }
-}
-function pdo_execute_id($sql){
-    $sql_args = array_slice(func_get_args(), 1);
-    try{
-        $conn = pdo_get_connection();
-        $stmt = $conn->prepare($sql);
-        $stmt->execute($sql_args);
-        return $conn->lastInsertId();
-    }
-    catch(PDOException $e){
-        throw $e;
-    }
-    finally{
-        unset($conn);
-    }
-}
+    
+       }
+   }

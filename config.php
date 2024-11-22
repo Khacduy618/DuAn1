@@ -3,7 +3,7 @@
  * khi muốn đổi thì thay cái param thứ 2 của các dòng vào _BASE_URL_ là được
  */
     define("BASE_URL","http://localhost/DuAn1/"); // này khi lên hosting
-    define("BASE_URL_Long","http://localhost:8080/du-an-voi-team/DuAn19-11/DuAn1/"); // này khi trên máy Long
+    define("BASE_URL_Long","http://localhost:8080/du-an-voi-team/DuAn1/"); // này khi trên máy Long
     define("BASE_URL_Duy","http://localhost/DuAn1/"); // này khi bên máy test của DUy
 
 

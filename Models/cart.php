@@ -66,18 +66,18 @@ class Cart extends Model
                 SET quantity = ? 
                 WHERE cart_id = (SELECT cart_id FROM cart WHERE cart_userEmail = ?) 
                 AND pro_id = ?";
-        return pdo_execute($sql, $quantity, $userEmail, $productId);
+         pdo_execute($sql, $quantity, $userEmail, $productId);
     }
 
     public function removeFromCart($userEmail, $productId): int
     {
         $sql = "DELETE FROM cart_item WHERE cart_id = (SELECT cart_id FROM cart WHERE cart_userEmail = ?) AND pro_id = ?";
-        return pdo_execute($sql, $userEmail, $productId);
+         pdo_execute($sql, $userEmail, $productId);
     }
 
     public function clearCart($userEmail): int
     {
         $sql = "DELETE FROM cart_item WHERE cart_id = (SELECT cart_id FROM cart WHERE cart_userEmail = ?)";
-        return pdo_execute($sql, $userEmail);
+         pdo_execute($sql, $userEmail);
     }
 }

@@ -5,7 +5,7 @@ abstract class Dcontroller{
     public function __construct()
     {
         $this->load = new Load();
-        define("BASE_URL","http://localhost:8080/du-an-voi-team/DuAn1-nkDuy/");
+        // define("BASE_URL","http://localhost:8080/DuAn1");
     }
     abstract public function render(string $nameView, array $model);
     
@@ -32,15 +32,21 @@ abstract class Dcontroller{
         }
     }
                                                                                                                                                                                                                                                         function kiem_tra_co_ky_tu_dat_biet($input){
-                                                                                                                                                                                                                                                        if (preg_match('/[\'^£$%&*()}{#~?>
-<>,|=_+¬-]/', $input)) {
-    return true;
-    } else {
-    return false;
-    }
-    }
-    function kiem_tra_soluong_kytu($input){
-    if (strlen($input)<=5) { return true; } else { return false; } } function check_input_space($input){ if (preg_match('/[\'^£$%&*()}{#~?><>,|=_+¬-]/', $input)) { 
+                                                                                                                                                                                                                                                        if (preg_match('/[\'^£$%&*()}{#~?><>,|=_+¬-]/', $input)) { 
+                                                                                                                                                                                                                                                                return true;
+                                                                                                                                                                                                                                                            } else {
+                                                                                                                                                                                                                                                                return false;
+                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                        function kiem_tra_soluong_kytu($input){
+                                                                                                                                                                                                                                                            if (strlen($input)<=5) { 
+                                                                                                                                                                                                                                                                    return true;
+                                                                                                                                                                                                                                                                } else {
+                                                                                                                                                                                                                                                                    return false;
+                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                        function check_input_space($input){
+                                                                                                                                                                                                                                                            if (preg_match('/[\'^£$%&*()}{#~?><>,|=_+¬-]/', $input)) { 
                                                                                                                                                                                                                                                                     return true;
                                                                                                                                                                                                                                                                 } else {
                                                                                                                                                                                                                                                                     return false;
@@ -54,7 +60,7 @@ abstract class Dcontroller{
                                                                                                                                                                                                                                                                 header('Location: '.BASE_URL.'/'. $ve_controller_nao);
                                                                                                                                                                                                                                                             }
                                                                                                                                                                                                                                                         }
-                                                                                                                                                                                                                                                                                                                                                                    function check_input_len($input){
+                                                                                                                                                                                                                                                                                                                                                                    protected function check_input_len($input){
                                                                                                                                                                                                                                                                                                                                                                         if (strlen($input)<=5) { 
                                                                                                                                                                                                                                                                                                                                                                                 return true;
                                                                                                                                                                                                                                                                                                                                                                             } else {
@@ -62,6 +68,51 @@ abstract class Dcontroller{
                                                                                                                                                                                                                                                                                                                                                                             }
                                                                                                                                                                                                                                                                                                                                                                     }
     
+
+                                                                                                                                                                                                                                                                                                                                                                    protected function  setSecurityHash($data_set){
+                                                                                                                                                                                                                                                                                                                                                                        return password_hash($data_set, PASSWORD_BCRYPT, ['cost' => 12]);
+                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                    protected function getSecurityHash($input,$storedHash){
+                                                                                                                                                                                                                                                                                                                                                                        return password_verify($input, $storedHash);
+                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                    protected function setSecurityEncryption($data_set, $key) {
+                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                        $encryptedData = openssl_encrypt($data_set, "AES-128-ECB", $key);
+                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                        $encryptedDataBase64 = base64_encode($encryptedData);
+                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                        return $encryptedDataBase64;
+                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                    protected function getSecurityEncryption($input, $key) {
+                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                        $encryptedData = base64_decode($input);
+                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                        $decryptedData = openssl_decrypt($encryptedData, "AES-128-ECB", $key);
+                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                        return $decryptedData;
+                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                    protected function isAesEncrypted($data_member) {
+                                                                                                                                                                                                                                                                                                                                                                        if (is_string($data_member)) {
+                                                                                                                                                                                                                                                                                                                                                                            return base64_decode($data_member, true) !== false && strlen($data_member) % 4 === 0;
+                                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                                        return false; 
+                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                    protected function decryptArray($data, $key) {
+                                                                                                                                                                                                                                                                                                                                                                        return array_map(function ($item) use ($key) {
+                                                                                                                                                                                                                                                                                                                                                                            if (is_array($item)) {
+                                                                                                                                                                                                                                                                                                                                                                                return $this->decryptArray($item, $key);
+                                                                                                                                                                                                                                                                                                                                                                                           }
+                                                                                                                                                                                                                                                                                                                                                                            if ($this->isAesEncrypted($item)) {
+                                                                                                                                                                                                                                                                                                                                                                                return $this->getSecurityEncryption($item, $key); 
+                                                                                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                                                                                            return $item; 
+                                                                                                                                                                                                                                                                                                                                                                        }, $data);
+                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                    
     #begin check and isset and init variable                                                                                                                                                                                                                                                                                                                                                   
     function cvldl($input,$soluongkytu,$ve_controller_nao){
         if (strlen($input)<= $soluongkytu) { 
@@ -122,7 +173,7 @@ abstract class Dcontroller{
         }
     }
     function ciipv($post_variable,$soluongkytu = 5, $ve_controller_nao) {
-        // kiem tra bien post co ton tai, ky tu dac biet, so luong ky
+        // kiem tra bien string post co ton tai, ky tu dac biet, so luong ky
         $post = $_POST[$post_variable];
         
         $cvld = (strlen($post)<= $soluongkytu)? false : true;
@@ -130,6 +181,46 @@ abstract class Dcontroller{
         
         if ($cvldl != false  && $cvld != false  &&isset($post) && !empty($post)) {
             return htmlspecialchars($post);
+        } else {
+            $redirect_url = BASE_URL . '/' . $ve_controller_nao;
+            $_SESSION['msg']= "Loi ciipv gia tri nhap tu form $post_variable";
+            header('Location: ' . $redirect_url);
+            exit;
+        }
+    }
+    function lciipv($post_variable,$soluongkytu = 5, $ve_controller_nao) {
+        // kiem tra bien post link co ton tai, ky tu dac biet, so luong ky
+        $post = $_POST[$post_variable];
+        
+        $cvld = (strlen($post)<= $soluongkytu)? false : true;
+        $cvldl = (preg_match('/[\'^£$%*()}{#~?><>,|=_+¬-]/', $post) == false )? true: false;
+        
+        if ($cvldl != false  && $cvld != false  &&isset($post) && !empty($post)) {
+            return $post;
+        } else {
+            $redirect_url = BASE_URL . '/' . $ve_controller_nao;
+            $_SESSION['msg']= "Loi lciipv gia tri nhap tu form";
+            header('Location: ' . $redirect_url);
+            exit;
+        }
+    }
+    function intpv($post_variable, $ve_controller_nao) {
+        // kiem tra bien post có là kiểu int ko, so nguyên
+        $post = $_POST[$post_variable];
+        $int_value = filter_var($post, FILTER_VALIDATE_INT);
+        if ($int_value === false) {
+            $redirect_url = BASE_URL . '/' . $ve_controller_nao;
+            $_SESSION['msg']= "Loi intpv gia tri nhap tu form ";
+            header('Location: ' . $redirect_url);
+            exit;
+        } else {
+            return $post;
+        }
+    }
+    function cccpv($post_variable1,$post_variable2, $ve_controller_nao) {
+        // kiem tra 2 biên post chat-string có giống nhau ko
+        if ($post_variable1 === $post_variable2) {
+            return true;
         } else {
             $redirect_url = BASE_URL . '/' . $ve_controller_nao;
             $_SESSION['msg']= "Loi gia tri nhap tu form";

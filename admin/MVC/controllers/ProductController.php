@@ -12,5 +12,6 @@ class ProductController
         $data = $this->product_model->All();
         require_once("MVC/Views/admin/index.php");
     }
+     
    
 }

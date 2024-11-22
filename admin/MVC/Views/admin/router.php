@@ -3,6 +3,20 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
     $mod = isset($_GET['mod']) ? $_GET['mod'] : "login";
     $act = isset($_GET['act']) ? $_GET['act'] : "admin";
     switch ($mod) {
+    case 'review' : 
+        switch ($act) {
+        case 'list':
+            require_once('MVC/Views/review/list.php');
+            break;
+        case 'detail':
+            require_once('MVC/Views/review/detail.php');
+            break;
+        default:
+            require_once('MVC/Views/review/list.php');
+            break;
+        }
+        break;
+    
     case 'khuyenmai':
         switch ($act) {
         case 'list':
@@ -60,21 +74,27 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
             break;
         }
         break;
-    case 'product':
-        switch ($act) {
-        case 'list':
-            require_once('MVC/Views/product/list.php');
-            break;
-        case 'add':
-            require_once('MVC/Views/product/add.php');
-            break;
-        case 'edit':
-            require_once('MVC/Views/product/edit.php');
-            break;
-        default:
-            require_once('MVC/Views/product/list.php');
-            break;
-        }
+        case 'product':
+            if ( isset($_GET['act']) && isset($_GET['param']) ){
+                require_once('MVC/Views/product/'.$act.'.php');
+            }
+            elseif(isset($_GET['act'])){
+                $act = $_GET['act'];
+                require_once('MVC/Views/product/'.$act.'.php');
+            }else{
+                require_once('MVC/Views/product/list_product.php');
+            }
+        break;
+        case 'category':
+            if ( isset($_GET['act']) && isset($_GET['param']) ){
+                require_once('MVC/Views/product/'.$act.'.php');
+            }
+            elseif(isset($_GET['act'])){
+                $act = $_GET['act'];
+                require_once('MVC/Views/category/'.$act.'.php');
+            }else{
+                require_once('MVC/Views/category/list_category.php');
+            }
         break;
     case 'loaisanpham':
         switch ($act) {
@@ -183,17 +203,26 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
         }
         break;
         case 'product':
-        switch ($act) {
-            case 'list':
-            require_once('MVC/Views/product/list.php');
-            break;
-            case 'detail':
-            require_once('MVC/Views/product/detail.php');
-            break;
-            default:
-            require_once('MVC/Views/product/list.php');
-            break;
-        }
+            if ( isset($_GET['act']) && isset($_GET['param']) ){
+                require_once('MVC/Views/product/'.$act.'.php');
+            }
+            elseif(isset($_GET['act'])){
+                $act = $_GET['act'];
+                require_once('MVC/Views/product/'.$act.'.php');
+            }else{
+                require_once('MVC/Views/product/list_product.php');
+            }
+        break;
+        case 'category':
+            if ( isset($_GET['act']) && isset($_GET['param']) ){
+                require_once('MVC/Views/product/'.$act.'.php');
+            }
+            elseif(isset($_GET['act'])){
+                $act = $_GET['act'];
+                require_once('MVC/Views/category/'.$act.'.php');
+            }else{
+                require_once('MVC/Views/category/list_category.php');
+            }
         break;
         case 'khuyenmai':
         switch ($act) {

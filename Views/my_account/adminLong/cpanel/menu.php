@@ -40,8 +40,9 @@
                         Danh mục Sản Phẩm
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownProductCategory">
-                        <li><a class="dropdown-item" href="<?php echo BASE_URL ?>/Product">Thêm</a></li>
-                        <li><a class="dropdown-item" href="<?php echo BASE_URL ?>/Product/list_category">Liệt Kê</a></li>
+                        <li><a class="dropdown-item" href="?act=adminLong&ctlr=AdminLongController&method=add_category">Thêm</a></li>
+                        <li><a class="dropdown-item" href="?act=adminLong&ctlr=AdminLongController&method=list_category">Liệt Kê</a></li>
+                        
                     </ul>
                 </li>
 
@@ -50,8 +51,8 @@
                         Sản Phẩm
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownProduct">
-                        <li><a class="dropdown-item" href="<?php echo BASE_URL ?>/Product/add_product">Thêm</a></li>
-                        <li><a class="dropdown-item" href="<?php echo BASE_URL ?>/Product/list_product">Liệt Kê</a></li>
+                        <li><a class="dropdown-item" href="?act=adminLong&ctlr=AdminLongController&method=add_product">Thêm</a></li>
+                        <li><a class="dropdown-item" href="?act=adminLong&ctlr=AdminLongController&method=list_product">Liệt Kê</a></li>
                     </ul>
                 </li>
 

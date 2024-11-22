@@ -158,26 +158,22 @@
         <div class="login-box">
             <h2>Login</h2>
             <form autocomplete="off" action="?act=adminLong&ctlr=AdminLongController&method=auttc_login" method="POST">
-                <?php
-
-                if(isset($msg)){
-                    echo '<span style="color:blue;font-weight:bold;">'.$msg.'</span>';
-                }
-                ?>
+                
                 <div class="input-box">
-                    <input type="text" name="username"  placeholder=" " required/>
-                    <label >Username</label>
+                    <input type="text" name="username"  placeholder="" required/>
+                    <label>Username</label>
                 </div>     
                 <div class="input-box">
                     <input type="password" name="password"  placeholder=" " required/>
                     <label >Password</label>
                 </div>
                 <div class="forgot-pass">
-                    <a href="#">Forgot your password?</a>
+                    <a href="#"><?php if(isset($_SESSION['msg'])){echo $_SESSION['msg'];}else{ echo 'Forgot your password?';}?></a>
                 </div>
+                
                 <button type="submit" name="btnlogin" value="Login"  class="btn">Login</button>
                 <div class="signup-link">
-                    <a href="<?php echo BASE_URL ?>/Login/sign_up">Signup</a>
+                    <a href="?act=adminLong&ctlr=AdminLongController&method=sign_up">Signup</a>
                 </div>
             </form>
         </div>
