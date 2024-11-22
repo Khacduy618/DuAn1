@@ -15,15 +15,18 @@ class Login extends Model
                 $_SESSION['isLogin_Admin'] = true;
                 $_SESSION['login'] = $login;
 
+            header('Location: /DuAn1/Admin');
             } else if($login['user_role'] >= 2){
                 $_SESSION['isLogin_Nhanvien'] = true;
                 $_SESSION['login'] = $login;
 
+               
+            header('Location: /DuAn1/Admin');
             } else {
                 $_SESSION['isLogin'] = true;
                 $_SESSION['login'] = $login;
+                header('Location: ?mod=login');
             }
-            header('Location: ?mod=login');
 
         } else {
             setcookie('msg1', 'Đăng nhập không thành công', time() + 5);
@@ -80,32 +83,5 @@ class Login extends Model
         }
         header('Location: ?act=taikhoan#dangky');
     }
-    function account()
-    {
-        $id = $_SESSION['login']['user_email'];
-        return $this->conn->query("SELECT * from user where user_email = $id")->fetch_assoc();
-    }
-    function update_account($data)
-    {
-        $v = "";
-        foreach ($data as $key => $value) {
-            $v .= $key . "='" . $value . "',";
-        }
-        $v = trim($v, ",");
-
-        $query = "UPDATE user SET  $v   WHERE  user_email = " . $_SESSION['login']['user_email'];
-
-        $result = pdo_execute($query);
-        
-        if ($result) {
-            setcookie('doimk', 'Cập nhật tài khoản thành công', time() + 2);
-        } else {
-            setcookie('doimk', 'Mật khẩu xác nhận không đúng', time() + 2);
-        }
-        header('Location: ?act=taikhoan&xuli=account#doitk');
-    }
-    function error()
-    {
-        header('location: ?act=errors');
-    }
+  
 }

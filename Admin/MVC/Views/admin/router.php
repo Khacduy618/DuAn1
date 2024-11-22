@@ -1,4 +1,5 @@
 <?php
+define("BASE_URL","http://localhost/DuAn1/"); 
 if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
     $mod = isset($_GET['mod']) ? $_GET['mod'] : "login";
     $act = isset($_GET['act']) ? $_GET['act'] : "admin";

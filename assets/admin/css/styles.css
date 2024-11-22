@@ -24,7 +24,10 @@ body {
   display: block;
 }
 
-
+a {
+  text-decoration: none !important;
+  color: #000000;
+}
 
 /* =============== sidebar ================ */
 
@@ -540,6 +543,22 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.frmcontent .table-responsive {
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 1rem;
+  box-shadow: 0 5px 8px rgba(73, 72, 72, 0.3);
+  background-color: #fff;
+}
+
+.button-item {
+  background: none;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  margin-right: 5px;
 }
 
 .table-responsive .hinhanh {
