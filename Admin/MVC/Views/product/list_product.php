@@ -1,3 +1,4 @@
+
 <div class="container-fluid">
     <!-- Header Section -->
     <div class="align-items-center mb-3">
@@ -45,37 +46,52 @@
                     <i class="bi bi-grid"></i>
                 </button>
             </div>
-            <button class="btn btn-danger" @click="openAddModal">
+            <!-- <button class="btn btn-danger" @click="openAddModal">
                 <i class="bi bi-plus-circle me-2"></i>Add new item
-            </button>
+            </button> -->
+            <a class="btn btn-danger" href="?mod=product&act=add_product&param=true">
+                <i class="bi bi-plus-circle me-2"></i>Add new item
+            </a>
         </div>
     </div>
 
     <!-- Loading State -->
-    <div v-if="loading" class="text-center py-5">
+    <!-- <div v-if="loading" class="text-center py-5">
         <div class="spinner-border text-primary" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
-    </div>
+    </div> -->
 
     <!-- Error State -->
-    <div v-else-if="error" class="alert alert-danger" role="alert">
+    <!-- <div v-else-if="error" class="alert alert-danger" role="alert">
         <i class="bi bi-exclamation-triangle me-2"></i>
         {{ error }}
         <button class="btn btn-sm btn-outline-danger ms-3" @click="retryLoading">
             Retry
         </button>
-    </div>
+    </div> -->
 
     <!-- Empty State -->
-    <div v-else-if="filtereditems.length === 0" class="text-center py-5">
+    <!-- <div v-else-if="filtereditems.length === 0" class="text-center py-5">
         <i class="bi bi-inbox display-1 text-muted"></i>
         <p class="mt-3 text-muted">No items found</p>
         <button class="btn btn-primary mt-2" @click="openAddModal">
             Add your first item
         </button>
-    </div>
+    </div> -->
 
+    <?php
+        if(!empty($_GET['msg'])){
+            $msg = unserialize(urldecode($_GET['msg']));
+            foreach($msg as $key => $value){
+                echo '<span style="color:blue;font-weight:bold">'.$value.'</span>';
+            }
+        }
+        if(!empty($_SESSION['msg'])){
+            echo '<span style="color:blue;font-weight:bold">'.$_SESSION['msg'].'</span>';
+            // unset($_SESSION['msg']);
+        }
+    ?>
     <!-- List View -->
     <div v-else-if="viewMode === 'list'" class="table-responsive">
         <table class="table align-middle">
@@ -84,11 +100,11 @@
                     <th @click="setSortBy('id')" class="cursor-pointer">
                         ID # <i class="bi" :class="getSortIcon('id')"></i>
                     </th>
-                    <th>Images</th>
+                    <th>Image </th>
                     <th @click="setSortBy('name')" class="cursor-pointer">
                         Name <i class="bi" :class="getSortIcon('name')"></i>
                     </th>
-                    <th>Description</th>
+                    <th>Description </th>
                     <th @click="setSortBy('price')" class="cursor-pointer">
                         Price <i class="bi" :class="getSortIcon('price')"></i>
                     </th>
@@ -100,20 +116,36 @@
                 </tr>
             </thead>
             <tbody>
+                <?php
+                // var_dump($product);
+                // var_dump($descbox);
+                $i = 0;
+                foreach($product as $key => $pro){
+                    extract($pro);
+                    $i++;
+                    if($product_status >=0 ){
+                ?>
                 <tr v-for="item in paginateditems" :key="item.id">
-                    <td>{{ item.id }}</td>
+                    <td><?= $i ?></td>
+                    <!-- <td>{{ item.id }}</td> -->
                     <td>
-                        <img :src="item.image" :alt="item.name" class="item-img" @error="handleImageError" />
+                        <!-- <img :src="item.image" :alt="item.name" class="item-img" @error="handleImageError" /> -->
+                        <img src="<?= BASE_URL ?>/uploaded/<?=$product_img ?>" height="100" width="100" :alt="item.name" class="item-img" @error="handleImageError">
                     </td>
-                    <td>{{ item.name }}</td>
+                    <td><?=$product_name?></td> 
+                    <!-- <td>{{ item.name }}</td> -->
                     <td class="text-truncate" style="max-width: 300px">
-                        {{ item.description }}
+                        <!-- {{ item.description }} -->
+                          
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit culpa dolorum recusandae, ipsa quam a vel aspernatur tempore officia voluptatem. Asperiores ab, mollitia pariatur earum obcaecati inventore? Quam, fugit at.
                     </td>
-                    <td>${{ formatPrice(item.price) }}</td>
+                    <!-- <td>${{ formatPrice(item.price) }}</td> -->
+                    <td><?php echo number_format($product_price * (100 - $product_discount) / 100,0,',','.').'đ'?>(<?=$product_discount?>%)</td> 
                     <td>
                         <span class="category-badge" :class="getCategoryClass(item.category)">
                             <i :class="getCategoryIcon(item.category)"></i>
-                            {{ item.category }}
+                            <!-- {{ item.category }} -->
+                            <?=$product_cat?>
                         </span>
                     </td>
                     <td>
@@ -121,7 +153,8 @@
                             <input class="status-switch-input" :id="'status' + item.id" type="checkbox"
                                 :checked="item.status" @change="toggleStatus(item)">
                             <label class="status-switch-label" :for="'status' + item.id">
-                                {{ item.status ? 'Available' : 'Unavailable' }}
+                                <!-- {{ item.status ? 'Available' : 'Unavailable' }} -->
+                                <?=$product_status == 1 ? 'Available' : 'Unavailable'?>
                             </label>
                         </div>
                     </td>
@@ -133,21 +166,33 @@
 
                         <!-- Action Menu Popup -->
                         <div v-if="activeMenu === item.id" class="action-menu shadow" @mouseleave="closeActionMenu">
-                            <button class="action-item" @click="viewDetails(item)">
+                            <!-- <button class="action-item" @click="viewDetails(item)">
                                 <i class="bi bi-eye-fill text-primary"></i>
-                                View Details
-                            </button>
-                            <button class="action-item" @click="openEditModal(item)">
+                                view Details
+                            </button> -->
+                            <!-- <button class="action-item" @click="openEditModal(item)">
                                 <i class="bi bi-pencil-fill text-success"></i>
                                 Edit
-                            </button>
-                            <button class="action-item" @click="confirmDelete(item)">
+                            </button> -->
+                            <div class="row">
+                                <div class="col-6">
+                                    <a class="btn btn-danger" href="?mod=product&act=delete_product&param=<?=$product_id ?>">delete</a> 
+                                </div>
+                                <div class="col-6">
+                                    <a class="btn btn-dark" href="?mod=product&act=edit_product&param=<?=$product_id ?>">edit</a> </td>
+                                </div>
+                            </div>
+                            <!-- <button class="action-item" @click="confirmDelete(item)">
                                 <i class="bi bi-trash-fill text-danger"></i>
                                 Delete
-                            </button>
+                            </button> -->
                         </div>
                     </td>
                 </tr>
+                <?php
+                        }
+                    }
+                ?>
             </tbody>
         </table>
     </div>

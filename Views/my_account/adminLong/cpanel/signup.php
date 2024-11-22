@@ -1,296 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"> boostrap -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
+    <title>Sign-Up</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&display=swap" rel="stylesheet"');
-        *{
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap');
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins',sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
-        body{
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             background: #1f293a;
-
+            color: #fff;
         }
-        .container-signup{
-            position: relative;
-            /*width: 256px;
-            height: 256px;*/
-            width: 500px;
-            height: 500px;
+        .container-signup {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-        }
-        .container-signup span{
-            position: absolute;
-            left: 0;
-            width: 32px;
-            height: 6px;
-            background: #2c4766;
+            padding: 20px;
             border-radius: 8px;
-            transform-origin: 128px;
-            transform: scale(2.2) rotate(calc(var(--i)*
-            (360deg / 50)));
-            animation: animateBlink 3s linear infinite;
-            animation-delay: calc(var(--i)* (3s /50));
+            background: #2c4766;
+            width: 350px;
         }
-
-        @keyframes animateBlink{
-            0%{
-                background: #0ef;
-            }
-            25%{
-                background: #2c4766;
-            }
-        }
-        .login-box{
-            position: absolute;
-            width: 400px;
-            /*background-color: red;*/
-        }
-        .login-box form{
-            width: 100%;
-            padding: 0 50px;
-        }
-        h2{
+        h2 {
             font-size: 2em;
             color: #0ef;
-            text-align: center;
-
+            margin-bottom: 20px;
         }
-        .input-box{
+        .input-box {
             position: relative;
-            margin: 25px 0;
-
-        }
-        .input-box input{
             width: 100%;
-            height: 50px;
+            margin-bottom: 20px;
+        }
+        .input-box input {
+            width: 100%;
+            padding: 10px;
             background: transparent;
             border: 2px solid #2c4766;
             outline: none;
-            border-radius: 40px;
+            border-radius: 25px;
             font-size: 1em;
             color: #fff;
-            padding: 0 20px;
-            transition: .5 ease;
+            transition: border-color 0.3s ease;
         }
-        /* ,
-        .input-box input:valid */
-        .input-box input:not(:placeholder-shown),
-        .input-box input:focus
-        {
+        .input-box input:focus, 
+        .input-box input:not(:placeholder-shown) {
             border-color: #0ef;
         }
-        .input-box label{
+        .input-box label {
             position: absolute;
             top: 50%;
-            left: 20px;
+            left: 15px;
             transform: translateY(-50%);
-            font-size: 1em;
             color: #fff;
             pointer-events: none;
-            transition: .5s ease;
+            transition: 0.3s;
+            font-size: 0.9em;
         }
-        
-        /* ~ <> + .input-box input:not(:placeholder-shown)~label <>
-        .input-box input:valid~label*/
-        .input-box input:not(:placeholder-shown) + label,
-        .input-box input:focus + label{
-            top: 1px;
-            font-size: .8em;
+        .input-box input:focus + label,
+        .input-box input:not(:placeholder-shown) + label {
+            top: -10px;
+            font-size: 0.75em;
             background: #1f293a;
-            padding: 0 6px;
+            padding: 0 5px;
             color: #0ef;
         }
-
-
-        
-        .btn{
+        .btn {
             width: 100%;
-            height: 45px;
+            padding: 10px;
             background: #0ef;
+            color: #1f293a;
+            font-weight: bold;
             border: none;
             outline: none;
-            border-radius: 40px;
+            border-radius: 25px;
             cursor: pointer;
             font-size: 1em;
-            color: #1f293a;
-            font-weight: 600;
+            transition: background 0.3s;
         }
-        
-        
+        .btn:hover {
+            background: #0bd;
+        }
+        .forgot-pass, .signup-link {
+            margin-top: 10px;
+            text-align: center;
+        }
+        .forgot-pass a, .signup-link a {
+            color: #0ef;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .forgot-pass a:hover, .signup-link a:hover {
+            text-decoration: underline;
+        }
+        .captcha-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #1f293a;
+            border-radius: 25px;
+        }
+        .captcha-box span {
+            font-weight: bold;
+            color: #0ef;
+        }
     </style>
 </head>
 <body>
-
     <div class="container-signup">
-        <div class="signup-box">
-            <h2>Sign-up</h2>
-            <form autocomplete="off" action="<?php echo BASE_URL ?>/signup/auttc_signup" method="POST">
-                <?php
-
-                // if(isset($msg)){
-                //     echo '<span style="color:blue;font-weight:bold;">'.$msg.'</span>';
-                // }
-                ?>
-                <ul>
-                    <li class="input-box">
-                        <input type="text" name="fullname"  placeholder=" " require  tabindex="1" />
-                        <label>Fullname</label>
-                    </li>
-                    <li class="input-box">
-                        <input type="text" name="username"  placeholder=" " require tabindex="2" />
-                        <label >Username</label>
-                    </li>
-                    <li class="input-box">
-                        <input type="password" name="password"  placeholder=" " require tabindex="3"/>
-                        <label >Password</label>
-                    </li>
-                    <li class="input-box">
-                        <input type="password" name="repeatpassword"  placeholder=" " require tabindex="4"/>
-                        <label >Repeat Password</label>
-                    </li>
-                    <li class="input-box">
-                        <input type="email" name="email"  placeholder=" " required tabindex="5"/>
-                        <label>Email</label>
-                    </li>
-                    <li class="input-box">
-                        <input type="number" name="phone"  placeholder=" " required tabindex="6"   />
-                        <label>Phone</label>
-                    </li>
-                    <li class="input-box">
-                        <input type="number" name="ID-card"  placeholder=" " required tabindex="6"  />
-                        <label>ID-card</label>
-                    </li>
-                    <li class="input-box">
-                        <textarea name="" cols="35" rows="5" ></textarea>
-                        <label>Address</label>
-                    </li>
-                    <li>
-                        <label for "captcha">Mã số bảo mật</label>
-                        <div id="code">
-                                <span id="txtCaptchaDiv" ></span>
-                                <input type="hidden" id="txtCaptcha" /><br />
-                                <input style="width:88px; background:none; border: 1px solid #999;" type="text" name="txtInput" id="txtInput"  />
-                        </div><!--end code-->
-                    </li>
-                    <li>
-                        <button type="submit" name="btnlogin" value="sign-up"  class="btn">sign-up</button>
-                        <button class="reset"  type="reset" class="btn">reset</button>
-                    </li>
-
-                </ul>
-
-            </form>
-        </div>
-        <script type="text/javascript">
-	
-
-        //Generates the captcha function    
-            var a = Math.ceil(Math.random() * 9)+ '';
-            var b = Math.ceil(Math.random() * 9)+ '';       
-            var c = Math.ceil(Math.random() * 9)+ '';  
-            var d = Math.ceil(Math.random() * 9)+ '';  
-            var e = Math.ceil(Math.random() * 9)+ '';  
+        <h2>Sign-Up</h2>
+        <form autocomplete="off" action="?act=adminLong&ctlr=AdminLongController&method=auttc_signup" method="POST">
+            <?php if(isset($msg)): ?>
+                <span style="color:blue;font-weight:bold;"><?php echo $msg; ?></span>
+            <?php endif; ?>
+            <div class="input-box">
+                <input type="text" name="fullname" placeholder=" " required>
+                <label>Full Name</label>
+            </div>
+            <div class="input-box">
+                <input type="email" name="email" placeholder=" " required>
+                <label>Email</label>
+            </div>
+            <div class="input-box">
+                <input type="text" name="username" placeholder=" " required>
+                <label>Username</label>
+            </div>
+            <div class="input-box">
+                <input type="password" name="password" placeholder=" " required>
+                <label>Password</label>
+            </div>
+            <div class="input-box">
+                <input type="password" name="confirmpassword" placeholder=" " required>
+                <label>Password Confirm</label>
+            </div>
             
-            var code = a + b + c + d + e;
-            document.getElementById("txtCaptcha").value = code;
-            document.getElementById("txtCaptchaDiv").innerHTML = code;	
-
-        </script>
-
-        <span style="--i:0;"></span>
-        <span style="--i:1;"></span>
-        <span style="--i:2;"></span>
-        <span style="--i:3;"></span>
-        <span style="--i:4;"></span>
-        <span style="--i:5;"></span>
-        <span style="--i:6;"></span>
-        <span style="--i:7;"></span>
-        <span style="--i:8;"></span>
-        <span style="--i:9;"></span>
-        <span style="--i:10;"></span>
-        <span style="--i:11;"></span>
-        <span style="--i:12;"></span>
-        <span style="--i:13;"></span>
-        <span style="--i:14;"></span>
-        <span style="--i:15;"></span>
-        <span style="--i:16;"></span>
-        <span style="--i:17;"></span>
-        <span style="--i:18;"></span>
-        <span style="--i:19;"></span>
-        <span style="--i:20;"></span>
-        <span style="--i:21;"></span>
-        <span style="--i:22;"></span>
-        <span style="--i:23;"></span>
-        <span style="--i:24;"></span>
-        <span style="--i:25;"></span>
-        <span style="--i:26;"></span>
-        <span style="--i:27;"></span>
-        <span style="--i:28;"></span>
-        <span style="--i:29;"></span>
-        <span style="--i:30;"></span>
-        <span style="--i:31;"></span>
-        <span style="--i:32;"></span>
-        <span style="--i:33;"></span>
-        <span style="--i:34;"></span>
-        <span style="--i:35;"></span>
-        <span style="--i:36;"></span>
-        <span style="--i:37;"></span>
-        <span style="--i:38;"></span>
-        <span style="--i:39;"></span>
-        <span style="--i:40;"></span>
-        <span style="--i:41;"></span>
-        <span style="--i:42;"></span>
-        <span style="--i:43;"></span>
-        <span style="--i:44;"></span>
-        <span style="--i:45;"></span>
-        <span style="--i:46;"></span>
-        <span style="--i:47;"></span>
-        <span style="--i:48;"></span>
-        <span style="--i:49;"></span>
-
+            
+            <div class="captcha-box">
+                <span id="txtCaptchaDiv"></span>
+                <input type="hidden" id="txtCaptcha">
+                <input type="text" name="captcha" id="txtInput" placeholder="Enter captcha" required>
+            </div>
+            <button type="submit" name="btnsignup" class="btn">Sign-Up</button>
+            <div class="forgot-pass">
+                <a href="#">Forgot Password?</a>
+            </div>
+            <div class="signup-link">
+                <a href="?act=adminLong&ctlr=AdminLongController&method=login">Already have an account? Log In</a>
+            </div>
+        </form>
     </div>
+
+    <script>
+        // Generates the captcha
+        const code = Array.from({ length: 5 }, () => Math.floor(Math.random() * 10)).join('');
+        document.getElementById("txtCaptcha").value = code;
+        document.getElementById("txtCaptchaDiv").textContent = code;
+    </script>
 </body>
 </html>
-
-
-<!--
-<table>
-                <tr>
-                    
-                    <td>
-                    <div class="input-group flex-nowrap">
-                        <span class="input-group-text" id="addon-wrapping">Username</span>
-                        <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-                    </div>
-                    </td>
-                </tr>
-                <tr>
-                    
-                    <td>
-                    <div class="input-group flex-nowrap">
-                        <span class="input-group-text" id="addon-wrapping">Password</span>
-                        <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="addon-wrapping">
-                    </div>
-                    </td>
-                </tr>
-                <tr id="btn-input">
-                    <td><input type="submit"  class="btn btn-outline-success" name="btnlogin" value="Login"></td>
-                    <td><input type="reset"  class="btn btn-outline-warning" name="btnreset" value="Reset"></td>
-                    
-                </tr>
-            </table>      
--->

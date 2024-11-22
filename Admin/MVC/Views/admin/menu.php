@@ -20,7 +20,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="?mod=categories/">
+        <a class="nav-link" href="?mod=category">
             <span class="icon">
                 <ion-icon name="list-circle-outline"></ion-icon>
             </span>

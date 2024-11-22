@@ -1,6 +1,6 @@
 <div class="row">
     <div class="row frmtitle">
-        <h1>DANH SÁCH TÀI KHOẢN</h1>
+        <h1>User Management</h1>
     </div>
     <div class="row mb-3  justify-content-around">
         <div class="col-md-3">

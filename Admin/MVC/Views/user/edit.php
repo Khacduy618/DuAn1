@@ -10,7 +10,7 @@ if (is_file($imgPath) && !empty($user['user_images'])) {
 
 <div class="row">
     <div class="row frmtitle">
-        <h1>CẬP NHẬT TÀI KHOẢN</h1>
+        <h1>Update User</h1>
     </div>
     <div class="row frmcontent">
         <form action="?mod=user&act=update" method="post" enctype="multipart/form-data">

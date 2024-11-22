@@ -2,7 +2,6 @@
 spl_autoload_register(function($class){
     include_once('./libs/'.$class.'.php');
 });
-require_once './libs/Dmodel.php';
 use Random\Engine\Secure;
 class AdminLongModel extends Dmodel{
     public function __construct(){
@@ -26,7 +25,7 @@ class AdminLongModel extends Dmodel{
         return $this->getConn()->select($sql,$data); 
     }
     // protected function check_ip(string $ip,array $session,array $cookie){
-        // return new AdminLongController();
+    //     return new AdminLongController();
     // }
 
     // category product
@@ -66,8 +65,9 @@ class AdminLongModel extends Dmodel{
 
     public function call_categoryById($table_category_product,$cond){
 
-        $sql = "SELECT * FROM $table_category_product WHERE $cond"; 
-
+        $sql = "SELECT * FROM $table_category_product WHERE category_id = :category_id"; 
+        $data = [':category_id' => $cond];
+        return $this->getConn()->select($sql,$data);
 
         return $this->getConn()->select($sql);
     }
@@ -91,19 +91,24 @@ class AdminLongModel extends Dmodel{
     */
 
     public function call_insert_category($table_category_product,$data){
-
-        
         return $this->getConn()->insert($table_category_product,$data);
     }
 
     public function call_update_category($table_category_product,$data,$cond){
 
-        return $this->getConn()->update($table_category_product,$data,$cond);
+        return $this->getConn()->update($table_category_product,$data,"category_id =".$cond);
     }
-
     public function call_delete_category($table_category_product,$cond){
 
         return $this->getConn()->delete($table_category_product,$cond);
+    }
+    public function call_delete_category_soft($table_category_product,$data,$cond){
+        // đang dùng xóa mềm
+        return $this->getConn()->update($table_category_product,$data,"category_id = ".$cond);
+    }
+    public function call_list_category_product($table_category_product){
+        $sql = "SELECT * FROM $table_category_product ORDER BY category_id DESC";
+        return $this->getConn()->select($sql); 
     }
     // category product end
 
@@ -163,7 +168,8 @@ class AdminLongModel extends Dmodel{
     }
 
     public function call_list_product_index($table_product){
-        $sql = "SELECT * FROM $table_product ORDER BY $table_product.id_product DESC "; 
+        $sql = "SELECT * FROM $table_product ORDER BY $table_product.product_id DESC "; 
+        // $sql = "SELECT * FROM $table_product ORDER BY $table_product.product_id DESC "; 
 
         return $this->getConn()->select($sql);
     }
@@ -202,24 +208,37 @@ class AdminLongModel extends Dmodel{
     }
 
     public function call_delete_product($table_product,$cond){
-
-        return $this->getConn()->delete($table_product,$cond);
+        // ko được dùng nhé xóa mềm thôi
+        return $this->getConn()->delete($table_product,"product_id = ".$cond);
     }
+    public function call_delete_product_soft($table_product,$data,$cond){
+        // đang dùng xóa mềm
+        return $this->getConn()->update($table_product,$data,"product_id = ".$cond);
+    }
+
 
     
 
     public function call_productById($table_product,$cond){
 
-        $sql = "SELECT * FROM $table_product WHERE $cond"; 
+        $sql = "SELECT * FROM $table_product WHERE product_id = :product_id"; 
+        $data = [':product_id' => $cond];
+        return $this->getConn()->select($sql,$data);
+        
+    }
+    public function call_productById_jion($table_product,$table_category_product,$cond){
 
-        return $this->getConn()->select($sql);
+        $sql = "SELECT * FROM $table_product,$table_category_product WHERE $table_product.product_cat=$table_category_product.category_id AND $table_product.product_id = :product_id"; 
+        $data = [':product_id' => $cond];
+        return $this->getConn()->select($sql,$data);
         
     }
 
     public function call_update_product($table_product,$data,$cond){
 
-        return $this->getConn()->update($table_product,$data,$cond);
+        return $this->getConn()->update($table_product,$data,"product_id = $cond");
     }
+
     // end product
 
     // order
@@ -292,6 +311,10 @@ class AdminLongModel extends Dmodel{
     // user
     public function call_update_user($table_user,$data,$cond){
         return $this->getConn()->update($table_user,$data,"user_email = '$cond'"); 
+    }
+    public function call_insert_user($table_user,$data){
+        
+        return $this->getConn()->insert($table_user,$data);
     }
     // user end
     

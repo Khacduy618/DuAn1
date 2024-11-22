@@ -10,12 +10,24 @@ class Load{
         if(isset($data)){
             extract($data);
         }
-        require 'Views/my_account/adminLong/'.$filename.'.php';
+        if(isset($_GET['mod'])){
+            require_once dirname(__DIR__).'/Admin/MVC/Views/'.$filename.'.php';
+        }
+        else{
+            require_once 'Views/my_account/adminLong/'.$filename.'.php';
+        }
     }
     
     public function model($filename){
-        require 'Models/' . $filename . '.php';
+        if(isset($_GET['mod'])){
+            require dirname(__DIR__).'/Admin/MVC/Models/'.$filename.'.php';
             return new $filename();
+        }
+        else{
+            require 'Models/' . $filename . '.php';
+            return new $filename();
+        }
+        
     }
         
         
