@@ -85,7 +85,7 @@
                         </div><!-- End .rating-container -->
 
                         <div class="product-price">
-                            $84.00
+                            <?=number_format($data['product_price'],0,",",".")?> đ
                         </div><!-- End .product-price -->
 
                         <div class="product-content">

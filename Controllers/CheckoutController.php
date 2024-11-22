@@ -23,9 +23,16 @@ class CheckoutController
                 $name = $_GET['coupon_name'];
                 $coupon = $this->checkout_model->coupon($name);
             };
-            
+            if (isset($_GET['cart_items'])) {
             $cartItems = $this->cartModel->getCartItems($userEmail);
-            
+            $selectedItemIds = $_GET['cart_items'];
+            $cartItems = array_filter($cartItems, function($item) use ($selectedItemIds) {
+                return in_array($item['cart_item_id'], $selectedItemIds);
+            });
+            }else{
+                setcookie('msg1', 'Vui lòng chọn ít nhất 1 sản phẩm để thanh toán', time() + 5);
+                header('location: ?act=cart');
+            }
             require_once 'Views/index.php';
         } else {
             header('location: ?act=taikhoan');

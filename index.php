@@ -2,8 +2,7 @@
 session_start();
 ob_start();
 
-//  define("BASE_URL","http://localhost/DuAn1/");
- define("BASE_URL","http://localhost/team/");
+ define("BASE_URL","http://localhost:8080/DuAn1/");
 
 $mod = isset($_GET['act']) ? $_GET['act'] : "home";
 
@@ -109,10 +108,18 @@ switch ($mod) {
         break;
     case 'adminLong':
         if ( isset($_GET['act']) && isset($_GET['ctlr']) && isset($_GET['method']) ){
-            require_once __DIR__.'/Controllers/'.$_GET['ctlr'].'.php';
-            $controller_obj = new $_GET['ctlr']();
-            $action = $_GET['method'];
-            $controller_obj->$action();
+            if(isset($_GET['param'])){
+                require_once __DIR__.'/Controllers/'.$_GET['ctlr'].'.php';
+                $controller_obj = new $_GET['ctlr']();
+                $action = $_GET['method'];
+                $param = $_GET['param'];
+                $controller_obj->$action($param);
+            }else{
+                require_once __DIR__.'/Controllers/'.$_GET['ctlr'].'.php';
+                $controller_obj = new $_GET['ctlr']();
+                $action = $_GET['method'];
+                $controller_obj->$action();
+            }
         }
         else{
             require_once __DIR__.'/Controllers/AdminLongController.php';

@@ -2,13 +2,51 @@
 
 session_start();
 
-// define("BASE_URL","http://localhost/DuAn1/"); 
-define("BASE_URL","http://localhost:8080/team/"); 
+define("BASE_URL","http://localhost:8080/DuAn1/"); 
+
 //1 mod cua switch, 1 act cuar switch con
 if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
     $mod = isset($_GET['mod']) ? $_GET['mod'] : "login";
     $act = isset($_GET['act']) ? $_GET['act'] : "admin";
     switch ($mod) {
+        case 'product':
+                spl_autoload_register(function($class){
+                    include_once __DIR__.'/../libs/'.$class.'.php';
+                });
+                if ( isset($_GET['act']) && isset($_GET['param']) ){
+                    require_once __DIR__.'/MVC/Controllers/'.'AdminLongController'.'.php';
+                    $controller_obj = new AdminLongController();
+                    $action = $_GET['act'];
+                    $param = $_GET['param'];
+                    $controller_obj->$action($param);
+                }
+                else{
+                    require_once __DIR__.'/MVC/Controllers/'.'AdminLongController'.'.php';
+                    $controller_obj = new AdminLongController();
+                    // $action = $_GET['act'];
+                    $action = 'list_product';
+                    $controller_obj->$action();
+                }
+                break;
+        case 'category':
+            spl_autoload_register(function($class){
+                include_once __DIR__.'/../libs/'.$class.'.php';
+            });
+            if ( isset($_GET['act']) && isset($_GET['param']) ){
+                require_once __DIR__.'/MVC/Controllers/'.'AdminLongController'.'.php';
+                $controller_obj = new AdminLongController();
+                $action = $_GET['act'];
+                $param = $_GET['param'];
+                $controller_obj->$action($param);
+            }
+            else{
+                require_once __DIR__.'/MVC/Controllers/'.'AdminLongController'.'.php';
+                $controller_obj = new AdminLongController();
+                // $action = $_GET['act'];
+                $action = 'list_category';
+                $controller_obj->$action();
+            }
+            break;
         case 'review':
             require_once('MVC/controllers/ReviewController.php');
             $controller_obj = new ReviewController();
@@ -27,115 +65,38 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                     break;
             }
             break;
-        // case 'danhmuc':
-        //     require_once('MVC/controllers/DanhmucController.php');
-        //     $controller_obj = new DanhmucController();
-        //     switch ($act) {
-        //         case 'list':
-        //             $controller_obj->list();
-        //             break;
-        //         case 'add':
-        //             $controller_obj->add();
-        //             break;
-        //         case 'store':
-        //             $controller_obj->store();
-        //             break;
-        //         case 'detail':
-        //             $controller_obj->detail();
-        //             break;
-        //         case 'delete':
-        //             $controller_obj->delete();
-        //             break;
-        //         case 'edit':
-        //             $controller_obj->edit();
-        //             break;
-        //         case 'update':
-        //             $controller_obj->update();
-        //             break;
-        //         default:
-        //             $controller_obj->list();
-        //             break;
-        //     }
-        //     break;
-        // case 'banner':
-        //     require_once('MVC/controllers/BannerController.php');
-        //     $controller_obj = new BannerController();
-        //     switch ($act) {
-        //         case 'list':
-        //             $controller_obj->list();
-        //             break;
-        //         case 'add':
-        //             $controller_obj->add();
-        //             break;
-        //         case 'store':
-        //             $controller_obj->store();
-        //             break;
-        //         case 'detail':
-        //             $controller_obj->detail();
-        //             break;
-        //         case 'delete':
-        //             $controller_obj->delete();
-        //             break;
-        //         case 'edit':
-        //             $controller_obj->edit();
-        //             break;
-        //         case 'update':
-        //             $controller_obj->update();
-        //             break;
-        //         default:
-        //             $controller_obj->list();
-        //             break;
-        //     }
-        //     break;
-        // case 'nguoidung':
-        //     require_once('MVC/controllers/NguoiDungController.php');
-        //     $controller_obj = new NguoiDungController();
-        //     switch ($act) {
-        //         case 'list':
-        //             $controller_obj->list();
-        //             break;
-        //         case 'detail':
-        //             $controller_obj->detail();
-        //             break;
-        //         case 'add':
-        //             $controller_obj->add();
-        //             break;
-        //         case 'store':
-        //             $controller_obj->store();
-        //             break;
-        //         case 'delete':
-        //             $controller_obj->delete();
-        //             break;
-        //         case 'edit':
-        //             $controller_obj->edit();
-        //             break;
-        //         case 'update':
-        //             $controller_obj->update();
-        //             break;
-        //         default:
-        //             $controller_obj->list();
-        //             break;
-        //     }
-        //     break;
-        case 'product':
-            spl_autoload_register(function($class){
-                include_once __DIR__.'/../libs/'.$class.'.php';
-            });
-            if ( isset($_GET['act']) && isset($_GET['param']) ){
-                require_once __DIR__.'/MVC/Controllers/'.'AdminLongController'.'.php';
-                $controller_obj = new AdminLongController();
-                $action = $_GET['act'];
-                $param = $_GET['param'];
-                $controller_obj->$action($param);
-            }
-            else{
-                require_once __DIR__.'/MVC/Controllers/'.'AdminLongController'.'.php';
-                $controller_obj = new AdminLongController();
-                // $action = $_GET['act'];
-                $action = 'list_product';
-                $controller_obj->$action();
+        
+        case 'user':
+            require_once('MVC/controllers/AdminVyController.php');
+            $controller_obj = new AdminVyController();
+            switch ($act) {
+                case 'list':
+                    $controller_obj->list();
+                    break;
+                case 'detail':
+                    // $controller_obj->detail();
+                    break;
+                case 'add':
+                    $controller_obj->add();
+                    break;
+                case 'store':
+                    $controller_obj->store();
+                    break;
+                case 'delete':
+                    $controller_obj->delete();
+                    break;
+                case 'edit':
+                    $controller_obj->edit();
+                    break;
+                case 'update':
+                    $controller_obj->update();
+                    break;
+                default:
+                    $controller_obj->list();
+                    break;
             }
             break;
+        
         // case 'khuyenmai':
         //     require_once('MVC/controllers/KhuyenmaiController.php');
         //     $controller_obj = new KhuyenmaiController();
@@ -241,22 +202,7 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
         $mod = isset($_GET['mod']) ? $_GET['mod'] : "login";
         $act = isset($_GET['act']) ? $_GET['act'] : "admin";
         switch ($mod) {
-            // case 'loaisanpham':
-            //     require_once('MVC/controllers/LoaisanphamController.php');
-            //     $controller_obj = new LoaisanphamController();
-            //     switch ($act) {
-            //         case 'list':
-            //             $controller_obj->list();
-            //             break;
-            //         case 'detail':
-            //             $controller_obj->detail();
-            //             break;
-            //         default:
-            //             $controller_obj->list();
-            //             break;
-            //     }
-            //     break;
-            case 'product':
+           case 'product':
                 spl_autoload_register(function($class){
                     include_once __DIR__.'/../libs/'.$class.'.php';
                 });
@@ -294,51 +240,6 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                     $controller_obj->$action();
                 }
                 break;
-            // case 'danhmuc':
-            //     require_once('MVC/controllers/DanhmucController.php');
-            //     $controller_obj = new DanhmucController();
-            //     switch ($act) {
-            //         case 'list':
-            //             $controller_obj->list();
-            //             break;
-            //         case 'detail':
-            //             $controller_obj->detail();
-            //             break;
-            //         default:
-            //             $controller_obj->list();
-            //             break;
-            //     }
-            //     break;
-            // case 'sanpham':
-            //     require_once('MVC/controllers/SanphamController.php');
-            //     $controller_obj = new SanphamController();
-            //     switch ($act) {
-            //         case 'list':
-            //             $controller_obj->list();
-            //             break;
-            //         case 'detail':
-            //             $controller_obj->detail();
-            //             break;
-            //         default:
-            //             $controller_obj->list();
-            //             break;
-            //     }
-            //     break;
-            // case 'khuyenmai':
-            //     require_once('MVC/controllers/KhuyenmaiController.php');
-            //     $controller_obj = new KhuyenmaiController();
-            //     switch ($act) {
-            //         case 'list':
-            //             $controller_obj->list();
-            //             break;
-            //         case 'detail':
-            //             $controller_obj->detail();
-            //             break;
-            //         default:
-            //             $controller_obj->list();
-            //             break;
-            //     }
-            //     break;
                 case 'login':
                     require_once('MVC/controllers/LoginController.php');
                     $controller_obj = new LoginController();
@@ -351,27 +252,6 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                             break;
                     }
                     break;
-            // case 'hoadon':
-            //     require_once('MVC/controllers/HoadonController.php');
-            //     $controller_obj = new HoadonController();
-            //     switch ($act) {
-            //         case 'list':
-            //             $controller_obj->list();
-            //             break;
-            //         case 'chitiet':
-            //             $controller_obj->chitiet();
-            //             break;
-            //         case 'delete':
-            //             $controller_obj->delete();
-            //             break;
-            //         case 'xetduyet':
-            //             $controller_obj->xetduyet();
-            //             break;
-            //         default:
-            //             $controller_obj->list();
-            //             break;
-            //     }
-            //     break;
             default:
             header('location: ?mod=login');
                 // require_once('MVC/controllers/LoginController.php');

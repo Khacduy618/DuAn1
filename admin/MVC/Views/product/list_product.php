@@ -104,7 +104,7 @@
                     <th @click="setSortBy('name')" class="cursor-pointer">
                         Name <i class="bi" :class="getSortIcon('name')"></i>
                     </th>
-                    <th>Description </th>
+                    <th colspan="2">Description </th>
                     <th @click="setSortBy('price')" class="cursor-pointer">
                         Price <i class="bi" :class="getSortIcon('price')"></i>
                     </th>
@@ -134,10 +134,19 @@
                     </td>
                     <td><?=$product_name?></td> 
                     <!-- <td>{{ item.name }}</td> -->
-                    <td class="text-truncate" style="max-width: 300px">
+                    <td class="text-truncate" colspan="2" style="max-width: 300px">
                         <!-- {{ item.description }} -->
                           
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit culpa dolorum recusandae, ipsa quam a vel aspernatur tempore officia voluptatem. Asperiores ab, mollitia pariatur earum obcaecati inventore? Quam, fugit at.
+                        <?=$screen_cam?> <br>
+                        <?=$os?> <br>
+                        <?=$gpu?> <br>
+                        <?=$cpu?> <br>
+                        <?=$pin?> <br>
+                        <?=$colors?> <br>
+                        <?=$sizes?> <br>
+                        <?=$ram?> <br>
+                        <?=$rom?> <br>
+                        <?=$bluetooth?> <br>
                     </td>
                     <!-- <td>${{ formatPrice(item.price) }}</td> -->
                     <td><?php echo number_format($product_price * (100 - $product_discount) / 100,0,',','.').'đ'?>(<?=$product_discount?>%)</td> 
@@ -145,7 +154,7 @@
                         <span class="category-badge" :class="getCategoryClass(item.category)">
                             <i :class="getCategoryIcon(item.category)"></i>
                             <!-- {{ item.category }} -->
-                            <?=$product_cat?>
+                            <?=$category_name?>
                         </span>
                     </td>
                     <td>

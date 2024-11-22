@@ -10,7 +10,7 @@ class Category extends Model {
                 (SELECT COUNT(*) FROM products WHERE product_cat = c.category_id) as product_count
                 FROM categories c
                 ORDER BY 
-                    IF(c.parent_id IS NULL, c.category_id, c.parent_id),
+                    IF(c.parent_id = 0, c.category_id, c.parent_id),
                     c.category_id";
         return pdo_query($sql);
     }

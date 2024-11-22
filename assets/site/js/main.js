@@ -751,6 +751,55 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
+    $('.update-cart-form').on('submit', function (e) {
+        e.preventDefault();
+        var form = $(this);
+
+        $.ajax({
+            url: '?act=cart&xuli=update',
+            method: 'POST',
+            data: form.serialize(),
+            success: function (response) {
+                alert('Cart updated successfully!');
+                location.reload();
+            },
+            error: function (xhr, status, error) {
+                alert('Failed to update cart. Please try again.');
+                console.error('Error:', error);
+            }
+        });
+    });
+    //select all cart item
+    $('#select-all').on('change', function () {
+        $('.checkboxes').prop('checked', $(this).prop('checked'));
+    });
+    //check out 
+    $('form[action="?act=checkout"]').on('submit', function (e) {
+        var $form = $(this);
+        var selectedItems = $('.checkboxes:checked');
+        $form.find('input[name="cart_items[]"]').remove();
+        var uniqueItemIds = [];
+        selectedItems.each(function () {
+            var itemId = $(this).val();
+            if (uniqueItemIds.indexOf(itemId) === -1) {
+                uniqueItemIds.push(itemId);
+                $form.children(
+                    $('<input>')
+                        .attr('type', 'hidden')
+                        .attr('name', 'cart_items[]')
+                        .val(itemId)
+                );
+            }
+        });
+    });
+
+    // Confirm order
+    $('#form_thanhtoan').on('submit', function (e) {
+        if (!confirm('Bạn có chắc chắn muốn đặt hàng?')) {
+            e.preventDefault();
+        }
+    });
+
     if (document.getElementById('newsletter-popup-form')) {
         setTimeout(function () {
             var mpInstance = $.magnificPopup.instance;
@@ -781,27 +830,5 @@ $(document).ready(function () {
     }
 });
 
-document.getElementById('form_thanhtoan').addEventListener('submit', function (event) {
-    var confirmation = confirm('Bạn có chắc chắn muốn đặt hàng?');
-    if (!confirmation) {
-        event.preventDefault();
-    }
-});
 
-document.querySelectorAll('.update-cart-form').forEach(form => {
-    form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const formData = new FormData(this);
-        fetch('?act=cart&xuli=update', {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.text())
-            .then(data => {
-                // Cập nhật giao diện hoặc hiển thị thông báo
-                alert('Cart updated successfully!');
-                location.reload(); // Hoặc cập nhật động số lượng hiển thị
-            })
-            .catch(error => console.error('Error:', error));
-    });
-});
+

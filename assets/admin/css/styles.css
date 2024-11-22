@@ -20,11 +20,14 @@ body {
 }
 
 /* === search === */
-.advance{
-    display: block;
+.advance {
+  display: block;
 }
 
-
+a {
+  text-decoration: none !important;
+  color: #000000;
+}
 
 /* =============== sidebar ================ */
 
@@ -132,7 +135,7 @@ body {
 /* =============== navbar ================ */
 .navbar {
   position: fixed;
-  width: 230px;
+  width: 200px;
   height: 100%;
   background: var(--primary);
   border-left: 10px solid var(--primary);
@@ -165,7 +168,7 @@ body {
 }
 
 .navbar ul li:nth-child(1) {
-  margin-top: 10px;
+  margin-top: 40px;
   margin-bottom: 30px;
   pointer-events: none;
 }
@@ -246,8 +249,8 @@ body {
 /* ===================== main ===================== */
 .main {
   position: absolute;
-  width: calc(100% - 220px);
-  left: 240px;
+  width: calc(100% - 200px);
+  left: 200px;
   min-height: 100vh;
   background: var(--white);
   transition: 0.5s;
@@ -541,19 +544,41 @@ body {
   height: 100%;
   object-fit: cover;
 }
-.table-responsive .hinhanh{
+
+.frmcontent .table-responsive {
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 1rem;
+  box-shadow: 0 5px 8px rgba(73, 72, 72, 0.3);
+  background-color: #fff;
+}
+
+.button-item {
+  background: none;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  margin-right: 5px;
+}
+
+.table-responsive .hinhanh {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
-.table-striped.p-detail{
+
+.table-striped.p-detail {
   width: 100%;
 }
-tbody.product-detail td:nth-child(1),tbody.product-detail td:nth-child(3) {
+
+tbody.product-detail td:nth-child(1),
+tbody.product-detail td:nth-child(3) {
   font-weight: bold;
 }
-tbody.product-detail td{
+
+tbody.product-detail td {
   padding: 10px;
 }
+
 .recentCustomers table tr td {
   padding: 12px 10px;
 }
@@ -620,10 +645,11 @@ tbody.product-detail td{
 
 /* ====================== Responsive Design ========================== */
 @media (max-width: 991px) {
-  .table-responsive .hinhanh{
+  .table-responsive .hinhanh {
     grid-template-columns: 1fr 1fr;
     height: auto;
   }
+
   .graphBox {
     grid-template-columns: 1fr;
     height: auto;
@@ -632,15 +658,18 @@ tbody.product-detail td{
   .graphBoxTK1 {
     grid-template-columns: 1fr;
   }
-    .action-exc{
-        display: grid;
-        grid-auto-columns: 1fr;
-        gap:10px;
-    }
-    .action-exc a.col-2{
-        width: 200px;
 
-    }
+  .action-exc {
+    display: grid;
+    grid-auto-columns: 1fr;
+    gap: 10px;
+  }
+
+  .action-exc a.col-2 {
+    width: 200px;
+
+  }
+
   .navbar {
     left: -300px;
   }
@@ -713,11 +742,13 @@ tbody.product-detail td{
     left: initial;
   }
 }
-form.example{
-    position: relative;
-    display: block;
-    margin-bottom: 50px;
+
+form.example {
+  position: relative;
+  display: block;
+  margin-bottom: 50px;
 }
+
 form.example input[type=text] {
   position: absolute;
   padding: 10px;
@@ -728,6 +759,7 @@ form.example input[type=text] {
   border-radius: 10px;
   background: #f1f1f1;
 }
+
 form.example button {
   position: absolute;
   right: 5px;

@@ -34,7 +34,7 @@
                             href="?act=product&id=<?=$value['product_id']?>"><?=$value['product_name']?></a></h3>
                     <!-- End .product-title -->
                     <div class="product-price">
-                        <?=$value['product_price']?>
+                        <?=number_format($value['product_price'],0,",",".")?> đ
                     </div><!-- End .product-price -->
                     <div class="ratings-container">
                         <div class="ratings">

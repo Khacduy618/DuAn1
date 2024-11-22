@@ -173,17 +173,19 @@ class AdminLongModel extends Dmodel{
 
         return $this->getConn()->select($sql);
     }
-    public function call_list_product_index_jion($table_product,$table_category_product){
+    public function call_list_product_index_jion($table_product,$table_category_product,$table_products_details){
         $sql = "SELECT * FROM $table_product
-        join $table_category_product on ON $table_product.product_cat=$table_category_product.category_id 
-         ORDER BY $table_product.product_id DESC "; 
+        join $table_category_product ON $table_product.product_cat=$table_category_product.category_id 
+        join $table_products_details ON $table_product.product_id=$table_products_details.pro_id
+         ORDER BY $table_product.product_cat DESC "; 
         // $sql = "SELECT * FROM $table_product ORDER BY $table_product.product_id DESC "; 
 
         return $this->getConn()->select($sql);
     }
     public function call_list_product_index_jion_detail($table_product,$table_product_detail){
         $sql = "SELECT * FROM $table_product 
-        JOIN $table_product_detail ON $table_product.product_id=$table_product_detail.pro_id"; 
+        JOIN $table_product_detail ON $table_product.product_id=$table_product_detail.pro_id
+         ORDER BY $table_product.product_cat DESC ";
         // $sql = "SELECT * FROM $table_product ORDER BY $table_product.product_id DESC "; 
         return $this->getConn()->select($sql);
     }

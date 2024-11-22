@@ -1,5 +1,5 @@
 <?php 
-    require_once("Admin/MVC/Models/AdminThanhModel.php");
+    require_once("MVC/Models/AdminThanhModel.php");
     class AdminThanhController {
 
         public function index()

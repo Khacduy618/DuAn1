@@ -11,25 +11,36 @@
         </ol>
     </div><!-- End .container -->
 </nav><!-- End .breadcrumb-nav -->
-
+<?php if(isset($_COOKIE['msg1'])): ?>
+<div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+    <strong><?php echo htmlspecialchars($_COOKIE['msg1']); ?></strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<?php endif; ?>
 <div class="page-content">
     <div class="cart">
         <div class="container">
             <div class="row">
                 <div class="col-lg-9">
-                    <table class="table table-cart table-mobile">
-                        <thead>
-                            <tr>
-                                <th>Product</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Total</th>
-                                <th></th>
-                            </tr>
-                        </thead>
 
-                        <tbody>
-                            <?php
+                    <table class="table table-cart table-mobile">
+                        <form id="cartForm" action="?act=checkout" method="GET">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" onchange="selectAllCheckboxes()" name="select-all"
+                                            id="select-all"></th>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <?php
 							if (isset($cartItems)) {
                                 $tong = 0;
                                 $shipping = 20000;
@@ -40,56 +51,54 @@
                                     $tong+=$ttien; 
                                     $checkout = $tong + $shipping;
                             ?>
-                            <tr>
-                                <td class="product-col">
-                                    <div class="product">
-                                        <figure class="product-media">
-                                            <img src="uploaded/<?=$value['product_img']?>" alt="Product image">
-                                        </figure>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="cart_items[]" id="<?=$value['cart_item_id']?>"
+                                            class="checkboxes" value="<?=$value['cart_item_id']?>">
+                                    </td>
+                                    <td class="product-col">
+                                        <label for="<?=$value['cart_item_id']?>">
+                                            <div class="product">
+                                                <figure class="product-media">
+                                                    <img src="uploaded/<?=$value['product_img']?>" alt="Product image">
+                                                </figure>
 
-                                        <h3 class="product-title">
-                                            <a
-                                                href="?act=product&id=<?=$value['pro_id']?>"><?= $value['product_name'] ?></a>
-                                        </h3><!-- End .product-title -->
-                                    </div><!-- End .product -->
-                                </td>
-                                <td class="price-col"><?=number_format($value['product_price'],0,",",".")?> đ</td>
-                                <td class="quantity-col">
-                                    <div class="cart-product-quantity">
-                                        <input type="number" class="form-control" value="<?= $value['quantity'] ?>"
-                                            min="1" max="10" step="1" data-decimals="0" required>
-                                    </div><!-- End .cart-product-quantity -->
-                                </td>
-                                <td class="total-col"><?=number_format($ttien,0,",",".")?> đ</td>
-                                <td class="remove-col"><a class="btn-remove"
-                                        href="?act=cart&xuli=delete&product_id=<?= $value['pro_id'] ?>"><i
-                                            class="icon-close"></i></a>
-                                </td>
-                            </tr>
-                            <?php }
+                                                <h3 class="product-title">
+                                                    <a
+                                                        href="?act=product&id=<?=$value['pro_id']?>"><?= $value['product_name'] ?></a>
+                                                </h3><!-- End .product-title -->
+                                            </div><!-- End .product -->
+                                        </label>
+                                    </td>
+                                    <td class="price-col"><label
+                                            for="<?=$value['cart_item_id']?>"><?=number_format($value['product_price'],0,",",".")?>
+                                            đ</label></td>
+                                    <td class="quantity-col">
+                                        <div class="cart-product-quantity">
+                                            <input type="number" class="form-control" value="<?= $value['quantity'] ?>"
+                                                min="1" max="10" step="1" data-decimals="0" required>
+                                        </div><!-- End .cart-product-quantity -->
+                                    </td>
+                                    <td class="total-col"><label
+                                            for="<?=$value['cart_item_id']?>"><?=number_format($ttien,0,",",".")?>
+                                            đ</label></td>
+                                    <td class="remove-col"><a class="btn-remove"
+                                            href="?act=cart&xuli=delete&product_id=<?= $value['pro_id'] ?>"><i
+                                                class="icon-close"></i></a>
+                                    </td>
+                                </tr>
+                                <?php }
 							} else{?>
-                            <tr>
-                                <td colspan="5" class="text-center">No products in the cart.</td>
-                            </tr>
-                            <?php
+                                <tr>
+                                    <td colspan="5" class="text-center">No products in the cart.</td>
+                                </tr>
+                                <?php
                             }
                             ?>
-                        </tbody>
+                            </tbody>
                     </table><!-- End .table table-wishlist -->
 
                     <div class="cart-bottom">
-                        <div class="cart-discount">
-                            <form action="#">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" required placeholder="coupon code">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-primary-2" type="submit"><i
-                                                class="icon-long-arrow-right"></i></button>
-                                    </div><!-- .End .input-group-append -->
-                                </div><!-- End .input-group -->
-                            </form>
-                        </div><!-- End .cart-discount -->
-
                         <a href="#" class="btn btn-outline-dark-2"><span>UPDATE CART</span><i
                                 class="icon-refresh"></i></a>
                     </div><!-- End .cart-bottom -->
@@ -164,11 +173,11 @@
                                 </tr><!-- End .summary-total -->
                             </tbody>
                         </table><!-- End .table table-summary -->
-                        <form action="" method="GET">
-                            <input type="hidden" name="act" value="checkout">
-                            <input type="hidden" name="shipping" value="<?=$shipping?>">
-                            <button type='submit' class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO
-                                CHECKOUT</button>
+
+                        <input type="hidden" name="act" value="checkout">
+                        <input type="hidden" name="shipping" value="<?=$shipping?>">
+                        <button type='submit' class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO
+                            CHECKOUT</button>
                         </form>
                     </div><!-- End .summary -->
 
