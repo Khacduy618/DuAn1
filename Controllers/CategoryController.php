@@ -66,7 +66,7 @@ class CategoryController {
                 // Check if category has children
                 $hasChildren = false;
                 foreach ($data as $child) {
-                    if ($child['parent_id'] == $value['category_id']) {
+                    if ($child['parent_id'] == $value['category_id'] || $value['parent_id'] === 0) {
                         $hasChildren = true;
                         break;
                     }

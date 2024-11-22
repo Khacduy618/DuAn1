@@ -6,7 +6,7 @@ class Login extends Model
 
     function login_action($user_email, $user_password)
     {
-        $query = "SELECT * from user WHERE user_email = ? AND user_password = ?";
+        $query = "SELECT * from user WHERE user_email = ? AND user_password = ? AND user_status = 1";
         
         $login = pdo_query_one($query, $user_email, $user_password);
 
@@ -24,8 +24,6 @@ class Login extends Model
                 $_SESSION['login'] = $login;
             }
             header('Location: ?mod=login');
-
-            setcookie('msg', 'Đăng nhập thành công!', time() + 5);
 
         } else {
             setcookie('msg1', 'Đăng nhập không thành công', time() + 5);

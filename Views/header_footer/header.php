@@ -81,7 +81,7 @@
                     <i class="icon-bars"></i>
                 </button>
 
-                <a href="index.html" class="logo">
+                <a href="?act=home" class="logo">
                     <img src="uploaded/logo500x500.png" alt="Tede Logo" width="105" height="25">
                 </a>
             </div><!-- End .header-left -->

@@ -12,7 +12,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="../trangchinh/">
+        <a class="nav-link" href="?mod=login">
             <span class="icon">
                 <ion-icon name="home-outline"></ion-icon>
             </span>
@@ -36,11 +36,27 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="?mod=comment">
+        <a class="nav-link" href="?mod=coupon">
+            <span class="icon">
+                <ion-icon name="cart-outline"></ion-icon>
+            </span>
+            <span class="title">Coupon</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="?mod=user">
+            <span class="icon">
+                <ion-icon name="people-outline"></ion-icon>
+            </span>
+            <span class="title">User</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="?mod=blog">
             <span class="icon">
                 <i class="fa-regular fa-comment fa-xl"></i>
             </span>
-            <span class="title">Comment</span>
+            <span class="title">Blog</span>
         </a>
     </li>
 
@@ -60,14 +76,7 @@
             <span class="title">Bill</span>
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="?mod=user">
-            <span class="icon">
-                <ion-icon name="people-outline"></ion-icon>
-            </span>
-            <span class="title">User</span>
-        </a>
-    </li>
+    <?php if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true)  {?>
     <li class="nav-item">
         <a class="nav-link" href="?mod=role">
             <span class="icon">
@@ -84,6 +93,7 @@
             <span class="title">Analytics</span>
         </a>
     </li>
+    <?php } ?>
     <li class="nav-item">
         <a class="nav-link" href="../?mod=login">
             <span class="icon">

@@ -73,7 +73,7 @@
                         <h3 class="product-title"><a href="#"><?=$item['product_name'];?> </a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
-                            <?=$item['product_price'];?>
+                            <?=number_format($item['product_price'],0,",",".")?> đ
                         </div><!-- End .product-price -->
                         <div class="ratings-container">
                             <div class="ratings">
@@ -155,7 +155,7 @@
                         <h3 class="product-title"><a href="#"><?=$item['product_name'];?> </a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
-                            <?=$item['product_price'];?>
+                            <?=number_format($item['product_price'],0,",",".")?> đ
                         </div><!-- End .product-price -->
                         <div class="ratings-container">
                             <div class="ratings">
@@ -237,7 +237,7 @@
                         <h3 class="product-title"><a href="#"><?=$item['product_name'];?> </a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
-                            <?=$item['product_price'];?>
+                            <?=number_format($item['product_price'],0,",",".")?> đ
                         </div><!-- End .product-price -->
                         <div class="ratings-container">
                             <div class="ratings">

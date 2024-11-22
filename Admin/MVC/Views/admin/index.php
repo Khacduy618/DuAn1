@@ -27,7 +27,7 @@
         <?php require 'menu.php' ?>
     </nav>
     <main class="main">
-        <div class="topbar">
+        <div class="topbar container-fluid">
             <div class="toggle">
                 <ion-icon name="menu-outline"></ion-icon>
             </div>
