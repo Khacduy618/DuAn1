@@ -1,18 +1,17 @@
 <?php
-define("BASE_URL","http://localhost/DuAn1/"); 
 if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
     $mod = isset($_GET['mod']) ? $_GET['mod'] : "login";
     $act = isset($_GET['act']) ? $_GET['act'] : "admin";
     switch ($mod) {
          case 'product':
             if ( isset($_GET['act']) && isset($_GET['param']) ){
-                require_once('MVC/Views/product/'.$act.'.php');
+                require_once('Admin/MVC/Views/product/'.$act.'.php');
             }
             elseif(isset($_GET['act'])){
                 $act = $_GET['act'];
-                require_once('MVC/Views/product/'.$act.'.php');
+                require_once('Admin/MVC/Views/product/'.$act.'.php');
             }else{
-                require_once('MVC/Views/product/list_product.php');
+                require_once('Admin/MVC/Views/product/list_product.php');
             }
         break;
         case 'category':
