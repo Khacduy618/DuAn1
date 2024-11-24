@@ -1,5 +1,7 @@
 <?php
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 session_start();
 
 define("BASE_URL","http://localhost/DuAn1/"); 
@@ -157,27 +159,39 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
         //             break;
         //     }
         //     break;
-        // case 'hoadon':
-        //     require_once('MVC/controllers/HoadonController.php');
-        //     $controller_obj = new HoadonController();
-        //     switch ($act) {
-        //         case 'list':
-        //             $controller_obj->list();
-        //             break;
-        //         case 'chitiet':
-        //             $controller_obj->chitiet();
-        //             break;
-        //         case 'delete':
-        //             $controller_obj->delete();
-        //             break;
-        //         case 'xetduyet':
-        //             $controller_obj->xetduyet();
-        //             break;
-        //         default:
-        //             $controller_obj->list();
-        //             break;
-        //     }
-        //     break;
+         case 'bills':
+             require_once('MVC/controllers/BillController.php');
+             $controller_obj = new BillController();
+             switch ($act) {
+                 case 'list':
+                     $controller_obj->listBills();
+                     break;
+                 case 'detail':
+                     $controller_obj->detail();
+                     break;
+                 case 'archived':
+                     $controller_obj->archivedBills();
+                     break;
+                 case 'delete':
+                     $controller_obj->deleteBill();
+                     break;
+                 case 'deleted':
+                     $controller_obj->listDeletedBills();
+                     break;
+                 case 'status':
+                     $controller_obj->status();
+                     break;
+                 case 'restore_deleted':
+                     $controller_obj->restoreBillDeleted();
+                     break;
+                 case 'restore_archived':
+                     $controller_obj->restoreBillArchived();
+                     break;
+                 default:
+                     $controller_obj->listBills();
+                     break;
+             }
+             break;
             case 'login':
                 require_once('MVC/controllers/LoginController.php');
                 $controller_obj = new LoginController();

@@ -23,7 +23,7 @@ class ReviewController {
                 $productName = 'khong co san pham';
             }
             $comments = $this->review_model->commentFindByProId($id);
-            require_once  'MVC/Views/admin/index.php';  
+            require_once  'MVC/Views/admin/index.php';
             
         } else {
             echo 'Product ID không hợp lệ!';

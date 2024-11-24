@@ -37,7 +37,7 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                     require_once('MVC/Views/user/add.php');
                     break;
                 case 'detail':
-                    require_once('MVC/Views/user/detail.php');
+                    require_once('MVC/Views/user/details.php');
                     break;
                 case 'edit':
                     require_once('MVC/Views/user/edit.php');
@@ -56,7 +56,7 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                     require_once('MVC/Views/blog/add.php');
                     break;
                 case 'detail':
-                    require_once('MVC/Views/blog/detail.php');
+                    require_once('MVC/Views/blog/details.php');
                     break;
                 case 'edit':
                     require_once('MVC/Views/blog/edit.php');
@@ -72,7 +72,7 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                     require_once('MVC/Views/review/list.php');
                     break;
                 case 'detail':
-                    require_once('MVC/Views/review/detail.php');
+                    require_once('MVC/Views/review/details.php');
                     break;
                 default:
                     require_once('MVC/Views/review/list.php');
@@ -80,16 +80,25 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                 }
             break;
         
-        case 'bill':
+        case 'bills':
             switch ($act) {
                 case 'list':
-                    require_once('MVC/Views/bill/list.php');
+                    require_once('MVC/Views/bills/list.php');
                     break;
-                case 'chitiet':
-                    require_once('MVC/Views/bill/detail.php');
+                case 'detail':
+                    require_once('MVC/Views/bills/details.php');
+                    break;
+                case 'status':
+                    require_once('MVC/Views/bills/status.php');
+                    break;
+                case 'deleted':
+                    require_once('MVC/Views/bills/deleted.php');
+                    break;
+                case 'archived':
+                    require_once('MVC/Views/bills/archived.php');
                     break;
                 default:
-                    require_once('MVC/Views/bill/list.php');
+                    require_once('MVC/Views/bills/list.php');
                     break;
                 }
             break;
@@ -103,7 +112,7 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                 require_once('MVC/Views/role/add.php');
                 break;
             case 'detail':
-                require_once('MVC/Views/role/detail.php');
+                require_once('MVC/Views/role/details.php');
                 break;
             case 'edit':
                 require_once('MVC/Views/role/edit.php');
@@ -122,7 +131,7 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                 require_once('MVC/Views/analytics/add.php');
                 break;
             case 'detail':
-                require_once('MVC/Views/analytics/detail.php');
+                require_once('MVC/Views/analytics/details.php');
                 break;
             case 'edit':
                 require_once('MVC/Views/analytics/edit.php');
@@ -183,7 +192,7 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                     require_once('MVC/Views/user/add.php');
                     break;
                 case 'detail':
-                    require_once('MVC/Views/user/detail.php');
+                    require_once('MVC/Views/user/details.php');
                     break;
                 case 'edit':
                     require_once('MVC/Views/user/edit.php');
@@ -202,7 +211,7 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                     require_once('MVC/Views/blog/add.php');
                     break;
                 case 'detail':
-                    require_once('MVC/Views/blog/detail.php');
+                    require_once('MVC/Views/blog/details.php');
                     break;
                 case 'edit':
                     require_once('MVC/Views/blog/edit.php');
@@ -218,7 +227,7 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                     require_once('MVC/Views/review/list.php');
                     break;
                 case 'detail':
-                    require_once('MVC/Views/review/detail.php');
+                    require_once('MVC/Views/review/details.php');
                     break;
                 default:
                     require_once('MVC/Views/review/list.php');
@@ -226,16 +235,19 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                 }
             break;
         
-        case 'bill':
+        case 'bills':
             switch ($act) {
                 case 'list':
-                    require_once('MVC/Views/bill/list.php');
+                    require_once('MVC/Views/bills/list.php');
                     break;
                 case 'chitiet':
-                    require_once('MVC/Views/bill/detail.php');
+                    require_once('MVC/Views/bills/details.php');
+                    break;
+                case 'status':
+                    require_once ('MVC/Views/bills/status.php');
                     break;
                 default:
-                    require_once('MVC/Views/bill/list.php');
+                    require_once('MVC/Views/bills/list.php');
                     break;
                 }
             break;
