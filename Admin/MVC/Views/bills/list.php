@@ -48,7 +48,7 @@
                                 <td>
                                     <a href="?mod=bills&act=detail&id=<?php echo $bill['bill_id']; ?>" class="btn btn-primary btn-sm">Chi Tiết Đơn Hàng</a>
                                     <a href="?mod=bills&act=delete&id=<?php echo $bill['bill_id']; ?>" class="btn btn-warning btn-sm" onclick="return confirm('Are you sure you want to mark this bill as deleted?');">Xoá</a>
-                                    <a href="?mod=bills&act=status&id=<?php echo $bill['bill_id']; ?>&status=completed" class="btn btn-success btn-sm">Hoàn Thành Đơn</a>
+                                    <a href="?mod=bills&act=status&id=<?php echo $bill['bill_id']; ?>&status=completed" class="btn btn-success btn-sm">Trạng Thái Đơn</a>
 
                                 </td>
                             </tr>
