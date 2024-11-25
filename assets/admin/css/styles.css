@@ -308,6 +308,16 @@ a {
   --bs-gutter-x: 0;
 }
 
+table td .img {
+  width: 80px !important;
+
+}
+
+.recent table .img img {
+  max-width: 100%;
+  object-fit: cover;
+}
+
 .search label ion-icon {
   position: absolute;
   top: 10px;
@@ -403,20 +413,18 @@ a {
   border-radius: 20px;
 }
 
-/* ================== Order Details List ============== */
 .details {
   position: relative;
   width: 100%;
   padding: 20px;
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 30px;
   /* margin-top: 10px; */
 }
 
-.details .recentOrders {
+.details .recent {
   position: relative;
-  min-height: 500px;
   background: var(--white);
   padding: 20px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
@@ -449,38 +457,30 @@ a {
   margin-top: 10px;
 }
 
+.details table.all {
+  display: none;
+}
+
 .details table thead td {
   font-weight: 600;
 }
 
-.details .recentOrders table tr {
+.details .recent table tr {
   color: var(--black1);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.details .recentOrders table tr:last-child {
+.details .recent table tr:last-child {
   border-bottom: none;
 }
 
-.details .recentOrders table tbody tr:hover {
+.details .recent table tbody tr:hover {
   background: var(--primary);
   color: var(--white);
 }
 
-.details .recentOrders table tr td {
+.details .recent table tr td {
   padding: 10px;
-}
-
-.details .recentOrders table tr td:last-child {
-  text-align: end;
-}
-
-.details .recentOrders table tr td:nth-child(2) {
-  text-align: end;
-}
-
-.details .recentOrders table tr td:nth-child(3) {
-  text-align: center;
 }
 
 .status.delivered {
@@ -519,32 +519,6 @@ a {
   font-weight: 500;
 }
 
-.recentCustomers {
-  position: relative;
-  min-height: 500px;
-  padding: 20px;
-  background: var(--white);
-  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-  border-radius: 20px;
-}
-
-.recentCustomers .imgBx {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  border-radius: 50px;
-  overflow: hidden;
-}
-
-.recentCustomers .imgBx img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .frmcontent .table-responsive {
   border-radius: 10px;
   margin-bottom: 20px;
@@ -579,29 +553,6 @@ tbody.product-detail td {
   padding: 10px;
 }
 
-.recentCustomers table tr td {
-  padding: 12px 10px;
-}
-
-.recentCustomers table tr td h4 {
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.2rem;
-}
-
-.recentCustomers table tr td h4 span {
-  font-size: 14px;
-  color: var(--black2);
-}
-
-.recentCustomers table tr:hover {
-  background: var(--primary);
-  color: var(--white);
-}
-
-.recentCustomers table tr:hover td h4 span {
-  color: var(--white);
-}
 
 /* ====================== Thống kê Design ========================== */
 
@@ -698,7 +649,7 @@ tbody.product-detail td {
     grid-template-columns: 1fr;
   }
 
-  .recentOrders {
+  .recent {
     overflow-x: auto;
   }
 

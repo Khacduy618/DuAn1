@@ -71,3 +71,12 @@ function showSlides(n) {
   slides[slideIndex - 1].style.display = "block";
   dots[slideIndex - 1].className += " active";
 }
+
+$(document).ready(function () {
+  $('#onViewAll').on('click', function (e) {
+    e.preventDefault();
+    $('.all').removeClass('all');
+    $('#limit').hide();
+    $('#onViewAll').hide();
+  });
+});

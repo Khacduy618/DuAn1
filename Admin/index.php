@@ -157,27 +157,27 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
         //             break;
         //     }
         //     break;
-        // case 'hoadon':
-        //     require_once('MVC/controllers/HoadonController.php');
-        //     $controller_obj = new HoadonController();
-        //     switch ($act) {
-        //         case 'list':
-        //             $controller_obj->list();
-        //             break;
-        //         case 'chitiet':
-        //             $controller_obj->chitiet();
-        //             break;
-        //         case 'delete':
-        //             $controller_obj->delete();
-        //             break;
-        //         case 'xetduyet':
-        //             $controller_obj->xetduyet();
-        //             break;
-        //         default:
-        //             $controller_obj->list();
-        //             break;
-        //     }
-        //     break;
+        case 'bill':
+            require_once('MVC/controllers/BillController.php');
+            $controller_obj = new BillController();
+            switch ($act) {
+                case 'list':
+                    $controller_obj->list();
+                    break;
+                case 'chitiet':
+                    $controller_obj->chitiet();
+                    break;
+                case 'delete':
+                    $controller_obj->delete();
+                    break;
+                case 'xetduyet':
+                    $controller_obj->xetduyet();
+                    break;
+                default:
+                    $controller_obj->list();
+                    break;
+            }
+            break;
             case 'login':
                 require_once('MVC/controllers/LoginController.php');
                 $controller_obj = new LoginController();

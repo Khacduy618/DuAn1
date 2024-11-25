@@ -31,12 +31,6 @@
             <div class="toggle">
                 <ion-icon name="menu-outline"></ion-icon>
             </div>
-            <div class="search">
-                <label>
-                    <input type="text" placeholder="Search here">
-                    <ion-icon name="search-outline"></ion-icon>
-                </label>
-            </div>
             <div class="clock" id="clock"></div>
 
         </div>
@@ -46,10 +40,12 @@
     </main>
 
     <!-- =========== Scripts =========  -->
+    <script src="../assets/site/js/jquery.min.js"></script>
+    <script src="../assets/site/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/admin/js/main.js"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js" type="text/javascript">
     </script>
+
     <script src="../assets/admin/js/validated.js"></script>
 
 
