@@ -69,7 +69,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="?mod=bill">
+        <a class="nav-link" href="?mod=bills">
             <span class="icon">
                 <i class="fa-solid fa-bag-shopping fa-xl"></i>
             </span>
