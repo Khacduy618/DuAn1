@@ -79,18 +79,6 @@
         </button>
     </div> -->
 
-    <?php
-        if(!empty($_GET['msg'])){
-            $msg = unserialize(urldecode($_GET['msg']));
-            foreach($msg as $key => $value){
-                echo '<span style="color:blue;font-weight:bold">'.$value.'</span>';
-            }
-        }
-        if(!empty($_SESSION['msg'])){
-            echo '<span style="color:blue;font-weight:bold">'.$_SESSION['msg'].'</span>';
-            // unset($_SESSION['msg']);
-        }
-    ?>
     <!-- List View -->
     <div v-else-if="viewMode === 'list'" class="table-responsive">
         <table class="table align-middle">
@@ -103,7 +91,6 @@
                     <th @click="setSortBy('name')" class="cursor-pointer">
                         Name <i class="bi" :class="getSortIcon('name')"></i>
                     </th>
-                    <th>Description </th>
                     <th @click="setSortBy('price')" class="cursor-pointer">
                         Price <i class="bi" :class="getSortIcon('price')"></i>
                     </th>
