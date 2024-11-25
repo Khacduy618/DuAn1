@@ -5,13 +5,13 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
     switch ($mod) {
          case 'product':
             if ( isset($_GET['act']) && isset($_GET['param']) ){
-                require_once('Admin/MVC/Views/product/'.$act.'.php');
+                require_once('MVC/Views/product/'.$act.'.php');
             }
             elseif(isset($_GET['act'])){
                 $act = $_GET['act'];
-                require_once('Admin/MVC/Views/product/'.$act.'.php');
+                require_once('MVC/Views/product/'.$act.'.php');
             }else{
-                require_once('Admin/MVC/Views/product/list_product.php');
+                require_once('MVC/Views/product/list_product.php');
             }
         break;
         case 'category':
@@ -25,8 +25,28 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                 require_once('MVC/Views/category/list_category.php');
             }
         break;
-        case 'coupon':
-            # code...
+         case 'coupon':
+                switch ($act) {
+                    case 'list':
+                        require_once('MVC/Views/coupon/list.php');
+                        break;
+                    case 'add':
+                        require_once('MVC/Views/coupon/add.php');
+                        break;
+                    case 'detail':
+                        require_once('MVC/Views/coupon/detail.php');
+                        break;
+                    case 'edit':
+                        require_once('MVC/Views/coupon/edit.php');
+                        break;
+                    case 'delete':
+                        require_once('MVC/Views/coupon/delete.php');
+                        break;
+                    default:
+                        require_once('MVC/Views/coupon/list.php');
+                        break;
+                    }
+            
             break;
         case 'user':
             switch ($act) {

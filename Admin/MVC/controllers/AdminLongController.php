@@ -9,11 +9,10 @@ class AdminLongController extends Dcontroller{
     private $tableCategoryProduct = "categories";
     private $tableProductsDetails = "products_details";
     private $controllerHasError = 'Admin/?mod=product';
-    private $part_upload = __DIR__."/../../../uploaded/"; //"assets/upload/user_imgs/" bản không team
-    
+    private $part_upload = '../uploaded'; //"assets/upload/user_imgs/" bản không team
     private $role_default = 0;
     private $keySecurity = "123";
-    private $userimages_default = "user.jpg";
+    private $userimages_default = "user.png";
 
     public function __construct()
         {
@@ -201,7 +200,7 @@ class AdminLongController extends Dcontroller{
         }
         public function list_product(){
             $model = $this->load->model($this->model);
-            $result = $model->call_list_product_index($this->tableProduct);
+            $result = $model->call_list_product_index_jion($this->tableProduct,$this->tableCategoryProduct,$this->tableProductsDetails);
             // $resultDecsBox = $model->call_list_product_index_jion_detail($this->tableProduct,$this->tableProductsDetails);
             $this->load->view('admin/index',['product' => $result]);
             // $this->load->view('admin/index',['product' => $result,'descbox' => $resultDecsBox]);

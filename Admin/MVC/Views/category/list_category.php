@@ -1,4 +1,3 @@
-
 <div class="container-fluid">
     <!-- Header Section -->
     <div class="align-items-center mb-3">
@@ -106,46 +105,46 @@
     }
 
 ?>
-<h3 style="text-align: center">Liệt Kê Danh Mục Sản Phẩm</h3>
-<table class="table table-striped">
-    <?php
+    <table class="table table-striped">
+        <?php
         // var_dump($category);
     ?>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Tên Danh Mục</th>
-        <th>Mô Tả</th>
-        <th>Hình Ảnh</th>
-        <th>Tên Danh Mục Cha</th>
-        <th>Link Nội Bộ</th>
-        <th>Trạng Thái</th>
-        <th colspan="2">Quản Lý</th>
-      </tr>
-    </thead>
-    <tbody>
-        <?php
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Descriptions</th>
+                <th>image</th>
+                <th>Parent Category</th>
+                <th>Internal link</th>
+                <th>Status</th>
+                <th colspan="2"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
             $i = 0;
             foreach($category as $key => $cate){
                 extract($cate);
                 $i++;
         ?>
-        <tr>
-            <td><?php echo $i ?></td>
-            <td><?php echo $category_name ?></td> 
-            <td><?php echo $category_desc ?></td>
-            <td><img src="<?= BASE_URL ?>/uploaded/<?= $category_img ?>" height="100" width="100"></td>
-            <td><?php echo $parent_id ?></td>
-            <td><?php echo $internal_link ?></td>
-            <td><?php echo $category_status ==1 ? "Hiển Thị" : "Ẩn" ?></td>
-            <td><a class="btn btn-danger" href="?mod=category&act=delete_category&param=<?=$category_id ?>">delete</a> 
-            <td><a class="btn btn-dark" href="?mod=category&act=edit_category&param=<?=$category_id ?>">edit</a> 
-        </tr>      
-        <?php
+            <tr>
+                <td><?php echo $i ?></td>
+                <td><?php echo $category_name ?></td>
+                <td><?php echo $category_desc ?></td>
+                <td><img src="<?= BASE_URL ?>/uploaded/<?= $category_img ?>" height="100" width="100"></td>
+                <td><?php echo $parent_id ?></td>
+                <td><?php echo $internal_link ?></td>
+                <td><?php echo $category_status ==1 ? "Hiển Thị" : "Ẩn" ?></td>
+                <td><a class="btn btn-danger"
+                        href="?mod=category&act=delete_category&param=<?=$category_id ?>">delete</a>
+                <td><a class="btn btn-dark" href="?mod=category&act=edit_category&param=<?=$category_id ?>">edit</a>
+            </tr>
+            <?php
         }
         ?>
-    </tbody>
-  </table>
+        </tbody>
+    </table>
 
 
     <!-- Grid View -->

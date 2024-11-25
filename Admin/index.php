@@ -16,14 +16,14 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                     include_once __DIR__.'/../libs/'.$class.'.php';
                 });
                 if ( isset($_GET['act']) && isset($_GET['param']) ){
-                    require_once __DIR__.'/MVC/Controllers/'.'AdminLongController'.'.php';
+                    require_once __DIR__.'/MVC/controllers/'.'AdminLongController'.'.php';
                     $controller_obj = new AdminLongController();
                     $action = $_GET['act'];
                     $param = $_GET['param'];
                     $controller_obj->$action($param);
                 }
                 else{
-                    require_once __DIR__.'/MVC/Controllers/'.'AdminLongController'.'.php';
+                    require_once __DIR__.'/MVC/controllers/'.'AdminLongController'.'.php';
                     $controller_obj = new AdminLongController();
                     // $action = $_GET['act'];
                     $action = 'list_product';
@@ -35,14 +35,14 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                 include_once __DIR__.'/../libs/'.$class.'.php';
             });
             if ( isset($_GET['act']) && isset($_GET['param']) ){
-                require_once __DIR__.'/MVC/Controllers/'.'AdminLongController'.'.php';
+                require_once __DIR__.'/MVC/controllers/'.'AdminLongController'.'.php';
                 $controller_obj = new AdminLongController();
                 $action = $_GET['act'];
                 $param = $_GET['param'];
                 $controller_obj->$action($param);
             }
             else{
-                require_once __DIR__.'/MVC/Controllers/'.'AdminLongController'.'.php';
+                require_once __DIR__.'/MVC/controllers/'.'AdminLongController'.'.php';
                 $controller_obj = new AdminLongController();
                 // $action = $_GET['act'];
                 $action = 'list_category';
@@ -67,7 +67,36 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                     break;
             }
             break;
-        
+         case 'coupon':
+                require_once('MVC/controllers/coupon.php');
+                $controller_obj = new AdminCouponController();
+                switch ($act) {
+                    case 'list':
+                        $controller_obj->list();
+                        break;
+                    case 'detail':
+                        $controller_obj->detail();
+                        break;
+                    case 'add':
+                        $controller_obj->add();
+                        break;
+                    case 'store':
+                        $controller_obj->store();
+                        break;
+                    case 'edit':
+                        $controller_obj->edit();
+                        break;
+                    case 'update':
+                        $controller_obj->update();
+                        break;
+                    case 'delete':
+                        $controller_obj->delete();
+                        break;
+                    default:
+                        $controller_obj->list();
+                        break;
+                }
+                break;
         case 'user':
             require_once('MVC/controllers/AdminVyController.php');
             $controller_obj = new AdminVyController();
@@ -221,14 +250,14 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                     include_once __DIR__.'/../libs/'.$class.'.php';
                 });
                 if ( isset($_GET['act']) && isset($_GET['param']) ){
-                    require_once __DIR__.'/MVC/Controllers/'.'AdminLongController'.'.php';
+                    require_once __DIR__.'/MVC/controllers/'.'AdminLongController'.'.php';
                     $controller_obj = new AdminLongController();
                     $action = $_GET['act'];
                     $param = $_GET['param'];
                     $controller_obj->$action($param);
                 }
                 else{
-                    require_once __DIR__.'/MVC/Controllers/'.'AdminLongController'.'.php';
+                    require_once __DIR__.'/MVC/controllers/'.'AdminLongController'.'.php';
                     $controller_obj = new AdminLongController();
                     // $action = $_GET['act'];
                     $action = 'list_product';
@@ -240,14 +269,14 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                     include_once __DIR__.'/../libs/'.$class.'.php';
                 });
                 if ( isset($_GET['act']) && isset($_GET['param']) ){
-                    require_once __DIR__.'/MVC/Controllers/'.'AdminLongController'.'.php';
+                    require_once __DIR__.'/MVC/controllers/'.'AdminLongController'.'.php';
                     $controller_obj = new AdminLongController();
                     $action = $_GET['act'];
                     $param = $_GET['param'];
                     $controller_obj->$action($param);
                 }
                 else{
-                    require_once __DIR__.'/MVC/Controllers/'.'AdminLongController'.'.php';
+                    require_once __DIR__.'/MVC/controllers/'.'AdminLongController'.'.php';
                     $controller_obj = new AdminLongController();
                     // $action = $_GET['act'];
                     $action = 'list_category';
@@ -266,6 +295,36 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                             break;
                     }
                     break;
+                case 'coupon':
+                require_once('MVC/controllers/coupon.php');
+                $controller_obj = new AdminCouponController();
+                switch ($act) {
+                    case 'list':
+                        $controller_obj->list();
+                        break;
+                    case 'detail':
+                        $controller_obj->detail();
+                        break;
+                    case 'add':
+                        $controller_obj->add();
+                        break;
+                    case 'store':
+                        $controller_obj->store();
+                        break;
+                    case 'edit':
+                        $controller_obj->edit();
+                        break;
+                    case 'update':
+                        $controller_obj->update();
+                        break;
+                    case 'delete':
+                        $controller_obj->delete();
+                        break;
+                    default:
+                        $controller_obj->list();
+                        break;
+                }
+                break;
             default:
             header('location: ?mod=login');
                 // require_once('MVC/controllers/LoginController.php');
