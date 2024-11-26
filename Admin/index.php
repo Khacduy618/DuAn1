@@ -127,67 +127,63 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                     break;
             }
             break;
-        
-        // case 'khuyenmai':
-        //     require_once('MVC/controllers/KhuyenmaiController.php');
-        //     $controller_obj = new KhuyenmaiController();
-        //     switch ($act) {
-        //         case 'list':
-        //             $controller_obj->list();
-        //             break;
-        //         case 'detail':
-        //             $controller_obj->detail();
-        //             break;
-        //         case 'add':
-        //             $controller_obj->add();
-        //             break;
-        //         case 'store':
-        //             $controller_obj->store();
-        //             break;
-        //         case 'delete':
-        //             $controller_obj->delete();
-        //             break;
-        //         case 'edit':
-        //             $controller_obj->edit();
-        //             break;
-        //         case 'update':
-        //             $controller_obj->update();
-        //             break;
-        //         default:
-        //             $controller_obj->list();
-        //             break;
-        //     }
-        //     break;
-        // case 'loaisanpham':
-        //     require_once('MVC/controllers/LoaisanphamController.php');
-        //     $controller_obj = new LoaisanphamController();
-        //     switch ($act) {
-        //         case 'list':
-        //             $controller_obj->list();
-        //             break;
-        //         case 'detail':
-        //             $controller_obj->detail();
-        //             break;
-        //         case 'add':
-        //             $controller_obj->add();
-        //             break;
-        //         case 'store':
-        //             $controller_obj->store();
-        //             break;
-        //         case 'delete':
-        //             $controller_obj->delete();
-        //             break;
-        //         case 'edit':
-        //             $controller_obj->edit();
-        //             break;
-        //         case 'update':
-        //             $controller_obj->update();
-        //             break;
-        //         default:
-        //             $controller_obj->list();
-        //             break;
-        //     }
-        //     break;
+            case 'blog':
+                require_once('MVC/controllers/AdminCuongController.php');
+                $controller_obj = new AdminCuongController();
+                switch ($act){
+                    case 'list':
+                        $controller_obj->list();
+                        break;
+                    case 'detail':
+                        $controller_obj->detail();
+                        break;
+                    case 'add':
+                        $controller_obj->add();
+                        break;
+                    case 'edit':
+                        $controller_obj->edit();
+                        break;
+                    case 'soft_delete':
+                        $controller_obj->soft_delete();
+                        break;
+                    case 'recycle':
+                        $controller_obj->recycle_bin();
+                        break;
+                    case 'back_up':
+                        $controller_obj->back_up();
+                        break;
+                    case  'force_delete':
+                        $controller_obj->force_delete();
+                        break;
+                    default:
+                        $controller_obj->list();
+                        break;
+                }
+                break;
+            case 'comment':
+                require_once('MVC/controllers/AdminCuongController.php');
+                $controller_obj = new Comment();
+                 switch ($act){
+                    case 'list':
+                        $controller_obj->comment_index();
+                        break;
+                    case 'soft_delete':
+                        $controller_obj->soft_delete();
+                        break;
+                    case 'recycle':
+                        $controller_obj->recycle_bin();
+                        break;
+                    case 'back_up':
+                        $controller_obj->back_up();
+                        break;
+                    case 'force_delete':
+                        $controller_obj->force_delete();
+                        break;
+                    default:
+                        $controller_obj->list();
+                        break;
+                }
+            break;
          case 'bills':
              require_once('MVC/controllers/BillController.php');
              $controller_obj = new BillController();
@@ -212,6 +208,7 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                      break;
              }
              break;
+
             case 'login':
                 require_once('MVC/controllers/LoginController.php');
                 $controller_obj = new LoginController();
@@ -236,6 +233,63 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
         $mod = isset($_GET['mod']) ? $_GET['mod'] : "login";
         $act = isset($_GET['act']) ? $_GET['act'] : "admin";
         switch ($mod) {
+            case 'blog':
+                require_once('MVC/controllers/AdminCuongController.php');
+                $controller_obj = new AdminCuongController();
+                switch ($act){
+                    case 'list':
+                        $controller_obj->list();
+                        break;
+                    case 'detail':
+                        $controller_obj->detail();
+                        break;
+                    case 'add':
+                        $controller_obj->add();
+                        break;
+                    case 'edit':
+                        $controller_obj->edit();
+                        break;
+                    case 'soft_delete':
+                        $controller_obj->soft_delete();
+                        break;
+                    case 'recycle':
+                        $controller_obj->recycle_bin();
+                        break;
+                    case 'back_up':
+                        $controller_obj->back_up();
+                        break;
+                    case  'force_delete':
+                        $controller_obj->force_delete();
+                        break;
+                    default:
+                        $controller_obj->list();
+                        break;
+                }
+                break;
+            case 'comment':
+                require_once('MVC/controllers/AdminCuongController.php');
+                $controller_obj = new Comment();
+                 switch ($act){
+                    case 'list':
+                        $controller_obj->comment_index();
+                        break;
+                    case 'soft_delete':
+                        $controller_obj->soft_delete();
+                        break;
+                    case 'recycle':
+                        $controller_obj->recycle_bin();
+                        break;
+                    case 'back_up':
+                        $controller_obj->back_up();
+                        break;
+                    case 'force_delete':
+                        $controller_obj->force_delete();
+                        break;
+                    default:
+                        $controller_obj->list();
+                        break;
+                }
+            break;
            case 'product':
                 spl_autoload_register(function($class){
                     include_once __DIR__.'/../libs/'.$class.'.php';

@@ -8,17 +8,17 @@
             <?php if (!empty($billDetails) && is_array($billDetails)): ?>
             <div class="row mb-3">
                 <div class="col-md-6">
-                    <p><strong>Bill ID:</strong> <?php echo htmlspecialchars($billDetails['bill_id']); ?></p>
-                    <p><strong>User Email:</strong> <?php echo htmlspecialchars($billDetails['bill_userEmail']); ?></p>
-                    <p><strong>User Name:</strong> <?php echo htmlspecialchars($billDetails['user_full_name']); ?></p>
-                    <p><strong>Coupon Name:</strong> <?php echo htmlspecialchars($billDetails['coupon_name']); ?></p>
+                    <p><strong>Bill ID:</strong> <?=$billDetails['bill_id']; ?></p>
+                    <p><strong>User Email:</strong> <?=$billDetails['bill_userEmail']; ?></p>
+                    <p><strong>User Name:</strong> <?=$billDetails['user_full_name']; ?></p>
+                    <p><strong>Coupon Name:</strong> <?=$billDetails['coupon_name']; ?></p>
                 </div>
                 <div class="col-md-6">
                     <p><strong>Product Price:</strong>
-                        <?php echo htmlspecialchars($billDetails['bill_product_price']); ?></p>
-                    <p><strong>Delivery Price:</strong> <?php echo htmlspecialchars($billDetails['delivery_price']); ?>
+                    <?=number_format($billDetails['bill_product_price'],0,',','.')?> đ</p>
+                    <p><strong>Delivery Price:</strong> <?=number_format($billDetails['delivery_price'],0,',','.')?> đ
                     </p>
-                    <p><strong>Total Price:</strong> <?php echo htmlspecialchars($billDetails['total_price']); ?></p>
+                    <p><strong>Total Price:</strong> <?=number_format($billDetails['total_price'],0,',','.')?> đ</p>
                 </div>
             </div>
             <div class="row mb-3">
@@ -36,10 +36,10 @@
                             ];
                             echo htmlspecialchars($statusMapping[$billDetails['bill_status']]);
                             ?></p>
-                    <p><strong>Bill Time:</strong> <?php echo htmlspecialchars($billDetails['bill_time']); ?></p>
+                    <p><strong>Bill Time:</strong> <?=$billDetails['bill_time']; ?></p>
                 </div>
                 <div class="col-md-6">
-                    <p><strong>Address:</strong> <?php echo htmlspecialchars($billDetails['address']); ?></p>
+                    <p><strong>Address:</strong> <?=$billDetails['address']; ?></p>
                 </div>
             </div>
 
@@ -59,8 +59,8 @@
                             $quantities = explode(", ", $billDetails['quantities']);
                             for ($i = 0; $i < count($products); $i++): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($products[$i]); ?></td>
-                            <td><?php echo htmlspecialchars($quantities[$i]); ?></td>
+                            <td><?=$products[$i]; ?></td>
+                            <td><?=$quantities[$i]; ?></td>
                         </tr>
                         <?php endfor; ?>
                         <?php else: ?>

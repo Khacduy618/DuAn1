@@ -12,7 +12,80 @@ body {
   position: relative;
   width: 100%;
 }
+.review-container {
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0,0,0,.05);
+}
 
+.page-title {
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.product-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 5px;
+}
+
+.table {
+  margin-bottom: 20px;
+}
+
+.thead-dark th {
+  background-color: #343a40;
+  color: white;
+  border-color: #454d55;
+}
+
+.rating {
+  color: #ffc107;
+}
+
+.rating .checked {
+  color: #ffc107;
+}
+
+.rating .la-star:not(.checked) {
+  color: #e4e5e9;
+}
+
+.btn-delete-selected {
+  padding: 8px 15px;
+}
+
+.btn-back {
+  margin-top: 20px;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+  transition: all 0.3s;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border: none;
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  transform: translateY(-1px);
+}
 
 .graphBoxTK td img {
   width: 100%;

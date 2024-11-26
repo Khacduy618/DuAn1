@@ -1,11 +1,10 @@
 <div class="container-fluid px-4">
-    <h1 class="text-uppercase mt-4">Đơn Hàng Hiện Tại</h1>
+    <h1 class=" mt-4">Bills Management</h1>
 
     <!-- Order Details Section -->
     <div class="container-fluid text-center my-4">
         <div class="d-flex justify-content-center gap-3">
-            <a href="?mod=bills&act=archived" class="btn btn-warning px-4 py-2 text-dark fw-bold">Xem Đơn hàng Lưu
-                Trữ</a>
+            <a href="?mod=bills&act=archived" class="btn btn-warning px-4 py-2 text-dark fw-bold">View Saved Orders Store</a>
         </div>
     </div>
     <div class="card-body">
@@ -27,10 +26,10 @@
                     <?php if (!empty($bills)): ?>
                     <?php foreach ($bills as $bill): ?>
                     <tr>
-                        <td><?php echo htmlspecialchars($bill['bill_id']); ?></td>
-                        <td><?php echo htmlspecialchars($bill['bill_userEmail']); ?></td>
-                        <td><?php echo htmlspecialchars($bill['user_full_name']); ?></td>
-                        <td><?php echo htmlspecialchars($bill['total_price']); ?></td>
+                        <td><?=$bill['bill_id']; ?></td>
+                        <td><?=$bill['bill_userEmail']; ?></td>
+                        <td><?=$bill['user_full_name']; ?></td>
+                        <td><?=number_format($bill['total_price'],0,',','.')?> đ</td>.
                         <td>
                             <p id="status"><?php
                                     $statusMapping = [
@@ -46,7 +45,7 @@
                                     echo htmlspecialchars($statusMapping[$bill['bill_status']]);
                                     ?></p>
                         </td>
-                        <td><?php echo htmlspecialchars($bill['bill_time']); ?></td>
+                        <td><?=$bill['bill_time']; ?></td>
                         <form class="bill-form" id="form-<?=$bill['bill_id']?>">
                             <input type="hidden" name="bill_id" value="<?=$bill['bill_id']?>">
                             <input type="hidden" name="bill_status" value="<?=$bill['bill_status']?>">

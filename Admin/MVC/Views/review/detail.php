@@ -1,47 +1,61 @@
-<h2>Chi tiết bình luận</h2>
-<div class="table-container">
-    <button class="btn-delete-selected">Xóa mục đã chọn</button>
-    <span style="margin-left: 20px;">Hàng hóa:
-        <strong><?= isset($productName) ? $productName : 'Không xác định'; ?></strong></span>
+<div class="review-container">
+    <h2 class="page-title">Review Details</h2>
+    
+    <div class="product-info">
+        <span class="me-3">Product: <strong><?= isset($productName) ? $productName : 'Undefined'; ?></strong></span>
+        <button class="btn btn-danger btn-delete-selected">
+            <i class="la la-trash"></i> Delete Selected
+        </button>
+    </div>
 
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th><input type="checkbox" /></th>
-                <th>Đánh giá</th>
-                <th>Nội dung</th>
-                <th>Ngày BL</th>
-                <th>Người BL</th>
-                <th>Hành động</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if (!empty($comments)): ?>
-            <?php foreach ($comments as $comment): ?>
-            <tr>
-                <td><input type="checkbox" /></td>
-                <td><?= $comment['rating']; ?> sao</td>
-                <td><?= $comment['content']; ?></td>
-                <td><?= $comment['date']; ?></td>
-                <td><?= $comment['user']; ?></td>
-                <td>
-                    <a class="delete-button" onclick="return confirm('Are you sure about remove this review?');"
-                        href="?mod=review&act=delete&comment_id=<?= $comment['id']; ?>">
-                        <i class="la la-trash"></i> Xóa
-                    </a>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-            <?php else: ?>
-            <tr>
-                <td colspan="6">Không có bình luận nào</td>
-            </tr>
-            <?php endif; ?>
-        </tbody>
-    </table>
-</div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th width="5%"><input type="checkbox" class="select-all" /></th>
+                    <th width="10%">Rating</th>
+                    <th width="45%">Content</th>
+                    <th width="15%">Date</th>
+                    <th width="15%">User</th>
+                    <th width="10%">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (!empty($comments)): ?>
+                    <?php foreach ($comments as $comment): ?>
+                    <tr>
+                        <td><input type="checkbox" class="review-checkbox" /></td>
+                        <td>
+                            <div class="rating">
+                                <?php for($i = 1; $i <= 5; $i++): ?>
+                                    <i class="la la-star <?= $i <= $comment['rating'] ? 'checked' : '' ?>"></i>
+                                <?php endfor; ?>
+                            </div>
+                        </td>
+                        <td><?= $comment['content']; ?></td>
+                        <td><?= $comment['date']; ?></td>
+                        <td><?= $comment['user']; ?></td>
+                        <td>
+                            <a class="btn btn-sm btn-danger delete-button" 
+                               onclick="return confirm('Are you sure you want to delete this review?');"
+                               href="?mod=review&act=delete&comment_id=<?= $comment['id']; ?>">
+                                <i class="la la-trash"></i> Delete
+                            </a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="6" class="text-center">No reviews found</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
 
-
-<div class="btn-back">
-    <a href="?mod=review">Quay lại</a>
+    <div class="btn-back">
+        <a href="?mod=review" class="btn btn-secondary">
+            <i class="la la-arrow-left"></i> Back
+        </a>
+    </div>
 </div>
