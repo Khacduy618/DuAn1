@@ -5,7 +5,6 @@ abstract class Dcontroller{
     public function __construct()
     {
         $this->load = new Load();
-        // define("BASE_URL","http://localhost:8080/DuAn1");
     }
     abstract public function render(string $nameView, array $model);
     
@@ -111,7 +110,15 @@ abstract class Dcontroller{
                                                                                                                                                                                                                                                                                                                                                                         }, $data);
                                                                                                                                                                                                                                                                                                                                                                     }
                                                                                                                                                                                                                                                                                                                                                                     
-                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                    public function get_base_url(){
+                                                                                                                                                                                                                                                                                                                                                                        $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://';
+                                                                                                                                                                                                                                                                                                                                                                        $web_root = $protocol.$_SERVER['HTTP_HOST'];
+                                                                                                                                                                                                                                                                                                                                                                        $g_DOCUMENT_root = strtolower($_SERVER['DOCUMENT_ROOT']);
+                                                                                                                                                                                                                                                                                                                                                                        $g_DIR_root = str_replace('\\','/',strtolower(__DIR__));
+                                                                                                                                                                                                                                                                                                                                                                        $g_folder = str_replace($g_DOCUMENT_root,'',$g_DIR_root);
+                                                                                                                                                                                                                                                                                                                                                                        $base_url = $web_root.$g_folder.'/';
+                                                                                                                                                                                                                                                                                                                                                                        return $base_url;
+                                                                                                                                                                                                                                                                                                                                                                    }                                                                                                                                                                                                                                                                                                                                                  
                                                                                                                                                                                                                                                                                                                                                                     
     #begin check and isset and init variable                                                                                                                                                                                                                                                                                                                                                   
     function cvldl($input,$soluongkytu,$ve_controller_nao){
@@ -172,7 +179,7 @@ abstract class Dcontroller{
             exit;
         }
     }
-    function ciipv($post_variable,$soluongkytu = 5, $ve_controller_nao) {
+    function ciipv($post_variable,$soluongkytu, $ve_controller_nao) {
         // kiem tra bien string post co ton tai, ky tu dac biet, so luong ky
         $post = $_POST[$post_variable];
         
@@ -188,7 +195,7 @@ abstract class Dcontroller{
             exit;
         }
     }
-    function lciipv($post_variable,$soluongkytu = 5, $ve_controller_nao) {
+    function lciipv($post_variable,$soluongkytu, $ve_controller_nao) {
         // kiem tra bien post link co ton tai, ky tu dac biet, so luong ky
         $post = $_POST[$post_variable];
         

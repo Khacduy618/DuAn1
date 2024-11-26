@@ -20,12 +20,23 @@
         public static function checkSession(){
             // self::init();
             $userrole = self::get('userrole');
-            $username = self::get('username');
-            if(self::get('login')== false || $userrole !== 9 || $username !== "leduylong"){
+            // $username = self::get('username');
+            if(self::get('login')== false || $userrole !== 9){
+            // if(self::get('login')== false || $userrole !== 9 || $username !== "leduylong"){
                 self::destroy();
-                header("Location:");
-            }else{
-
+                header("Location: ?act=adminLong&ctlr=AdminLongController&method=login");
+                return;
+            }
+        }
+        public static function checkSession2(){
+            // self::init();
+            $userrole = self::get('userrole');
+            // $username = self::get('username');
+            if(self::get('login')== false || $userrole !== 8){
+            // if(self::get('login')== false || $userrole !== 8 || $username !== "leduylong2"){
+                self::destroy();
+                header("Location: ?act=adminLong&ctlr=AdminLongController&method=login");
+                return;
             }
         }
 

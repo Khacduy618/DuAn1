@@ -25,7 +25,7 @@ class BillModel extends Model
                   LEFT JOIN Tede_Shop.user ON bills.bill_userEmail = user.user_email
                   LEFT JOIN Tede_Shop.coupons ON bills.bill_coupon = coupons.coupon_id
                   /*WHERE bills.bill_id = ? AND bills.deleted = 0 */
-                  WHERE bills.deleted = 0 AND bills.bill_status != 3
+                  WHERE bills.bill_status != 7
                   ORDER BY bills.bill_time DESC";
 
         return pdo_query($query);
@@ -43,7 +43,6 @@ class BillModel extends Model
                      IFNULL(coupons.coupon_name, 'No Coupon') AS coupon_name,
                      bills.bill_status, 
                      bills.bill_time,
-                     bills.deleted,
                      IFNULL(address.address_name, 'No Address Provided') AS address,
                      GROUP_CONCAT(DISTINCT products.product_name SEPARATOR ', ') AS products,
                      GROUP_CONCAT(DISTINCT bill_details.pro_count SEPARATOR ', ') AS quantities
@@ -70,35 +69,13 @@ class BillModel extends Model
                      bills.bill_time 
               FROM bills
               LEFT JOIN user ON bills.bill_userEmail = user.user_email
-              WHERE bills.bill_status = 3
+              WHERE bills.bill_status = 7
               ORDER BY bill_time DESC";
         return pdo_query($query);
     }
-    public function getDeleted(): array
-    {
-        $query = "SELECT bills.bill_id, 
-                     bills.bill_userEmail, 
-                     user.user_full_name, 
-                     bills.bill_price AS bill_product_price, 
-                     bills.bill_priceDelivery AS delivery_price, 
-                     bills.bill_totalPrice AS total_price, 
-                     bills.bill_status, 
-                     bills.bill_time 
-              FROM bills
-              LEFT JOIN user ON bills.bill_userEmail = user.user_email
-              WHERE bills.deleted = 1 
-              ORDER BY bill_time DESC";
-        return pdo_query($query);
-    }
-
     public function softDelete($id)
     {
         $query = "UPDATE $this->table SET deleted = 1 WHERE bill_id = ?";
-        pdo_execute($query, $id);
-    }
-    public function restoreDeleted($id)
-    {
-        $query = "UPDATE bills SET deleted = 0 WHERE bill_id = ?";
         pdo_execute($query, $id);
     }
     // Update the status of a bill
@@ -107,5 +84,52 @@ class BillModel extends Model
         $query = "UPDATE $this->table SET bill_status = ? WHERE bill_id = ?";
         pdo_execute($query, $newStatus, $id);
     }
+    public function updateStatus_ajax($id, $newStatus)
+    {
+        $sql = "UPDATE bills SET bill_status = :bill_status WHERE bill_id = :bill_id ";
+        // pdo_execute($query, $newStatus, $id);
+        $conn = pdo_get_connection();
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(":bill_status", $newStatus); 
+        $stmt->bindValue(":bill_id", $id); 
+        try {
+            $conn->beginTransaction();
+            $result = $stmt->execute();
+            $conn->commit();
+            return $result;
+        } catch (PDOException $e) {
+            $conn->rollBack();
+            error_log("Transaction failed: " . $e->getMessage());
+            return false;
+        }
+        finally {
+            unset($conn);
+        }
+        
+    }
+    public function select_id_status_ajax($id){
+        $sql = "SELECT (bill_id,bill_status) WHERE 
+        bill_id = ?";
+        return pdo_query_one($sql, $id);
+    }
+    public function getAll_by_id($id): array
+    {
+        $query = "SELECT bills.bill_id, 
+                         bills.bill_userEmail, 
+                         user.user_full_name, 
+                         bills.bill_price AS bill_product_price, 
+                         bills.bill_priceDelivery AS delivery_price, 
+                         bills.bill_totalPrice AS total_price, 
+                         coupons.coupon_name, 
+                         bills.bill_status, 
+                         bills.bill_time
+                  FROM $this->table
+                  LEFT JOIN Tede_Shop.user ON bills.bill_userEmail = user.user_email
+                  LEFT JOIN Tede_Shop.coupons ON bills.bill_coupon = coupons.coupon_id
+                  WHERE bills.bill_id = ? AND bills.bill_status != 6 
+        ";
+        return pdo_query_one($query,$id);
+    }
+
 }
 ?>

@@ -69,7 +69,7 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
             break;
          case 'coupon':
                 require_once('MVC/controllers/coupon.php');
-                $controller_obj = new AdminCouponController();
+                $controller_obj = new CouponController();
                 switch ($act) {
                     case 'list':
                         $controller_obj->list();
@@ -195,26 +195,17 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                  case 'list':
                      $controller_obj->listBills();
                      break;
+                 case 'api':
+                     $controller_obj->edit_bill_status_ajax();
+                     break;
                  case 'detail':
                      $controller_obj->detail();
                      break;
                  case 'archived':
                      $controller_obj->archivedBills();
                      break;
-                 case 'delete':
-                     $controller_obj->deleteBill();
-                     break;
-                 case 'deleted':
-                     $controller_obj->listDeletedBills();
-                     break;
                  case 'status':
                      $controller_obj->status();
-                     break;
-                 case 'restore_deleted':
-                     $controller_obj->restoreBillDeleted();
-                     break;
-                 case 'restore_archived':
-                     $controller_obj->restoreBillArchived();
                      break;
                  default:
                      $controller_obj->listBills();

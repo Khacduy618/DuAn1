@@ -11,14 +11,14 @@
                 <?php
                         // Display the current status as text directly
                         $statusMapping = [
-                            0 => 'Unpaid',
-                            1 => 'Paid',
-                            2 => 'Pending',
-                            3 => 'Approved',
-                            4 => 'Delivering',
-                            4 => 'Delivered',
-                            5 => 'Completed',
-                            6 => 'Archive'
+                            0 => 'Unpaid', 
+                            1 => 'Paid', 
+                            2 => 'Pending', 
+                            3 => 'Approved', 
+                            4 => 'Delivering', 
+                            5 => 'Delivered', 
+                            6 => 'Completed', 
+                            7 => 'Archive' 
                         ];
                         $currentStatusText = isset($statusMapping[$billDetails['bill_status']]) ? $statusMapping[$billDetails['bill_status']] : 'Unknown';
                         ?>
@@ -28,14 +28,13 @@
             <div class="mb-3">
                 <label for="newStatus" class="form-label"><strong>New Status:</strong></label>
                 <select class="form-select" id="newStatus" name="newStatus">
-                    <option value="0" <?php echo ($billDetails['bill_status'] == 0) ? 'selected' : ''; ?>>Pending
+
+                    <?php foreach ($statusMapping as $status => $statusText):?>
+                    <option value="<?php echo $status;?>"
+                        <?php echo ($billDetails['bill_status'] == $status)?'selected' : '';?>>
+                        <?php echo $statusText;?>
                     </option>
-                    <option value="1" <?php echo ($billDetails['bill_status'] == 1) ? 'selected' : ''; ?>>Shipping
-                    </option>
-                    <option value="2" <?php echo ($billDetails['bill_status'] == 2) ? 'selected' : ''; ?>>Completed
-                    </option>
-                    <option value="3" <?php echo ($billDetails['bill_status'] == 3) ? 'selected' : ''; ?>>Archive
-                    </option>
+                    <?php endforeach;?>
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Update Status</button>

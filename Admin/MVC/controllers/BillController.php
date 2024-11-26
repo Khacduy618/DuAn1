@@ -110,5 +110,104 @@ class BillController
             header('Location: ?mod=bills&act=list');
         }
     }
+
+    public function edit_bill_status_ajax() {
+        // Session::checkSession2();
+        header("Access-Control-Allow-Origin: *");
+        header('Content-Type: application/json');
+        header("Access-Control-Allow-Methods: POST");
+        header("Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Authorization, X-Requested-With");
+        error_log("Received POST data: " . print_r($_POST, true));
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            echo json_encode([
+                'success' => false,
+                'message' => 'Phương thức không được hỗ trợ'
+            ]);
+            return;
+        }
+        $bill_id = $_POST['bill_id'] ?? '';
+        if (empty($product_id)) {
+            echo json_encode([
+                'success' => false,
+                'message' => 'Thiếu bill_id'
+            ]);
+            return;
+        }
+        $data = [];
+        if (!empty($_POST['bill_status'])) {
+            if ($_POST['bill_status'] == 0 || $_POST['bill_status'] == 1) {
+                $data['bill_status'] = 2;
+            }
+            if ($_POST['bill_status'] == 2) {
+                $data['bill_status'] = 3;
+            }
+            if ($_POST['bill_status'] == 3) {
+                $data['bill_status'] = 4;
+            }
+            if($_POST['bill_status'] == 4) {
+                $data['bill_status'] = 5;
+            }
+            
+        }
+        error_log("Prepared data for update: " . print_r($data, true));
+        if (empty($data)) {
+            echo json_encode([
+                'success' => false,
+                'message' => 'Không có dữ liệu để cập nhật'
+            ]);
+            return;
+        }
+        $result = $this->billModel->updateStatus_ajax($bill_id, $data['bill_status']);
+        $result_sau_update = $this->billModel->select_id_status_ajax($bill_id);
+        echo json_encode([
+            'success' => $result,
+            'message' => $result ? 'Cập nhật thành công' : 'Cập nhật thất bại',
+            'data' => $result_sau_update,
+            'debug' => [
+                'post_data' => $_POST,
+                'processed_data' => $data,
+                'bill_id' => $bill_id,
+                'bill_status' => $result_sau_update['bill_status']
+            ]
+        ]);
+        
+    }
+    public function get_bill_id_status_ajax() {
+        // Session::checkSession2();
+        header("Access-Control-Allow-Origin: *");
+        header('Content-Type: application/json');
+        header("Access-Control-Allow-Methods: POST");
+        header("Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Authorization, X-Requested-With");
+        error_log("Received POST data: " . print_r($_POST, true));
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            echo json_encode([
+                'success' => false,
+                'message' => 'Phương thức không được hỗ trợ'
+            ]);
+            return;
+        }
+        $bill_id = $_POST['bill_id'] ?? '';
+        if (empty($product_id)) {
+            echo json_encode([
+                'success' => false,
+                'message' => 'Thiếu bill_id'
+            ]);
+            return;
+        }
+        $result = $this->billModel->getAll_by_id($bill_id);
+        echo json_encode([
+            'success' => $result,
+            'message' => $result ? 'Cập nhật thành công' : 'Cập nhật thất bại',
+            'data' => $result,
+            'debug' => [
+                'post_data' => $_POST,
+                'processed_data' => $bill_id,
+                'bill_id' => $bill_id,
+                'bill_status' => $result['bill_status']
+            ]
+        ]);
+        
+    }
+
 }
 ?>

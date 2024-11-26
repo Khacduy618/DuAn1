@@ -19,8 +19,8 @@ class CheckoutController
             $shipping = $_GET['shipping'];
             $userEmail = $_SESSION['login']['user_email'];
             $address = $this->addressModel->getOneAddress($userEmail);
-             if(isset($_GET['coupon_name'])){
-                $name = $_GET['coupon_name'];
+             if(isset($_POST['coupon_name'])){
+                $name = $_POST['coupon_name'];
                 $coupon = $this->checkout_model->coupon($name);
             };
             if (isset($_GET['cart_items'])) {
@@ -40,7 +40,22 @@ class CheckoutController
     }
     function  save()
     {
-       //
+        if (isset($_SESSION['login'])) {
+            $userEmail = $_SESSION['login']['user_email'];
+            $cartItems = $this->cartModel->getCartItems($userEmail);
+            $selectedItemIds = $_GET['cart_items'];
+            $cartItems = array_filter($cartItems, function($item) use ($selectedItemIds) {
+                return in_array($item['cart_item_id'], $selectedItemIds);
+            });
+            $total = 0;
+            foreach ($cartItems as $item) {
+                $total += $item['product_price'] * $item['cart_item_quantity'];
+            }
+            $name = isset($_GET['coupon_name'])? $_GET['coupon_name'] : '';
+            $coupon = $this->checkout_model->coupon_update($count, $name);
+        }
+        if (isset($coupon)) {
+        }
     }
     function order_complete()
     {

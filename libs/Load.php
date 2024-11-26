@@ -24,8 +24,13 @@ class Load{
             return new $filename();
         }
         else{
+            if($filename == 'AdminLongModel'){
             require 'Models/' . $filename . '.php';
             return new $filename();
+            }else{
+                require 'Models/AdminLongModel.php';
+                return new $filename();
+            }
         }
         
     }

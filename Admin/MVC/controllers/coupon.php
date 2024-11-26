@@ -1,6 +1,6 @@
 <?php
 require_once  'MVC/Models/coupon.php';
-class AdminCouponController {
+class CouponController {
     public function list() {
         $coupons = CouponModel::getAllCoupons();
         require_once  'MVC/Views/admin/index.php';

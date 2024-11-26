@@ -114,6 +114,7 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                 case 'deleted':
                     require_once('MVC/Views/bills/deleted.php');
                     break;
+
                 case 'archived':
                     require_once('MVC/Views/bills/archived.php');
                     break;
