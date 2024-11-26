@@ -30,3 +30,24 @@
       // } else {
       //    echo "Chưa có session cho admin hoặc quyền truy cập admin chưa được cấp.";
       // }
+
+    //   $url = ($_GET['url']) ?? null ;
+    // if($url != null) {$url = rtrim($url,'/'); $url = explode('/',filter_var($url),FILTER_SANITIZE_URL);} else unset($url);
+    // if(isset($url[0])){
+    //     $ct = new $url[0]();
+    //     if(isset($url[2])){
+    //         $ct->{$url[1]}($url[2]);
+    //     }else{
+    //         if(isset($url[1])){
+    //             $ct->{$url[1]}();
+    //         }else{
+    //             include_once'app/controller/Error.php';
+    //             $ct = new Error();
+    //             $ct->error404();
+    //         }
+    //     }
+    // }else{
+    //     include_once'app/controller/Home.php';
+    //     $ct = new Home();
+    //     $ct->index();
+    // }
