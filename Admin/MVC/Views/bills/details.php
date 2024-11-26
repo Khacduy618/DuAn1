@@ -25,14 +25,14 @@
                 <div class="col-md-6">
                     <p><strong>Status:</strong> <?php
                             $statusMapping = [
-                                0 => 'Unpaid',
-                                1 => 'Paid',
-                                2 => 'Pending',
-                                3 => 'Approved',
-                                4 => 'Delivering',
-                                4 => 'Delivered',
-                                5 => 'Completed',
-                                6 => 'Archive'
+                                1 => 'Unpaid', 
+                                        2 => 'Paid', 
+                                        3 => 'Pending', 
+                                        4 => 'Approved', 
+                                        5 => 'Delivering', 
+                                        6 => 'Delivered', 
+                                        7 => 'Completed', 
+                                        8 => 'Archive'
                             ];
                             echo htmlspecialchars($statusMapping[$billDetails['bill_status']]);
                             ?></p>

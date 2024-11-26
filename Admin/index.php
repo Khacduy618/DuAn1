@@ -4,7 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 session_start();
 
-define("BASE_URL","http://localhost/DuAn1/"); 
+define("BASE_URL","http://localhost:8080/DuAn1/"); 
 
 //1 mod cua switch, 1 act cuar switch con
 if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {

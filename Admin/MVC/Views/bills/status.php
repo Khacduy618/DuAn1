@@ -11,14 +11,14 @@
                 <?php
                         // Display the current status as text directly
                         $statusMapping = [
-                            0 => 'Unpaid', 
-                            1 => 'Paid', 
-                            2 => 'Pending', 
-                            3 => 'Approved', 
-                            4 => 'Delivering', 
-                            5 => 'Delivered', 
-                            6 => 'Completed', 
-                            7 => 'Archive' 
+                            1 => 'Unpaid', 
+                            2 => 'Paid', 
+                            3 => 'Pending', 
+                            4 => 'Approved', 
+                            5 => 'Delivering', 
+                            6 => 'Delivered', 
+                            7 => 'Completed', 
+                            8 => 'Archive'
                         ];
                         $currentStatusText = isset($statusMapping[$billDetails['bill_status']]) ? $statusMapping[$billDetails['bill_status']] : 'Unknown';
                         ?>

@@ -34,29 +34,37 @@
                         <td>
                             <p id="status"><?php
                                     $statusMapping = [
-                                        0 => 'Unpaid', 
-                                        1 => 'Paid', 
-                                        2 => 'Pending', 
-                                        3 => 'Approved', 
-                                        4 => 'Delivering', 
-                                        5 => 'Delivered', 
-                                        6 => 'Completed', 
-                                        7 => 'Archive' 
+                                        1 => 'Unpaid', 
+                                        2 => 'Paid', 
+                                        3 => 'Pending', 
+                                        4 => 'Approved', 
+                                        5 => 'Delivering', 
+                                        6 => 'Delivered', 
+                                        7 => 'Completed', 
+                                        8 => 'Archive' 
                                     ];
                                     echo htmlspecialchars($statusMapping[$bill['bill_status']]);
                                     ?></p>
                         </td>
                         <td><?php echo htmlspecialchars($bill['bill_time']); ?></td>
-                        <form id="form-aaa" method="post">
-                            <input type="hidden" name="bill_id" value="<?=$bill['bill_id']?>">
-                            <input type="hidden" name="bill_status" value="<?=$bill['bill_status']?>">
+                        <form class="bill-form" id="form-<?=$bill['bill_id']?>">
+                <input type="hidden" name="bill_id" value="<?=$bill['bill_id']?>">
+                <input type="hidden" name="bill_status" value="<?=$bill['bill_status']?>">
                         </form>
                         <td>
                             <a href="?mod=bills&act=detail&id=<?php echo $bill['bill_id']; ?>"
                                 class="btn btn-primary btn-sm">Chi Tiết Đơn Hàng</a>
-                            <a href="?mod=bills&act=status&id=<?php echo $bill['bill_id']; ?>&status=completed"
-                                class="btn btn-success btn-sm">Trạng Thái Đơn</a>
-
+                            <?php if ($bill['bill_status'] == 3) { ?>
+                                <a href="?mod=bills&act=status&id=<?=$bill['bill_id']?>&status=4" class="btn btn-danger btn-sm">Approve</a><?php
+                            }
+                            if ($bill['bill_status'] == 6) {
+                                ?><a href="?mod=bills&act=status&id=<?=$bill['bill_id']?>&status=7" class="btn btn-success btn-sm">Complete</a><?php
+                            }
+                            if($bill['bill_status'] == 7) {
+                               ?><a href="?mod=bills&act=status&id=<?=$bill['bill_id']?>&status=8" class="btn btn-warning btn-sm">Archive</a>
+                            <?php }
+                            
+                            ?>
                         </td>
                     </tr>
                     <?php endforeach; ?>
@@ -73,48 +81,50 @@
 </div>
 
 
-
 <script>
-// API endpoint để xử lý dữ liệu (thay đổi theo cấu hình server)
-const apiEndpoint = '?mod=bills&act=api';
+document.addEventListener('DOMContentLoaded', function() {
+    function sendData() {
+        // Lấy tất cả các form
+        const forms = document.querySelectorAll('.bill-form');
+        
+        forms.forEach(form => {
+            // Tạo FormData từ form element
+            const formData = new FormData(form);
+            
+            // Log để debug
+            console.log('Sending data for form:', form.id, {
+                bill_id: formData.get('bill_id'),
+                bill_status: formData.get('bill_status')
+            });
 
-// Hàm gửi dữ liệu qua AJAX
-const sendData = () => {
-    // Lấy form và dữ liệu trong form
-    const form = document.getElementById('form-aaa');
-    const formData = new FormData(form);
-
-    // Chuyển FormData thành JSON để gửi qua API
-    const data = {};
-    formData.forEach((value, key) => {
-        data[key] = value;
-    });
-
-    // Gửi yêu cầu qua Fetch API
-    fetch(apiEndpoint, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data), // Gửi dữ liệu dạng JSON
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Cập nhật thành công:', data);
-        })
-        .catch(error => {
-            console.error('Lỗi khi cập nhật:', error);
+            // Gửi request
+            fetch('?mod=bills&act=api', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    console.log('Cập nhật thành công:', data);
+                } else {
+                    console.error('Lỗi cập nhật:', data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Lỗi khi gửi request:', error);
+            });
         });
-};
-setTimeout(() => {
-    sendData(); // Gửi lần đầu tiên
-}, 5000);
-setInterval(() => {
-    location.reload();
-}, 9000);
+    }
+
+    // Gửi dữ liệu lần đầu sau 5 giây
+    setTimeout(sendData, 5000);
+    
+    // Sau đó cứ mỗi 5 giây gửi một lần
+    setInterval(sendData, 5000);
+    
+    // Tải lại trang mỗi 9 giây
+    setInterval(() => {
+        location.reload();
+    }, 9000);
+});
 </script>

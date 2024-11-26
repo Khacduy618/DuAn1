@@ -58,7 +58,7 @@ class BillController
         if (isset($_GET['id'])) {
             $billId = $_GET['id'];
             // Cập nhật trạng thái hóa đơn thành trạng thái "Completed" hoặc "Pending"
-            $this->billModel->updateStatus($billId, 2); // Ví dụ: chuyển về trạng thái "Completed"
+            $this->billModel->updateStatus($billId, 7); // Ví dụ: chuyển về trạng thái "Completed"
 
             // Sau khi khôi phục, chuyển hướng về danh sách hóa đơn bình thường
             header('Location: ?mod=bills&act=list');
@@ -88,24 +88,16 @@ class BillController
     {
         if (isset($_GET['id'])) {
             $billId = $_GET['id'];
-
-            // Handle form submission to update status
-            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['newStatus'])) {
-                $newStatus = (int) $_POST['newStatus'];  // Cast to int to avoid any injection issues
-                $this->billModel->updateStatus($billId, $newStatus);
+            $newStatus = $_GET['status'];  // Cast to int to avoid any injection issues
+            $this->billModel->updateStatus($billId, $newStatus);
 
                 // Redirect back to the list after updating
-                if ($newStatus === 3) {
-                    header('Location: ?mod=bills&act=archived');
-                } else {
-                    header('Location: ?mod=bills&act=list');
-                }
-                exit;
+            if ($newStatus === 8) {
+                header('Location: ?mod=bills&act=archived');
+            } else {
+                header('Location: ?mod=bills&act=list');
             }
-
-            // Fetch bill details for rendering the form
-            $billDetails = $this->billModel->details($billId);
-            require_once('MVC/Views/admin/index.php');
+            exit;
         } else {
             header('Location: ?mod=bills&act=list');
         }
@@ -126,7 +118,7 @@ class BillController
             return;
         }
         $bill_id = $_POST['bill_id'] ?? '';
-        if (empty($product_id)) {
+        if (empty($bill_id)) {
             echo json_encode([
                 'success' => false,
                 'message' => 'Thiếu bill_id'
@@ -135,17 +127,14 @@ class BillController
         }
         $data = [];
         if (!empty($_POST['bill_status'])) {
-            if ($_POST['bill_status'] == 0 || $_POST['bill_status'] == 1) {
-                $data['bill_status'] = 2;
-            }
-            if ($_POST['bill_status'] == 2) {
+            if ($_POST['bill_status'] == 1 || $_POST['bill_status'] == 2) {
                 $data['bill_status'] = 3;
             }
-            if ($_POST['bill_status'] == 3) {
-                $data['bill_status'] = 4;
-            }
-            if($_POST['bill_status'] == 4) {
+            if ($_POST['bill_status'] == 4) {
                 $data['bill_status'] = 5;
+            }
+            if ($_POST['bill_status'] == 5) {
+                $data['bill_status'] = 6;
             }
             
         }
@@ -187,7 +176,7 @@ class BillController
             return;
         }
         $bill_id = $_POST['bill_id'] ?? '';
-        if (empty($product_id)) {
+        if (empty($bill_id)) {
             echo json_encode([
                 'success' => false,
                 'message' => 'Thiếu bill_id'

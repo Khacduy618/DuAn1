@@ -25,7 +25,7 @@ class BillModel extends Model
                   LEFT JOIN Tede_Shop.user ON bills.bill_userEmail = user.user_email
                   LEFT JOIN Tede_Shop.coupons ON bills.bill_coupon = coupons.coupon_id
                   /*WHERE bills.bill_id = ? AND bills.deleted = 0 */
-                  WHERE bills.bill_status != 7
+                  WHERE bills.bill_status != 8
                   ORDER BY bills.bill_time DESC";
 
         return pdo_query($query);
@@ -69,7 +69,7 @@ class BillModel extends Model
                      bills.bill_time 
               FROM bills
               LEFT JOIN user ON bills.bill_userEmail = user.user_email
-              WHERE bills.bill_status = 7
+              WHERE bills.bill_status = 8
               ORDER BY bill_time DESC";
         return pdo_query($query);
     }
@@ -126,7 +126,7 @@ class BillModel extends Model
                   FROM $this->table
                   LEFT JOIN Tede_Shop.user ON bills.bill_userEmail = user.user_email
                   LEFT JOIN Tede_Shop.coupons ON bills.bill_coupon = coupons.coupon_id
-                  WHERE bills.bill_id = ? AND bills.bill_status != 6 
+                  WHERE bills.bill_id = ? AND bills.bill_status != 8 
         ";
         return pdo_query_one($query,$id);
     }
