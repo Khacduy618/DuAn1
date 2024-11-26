@@ -48,12 +48,12 @@
                         </td>
                         <td><?php echo htmlspecialchars($bill['bill_time']); ?></td>
                         <form class="bill-form" id="form-<?=$bill['bill_id']?>">
-                <input type="hidden" name="bill_id" value="<?=$bill['bill_id']?>">
-                <input type="hidden" name="bill_status" value="<?=$bill['bill_status']?>">
+                            <input type="hidden" name="bill_id" value="<?=$bill['bill_id']?>">
+                            <input type="hidden" name="bill_status" value="<?=$bill['bill_status']?>">
                         </form>
                         <td>
                             <a href="?mod=bills&act=detail&id=<?php echo $bill['bill_id']; ?>"
-                                class="btn btn-primary btn-sm">Chi Tiết Đơn Hàng</a>
+                                class="btn btn-primary btn-sm">Bill details</a>
                             <?php if ($bill['bill_status'] == 3) { ?>
                                 <a href="?mod=bills&act=status&id=<?=$bill['bill_id']?>&status=4" class="btn btn-danger btn-sm">Approve</a><?php
                             }
