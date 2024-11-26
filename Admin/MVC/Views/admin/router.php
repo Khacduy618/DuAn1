@@ -92,7 +92,7 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                     require_once('MVC/Views/review/list.php');
                     break;
                 case 'detail':
-                    require_once('MVC/Views/review/details.php');
+                    require_once('MVC/Views/review/detail.php');
                     break;
                 default:
                     require_once('MVC/Views/review/list.php');

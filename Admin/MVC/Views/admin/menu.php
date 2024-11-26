@@ -85,14 +85,6 @@
             <span class="title">Role</span>
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="?mod=analytics">
-            <span class="icon">
-                <i class="fa-solid fa-square-poll-vertical fa-xl"></i>
-            </span>
-            <span class="title">Analytics</span>
-        </a>
-    </li>
     <?php } ?>
     <li class="nav-item">
         <a class="nav-link" href="../?mod=login">
