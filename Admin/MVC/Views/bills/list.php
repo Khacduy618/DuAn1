@@ -7,8 +7,6 @@
             <a href="?mod=bills&act=archived" class="btn btn-warning px-4 py-2 text-dark fw-bold">View Saved Orders Store</a>
         </div>
     </div>
-    <div class="card-body">
-        <!-- Table for Bills -->
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
                 <thead class="table-dark">
@@ -29,21 +27,31 @@
                         <td><?=$bill['bill_id']; ?></td>
                         <td><?=$bill['bill_userEmail']; ?></td>
                         <td><?=$bill['user_full_name']; ?></td>
-                        <td><?=number_format($bill['total_price'],0,',','.')?> đ</td>.
+                        <td><?=number_format($bill['total_price'],0,',','.')?> đ</td>
                         <td>
                             <p id="status"><?php
-                                    $statusMapping = [
-                                        1 => 'Unpaid', 
-                                        2 => 'Paid', 
-                                        3 => 'Pending', 
-                                        4 => 'Approved', 
-                                        5 => 'Delivering', 
-                                        6 => 'Delivered', 
-                                        7 => 'Completed', 
-                                        8 => 'Archive' 
-                                    ];
-                                    echo htmlspecialchars($statusMapping[$bill['bill_status']]);
-                                    ?></p>
+                                $statusClasses = [
+                                    1 => 'badge bg-danger',     // Unpaid
+                                    2 => 'badge bg-success',    // Paid
+                                    3 => 'badge bg-warning',    // Processing
+                                    4 => 'badge bg-info',       // Approved
+                                    5 => 'badge bg-primary',    // Delivering
+                                    6 => 'badge bg-secondary',  // Delivered
+                                    7 => 'badge bg-success'     // Completed
+                                ];
+                                $statusLabels = [
+                                    1 => 'Unpaid',
+                                    2 => 'Paid',
+                                    3 => 'Processing',
+                                    4 => 'Approved',
+                                    5 => 'Delivering',
+                                    6 => 'Delivered',
+                                    7 => 'Completed'
+                                ];
+                                ?>
+                                <span class="<?= $statusClasses[$bill['bill_status']] ?>">
+                                    <?= $statusLabels[$bill['bill_status']] ?>
+                                </span></p>
                         </td>
                         <td><?=$bill['bill_time']; ?></td>
                         <form class="bill-form" id="form-<?=$bill['bill_id']?>">
@@ -75,8 +83,7 @@
                 </tbody>
             </table>
         </div>
-    </div>
-</div>
+    
 </div>
 
 
