@@ -10,140 +10,66 @@ $user_images_display = (is_file($imgPath) && !empty($user['user_images']))
         <h1>Update User Information</h1>
     </div>
 
-    <!-- Form cập nhật -->
     <div class="row mb-4 frmcontent">
         <form action="?mod=user&act=update" method="post" enctype="multipart/form-data" class="p-3">
-            <div class="d-flex align-items-start mb-4" style="gap: 1rem;">
+            <!-- Hiển thị ảnh -->
+            <div class="d-flex align-items-center mb-4" style="gap: 1.5rem;">
                 <div>
-                    <img src="<?= $user_images_display ?>" alt="User Image" id="user_image_preview"
-                        style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px; border: 2px solid #ddd;">
+                    <img
+                        src="<?= $user_images_display ?>"
+                        alt="User Image"
+                        id="user_image_preview"
+                        class="border"
+                        style="width: 110px; height: 110px; object-fit: cover;">
                 </div>
-                <div class="d-flex flex-column justify-content-end" style="height: 99px;">
-                    <button type="button" class="btn btn-outline-primary btn-sm shadow-sm"
+                <div class="d-flex flex-column justify-content-end" style="height: 109px;">
+                    <button
+                        type="button"
+                        class="btn btn-outline-primary btn-sm shadow-sm"
                         onclick="document.getElementById('user_images').click();">
-                        Tải ảnh mới lên
+                        <i class="fas fa-upload"></i> Upload New Image
                     </button>
                 </div>
-
             </div>
+            <input type="file" id="user_images" name="user_images" accept="image/*" class="d-none" onchange="updateImagePreview(event)">
 
-            <!-- File input ẩn -->
-            <input type="file" id="user_images" name="user_images" accept="image/*" class="d-none"
-                onchange="updateImagePreview(event)">
-
-            <!-- Các trường thông tin -->
+            <!-- Trường thông tin người dùng -->
             <div class="mb-3">
                 <label for="user_name" class="form-label fw-bold">Full Name</label>
-                <input type="text" id="user_name" name="user_name" class="form-control shadow-sm"
-                    value="<?= $user['user_name'] ?>" required>
+                <input type="text" id="user_name" name="user_name" class="form-control shadow-sm" value="<?= $user['user_name'] ?>" required>
             </div>
 
             <div class="mb-3">
                 <label for="user_email" class="form-label fw-bold">Email</label>
-                <input type="email" id="user_email" name="user_email" class="form-control shadow-sm bg-light"
-                    value="<?= $user['user_email'] ?>" readonly>
+                <input type="email" id="user_email" name="user_email" class="form-control shadow-sm bg-light" value="<?= $user['user_email'] ?>" readonly>
             </div>
 
             <div class="mb-3">
                 <label for="user_phone" class="form-label fw-bold">Phone Number</label>
-                <input type="text" id="user_phone" name="user_phone" class="form-control shadow-sm"
-                    value="<?= $user['user_phone'] ?>" required>
+                <input type="text" id="user_phone" name="user_phone" class="form-control shadow-sm" value="<?= $user['user_phone'] ?>" required>
             </div>
 
-            <!-- Hiển thị địa chỉ nếu có -->
+            <!-- Địa chỉ -->
+            <input type="hidden" name="address_id" value="<?= $address[0]['address_id'] ?? '' ?>">
             <div class="mb-3">
-                <label for="address_name" class="form-label fw-bold">Address</label>
-                <input type="text" id="address_name" name="address_name" class="form-control shadow-sm"
-                    value="<?= !empty($address) ? $address[0]['address_name'] : '' ?>" required>
+                <label for="address_name" class="form-label">Address</label>
+                <input type="text" id="address_name" name="address_name" class="form-control" value="<?= $address[0]['address_name'] ?? '' ?>">
             </div>
 
             <div class="mb-3">
-                <label for="address_street" class="form-label fw-bold">Street</label>
-                <input type="text" id="address_street" name="address_street" class="form-control shadow-sm"
-                    value="<?= !empty($address) ? $address[0]['address_street'] : '' ?>" required>
+                <label for="address_street" class="form-label">Street</label>
+                <input type="text" id="address_street" name="address_street" class="form-control" value="<?= $address[0]['address_street'] ?? '' ?>">
             </div>
 
-            <?php
-            $provinces = [
-                'Hà Nội',
-                'Hồ Chí Minh',
-                'Đà Nẵng',
-                'Cần Thơ',
-                'An Giang',
-                'Bà Rịa - Vũng Tàu',
-                'Bắc Giang',
-                'Bắc Kạn',
-                'Bạc Liêu',
-                'Bắc Ninh',
-                'Bến Tre',
-                'Bình Dương',
-                'Bình Định',
-                'Bình Phước',
-                'Bình Thuận',
-                'Cao Bằng',
-                'Cà Mau',
-                'Cần Thơ',
-                'Đắk Lắk',
-                'Đắk Nông',
-                'Điện Biên',
-                'Đồng Nai',
-                'Đồng Tháp',
-                'Gia Lai',
-                'Hà Giang',
-                'Hà Nam',
-                'Hải Dương',
-                'Hải Phòng',
-                'Hậu Giang',
-                'Hòa Bình',
-                'Hưng Yên',
-                'Khánh Hòa',
-                'Kiên Giang',
-                'Kon Tum',
-                'Lai Châu',
-                'Lâm Đồng',
-                'Lạng Sơn',
-                'Lào Cai',
-                'Long An',
-                'Nam Định',
-                'Nghệ An',
-                'Ninh Bình',
-                'Ninh Thuận',
-                'Phú Thọ',
-                'Phú Yên',
-                'Quảng Bình',
-                'Quảng Nam',
-                'Quảng Ngãi',
-                'Quảng Ninh',
-                'Quảng Trị',
-                'Sóc Trăng',
-                'Sơn La',
-                'Tây Ninh',
-                'Thái Bình',
-                'Thái Nguyên',
-                'Thanh Hóa',
-                'Thừa Thiên Huế',
-                'Tiền Giang',
-                'Trà Vinh',
-                'Tuyên Quang',
-                'Vĩnh Long',
-                'Vĩnh Phúc',
-                'Yên Bái'
-            ];
-            ?>
             <div class="mb-3">
-                <label for="address_city" class="form-label fw-bold">City</label>
-                <select id="address_city" name="address_city" class="form-select shadow-sm" required>
+                <label for="address_city" class="form-label">City</label>
+                <select id="address_city" name="address_city" class="form-select">
                     <option value="">Choose</option>
-                    <?php foreach ($provinces as $province): ?>
-                    <?php
-                        $selected = (!empty($address) && $address[0]['address_city'] == $province) ? 'selected' : '';
-                        ?>
-                    <option value="<?= $province ?>" <?= $selected ?>><?= $province ?></option>
-                    <?php endforeach; ?>
                 </select>
             </div>
 
 
+            <!-- Vai trò và trạng thái -->
             <div class="mb-3">
                 <label for="user_role" class="form-label fw-bold">Role</label>
                 <select id="user_role" name="user_role" class="form-select shadow-sm">
@@ -171,14 +97,38 @@ $user_images_display = (is_file($imgPath) && !empty($user['user_images']))
 </div>
 
 <script>
-function updateImagePreview(event) {
-    const input = event.target;
-    const reader = new FileReader();
-    reader.onload = function(e) {
-        document.getElementById('user_image_preview').src = e.target.result;
-    };
-    if (input.files[0]) {
-        reader.readAsDataURL(input.files[0]);
+    function updateImagePreview(event) {
+        const input = event.target;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('user_image_preview').src = e.target.result;
+        };
+        if (input.files[0]) {
+            reader.readAsDataURL(input.files[0]);
+        }
     }
-}
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const citySelect = document.getElementById('address_city');
+        const selectedCity = '<?= $address[0]['address_city'] ?? '' ?>';
+
+        fetch('https://provinces.open-api.vn/api/')
+            .then(response => response.json())
+            .then(data => {
+                citySelect.innerHTML = '<option value="">Choose</option>';
+                data.forEach(city => {
+                    const option = document.createElement('option');
+                    option.value = city.name;
+                    option.textContent = city.name;
+                    if (city.name === selectedCity) {
+                        option.selected = true;
+                    }
+                    citySelect.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching cities:', error);
+                citySelect.innerHTML = '<option value="">Error loading cities</option>';
+            });
+    });
 </script>

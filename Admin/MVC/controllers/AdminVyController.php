@@ -10,18 +10,34 @@ class AdminVyController
         $this->model = new AdminVyModel();
     }
 
-    public function list()
-    {
-        $listuser = $this->model->getAllUserWithAddress();
-        foreach ($listuser as &$user) {
-            $user['address_display'] = (!empty($user['address_name']) || !empty($user['address_city']) || !empty($user['address_street']))
-                ? $user['address_name'] . ', ' . $user['address_city'] . ', ' . $user['address_street']
-                : 'Chưa có địa chỉ';
-        }
+public function list()
+{
+    $listuser = $this->model->getAllUserWithAddress();
+    foreach ($listuser as &$user) {
+        $user['address_display'] = (!empty($user['address_name']) || !empty($user['address_city']) || !empty($user['address_street']))
+            ? $user['address_name'] . ', ' . $user['address_city'] . ', ' . $user['address_street']
+            : 'Chưa có địa chỉ';
 
-        require_once("MVC/Views/admin/index.php");
+        $user['address_id'] = !empty($user['address']) ? $user['address'][0]['address_id'] : null;
     }
 
+    require_once("MVC/Views/admin/index.php");
+}
+
+    public function listAddress()
+    {
+        $listaddress = $this->model->getAllAddress(); 
+        require_once("MVC/Views/user/detail.php");
+    }
+
+    public function userAddress()
+    {
+        $user_email = $_GET['user_email'];
+        $listaddress = $this->model->getAddressByEmail($user_email);
+        
+        require_once("MVC/Views/admin/index.php");
+    }
+    
     public function add()
     {
         require_once("MVC/Views/admin/index.php");
@@ -53,6 +69,7 @@ class AdminVyController
             exit;
         }
     }
+
 
     public function edit()
     {
@@ -112,4 +129,55 @@ class AdminVyController
         header('Location: ?mod=user&act=list');
         exit;
     }
+
+
+public function updateAddress()
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $address_id = $_POST['address_id'] ?? null; 
+        $address_status = $_POST['address_status'] ?? null;
+
+        if ($address_id && isset($address_status)) {
+            $updated = $this->model->updateAddressStatus($address_id, $address_status);
+
+            $_SESSION['message'] = $updated 
+                ? 'Cập nhật trạng thái địa chỉ thành công.' 
+                : 'Cập nhật trạng thái địa chỉ thất bại.';
+        }
+
+        header('Location: ?mod=user&act=listAddress');
+        exit;
+    }
+}
+
+public function updateStatus()
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $address_id = $_POST['address_id'];
+        $address_status = $_POST['address_status'];
+
+        $this->model->updateAddressStatus($address_id, $address_status);
+        $_SESSION['message'] = "Cập nhật trạng thái thành công!";
+        header('Location: ?mod=user&act=listAddress');
+        exit;
+    }
+}
+
+
+    public function detail()
+    {
+        $user_email = $_GET['user_email'];
+
+        $user = $this->model->getUserByEmail($user_email);
+        $address = $this->model->getAddressByEmail($user_email);
+
+        if (!$user) {
+            header('Location: ?mod=user&act=list');
+            exit;
+        }
+
+        require_once("MVC/Views/user/listAddress.php");
+    }
+
+    
 }

@@ -48,25 +48,25 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                     }
             
             break;
-        case 'user':
-            switch ($act) {
-                case 'list':
-                    require_once('MVC/Views/user/list.php');
-                    break;
-                case 'add':
-                    require_once('MVC/Views/user/add.php');
-                    break;
-                case 'detail':
-                    require_once('MVC/Views/user/details.php');
-                    break;
-                case 'edit':
-                    require_once('MVC/Views/user/edit.php');
-                    break;
-                default:
-                    require_once('MVC/Views/user/list.php');
-                    break;
-            }
-            break;
+            case 'user':
+                switch ($act) {
+                    case 'list':
+                        require_once('MVC/Views/user/list.php');
+                        break;
+                    case 'add':
+                        require_once('MVC/Views/user/add.php');
+                        break;
+                    case 'listAddress':
+                        require_once('MVC/Views/user/listAddress.php');
+                        break;
+                    case 'edit':
+                        require_once('MVC/Views/user/edit.php');
+                        break;
+                    default:
+                        require_once('MVC/Views/user/list.php');
+                        break;
+                }
+                break;
         case 'blog':
             require_once('MVC/controllers/AdminCuongController.php');
             $controller_obj = new AdminCuongController();
@@ -220,8 +220,8 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                 case 'add':
                     require_once('MVC/Views/user/add.php');
                     break;
-                case 'detail':
-                    require_once('MVC/Views/user/details.php');
+                case 'listAddress':
+                    require_once('MVC/Views/user/listAddress.php');
                     break;
                 case 'edit':
                     require_once('MVC/Views/user/edit.php');

@@ -53,15 +53,14 @@
                     <thead>
                         <tr>
                             <th><input type="checkbox" id="selectAll"></th>
-                            <th>ẢNH ĐẠI DIỆN</th>
-                            <th>TÊN ĐĂNG NHẬP</th>
+                            <th>AVARTA</th>
+                            <th>USER NAME</th>
                             <th>EMAIL</th>
-                            <th>ĐIỆN THOẠI</th>
-                            <th>ĐỊA CHỈ</th> <!-- Cột địa chỉ -->
-                            <th>TRẠNG THÁI (1)</th>
-                            <th>TRẠNG THÁI (2)</th>
-                            <th>VAI TRÒ</th>
-                            <th>THAO TÁC</th>
+                            <th>PHONE NUMBER</th>
+                            <th>STATUS</th>
+                            <th>ROLES</th>
+                            <th>ADDRESS</th>
+                            <th>ACTION</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -72,31 +71,31 @@
                                 $edituser = "?mod=user&act=edit&user_email=" . $user_email;
                                 $deleteuser = "?mod=user&act=delete&user_email=" . $user_email;
                                 $images = "<img src='../uploaded/" . $user_images . "' alt='User Image' width='50'>";
-
+                                $url_email = "?mod=user&act=listAddress&user_email=".$user_email;
                                 // Xử lý địa chỉ
-                                $address_name = $user['address_name'] ?? '';
-                                $address_street = $user['address_street'] ?? '';
-                                $address_city = $user['address_city'] ?? '';
-                                $address_display = ($address_name . ', ' . $address_street . ', ' . $address_city . ', ');
+                                // $address_name = $user['address_name'] ?? '';
+                                // $address_street = $user['address_street'] ?? '';
+                                // $address_city = $user['address_city'] ?? '';
+                                // $address_display = ($address_name . ', ' . $address_street . ', ' . $address_city . ', ');
 
+                                // $address_status_display = isset($address_status) ? (($address_status == 0) ? 'User' : 'Wait') : 'Không rõ';
                                 $user_status_display = ($user_status == 1) ? 'Hiện' : 'Ẩn';
-                                $address_status_display = isset($address_status) ? (($address_status == 0) ? 'User' : 'Wait') : 'Không rõ';
                                 $user_role_display = $user_role == 0 ? 'User' : ($user_role == 1 ? 'Admin' : 'Employee');
-
                                 echo '<tr>
                                         <td><input type="checkbox" name="user_email[]" value="' . $user_email . '"></td>
                                         <td>' . $images . '</td>
                                         <td>' . $user_name . '</td>
                                         <td>' . $user_email . '</td>
                                         <td>' . $user_phone . '</td>
-                                        <td>' . $address_display . '</td> <!-- Hiển thị địa chỉ -->
                                         <td>' . $user_status_display . '</td>
-                                        <td>' . $address_status_display . '</td>
                                         <td>' . $user_role_display . '</td>
+                                        <td>
+                                        <a href="'. $url_email.'"><button type="button" class="btn btn-info">DETAIL</button></a>
+                                        </td>
                                     <td>
-                                <a href="' . $edituser . '"><button type="button" class="button-item bg-warning">SỬA</button></a>
+                                <a href="' . $edituser . '"><button type="button" class="button-item bg-warning">UPDATE</button></a>
                                 <a href="' . $deleteuser . '" onclick="return confirm(\'Bạn có chắc chắn muốn xóa tài khoản này không?\')">
-                                    <button class="button-item bg-danger" type="button">XÓA</button>
+                                    <button class="button-item bg-danger" type="button">DELETE</button>
                                 </a>
                             </td>
                         </tr>';
@@ -115,19 +114,13 @@
 </div>
 
 <script>
-// Tự động chọn tất cả checkbox khi click "selectAll"
-document.getElementById('selectAll').addEventListener('change', function() {
-    const isChecked = this.checked;
-    document.querySelectorAll('input[name="user_email[]"]').forEach(cb => cb.checked = isChecked);
-});
-
-// Kiểm tra nếu người dùng đã chọn ít nhất một tài khoản để xóa
-function confirmDeletion() {
-    const selectedUsers = document.querySelectorAll('input[name="user_email[]"]:checked');
-    if (selectedUsers.length === 0) {
-        alert('Vui lòng chọn ít nhất một tài khoản để xóa!');
-        return false;
+    // Kiểm tra nếu người dùng đã chọn ít nhất một tài khoản để xóa
+    function confirmDeletion() {
+        const selectedUsers = document.querySelectorAll('input[name="user_email[]"]:checked');
+        if (selectedUsers.length === 0) {
+            alert('Vui lòng chọn ít nhất một tài khoản để xóa!');
+            return false;
+        }
+        return confirm('Bạn có chắc chắn muốn xóa các tài khoản đã chọn không?');
     }
-    return confirm('Bạn có chắc chắn muốn xóa các tài khoản đã chọn không?');
-}
 </script>
