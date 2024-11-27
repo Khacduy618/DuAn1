@@ -36,7 +36,7 @@
                 </div>
                 <div class="form-group">
                     <label for="product_img_upload">Hình Ảnh Sản Phẩm:</label>
-                    <input type="file" name="product_img_upload" class="form-control">
+                    <input type="file" name="product_img_upload" class="form-control required">
                     <p><img src="<?php echo BASE_URL ?>/uploaded/<?=$product_img ?>" height="100" width="100"></p>
                 </div>
                 <div class="form-group">

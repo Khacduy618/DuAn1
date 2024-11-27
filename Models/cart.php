@@ -60,7 +60,7 @@ class Cart extends Model
         return pdo_query($sql, $userEmail);
     }
 
-    public function updateQuantity($userEmail, $productId, $quantity): int
+    public function updateQuantity($userEmail, $productId, $quantity)
     {
         $sql = "UPDATE cart_item 
                 SET quantity = ? 
@@ -69,13 +69,13 @@ class Cart extends Model
          pdo_execute($sql, $quantity, $userEmail, $productId);
     }
 
-    public function removeFromCart($userEmail, $productId): int
+    public function removeFromCart($userEmail, $productId)
     {
         $sql = "DELETE FROM cart_item WHERE cart_id = (SELECT cart_id FROM cart WHERE cart_userEmail = ?) AND pro_id = ?";
          pdo_execute($sql, $userEmail, $productId);
     }
 
-    public function clearCart($userEmail): int
+    public function clearCart($userEmail)
     {
         $sql = "DELETE FROM cart_item WHERE cart_id = (SELECT cart_id FROM cart WHERE cart_userEmail = ?)";
          pdo_execute($sql, $userEmail);

@@ -202,7 +202,7 @@
                         </div><!-- End .dropdown-cart-total -->
 
                         <div class="dropdown-cart-action">
-                            <a href="?act=cart" class="btn btn-primary">View Cart</a>\
+                            <a href="?act=cart" class="btn btn-primary">View Cart</a>
                             <form action="" method="GET">
                                 <input type="hidden" name="act" value="checkout">
                                 <input type="hidden" name="shipping" value="20000">
