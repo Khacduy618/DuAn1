@@ -97,36 +97,42 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                         break;
                 }
                 break;
-        case 'user':
-            require_once('MVC/controllers/AdminVyController.php');
-            $controller_obj = new AdminVyController();
-            switch ($act) {
-                case 'list':
-                    $controller_obj->list();
-                    break;
-                case 'detail':
-                    $controller_obj->detail();
-                    break;
-                case 'add':
-                    $controller_obj->add();
-                    break;
-                case 'store':
-                    $controller_obj->store();
-                    break;
-                case 'delete':
-                    $controller_obj->delete();
-                    break;
-                case 'edit':
-                    $controller_obj->edit();
-                    break;
-                case 'update':
-                    $controller_obj->update();
-                    break;
-                default:
-                    $controller_obj->list();
-                    break;
-            }
-            break;
+            case 'user':
+                require_once('MVC/controllers/AdminVyController.php');
+                $controller_obj = new AdminVyController();
+                switch ($act) {
+                    case 'list':
+                        $controller_obj->list();
+                        break;
+                    case 'add':
+                        $controller_obj->add();
+                        break;
+                    case 'store':
+                        $controller_obj->store();
+                        break;
+                    case 'detail':
+                        $controller_obj->detail();
+                        break; // Sửa từ `store` thành `detail`
+                    case 'delete':
+                        $controller_obj->delete();
+                        break;
+                    case 'edit':
+                        $controller_obj->edit();
+                        break;
+                    case 'update':
+                        $controller_obj->update();
+                        break;
+                    case 'listAddress':
+                        $controller_obj->userAddress(); 
+                        break;
+                    case 'updateAddress':
+                        $controller_obj->updateAddress(); 
+                        break;
+                    default:
+                        $controller_obj->list();
+                        break;
+                }
+                break;
             case 'blog':
                 require_once('MVC/controllers/AdminCuongController.php');
                 $controller_obj = new AdminCuongController();
@@ -337,6 +343,42 @@ if (isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) {
                             break;
                         default:
                             $controller_obj->admin();
+                            break;
+                    }
+                    break;
+                case 'user':
+                    require_once('MVC/controllers/AdminVyController.php');
+                    $controller_obj = new AdminVyController();
+                    switch ($act) {
+                        case 'list':
+                            $controller_obj->list();
+                            break;
+                        case 'add':
+                            $controller_obj->add();
+                            break;
+                        case 'store':
+                            $controller_obj->store();
+                            break;
+                        case 'detail':
+                            $controller_obj->detail();
+                            break; // Sửa từ `store` thành `detail`
+                        case 'delete':
+                            $controller_obj->delete();
+                            break;
+                        case 'edit':
+                            $controller_obj->edit();
+                            break;
+                        case 'update':
+                            $controller_obj->update();
+                            break;
+                        case 'listAddress':
+                            $controller_obj->userAddress(); 
+                            break;
+                        case 'updateAddress':
+                            $controller_obj->updateAddress(); 
+                            break;
+                        default:
+                            $controller_obj->list();
                             break;
                     }
                     break;
