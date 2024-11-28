@@ -30,7 +30,7 @@ class BillController
             require_once('MVC/Views/admin/index.php');
         } else {
             // Redirect to list if no ID is provided
-            header('Location: ?mod=bills&act=detail');
+            header('Location: ?mod=bill');
         }
     }
     public function archivedBills()
@@ -49,7 +49,7 @@ class BillController
         if (isset($_GET['id'])) {
             $billId = $_GET['id'];
             $this->billModel->softDelete($billId);
-            header('Location: ?mod=bills&act=list');
+            header('Location: ?mod=bill&act=list');
             exit;
         }
     }
@@ -61,11 +61,11 @@ class BillController
             $this->billModel->updateStatus($billId, 7); // Ví dụ: chuyển về trạng thái "Completed"
 
             // Sau khi khôi phục, chuyển hướng về danh sách hóa đơn bình thường
-            header('Location: ?mod=bills&act=list');
+            header('Location: ?mod=bill&act=list');
             exit;
         } else {
             // Nếu không có ID, chuyển hướng về danh sách lưu trữ
-            header('Location: ?mod=bills&act=archived');
+            header('Location: ?mod=bill&act=archived');
         }
     }
     public function restoreBillDeleted()
@@ -75,11 +75,11 @@ class BillController
             $this->billModel->restoreDeleted($billId);
 
             // Redirect to the deleted bills list after restoration
-            header('Location: ?mod=bills&act=deleted');
+            header('Location: ?mod=bill&act=deleted');
             exit;
         } else {
             // If no ID is provided, redirect to the list
-            header('Location: ?mod=bills&act=list');
+            header('Location: ?mod=bill&act=list');
         }
     }
 
@@ -88,18 +88,18 @@ class BillController
     {
         if (isset($_GET['id'])) {
             $billId = $_GET['id'];
-            $newStatus = $_GET['status'];  // Cast to int to avoid any injection issues
+            $newStatus = $_GET['status'];  
             $this->billModel->updateStatus($billId, $newStatus);
 
                 // Redirect back to the list after updating
             if ($newStatus === 8) {
-                header('Location: ?mod=bills&act=archived');
+                header('Location: ?mod=bill&act=archived');
             } else {
-                header('Location: ?mod=bills&act=list');
+                header('Location: ?mod=bill&act=list&status=' . $newStatus);
             }
             exit;
         } else {
-            header('Location: ?mod=bills&act=list');
+            header('Location: ?mod=bill&act=list');
         }
     }
 

@@ -76,9 +76,9 @@
             <?php endif; ?>
             <div class="mt-4">
                 <?php if (isset($billDetails['deleted']) && $billDetails['deleted'] == 1): ?>
-                <a href="?mod=bills&act=deleted" class="btn btn-secondary">Trở về Danh Sách Hoá Đơn Đã Xoá</a>
+                <a href="?mod=bill&act=deleted" class="btn btn-secondary">Trở về Danh Sách Hoá Đơn Đã Xoá</a>
                 <?php else: ?>
-                <a href="?mod=bills&act=list" class="btn btn-secondary">Trở Về Danh Sách Hoá Đơn</a>
+                <a href="?mod=bill&act=list" class="btn btn-secondary">Trở Về Danh Sách Hoá Đơn</a>
                 <?php endif; ?>
             </div>
         </div>

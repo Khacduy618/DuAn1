@@ -4,7 +4,7 @@
     <!-- Archived Bills Section -->
     <div class="container-fluid text-center my-4">
         <div class="d-flex justify-content-center gap-3">
-            <a href="?mod=bills&act=list" class="btn btn-secondary px-4 py-2 text-dark fw-bold">Quay lại danh sách hóa đơn</a>
+            <a href="?mod=bill&act=list" class="btn btn-secondary px-4 py-2 text-dark fw-bold">Quay lại danh sách hóa đơn</a>
         </div>
     </div>
         <div class="card-body">
@@ -37,8 +37,8 @@
                                 <td><?php echo 'Archived'; ?></td>
                                 <td><?php echo htmlspecialchars($bill['bill_time']); ?></td>
                                 <td>
-                                    <a href="?mod=bills&act=detail&id=<?php echo $bill['bill_id']; ?>" class="btn btn-primary btn-sm">Details</a>
-                                    <a href="?mod=bills&act=restore_archived&id=<?php echo $bill['bill_id']; ?>" class="btn btn-success btn-sm" onclick="return confirm('Are you sure you want to restore this bill?');">Restore</a>
+                                    <a href="?mod=bill&act=detail&id=<?php echo $bill['bill_id']; ?>" class="btn btn-primary btn-sm">Details</a>
+                                    <a href="?mod=bill&act=restore_archived&id=<?php echo $bill['bill_id']; ?>" class="btn btn-success btn-sm" onclick="return confirm('Are you sure you want to restore this bill?');">Restore</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

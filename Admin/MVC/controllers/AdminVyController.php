@@ -30,13 +30,15 @@ public function list()
         require_once("MVC/Views/user/detail.php");
     }
 
-    public function userAddress()
-    {
+public function userAddress()
+{
+    if (isset($_GET['user_email'])) {
         $user_email = $_GET['user_email'];
         $listaddress = $this->model->getAddressByEmail($user_email);
-        
         require_once("MVC/Views/admin/index.php");
     }
+}
+
     
     public function add()
     {
@@ -145,10 +147,11 @@ public function updateAddress()
                 : 'Cập nhật trạng thái địa chỉ thất bại.';
         }
 
-        header('Location: ?mod=user&act=listAddress');
+        header('Location: ?mod=user');
         exit;
     }
 }
+
 
 public function updateStatus()
 {
@@ -158,7 +161,7 @@ public function updateStatus()
 
         $this->model->updateAddressStatus($address_id, $address_status);
         $_SESSION['message'] = "Cập nhật trạng thái thành công!";
-        header('Location: ?mod=user&act=listAddress');
+        header('Location: ?mod=user&act=userAddress');
         exit;
     }
 }

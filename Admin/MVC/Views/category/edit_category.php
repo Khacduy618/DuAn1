@@ -22,6 +22,8 @@
 <div class="col-md-12">
     <?php
     // var_dump($categorybyid);
+    if (isset($categorybyid)) {
+    
     foreach($categorybyid as $key => $cate){
         extract($cate);
     ?>
@@ -90,6 +92,9 @@
     
     </form>
     <?php
+    }
+    }else {
+        echo '<p style="color:red;font-weight:bold">Không tìm thấy danh mục nào!</p>';
     }
     ?>
 </div>

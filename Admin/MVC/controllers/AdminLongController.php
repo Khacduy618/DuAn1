@@ -2,6 +2,7 @@
 // spl_autoload_register(function($class){
 //     include_once('./libs/'.$class.'.php');
 // });
+
 class AdminLongController extends Dcontroller{
     private $model = "AdminLongModel";
     private $table = "user";
@@ -29,162 +30,24 @@ class AdminLongController extends Dcontroller{
             $this->login();
 
         }
-        public function login(){
-            //$this->load->view('cpanel/header');
-            // Session::init();
-            // if(Session::get("Login")==true){
-            //     header("Location: ?act=adminLong&ctlr=AdminLongController&method=dashboard");
-            //     // này khoi đang nhập zo cho lẹ , nhớ tắt
-            // }
-            $this->load->view('cpanel/login');
-
-            //$this->load->view('cpanel/footer');
-        }
-
-                                                                                                                                                                                                                                                                                                                                                protected function getSecurity($input){
-                                                                                                                                                                                                                                                                                                                                                    return parent::getSecurityEncryption($input,$this->keySecurity);
-                                                                                                                                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                                                                                                                                                protected function setSecurity($data_set){
-                                                                                                                                                                                                                                                                                                                                                    return parent::setSecurityEncryption($data_set,$this->keySecurity);
-                                                                                                                                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                                                                                                                                                protected function getDecryptArray($result){
-                                                                                                                                                                                                                                                                                                                                                    return parent::decryptArray($result, $this->keySecurity);
-                                                                                                                                                                                                                                                                                                                                                }
+    
         
-        public function sign_up(){
-
-            //$this->load->view('cpanel/header');
-            // Session::init();
-            if(Session::get("Login")==true && Session::get('userrole') === 9){
-                header("Location: ?act=adminLong&ctlr=AdminLongController&method=dashboard");
-                return;
-            }
-            $this->load->view('cpanel/signup');
-
-            //$this->load->view('cpanel/footer');
-        }
-
-        public function dashboard(){
-            Session::checkSession();
-            $this->load->view('cpanel/header');
-            $this->load->view('cpanel/menu');
-            $this->load->view('cpanel/dashboard');
-            $this->load->view('cpanel/footer');
-        }
-        public function dashboard2() {
-            Session::checkSession2();
-            $current_page = 0; $limit =0; $offset = 0;
-            $current_page = isset($_GET['current_page']) ? (int)$_GET['current_page'] : 1; // Lấy trang hiện tại
-            $limit = isset($_GET['per_page']) ? (int)$_GET['per_page'] : 6; // Số mục trên mỗi trang
-            $offset = ($current_page - 1) * $limit; // Tính offset để truy vấn
-            
         
-            // Lấy dữ liệu sản phẩm theo trang
-            $admin = new Admin();
-            $data = $admin->index($offset, $limit,$current_page);
-        
-            // Truyền dữ liệu vào view
-            $this->load->view('cpanel2/dashboard2', ['renderTableProduct' => $data]);
-        }
-
-        // public function non_dashboard(){
-        //     echo 'this is non-dashboard';
-        // }
-
-        
-
-        public function auttc_login(){ // authentication_login
-            parent::check_server_method('POST',$this->controllerHasError);
-            parent::ciipv('username', 3, $this->controllerHasError);
-            parent::ciipv('password', 3, $this->controllerHasError);
-            $username = $this->setSecurity($_POST['username']);
-            $password = md5($_POST['password']);
-            $loginmodel = $this->load->model($this->model);
-
-            $count = $loginmodel->login($this->table,$username,$password);
-            
-            if($count==0){
-                Session::set('msg','Tài khoản hoặc mật khẩu sai xin hãy kiểm tra lại');
-                header("Location: ?act=adminLong&ctlr=AdminLongController&method=login");
+        public function list_product($ajax = true) {
+            if($ajax == true){
+                $current_page = 0; $limit =0; $offset = 0;
+                $current_page = isset($_GET['current_page']) ? (int)$_GET['current_page'] : 1;
+                $limit = isset($_GET['per_page']) ? (int)$_GET['per_page'] : 6; 
+                $offset = ($current_page - 1) * $limit; 
+                $admin = new Admin();
+                
+                $data = $admin->index($offset, $limit,$current_page);
+                $this->load->view('admin/index', ['renderTableProduct' => $data]);                
             }else{
-                $result = $loginmodel->getLogin($this->table,$username,$password);
-                // Session::init();
-                Session::set('login',true);
-                Session::set('username', $this->getSecurity($result[0]['user_full_name']));
-                Session::set('useremail',$result[0]['user_email']);
-                $_SESSION['userrole'] =$result[0]['user_role'];
-                if($_SESSION['userrole'] === 9)
-                    header("Location: ?act=adminLong&ctlr=AdminLongController&method=dashboard");
-                elseif($_SESSION['userrole'] === 8)
-                    header("Location: ?act=adminLong&ctlr=AdminLongController&method=dashboard2");
-                else
-                    header("Location: ?act=home");
-            }
-        }
-
-        public function auttc_signup(){
-            $model = $this->load->model($this->model);
-            // parent::check_server_method('POST',$this->controllerHasError);
-            // parent::check_post_variable('btn_update',$this->controllerHasError);
-            //user 6 field 7 từ form confirmpassword
-            $username = parent::ciipv('username', 3, $this->controllerHasError);
-            $password = parent::ciipv('password', 3, $this->controllerHasError);
-            $confirmpassword = parent::ciipv('confirmpassword', 3, $this->controllerHasError);
-            parent::cccpv($password,$confirmpassword,$this->controllerHasError);
-            $fullname = parent::ciipv('fullname', 3, $this->controllerHasError);
-            $email = parent::ciipv('email', 3, $this->controllerHasError);
-            $userimages_default = $this->userimages_default;
-            $role_default = $this->role_default;
-            //user 6 field
-            $data = ['user_name' =>$this->setSecurity($username),'user_full_name' =>$this->setSecurity($fullname),'user_images' => $this->setSecurity($userimages_default),'user_password'=>md5($password),'user_email'=>$email,'user_role'=>$role_default];
-            $result = $model->call_insert_user($this->table, $data);
-            if($result){
-                $_SESSION['msg'] = "Chúc Mừng Bạn Đã Đăng Ký Thành Công 🤩🤩!";
-                header("Location: ".'?act=adminLong&ctlr=AdminLongController&method=sign_up');
-                exit();
-            }else{
-                $_SESSION['msg'] = "Đăng Ký thất bại 😅😅!";
-                header("Location: ".'?act=adminLong&ctlr=AdminLongController&method=sign_up');
-                exit();
-            }
-        }
-
-        public function logOut(){
-            // Session::init();
-            Session::destroy();
-            header("Location: ?act=adminLong&ctlr=AdminLongController&method=login");
-        }
-        public function proFile(){
-            Session::checkSession();
-            $this->load->view('cpanel/header');
-            $this->load->view('cpanel/menu');
-            $loginmodel = $this->load->model($this->model);
-            $result = $loginmodel->select_all_by_email_user($this->table,Session::get('useremail'));
-            $decryptedResult = $this->getDecryptArray($result);
-            $this->load->view('cpanel/account/profile',['data'=>$decryptedResult]);
-            $this->load->view('cpanel/footer');
-        }
-        public function proFileEdit(){
-            Session::checkSession();
-            $model = $this->load->model($this->model);
-            // parent::check_server_method('POST',$this->controllerHasError);
-            // parent::check_post_variable('btn_update',$this->controllerHasError);
-            $user_name = parent::ciipv('user_name', 3, $this->controllerHasError);
-            $user_full_name = parent::ciipv('user_full_name', 3, $this->controllerHasError);
-            $up_images_name = parent::iifnv('up_images', $this->controllerHasError);
-            $up_images_tmp_name = (parent::iiftnv('up_images', $this->controllerHasError)); 
-            parent::mulfnew($up_images_name,$up_images_tmp_name,$this->part_upload,$this->controllerHasError);
-            parent::ulfold($this->getDecryptArray($model->select_all_by_email_user($this->table,Session::get('useremail')))[0]['user_images'],$this->part_upload,$this->controllerHasError);
-            $data = ['user_name' => $this->setSecurity($user_name),'user_full_name' => $this->setSecurity($user_full_name),'user_images' => $this->setSecurity($up_images_name)];
-            $result = $model->call_update_user($this->table, $data, Session::get('useremail'));
-            if($result){
-                $_SESSION['msg'] = "Sua du lieu thanh cong!";
-                header("Location: " . BASE_URL . '?act=adminLong&ctlr=AdminLongController&method=proFile');
-                exit();
-            }else{
-                $_SESSION['msg'] = "Sua du lieu that bai!";
-                header("Location: " . BASE_URL . $this->controllerHasError);
-                exit();
+                require_once 'MVC/Models/AdminLongModel.php';
+                $model = new AdminLongModel();
+                $product = $model->call_list_product();
+                require_once 'MVC/Views/admin/index.php';
             }
         }
         public function add_product(){
@@ -452,26 +315,7 @@ class AdminLongController extends Dcontroller{
                 ]
             ]);
         }
-        public function get_product_ajax_debug() { // dùng để debug
-            header("Access-Control-Allow-Origin: *");
-            header('Content-Type: application/json');
-            header("Access-Control-Allow-Methods: POST");
-            header("Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Authorization, X-Requested-With");
-            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
-                $product_id = $_POST['product_id'];
-                $model = $this->load->model($this->model);
-                $product = $model->getProductById($this->tableProduct,$product_id);
-                header('Content-Type: application/json');
-                $debug = [
-                    'product_id' => $product_id,
-                    'product_data' => $product,
-                    'sql_query' => $model->last_query ?? null,
-                    'error' => error_get_last()
-                ];
-                echo json_encode($debug);
-                exit;
-            }
-        }
+      
         
         public function upload_file_ajax() {
             header("Access-Control-Allow-Origin: *");
@@ -576,17 +420,7 @@ class AdminLongController extends Dcontroller{
         
         
         
-        public function list_product(){
-            $current_page = 0; $limit =0; $offset = 0;
-            $current_page = isset($_GET['current_page']) ? (int)$_GET['current_page'] : 1; // Lấy trang hiện tại
-            $limit = isset($_GET['per_page']) ? (int)$_GET['per_page'] : 6; // Số mục trên mỗi trang
-            $offset = ($current_page - 1) * $limit; // Tính offset để truy vấn
-            $admin = new Admin();
-            
-            $data = $admin->index($offset, $limit,$current_page);
-            $this->load->view('admin/index', ['renderTableProduct' => $data]);
-            unset($admin);
-        }
+        
         public function delete_product_ajax($param){
             header("Access-Control-Allow-Origin: *");
             header('Content-Type: application/json'); 

@@ -24,7 +24,8 @@
                             your code</span></label>'?>
                 </form>
             </div><!-- End .checkout-discount -->
-            <form action="#" id='form_thanhtoan'>
+            <form action="?act=checkout&xuli=save" id='form_thanhtoan' method="POST">
+                
                 <div class="row">
                     <div class="col-lg-9">
                         <h2 class="checkout-title">Billing Details</h2><!-- End .checkout-title -->

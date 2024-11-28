@@ -58,7 +58,7 @@
                             <th>EMAIL</th>
                             <th>PHONE NUMBER</th>
                             <th>STATUS</th>
-                            <th>ROLES</th>
+                            <!-- <th>ROLES</th> -->
                             <th>ADDRESS</th>
                             <th>ACTION</th>
                         </tr>
@@ -88,7 +88,6 @@
                                         <td>' . $user_email . '</td>
                                         <td>' . $user_phone . '</td>
                                         <td>' . $user_status_display . '</td>
-                                        <td>' . $user_role_display . '</td>
                                         <td>
                                         <a href="'. $url_email.'"><button type="button" class="btn btn-info">DETAIL</button></a>
                                         </td>

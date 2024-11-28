@@ -4,7 +4,7 @@
     <!-- Order Details Section -->
     <div class="container-fluid text-center my-4">
         <div class="d-flex justify-content-center gap-3">
-            <a href="?mod=bills&act=archived" class="btn btn-warning px-4 py-2 text-dark fw-bold">View Saved Orders Store</a>
+            <a href="?mod=bill&act=archived" class="btn btn-warning px-4 py-2 text-dark fw-bold">View Saved Orders Store</a>
         </div>
     </div>
         <div class="table-responsive">
@@ -59,16 +59,16 @@
                             <input type="hidden" name="bill_status" value="<?=$bill['bill_status']?>">
                         </form>
                         <td>
-                            <a href="?mod=bills&act=detail&id=<?php echo $bill['bill_id']; ?>"
+                            <a href="?mod=bill&act=detail&id=<?php echo $bill['bill_id']; ?>"
                                 class="btn btn-primary btn-sm">Bill details</a>
                             <?php if ($bill['bill_status'] == 3) { ?>
-                                <a href="?mod=bills&act=status&id=<?=$bill['bill_id']?>&status=4" class="btn btn-danger btn-sm">Approve</a><?php
+                                <a href="?mod=bill&act=status&id=<?=$bill['bill_id']?>&status=4" class="btn btn-danger btn-sm">Approve</a><?php
                             }
                             if ($bill['bill_status'] == 6) {
-                                ?><a href="?mod=bills&act=status&id=<?=$bill['bill_id']?>&status=7" class="btn btn-success btn-sm">Complete</a><?php
+                                ?><a href="?mod=bill&act=status&id=<?=$bill['bill_id']?>&status=7" class="btn btn-success btn-sm">Complete</a><?php
                             }
                             if($bill['bill_status'] == 7) {
-                               ?><a href="?mod=bills&act=status&id=<?=$bill['bill_id']?>&status=8" class="btn btn-warning btn-sm">Archive</a>
+                               ?><a href="?mod=bill&act=status&id=<?=$bill['bill_id']?>&status=8" class="btn btn-warning btn-sm">Archive</a>
                             <?php }
                             
                             ?>
@@ -85,9 +85,27 @@
         </div>
     
 </div>
+<?php
+$statusMessages = [
+    3 => 'Đơn hàng đang xử lý',
+    5 => 'Đơn hàng đang giao',
+    6 => 'Đơn hàng giao thành công'
+];
 
+// Get status from URL if exists
+$currentStatus = isset($_GET['status']) ? (int)$_GET['status'] : null;
+?>
+
+<!-- Add this right after your container div, before the table -->
+<?php if (isset($currentStatus) && isset($statusMessages[$currentStatus])): ?>
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <?php echo $statusMessages[$currentStatus]; ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php endif; ?>
 
 <script>
+    
 document.addEventListener('DOMContentLoaded', function() {
     function sendData() {
         // Lấy tất cả các form
@@ -104,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             // Gửi request
-            fetch('?mod=bills&act=api', {
+            fetch('?mod=bill&act=api', {
                 method: 'POST',
                 body: formData
             })
@@ -133,4 +151,13 @@ document.addEventListener('DOMContentLoaded', function() {
         location.reload();
     }, 9000);
 });
+
+const urlParams = new URLSearchParams(window.location.search);
+const status = urlParams.get('status');
+
+if (status) {
+    // Remove status from URL after showing alert
+    let newUrl = window.location.href.split('&status=')[0];
+    window.history.replaceState({}, document.title, newUrl);
+}
 </script>
