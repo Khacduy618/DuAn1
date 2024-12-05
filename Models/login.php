@@ -83,5 +83,37 @@ class Login extends Model
         }
         header('Location: ?act=taikhoan#dangky');
     }
-  
+
+    function account($user_email)
+    {
+        $query = "SELECT u.*, a.*, i.user_images 
+              FROM user u
+              LEFT JOIN address a ON u.user_email = a.address_userEmail
+              LEFT JOIN user_images i ON u.user_id = i.user_id
+              WHERE u.user_email = ?";
+        return pdo_query_one($query, $user_email);
+    }
+    function update_account($data, $address_data, $user_email)
+    {
+        // Cập nhật thông tin user
+        $fields = "";
+        foreach ($data as $key => $value) {
+            $fields .= "$key = '$value',";
+        }
+        $fields = trim($fields, ",");
+        $query = "UPDATE user SET $fields WHERE user_email = ?";
+        pdo_execute($query, $user_email);
+
+        // Cập nhật thông tin địa chỉ
+        $address_fields = "";
+        foreach ($address_data as $key => $value) {
+            $address_fields .= "$key = '$value',";
+        }
+        $address_fields = trim($address_fields, ",");
+        $query = "UPDATE address SET $address_fields WHERE address_userEmail = ?";
+        pdo_execute($query, $user_email);
+
+        // Thông báo kết quả
+        setcookie('msg', 'Cập nhật thành công', time() + 2);
+    }
 }
