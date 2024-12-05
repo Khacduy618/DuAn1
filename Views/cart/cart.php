@@ -26,7 +26,7 @@
                 <div class="col-lg-9">
 
                     <table class="table table-cart table-mobile">
-                        <form id="cartForm" action="?act=checkout" method="GET">
+                        <form id="cartForm" action="?act=checkout" method="POST">
                             <thead>
                                 <tr>
                                     <th><input type="checkbox" onchange="selectAllCheckboxes()" name="select-all"
@@ -129,43 +129,31 @@
                                     <td><?=number_format($shipping,0,",",".")?> đ</td>
                                 </tr><!-- End .summary-shipping-row -->
 
-                                <tr class="summary-shipping-row">
-                                    <td>
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" id="standart-shipping" name="shipping"
-                                                class="custom-control-input">
-                                            <label class="custom-control-label"
-                                                for="standart-shipping">Standart:</label>
-                                        </div><!-- End .custom-control -->
-                                    </td>
-                                    <td>$10.00</td>
-                                </tr><!-- End .summary-shipping-row -->
-
-                                <tr class="summary-shipping-row">
-                                    <td>
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" id="express-shipping" name="shipping"
-                                                class="custom-control-input">
-                                            <label class="custom-control-label" for="express-shipping">Express:</label>
-                                        </div><!-- End .custom-control -->
-                                    </td>
-                                    <td>$20.00</td>
-                                </tr><!-- End .summary-shipping-row -->
-                        
                                 <tr class="summary-shipping-estimate">
-                                    <td>Select Shipping Address: </td>
+                                    <td><label for="address_id">Select Shipping Address: </label></td>
                                     <td>
-                                        
-                                        <select class="form-select mt-2" name="shipping_address" style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; background-color: #fff; font-size: 14px;">
+                                        <select class="form-select" id="address_id" name="address_id">
                                             <?php foreach($addresses as $addr): ?>
-                                                <option name="address_id" value="<?=$addr['address_id']?>">
+                                                <option value="<?=$addr['address_id']?>">
                                                     <?=$addr['address_name']?> - <?=$addr['address_city']?>, <?=$addr['address_street']?>
                                                 </option>
                                             <?php endforeach; ?>
                                         </select>
                                     </td>
                                 </tr><!-- End .summary-shipping-estimate -->
-
+                                    <!-- <div class="checkout-discount">
+                                        <form action="?act=checkout" method="POST">
+                                            <input type="text" class="form-control" name="coupon_name" required id="checkout-discount-input"
+                                                value="<?=isset($_POST['coupon_name']) ? $_POST['coupon_name'] : ''?>">
+                                            <label for="checkout-discount-input" class="text-truncate">
+                                                <?php if(isset($_POST['coupon_name'])): ?>
+                                                    <?=$_POST['coupon_name']?>
+                                                <?php else: ?>
+                                                    Have a coupon? <span>Click here to enter your code</span>
+                                                <?php endif; ?>
+                                            </label>
+                                        </form>
+                                    </div> -->
                                 <tr class="summary-total">
                                     <td>Total:</td>
                                     <td><?=number_format($checkout,0,",",".")?> đ</td>
@@ -173,7 +161,6 @@
                             </tbody>
                         </table><!-- End .table table-summary -->
 
-                        <input type="hidden" name="act" value="checkout">
                         <input type="hidden" name="shipping" value="<?=$shipping?>">
                         <button type='submit' class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO
                             CHECKOUT</button>

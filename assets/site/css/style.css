@@ -189,6 +189,27 @@ body {
     content: '\e812';
     margin-right: .9rem;
 }
+.summary-shipping-estimate select.form-select {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.summary-shipping-estimate select.form-select:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.summary-shipping-estimate select.form-select:hover {
+    border-color: #adb5bd;
+}
 
 ::-moz-selection {
     color: #fff;
@@ -16766,7 +16787,7 @@ button:focus {
 .table.table-summary .custom-control {
     margin: 0
 }
-
+/* 
 .table.table-summary .summary-shipping-estimate {
     color: #333;
     font-weight: 400;
@@ -16792,7 +16813,7 @@ button:focus {
 .table.table-summary .summary-shipping-estimate a:focus {
     color: #c96;
     border-bottom-color: #c96
-}
+} */
 
 .summary-cart .table.table-summary thead th:last-child,
 .summary-cart .table.table-summary tbody td:last-child {

@@ -15,24 +15,44 @@ class CheckoutController
     }
     function list()
     {
-      if (isset($_SESSION['login'])) {
-            $shipping = $_GET['shipping'];
+        if (isset($_SESSION['login'])) {
             $userEmail = $_SESSION['login']['user_email'];
-            $address = $this->addressModel->getOneAddress($userEmail);
-             if(isset($_POST['coupon_name'])){
+
+            if (isset($_POST['shipping'])) {
+                $shipping = $_POST['shipping'];
+            } else {
+                setcookie('msg1', 'Vui lòng chọn phương thức vận chuyển', time() + 5);
+                header('location: ?act=cart');
+                return;
+            }
+
+
+            if (isset($_POST['address_id'])) {
+                $address_id = $_POST['address_id'];
+                $address = $this->addressModel->getOneAddressById($address_id);
+            } else {
+                setcookie('msg1', 'Vui lòng chọn địa chỉ giao hàng', time() + 5);
+                header('location: ?act=cart');
+                return;
+            }
+
+            if (isset($_POST['coupon_name'])) {
                 $name = $_POST['coupon_name'];
                 $coupon = $this->checkout_model->coupon($name);
-            };
-            if (isset($_GET['cart_items'])) {
-            $cartItems = $this->cartModel->getCartItems($userEmail);
-            $selectedItemIds = $_GET['cart_items'];
-            $cartItems = array_filter($cartItems, function($item) use ($selectedItemIds) {
-                return in_array($item['cart_item_id'], $selectedItemIds);
-            });
-            }else{
+            }
+
+            if (isset($_POST['cart_items'])) {
+                $cartItems = $this->cartModel->getCartItems($userEmail);
+                $selectedItemIds = $_POST['cart_items'];
+                $cartItems = array_filter($cartItems, function($item) use ($selectedItemIds) {
+                    return in_array($item['cart_item_id'], $selectedItemIds);
+                });
+            } else {
                 setcookie('msg1', 'Vui lòng chọn ít nhất 1 sản phẩm để thanh toán', time() + 5);
                 header('location: ?act=cart');
+                return;
             }
+
             require_once 'Views/index.php';
         } else {
             header('location: ?act=taikhoan');

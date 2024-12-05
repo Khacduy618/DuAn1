@@ -19,6 +19,11 @@ class Address extends Model {
         return pdo_query($sql, $userEmail);
     }
 
+    public function getOneAddressById($addressId) {
+        $sql = "SELECT * FROM address WHERE address_id = ?";
+        return pdo_query_one($sql, $addressId);
+    }
+
     // Thêm địa chỉ mới
     public function addAddress($userEmail, $name, $city, $street) {
         $sql = "INSERT INTO address (address_userEmail, address_name, address_city, address_street) VALUES (?, ?, ?, ?)";

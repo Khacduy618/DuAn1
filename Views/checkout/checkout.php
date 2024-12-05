@@ -17,11 +17,16 @@
     <div class="checkout">
         <div class="container">
             <div class="checkout-discount">
-                <form action="" method="POST">
+                <form action="?act=checkout" method="POST">
                     <input type="text" class="form-control" name="coupon_name" required id="checkout-discount-input"
                         value="<?=isset($_POST['coupon_name']) ? $_POST['coupon_name'] : ''?>">
-                    <?=isset($_POST['coupon_name']) ? $_POST['coupon_name'] : '<label for="checkout-discount-input" class="text-truncate">Have a coupon? <span>Click here to enter
-                            your code</span></label>'?>
+                    <label for="checkout-discount-input" class="text-truncate">
+                        <?php if(isset($_POST['coupon_name'])): ?>
+                            <?=$_POST['coupon_name']?>
+                        <?php else: ?>
+                            Have a coupon? <span>Click here to enter your code</span>
+                        <?php endif; ?>
+                    </label>
                 </form>
             </div><!-- End .checkout-discount -->
             <form action="?act=checkout&xuli=save" id='form_thanhtoan' method="POST">
@@ -52,45 +57,13 @@
                         <input type="text" class="form-control"
                             placeholder="<?=isset($address['address_street']) ? $address['address_street'] :''?>"
                             readonly>
-
-                        <!-- <div class="row">
-                            <div class="col-sm-6">
-                                <label>Town / City *</label>
-                                <input type="text" class="form-control" required>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <label>State / County *</label>
-                                <input type="text" class="form-control" required>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label>Postcode / ZIP *</label>
-                                <input type="text" class="form-control" required>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <label>Phone *</label>
-                                <input type="tel" class="form-control" required>
-                            </div>
-                        </div> -->
-
-
                         <?php if(!isset($_SESSION['login'])) {
                         ?>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="checkout-create-acc">
-                            <label class="custom-control-label" for="checkout-create-acc">Create an account?</label>
+                            <a href="?act=taikhoan&xuli=dangky" class="custom-control-label">Create an account?</a>
                         </div><!-- End .custom-checkbox -->
                         <?php }
                         ?>
-                        <!-- <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="checkout-diff-address">
-                            <label class="custom-control-label" for="checkout-diff-address">Ship to a different
-                                address?</label>
-                        </div> -->
 
                         <label>Order notes (optional)</label>
                         <textarea class="form-control" cols="30" rows="4"
