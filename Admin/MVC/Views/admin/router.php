@@ -61,51 +61,54 @@
                     break;
             }
             break;
-        case 'blog':
-            require_once('MVC/controllers/AdminCuongController.php');
-            $controller_obj = new AdminCuongController();
-            switch ($act) {
+            case 'blog':
+                require_once('MVC/controllers/AdminCuongController.php');
+                $controller_obj = new AdminCuongController();
+                switch ($act) {
+                    case 'list':
+                        require_once('MVC/Views/blog/list.php');
+                        break;
+                    case 'comments':
+                        require_once('MVC/Views/blog/comment.php');
+                        break;
+                    case 'add':
+                        require_once('MVC/Views/blog/add.php');
+                        break;
+                    case 'edit':
+                        require_once('MVC/Views/blog/edit.php');
+                        break;
+                    case 'soft_delete':
+                        require_once('MVC/Views/blog/soft_delete.php');
+                        break;
+                    case 'force_delete':
+                        require_once('MVC/Views/blog/force_delete.php');
+                        break;
+                    case 'recycle':
+                        require_once('MVC/Views/blog/recycle_bin.php');
+                        break;
+                    case 'back_up':
+                        break;
+                    default:
+                        require_once('MVC/Views/blog/list.php');
+                        break;
+                }
+                break;
+            case 'comment':
+                switch ($act) {
                 case 'list':
-                    require_once('MVC/Views/blog/list.php');
-                    break;
-                case 'comments':
-                    require_once('MVC/Views/blog/comment.php');
+                    require_once('MVC/Views/comment/list.php');
                     break;
                 case 'add':
-                    require_once('MVC/Views/blog/add.php');
-                    break;
-                case 'edit':
-                    require_once('MVC/Views/blog/edit.php');
-                    break;
-                case 'soft_delete':
-                    require_once('MVC/Views/blog/soft_delete.php');
+                    require_once('MVC/Views/comment/add.php');
                     break;
                 case 'recycle':
-                    require_once('MVC/Views/blog/recycle_bin.php');
-                    break;
-                case 'back_up':
+                    require_once('MVC/Views/comment/recycle_bin.php');
                     break;
                 default:
-                    require_once('MVC/Views/blog/list.php');
+                    require_once('MVC/Views/comment/list.php');
                     break;
-            }
-            break;
-        case 'comment':
-            switch ($act) {
-            case 'list':
-                require_once('MVC/Views/comment/list.php');
+                }
                 break;
-            case 'add':
-                require_once('MVC/Views/comment/add.php');
-                break;
-            case 'recycle':
-                require_once('MVC/Views/comment/recycle_bin.php');
-                break;
-            default:
-                require_once('MVC/Views/comment/list.php');
-                break;
-            }
-            break;
         case 'review' : 
             switch ($act) {
                 case 'list':

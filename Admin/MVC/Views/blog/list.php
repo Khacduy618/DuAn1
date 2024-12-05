@@ -1,11 +1,18 @@
 <div class="d-flex justify-content-between mb-4">
+    <?php if (isset($_SESSION['privilege']['blog']) && isset($_SESSION['privilege']['blog']['add'])) { ?>
     <a class="btn btn-success" href="?mod=blog&act=add">
         <i class="bi bi-plus-circle"></i> Create New Blog Post
     </a>
+    <?php } ?>
+    <?php if (isset($_SESSION['privilege']['blog']) && isset($_SESSION['privilege']['blog']['soft_delete'])) { ?>
     <a class="btn btn-warning" href="?mod=blog&act=recycle">
         <i class="bi bi-trash"></i> Recycle Bin
     </a>
+    <?php } ?>
+
 </div>
+
+
 
 <table class="table table-hover table-striped">
     <thead class="table-white">
@@ -24,8 +31,8 @@
             <td class="align-middle"><?= htmlspecialchars($blog['blog_title']) ?></td>
             <td class="align-middle">
                 <img src="../uploaded/<?= htmlspecialchars($blog['blog_image']) ?>"
-                    alt="Image of <?= htmlspecialchars($blog['blog_title']) ?>" 
-                    class="img-thumbnail" width="60px" height="60px">
+                    alt="Image of <?= htmlspecialchars($blog['blog_title']) ?>" class="img-thumbnail" width="60px"
+                    height="60px">
             </td>
             <td class="align-middle">
                 <?= htmlspecialchars(substr($blog['blog_content'], 0, 90))?>...
@@ -36,23 +43,28 @@
                 <span class="badge bg-secondary"><?= $commentCount ?> comments</span>
                 <?php if($commentCount > 0) { ?>
                 <br>
-                <a href="?mod=comment&act=list&id=<?= htmlspecialchars($blog['blog_id']) ?>" 
-                   class="btn btn-sm btn-info mt-1">
+                <a href="?mod=comment&act=list&id=<?= htmlspecialchars($blog['blog_id']) ?>"
+                    class="btn btn-sm btn-info mt-1">
                     <i class="bi bi-eye"></i> View
                 </a>
                 <?php } ?>
             </td>
             <td class="align-middle">
                 <div class="btn-group" role="group">
+                    <?php if (isset($_SESSION['privilege']['blog']) && isset($_SESSION['privilege']['blog']['edit'])) { ?>
                     <a href="?mod=blog&act=edit&id=<?= htmlspecialchars($blog['blog_id']) ?>"
                         class="btn btn-sm btn-primary">
                         <i class="bi bi-pencil"></i> Edit
                     </a>
-                    <button type="button" class="btn btn-sm btn-danger delete-button" 
-                            data-bs-toggle="modal" data-bs-target="#deleteCourseModal" 
-                            data-id="<?= htmlspecialchars($blog['blog_id']) ?>">
+                    <?php } ?>
+                    <?php if (isset($_SESSION['privilege']['blog']) && isset($_SESSION['privilege']['blog']['soft_delete'])) { ?>
+                    <button type="button" class="btn btn-sm btn-danger delete-button" data-bs-toggle="modal"
+                        data-bs-target="#deleteCourseModal" data-id="<?= htmlspecialchars($blog['blog_id']) ?>">
                         <i class="bi bi-trash"></i> Delete
                     </button>
+                    <?php } ?>
+
+
                 </div>
             </td>
         </tr>

@@ -63,6 +63,24 @@ switch ($act) {
     case "product":
         require_once("product/product.php");
         break;
+    case "product-review":
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            require_once("Controllers/ReviewControllers.php");
+            $controller = new ReviewController();
+            $controller->submitReview();
+            // Sau khi xử lý xong, redirect về trang product
+            $product_id = isset($_POST['id']) ? (int)$_POST['id'] : null;
+            header("Location: index.php?act=product&id=" . $product_id);
+            exit();
+        } else {
+            header("Location: index.php");
+            exit();
+        }
+        break;
+    case 'get-reviews':
+        $reviewController = new ReviewController();
+        $reviewController->getReviews();
+        break;
     case "about":
         require_once("introduce/about.php");
         break;

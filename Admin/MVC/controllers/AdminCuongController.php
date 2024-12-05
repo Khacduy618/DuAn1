@@ -53,26 +53,38 @@
             $blogId = $_GET['id'];
             $blog = $this->Blog->findByID($blogId);
             $products = $this->Blog->getAllProducts();
-        
             if (isset($_POST['submit'])) {
                 // Initialize image name with existing image
-                $imageName = $blog['blog_image'];
-        
+                $blog_image = $blog['blog_image'];
+                if($_FILES['image']['name']){
                 // Only process new image if one was uploaded
-                if (!empty($_FILES['image']['name'])) {
-                    if (!$this->handleFileUpload($_FILES['image'])) {
-                        return;
-                    }
-                    $imageName = $_FILES['image']['name'];
+                $blog_image = $_FILES['image']['name']; // Lấy tên file ảnh
+                
+                $target_file = $this->target_dir . basename($blog_image); // Đường dẫn lưu ảnh
+            // Kiểm tra kiểu tệp hợp lệ
+                $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+                $valid_extensions = ['jpg', 'jpeg', 'png', 'gif'];
+
+                 // Kiểm tra tệp tải lên
+                 if (in_array($imageFileType, $valid_extensions)) {
+                // Di chuyển tệp từ thư mục tạm thời đến thư mục đích
+                if (move_uploaded_file($_FILES['image']['tmp_name'], $target_file)) {
+                    echo "The file " . htmlspecialchars($blog_image) . " has been uploaded.";
+                } else {
+                    echo "Sorry, there was an error uploading your file.";
+                    return; // Dừng lại nếu có lỗi
                 }
-        
+                } else {
+                 echo "Invalid file type. Only JPG, JPEG, PNG, and GIF files are allowed.";
+                 return; // Dừng lại nếu loại tệp không hợp lệ
+               }
+            }
                 $blogData = [
                     'title' => $_POST['title'],
-                    'image' => $imageName,
+                    'image' => $blog_image,
                     'blog_pro_id' => $_POST['blog_pro_id'],
                     'content' => $_POST['content']
                 ];
-        
                 if ($this->validateBlogData($blogData, false)) {
                     $this->Blog->editBlog(
                         $blogData['title'],

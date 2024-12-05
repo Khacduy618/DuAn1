@@ -20,7 +20,8 @@
             </th>
             <td><?=$Employee['user_email']?></td>
             <td><?=$Employee['user_phone']?></td>
-            <td><a href="?mod=authorization&act=authorize&id=<?=$Employee['user_email']?> ">authorization</a></td>
+            <td><a class="btn btn-success"
+                    href="?mod=authorization&act=authorize&id=<?=$Employee['user_email']?> ">action</a></td>
         </tr>
         <?php } ?>
     </tbody>

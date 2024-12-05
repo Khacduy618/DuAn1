@@ -22,32 +22,54 @@ $act = isset($_GET['act']) ? $_GET['act'] : "admin";
 
 //1 mod cua switch, 1 act cuar switch con
 
-
 if(isset($_SESSION['privilege']['blog']) && $mod == 'blog' ){
-    require_once('MVC/controllers/AdminCuongController.php');
-    $controller_obj = new AdminCuongController();
-    if(isset($_SESSION['privilege']['blog'][$act]) && $act == 'edit' ){
-         $controller_obj->edit();
-    }
-    else if(isset($_SESSION['privilege']['blog'][$act]) && $act == 'add' ){
-         $controller_obj->add();
-    }
-    else if(isset($_SESSION['privilege']['blog'][$act]) && $act == 'soft_delete' ){
-         $controller_obj->soft_delete();
-    }
-    else if(isset($_SESSION['privilege']['blog']['soft_delete']) && $act == 'recycle' ){
-         $controller_obj->recycle_bin();
-    }
-    else if(isset($_SESSION['privilege']['blog']['soft_delete']) && $act == 'force_delete' ){
-         $controller_obj->force_delete();
-    }
-    else if(isset($_SESSION['privilege']['blog']['soft_delete']) && $act == 'back_up' ){
-         $controller_obj->back_up();
-    }
-    else{
-          $controller_obj->list();
-    }
-}
+     require_once('MVC/controllers/AdminCuongController.php');
+     $controller_obj = new AdminCuongController();
+     if(isset($_SESSION['privilege']['blog'][$act]) && $act == 'edit' ){
+          $controller_obj->edit();
+     }
+     else if(isset($_SESSION['privilege']['blog'][$act]) && $act == 'add' ){
+          $controller_obj->add();
+     }
+     else if(isset($_SESSION['privilege']['blog'][$act]) && $act == 'soft_delete' ){
+          $controller_obj->soft_delete();
+     }
+     else if(isset($_SESSION['privilege']['blog']['soft_delete']) && $act == 'recycle' ){
+          $controller_obj->recycle_bin();
+     }
+     else if(isset($_SESSION['privilege']['blog']['soft_delete']) && $act == 'force_delete' ){
+          $controller_obj->force_delete();
+     }
+     else if(isset($_SESSION['privilege']['blog']['soft_delete']) && $act == 'back_up' ){
+          $controller_obj->back_up();
+     }
+     else{
+           $controller_obj->list();
+     }
+ }
+ //COMMENT
+ else if(isset($_SESSION['privilege']['comment']) && $mod == 'comment' ){
+      require_once('MVC/controllers/AdminCuongController.php');
+     $controller_obj = new Comment();
+      if(isset($_SESSION['privilege']['comment'][$act]) && $act == 'list' ){
+          $controller_obj->comment_index();
+     }
+     else if(isset($_SESSION['privilege']['comment'][$act]) && $act == 'soft_delete' ){
+          $controller_obj->soft_delete();
+     }
+     else if(isset($_SESSION['privilege']['blog']['soft_delete']) && $act == 'recycle' ){
+          $controller_obj->recycle_bin();
+     }
+     else if(isset($_SESSION['privilege']['blog']['soft_delete']) && $act == 'force_delete' ){
+          $controller_obj->force_delete();
+     }
+     else if(isset($_SESSION['privilege']['blog']['soft_delete']) && $act == 'back_up' ){
+          $controller_obj->back_up();
+     }
+     else{
+           $controller_obj->comment_index();
+     }
+ }
 ///PRODUCT
 // Trong AdminLongController
 // các method product : list_product add_product insert_product delete_product edit_product update_product 

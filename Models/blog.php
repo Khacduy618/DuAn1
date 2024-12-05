@@ -12,9 +12,17 @@ class Blog extends Model
         $sql = "SELECT * FROM $this->table ORDER BY blog_view DESC LIMIT 0, 4";
         return pdo_query($sql);
     }
-   function select_comments(){ 
-        $sql = "SELECT * FROM user JOIN comments  ON comments.comment_userEmail = user.user_email;";
-        return pdo_query($sql);
-   }
+    function get_related_blog($id_pro){
+         $sql = "SELECT * FROM $this->table  WHERE blog_pro_id = ?";
+        return pdo_query($sql, $id_pro);
+    }
+    function select_comments($blog_id) { 
+    $sql = "SELECT * 
+            FROM comments 
+            JOIN user 
+            ON comments.comment_userEmail = user.user_email 
+            WHERE comment_blog_id = ?";
+    return pdo_query($sql, $blog_id); 
+}
 }
 ?>

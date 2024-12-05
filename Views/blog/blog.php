@@ -29,7 +29,7 @@
                     <article class="entry">
                         <figure class="entry-media">
                             <a href="?act=blog_detail&id_blog=<?=$blog['blog_id']?>">
-                                <img src="assets/site/images/blog/<?= $blog['blog_image'] ?>">
+                                <img src="uploaded/<?= $blog['blog_image'] ?>">
                             </a>
                         </figure><!-- End .entry-media -->
 
@@ -98,17 +98,6 @@
                             </form>
                         </div><!-- End .widget -->
 
-                        <div class="widget widget-cats">
-                            <h3 class="widget-title">Categories</h3><!-- End .widget-title -->
-
-                            <ul>
-                                <li><a href="#">Lifestyle<span>3</span></a></li>
-                                <li><a href="#">Shopping<span>3</span></a></li>
-                                <li><a href="#">Fashion<span>1</span></a></li>
-                                <li><a href="#">Travel<span>3</span></a></li>
-                                <li><a href="#">Hobbies<span>2</span></a></li>
-                            </ul>
-                        </div><!-- End .widget -->
 
                         <div class="widget">
                             <h3 class="widget-title">Popular Posts</h3><!-- End .widget-title -->
@@ -119,7 +108,7 @@
                                             echo '<li>
                                             <figure>
                                             <a href="?act=blog_detail&id_blog=' . $post["blog_id"] . '">
-                                    <img src="assets/site/images/blog/sidebar/' . $post["blog_image"] . '" alt="post">
+                                    <img src="uploaded/' . $post["blog_image"] . '" alt="post">
                                             </a>
                                             </figure>
                                             <div>
@@ -129,29 +118,8 @@
                             </ul><!-- End .posts-list -->
                         </div><!-- End .widget -->
 
-                        <div class="widget widget-banner-sidebar">
-                            <div class="banner-sidebar-title">ad box 280 x 280</div><!-- End .ad-title -->
 
-                            <div class="banner-sidebar banner-overlay">
-                                <a href="#">
-                                    <img src="assets/site/images/blog/sidebar/banner.jpg" alt="banner">
-                                </a>
-                            </div><!-- End .banner-ad -->
-                        </div><!-- End .widget -->
 
-                        <div class="widget">
-                            <h3 class="widget-title">Browse Tags</h3><!-- End .widget-title -->
-
-                            <div class="tagcloud">
-                                <a href="#">fashion</a>
-                                <a href="#">style</a>
-                                <a href="#">women</a>
-                                <a href="#">photography</a>
-                                <a href="#">travel</a>
-                                <a href="#">shopping</a>
-                                <a href="#">hobbies</a>
-                            </div><!-- End .tagcloud -->
-                        </div><!-- End .widget -->
 
                         <div class="widget widget-text">
                             <h3 class="widget-title">About Blog</h3><!-- End .widget-title -->

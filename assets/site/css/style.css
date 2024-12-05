@@ -10453,7 +10453,7 @@ small.form-text {
     appearance: none
 }
 
-.select-custom::after {
+/* .select-custom::after {
     font-family: "molla";
     content: '\f110';
     position: absolute;
@@ -10463,7 +10463,7 @@ small.form-text {
     font-size: 1.5rem;
     transform: translateY(-51%);
     color: #333
-}
+} */
 
 .select-custom .form-control,
 .select-custom .form-control-sm {
@@ -11107,8 +11107,6 @@ tbody.product-detail td {
     letter-spacing: -.01em;
     border-radius: 0;
     margin: 0;
-    left: 700px;
-    padding: 50px;
     border: none;
     position: absolute;
     z-index: 100;
