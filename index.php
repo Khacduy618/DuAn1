@@ -19,7 +19,7 @@ switch ($mod) {
         $act = isset($_GET['xuli']) ? $_GET['xuli'] : "taikhoan";
         require_once('Controllers/LoginController.php');
         $controller_obj = new LoginController();
-        if ((isset($_SESSION['isLogin']) && $_SESSION['isLogin'] == true)) {
+        if ((isset($_SESSION['login']) && $_SESSION['login'] == true)) {
             switch ($act) {
                 case 'dangxuat':
                     $controller_obj->dangxuat();

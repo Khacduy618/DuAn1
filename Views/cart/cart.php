@@ -151,28 +151,18 @@
                                     </td>
                                     <td>$20.00</td>
                                 </tr><!-- End .summary-shipping-row -->
-
+                        
                                 <tr class="summary-shipping-estimate">
+                                    <td>Select Shipping Address: </td>
                                     <td>
-                                        Select Shipping Address<br>
+                                        
                                         <select class="form-select mt-2" name="shipping_address" style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; background-color: #fff; font-size: 14px;">
                                             <?php foreach($addresses as $addr): ?>
-                                                <option value="<?=$addr['address_id']?>">
+                                                <option name="address_id" value="<?=$addr['address_id']?>">
                                                     <?=$addr['address_name']?> - <?=$addr['address_city']?>, <?=$addr['address_street']?>
                                                 </option>
                                             <?php endforeach; ?>
                                         </select>
-                                    </td>
-                                    <td>
-                                        <?php
-                                            if($address){
-                                                    ?>
-                                        <li><?=$address['address_name']?> - <?=$address['address_city']?>,
-                                            <?=$address['address_street']?></li>
-                                        <?php
-                                                }
-                                            
-                                        ?>
                                     </td>
                                 </tr><!-- End .summary-shipping-estimate -->
 
