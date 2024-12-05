@@ -34,7 +34,9 @@
         </div>
 
         <div class="col-md-3 d-flex gap-3 align-items-center">
-            <a href="?mod=address&act=add&user_email=<?=$_GET['user_email']?>" class="btn btn-success">Add Address</a>
+            
+            <a href="?mod=address&act=add&user_email=<?=$_GET['user_email']?>"   class="btn btn-success <?=!isset($_SESSION['privilege']['address']['add']) ? 'disabled' : ''?>">Add Address</a>
+            
         </div>
     </div>
 
@@ -73,7 +75,8 @@
                                 <form action="?mod=address&act=updateStatus" method="post">
                                     <input type="hidden" name="address_id" value="<?= $address['address_id']; ?>">
                                     <input type="hidden" name="user_email" value="<?= $user_email; ?>">
-                                    <select id="address_status" name="address_status" class="form-select shadow-sm" onchange="this.form.submit()">
+                                    <select id="address_status" name="address_status" class="form-select shadow-sm " onchange="this.form.submit()" <?=!isset($_SESSION['privilege']['address']['updateStatus']) ? 'disabled' : ''?>>
+                                       
                                         <option value="0" <?= $address['address_status'] == "0" ? "selected" : "" ?>>Use</option>
                                         <option value="1" <?= $address['address_status'] == "1" ? "selected" : "" ?>>Wait</option>
                                     </select>

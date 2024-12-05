@@ -1,4 +1,4 @@
-<a class="btn btn-primary" href="?mod=comment&act=recycle"><i class="bi bi-trash"></i></a>
+<a class="btn btn-primary <?=!isset($_SESSION['privilege']['comment']['recycle']) ? 'disabled' : ''?>" href="?mod=comment&act=recycle"><i class="bi bi-trash"></i></a>
 <a class="btn btn-primary" href="?mod=blog&act=list">Back</a>
 <table class="table">
     <thead>
@@ -16,7 +16,7 @@
             <td><?=$comment['comment_content']?></td>
             <td><?= $comment['comment_dateTime']?></td>
             <td>
-                <button type="button" class="btn btn-primary delete-button" data-bs-toggle="modal"
+                <button type="button" class="btn btn-primary delete-button <?=!isset($_SESSION['privilege']['comment']['soft_delete']) ? 'disabled' : ''?>" data-bs-toggle="modal"
                     data-bs-target="#deleteCourseModal" data-id="<?= htmlspecialchars($comment['comment_id']) ?>">
                     Xóa
                 </button>

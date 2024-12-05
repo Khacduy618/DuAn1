@@ -1,14 +1,10 @@
 <div class="d-flex justify-content-between mb-4">
-    <?php if (isset($_SESSION['privilege']['blog']) && isset($_SESSION['privilege']['blog']['add'])) { ?>
-    <a class="btn btn-success" href="?mod=blog&act=add">
+    <a class="btn btn-success <?=!isset($_SESSION['privilege']['blog']['add']) ? 'disabled' : ''?>" href="?mod=blog&act=add">
         <i class="bi bi-plus-circle"></i> Create New Blog Post
     </a>
-    <?php } ?>
-    <?php if (isset($_SESSION['privilege']['blog']) && isset($_SESSION['privilege']['blog']['soft_delete'])) { ?>
-    <a class="btn btn-warning" href="?mod=blog&act=recycle">
+    <a class="btn btn-warning <?=!isset($_SESSION['privilege']['blog']['soft_delete']) ? 'disabled' : ''?>" href="?mod=blog&act=recycle">
         <i class="bi bi-trash"></i> Recycle Bin
     </a>
-    <?php } ?>
 
 </div>
 
@@ -44,25 +40,21 @@
                 <?php if($commentCount > 0) { ?>
                 <br>
                 <a href="?mod=comment&act=list&id=<?= htmlspecialchars($blog['blog_id']) ?>"
-                    class="btn btn-sm btn-info mt-1">
+                    class="btn btn-sm btn-info mt-1 <?=!isset($_SESSION['privilege']['comment']['list']) ? 'disabled' : ''?>">
                     <i class="bi bi-eye"></i> View
                 </a>
                 <?php } ?>
             </td>
             <td class="align-middle">
                 <div class="btn-group" role="group">
-                    <?php if (isset($_SESSION['privilege']['blog']) && isset($_SESSION['privilege']['blog']['edit'])) { ?>
                     <a href="?mod=blog&act=edit&id=<?= htmlspecialchars($blog['blog_id']) ?>"
-                        class="btn btn-sm btn-primary">
+                        class="btn btn-sm btn-primary <?=!isset($_SESSION['privilege']['blog']['edit']) ? 'disabled' : ''?>">
                         <i class="bi bi-pencil"></i> Edit
                     </a>
-                    <?php } ?>
-                    <?php if (isset($_SESSION['privilege']['blog']) && isset($_SESSION['privilege']['blog']['soft_delete'])) { ?>
-                    <button type="button" class="btn btn-sm btn-danger delete-button" data-bs-toggle="modal"
+                    <button type="button" class="btn btn-sm btn-danger delete-button <?=!isset($_SESSION['privilege']['blog']['soft_delete']) ? 'disabled' : ''?>" data-bs-toggle="modal"
                         data-bs-target="#deleteCourseModal" data-id="<?= htmlspecialchars($blog['blog_id']) ?>">
                         <i class="bi bi-trash"></i> Delete
                     </button>
-                    <?php } ?>
 
 
                 </div>

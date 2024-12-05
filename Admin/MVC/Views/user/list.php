@@ -33,9 +33,7 @@
         </div>
 
         <div class="col-md-3 d-flex gap-3 align-items-center">
-            <?php if (isset($_SESSION['privilege']['user']) && isset($_SESSION['privilege']['user']['add'])) { ?>
-            <a href="?mod=user&act=add" class="btn btn-success">Add New User</a>
-            <?php } ?>
+            <a href="?mod=user&act=add" class="btn btn-success <?=!isset($_SESSION['privilege']['user']['add']) ? 'disabled' : ''?>">Add New User</a>
         </div>
     </div>
 
@@ -75,19 +73,15 @@
                                     <td><?= $user_phone ?></td>
                                     <td><?= $user_status_display ?></td>
                                     <td>
-                                        <?php if (isset($_SESSION['privilege']['address']) && isset($_SESSION['privilege']['address']['list'])) { ?>
-                                            <a href="<?= $url_email ?>"><button type="button" class="btn btn-info">DETAIL</button></a>
-                                        <?php } ?>
+                                            <a href="<?= $url_email ?>" class="btn btn-info" <?= !isset($_SESSION['privilege']['address']['list']) ? disabled : ''?>>DETAIL</a>
                                     </td>
                                     <td>
-                                        <?php if (isset($_SESSION['privilege']['user']) && isset($_SESSION['privilege']['user']['edit'])) { ?>
-                                            <a href="<?= $edituser ?>"><button type="button" class="button-item bg-warning">UPDATE</button></a>
-                                        <?php } ?>
-                                        <?php if (isset($_SESSION['privilege']['user']) && isset($_SESSION['privilege']['user']['delete'])) { ?>
-                                        <a href="<?= $deleteuser ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa tài khoản này không?')">
-                                            <button class="button-item bg-danger" type="button">DELETE</button>
+                                        
+                                            <a href="<?= $edituser ?>" class="btn btn-warning <?=!isset($_SESSION['privilege']['user']['edit']) ? 'disabled' : ''?>">UPDATE</a>
+                                        
+                                        <a href="<?= $deleteuser ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa tài khoản này không?')"  class="btn btn-danger <?=!isset($_SESSION['privilege']['user']['delete']) ? 'disabled' : ''?>">DELETE
                                         </a>
-                                        <?php } ?>
+                                        
                                     </td>
                                 </tr>
                             <?php

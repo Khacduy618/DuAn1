@@ -19,7 +19,7 @@
                 <td class="text-center">
                     <?php if (!empty($review['product_id'])): ?>
                         <a href="?mod=review&act=detail&product_id=<?=$review['product_id']?>" 
-                           class="btn btn-primary btn-sm">
+                           class="btn btn-primary btn-sm <?=!isset($_SESSION['privilege']['review']['detail']) ? 'disabled' : ''?>">
                             <i class="la la-eye"></i> View Details
                         </a>
                     <?php else: ?>

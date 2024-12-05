@@ -3,7 +3,7 @@
     
     <div class="product-info">
         <span class="me-3">Product: <strong><?= isset($productName) ? $productName : 'Undefined'; ?></strong></span>
-        <button class="btn btn-danger btn-delete-selected">
+        <button class="btn btn-danger btn-delete-selected <?=!isset($_SESSION['privilege']['review']['delete']) ? 'disabled' : ''?>">
             <i class="la la-trash"></i> Delete Selected
         </button>
     </div>
@@ -36,7 +36,7 @@
                         <td><?= $comment['date']; ?></td>
                         <td><?= $comment['user']; ?></td>
                         <td>
-                            <a class="btn btn-sm btn-danger delete-button" 
+                            <a class="btn btn-sm btn-danger delete-button <?=!isset($_SESSION['privilege']['review']['delete']) ? 'disabled' : ''?>" 
                                onclick="return confirm('Are you sure you want to delete this review?');"
                                href="?mod=review&act=delete&comment_id=<?= $comment['id']; ?>">
                                 <i class="la la-trash"></i> Delete
