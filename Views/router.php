@@ -9,7 +9,7 @@ switch ($act) {
                     require_once("login/login.php");
                     break;
                 case 'account':
-                    require_once("login/my-account.php");
+                    require_once("login/account.php");
                     break;
                 default:
                     require_once("login/login.php");
@@ -22,7 +22,7 @@ switch ($act) {
                         require_once("login/login.php");
                         break;
                     case 'account':
-                        require_once("login/my-account.php");
+                        require_once("login/account.php");
                         break;
                     default:
                         require_once("login/login.php");

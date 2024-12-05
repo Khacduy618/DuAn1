@@ -49,7 +49,6 @@
                                     <div class="header-menu">
                                         <ul>
                                             <li><a href="?act=taikhoan&xuli=account">Tài khoản</a></li>
-                                            <li><a href="<?=$SITE_URL?>/taikhoan/capnhatTK.php">Cập nhật tài khoản</a>
                                             </li>
                                             <?php
                                                 if(isset($_SESSION['isLogin_Admin']) || isset($_SESSION['isLogin_Nhanvien'])){

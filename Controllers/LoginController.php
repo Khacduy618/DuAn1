@@ -58,44 +58,45 @@ class LoginController
     }
     function account()
     {
-       
-        $data = $this->login_model->account();
+
+        $user_email = $_SESSION['login']['user_email'];
+        $data = $this->login_model->account($user_email);
 
         require_once('Views/index.php');
     }
     function update()
     {
-
-        if (isset($_POST['Ho'])) {
+        $user_email = $_SESSION['login']['user_email'];
+        if (isset($_POST['user_name'])) {
+            // Thông tin từ bảng user
             $data = array(
-                'Ho' =>    $_POST['Ho'],
-                'Ten'  =>   $_POST['Ten'],
-                'GioiTinh' => $_POST['GioiTinh'],
-                'SDT' => $_POST['SĐT'],
-                'Email' =>    $_POST['Email'],
-                'DiaChi'  =>   $_POST['DiaChi'],
+                'user_name' => $_POST['user_name'],
+                'user_full_name' => $_POST['user_full_name'],
+                'user_phone' => $_POST['user_phone'],
+                'user_status' => $_POST['user_status']
             );
-            foreach ($data as $key => $value) {
-                if (strpos($value, "'") != false) {
-                    $value = str_replace("'", "\'", $value);
-                    $data[$key] = $value;
+
+            // Thông tin từ bảng address
+            $address_data = array(
+                'address_name' => $_POST['address_name'],
+                'address_city' => $_POST['address_city'],
+                'address_street' => $_POST['address_street']
+            );
+
+            // Xử lý ảnh đại diện
+            if (isset($_FILES['user_images']) && $_FILES['user_images']['error'] == 0) {
+                $target_dir = "uploaded/";
+                $target_file = $target_dir . basename($_FILES["user_images"]["name"]);
+                if (move_uploaded_file($_FILES["user_images"]["tmp_name"], $target_file)) {
+                    $data['user_images'] = $target_file; // Đường dẫn ảnh đại diện
                 }
             }
-            $this->login_model->update_account($data);
-        } else {
-            if ($_POST['MatKhauMoi'] == $_POST['MatKhauXN']) {
-                if (md5($_POST['MatKhau']) == $_SESSION['login']['MatKhau']) {
-                    $data = array(
-                        'MatKhau' => md5($_POST['MatKhauMoi']),
-                    );
-                    $this->login_model->update_account($data);
-                } else {
-                    setcookie('doimk', 'Mật khẩu không đúng', time() + 2);
-                }
-            } else {
-                setcookie('doimk', 'Mật khẩu mới không trùng nhau', time() + 2);
-            }
+
+            // Gọi hàm update từ model
+            $this->login_model->update_account($data, $address_data, $user_email);
         }
+
         header('location: ?act=taikhoan&xuli=account#doitk');
     }
+
 }
