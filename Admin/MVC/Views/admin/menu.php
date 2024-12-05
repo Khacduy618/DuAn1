@@ -16,7 +16,7 @@ $role = $_SESSION['login']['user_role'] ;
     <li class="nav-item">
         <a class="nav-link" href="?mod=login">
             <span class="icon">
-                <ion-icon name="home-outline"></ion-icon>
+                <i class="fa-solid fa-house fa-xl"></i>
             </span>
             <span class="title">Trang chủ</span>
         </a>
@@ -25,7 +25,7 @@ $role = $_SESSION['login']['user_role'] ;
     <li class="nav-item">
         <a class="nav-link" href="?mod=category">
             <span class="icon">
-                <ion-icon name="list-circle-outline"></ion-icon>
+                <i class="fa-solid fa-list fa-xl"></i>
             </span>
             <span class="title">Categories</span>
         </a>
@@ -35,9 +35,19 @@ $role = $_SESSION['login']['user_role'] ;
     <li class="nav-item">
         <a class="nav-link" href="?mod=product">
             <span class="icon">
-                <ion-icon name="pricetags-outline"></ion-icon>
+                <i class="fa-solid fa-box fa-xl"></i>
             </span>
             <span class="title">Product</span>
+        </a>
+    </li>
+    <?php } ?>
+    <?php if(($role == 1)|| isset($_SESSION['privilege']['coupon'])) {?>
+    <li class="nav-item">
+        <a class="nav-link" href="?mod=coupon">
+            <span class="icon">
+                <i class="fa-solid fa-ticket fa-xl"></i>
+            </span>
+            <span class="title">Coupon</span>
         </a>
     </li>
     <?php } ?>
@@ -45,7 +55,7 @@ $role = $_SESSION['login']['user_role'] ;
     <li class="nav-item">
         <a class="nav-link" href="?mod=blog">
             <span class="icon">
-                <i class="fa-regular fa-comment fa-xl"></i>
+                <i class="fa-solid fa-blog fa-xl"></i>
             </span>
             <span class="title">Blog</span>
         </a>
@@ -55,7 +65,7 @@ $role = $_SESSION['login']['user_role'] ;
     <li class="nav-item">
         <a class="nav-link" href="?mod=review">
             <span class="icon">
-                <ion-icon name="albums-outline"></ion-icon>
+                <i class="fa-solid fa-star fa-xl"></i>
             </span>
             <span class="title">Review</span>
         </a>
@@ -65,7 +75,7 @@ $role = $_SESSION['login']['user_role'] ;
     <li class="nav-item">
         <a class="nav-link" href="?mod=bill">
             <span class="icon">
-                <i class="fa-solid fa-bag-shopping fa-xl"></i>
+                <i class="fa-solid fa-receipt fa-xl"></i>
             </span>
             <span class="title">Bill</span>
         </a>
@@ -75,7 +85,7 @@ $role = $_SESSION['login']['user_role'] ;
     <li class="nav-item">
         <a class="nav-link" href="?mod=user">
             <span class="icon">
-                <ion-icon name="people-outline"></ion-icon>
+                <i class="fa-solid fa-users fa-xl"></i>
             </span>
             <span class="title">User</span>
         </a>
@@ -85,7 +95,7 @@ $role = $_SESSION['login']['user_role'] ;
     <li class="nav-item">
         <a class="nav-link" href="?mod=authorization&act=authorization_index">
             <span class="icon">
-                <i class="fa-solid fa-square-poll-vertical fa-xl"></i>
+                <i class="fa-solid fa-user-shield fa-xl"></i>
             </span>
             <span class="title">Authorization</span>
         </a>
@@ -94,7 +104,7 @@ $role = $_SESSION['login']['user_role'] ;
     <li class="nav-item">
         <a class="nav-link" href="../?mod=login">
             <span class="icon">
-                <ion-icon name="log-out-outline"></ion-icon>
+                <i class="fa-solid fa-store fa-xl"></i>
             </span>
             <span class="title">SHOP</span>
         </a>
