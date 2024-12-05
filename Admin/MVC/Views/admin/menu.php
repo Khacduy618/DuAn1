@@ -81,7 +81,7 @@ $role = $_SESSION['login']['user_role'] ;
         </a>
     </li>
     <?php } ?>
-    <?php if(($role == 1)|| isset($_SESSION['privilege']['analytics'])) {?>
+    <?php if(($role == 1)) {?>
     <li class="nav-item">
         <a class="nav-link" href="?mod=authorization&act=authorization_index">
             <span class="icon">

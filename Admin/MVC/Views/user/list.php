@@ -33,16 +33,9 @@
         </div>
 
         <div class="col-md-3 d-flex gap-3 align-items-center">
-            <div class="btn-group">
-                <button class="btn" onclick="viewMode = 'list'">
-                    <i class="bi bi-list"></i>
-                </button>
-                <button class="btn" onclick="viewMode = 'grid'">
-                    <i class="bi bi-grid"></i>
-                </button>
-            </div>
-            <button type="submit" class="btn btn-danger" onclick="return confirmDeletion()">Delete All</button>
+            <?php if (isset($_SESSION['privilege']['user']) && isset($_SESSION['privilege']['user']['add'])) { ?>
             <a href="?mod=user&act=add" class="btn btn-success">Add New User</a>
+            <?php } ?>
         </div>
     </div>
 
@@ -52,7 +45,6 @@
                 <table class="table align-middle">
                     <thead>
                         <tr>
-                            <th><input type="checkbox" id="selectAll"></th>
                             <th>AVARTA</th>
                             <th>USER NAME</th>
                             <th>EMAIL</th>
@@ -71,33 +63,34 @@
                                 $edituser = "?mod=user&act=edit&user_email=" . $user_email;
                                 $deleteuser = "?mod=user&act=delete&user_email=" . $user_email;
                                 $images = "<img src='../uploaded/" . $user_images . "' alt='User Image' width='50'>";
-                                $url_email = "?mod=user&act=listAddress&user_email=".$user_email;
-                                // Xử lý địa chỉ
-                                // $address_name = $user['address_name'] ?? '';
-                                // $address_street = $user['address_street'] ?? '';
-                                // $address_city = $user['address_city'] ?? '';
-                                // $address_display = ($address_name . ', ' . $address_street . ', ' . $address_city . ', ');
-
-                                // $address_status_display = isset($address_status) ? (($address_status == 0) ? 'User' : 'Wait') : 'Không rõ';
-                                $user_status_display = ($user_status == 1) ? 'Hiện' : 'Ẩn';
+                                $url_email = "?mod=address&act=list&user_email=".$user_email;
+                                
+                                $user_status_display = ($user_status == 1) ? 'Active' : 'Inactive';
                                 $user_role_display = $user_role == 0 ? 'User' : ($user_role == 1 ? 'Admin' : 'Employee');
-                                echo '<tr>
-                                        <td><input type="checkbox" name="user_email[]" value="' . $user_email . '"></td>
-                                        <td>' . $images . '</td>
-                                        <td>' . $user_name . '</td>
-                                        <td>' . $user_email . '</td>
-                                        <td>' . $user_phone . '</td>
-                                        <td>' . $user_status_display . '</td>
-                                        <td>
-                                        <a href="'. $url_email.'"><button type="button" class="btn btn-info">DETAIL</button></a>
-                                        </td>
+                                ?>
+                                <tr>
+                                    <td><?= $images ?></td>
+                                    <td><?= $user_name ?></td>
+                                    <td><?= $user_email ?></td>
+                                    <td><?= $user_phone ?></td>
+                                    <td><?= $user_status_display ?></td>
                                     <td>
-                                <a href="' . $edituser . '"><button type="button" class="button-item bg-warning">UPDATE</button></a>
-                                <a href="' . $deleteuser . '" onclick="return confirm(\'Bạn có chắc chắn muốn xóa tài khoản này không?\')">
-                                    <button class="button-item bg-danger" type="button">DELETE</button>
-                                </a>
-                            </td>
-                        </tr>';
+                                        <?php if (isset($_SESSION['privilege']['address']) && isset($_SESSION['privilege']['address']['list'])) { ?>
+                                            <a href="<?= $url_email ?>"><button type="button" class="btn btn-info">DETAIL</button></a>
+                                        <?php } ?>
+                                    </td>
+                                    <td>
+                                        <?php if (isset($_SESSION['privilege']['user']) && isset($_SESSION['privilege']['user']['edit'])) { ?>
+                                            <a href="<?= $edituser ?>"><button type="button" class="button-item bg-warning">UPDATE</button></a>
+                                        <?php } ?>
+                                        <?php if (isset($_SESSION['privilege']['user']) && isset($_SESSION['privilege']['user']['delete'])) { ?>
+                                        <a href="<?= $deleteuser ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa tài khoản này không?')">
+                                            <button class="button-item bg-danger" type="button">DELETE</button>
+                                        </a>
+                                        <?php } ?>
+                                    </td>
+                                </tr>
+                            <?php
                             }
                         } else {
                             echo "<tr><td colspan='10'>Không có người dùng nào.</td></tr>";

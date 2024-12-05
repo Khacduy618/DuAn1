@@ -153,44 +153,53 @@ else if(isset($_SESSION['privilege']['review']) && $mod == 'review' ){
 }
 ///USER
 else if(isset($_SESSION['privilege']['user']) && $mod == 'user' ){
-    require_once('MVC/controllers/AdminVyController.php');
-    $controller_obj = new AdminVyController();
-    if(isset($_SESSION['privilege']['user'][$act]) && $act == 'list'){
-        $controller_obj->list();
-    }
-    else if(isset($_SESSION['privilege']['user'][$act]) && $act == 'add'){
-        $controller_obj->add();
-    }
-    else if(isset($_SESSION['privilege']['user'][$act]) && $act == 'store'){
-        $controller_obj->store();
-    }
-    else if(isset($_SESSION['privilege']['user'][$act]) && $act == 'detail'){
-        $controller_obj->detail();
-    }
-    else if(isset($_SESSION['privilege']['user'][$act]) && $act == 'delete'){
-        $controller_obj->delete();
-    }
-    else if(isset($_SESSION['privilege']['user'][$act]) && $act == 'edit'){
-        $controller_obj->edit();
-    }
-    else if(isset($_SESSION['privilege']['user'][$act]) && $act == 'update'){
-        $controller_obj->update();
-    }
-    else if(isset($_SESSION['privilege']['user'][$act]) && $act == 'listAddress'){
-        $controller_obj->userAddress();
-    }
-    else if(isset($_SESSION['privilege']['user'][$act]) && $act == 'updateAddress'){
-        $controller_obj->updateAddress();
-    }
-    else if(isset($_SESSION['privilege']['user'][$act]) && $act == 'updateStatus'){
-        $controller_obj->updateStatus();
-    }
-    else{
-        $controller_obj->list();
-    }
-}
-
-
+     require_once('MVC/controllers/AdminVyController.php');
+     $controller_obj = new AdminVyController();
+     if(isset($_SESSION['privilege']['user'][$act]) && $act == 'list'){
+         $controller_obj->list();
+     }
+     else if(isset($_SESSION['privilege']['user'][$act]) && $act == 'add'){
+         $controller_obj->add();
+     }
+     else if(isset($_SESSION['privilege']['user'][$act]) && $act == 'store'){
+         $controller_obj->store();
+     }
+     else if(isset($_SESSION['privilege']['user'][$act]) && $act == 'detail'){
+         $controller_obj->detail();
+     }
+     else if(isset($_SESSION['privilege']['user'][$act]) && $act == 'delete'){
+         $controller_obj->delete();
+     }
+     else if(isset($_SESSION['privilege']['user'][$act]) && $act == 'edit'){
+         $controller_obj->edit();
+     }
+     else if(isset($_SESSION['privilege']['user'][$act]) && $act == 'update'){
+         $controller_obj->update();
+     }
+     else{
+         $controller_obj->list();
+     }
+ }
+ 
+ else if(isset($_SESSION['privilege']['address']) && $mod == 'address' ){
+     require_once('MVC/controllers/AdminVyController.php');
+     $controller_obj = new AdminVyController(); 
+     if(isset($_SESSION['privilege']['address'][$act]) && $act == 'list'){
+         $controller_obj->userAddress();
+     }
+     else if(isset($_SESSION['privilege']['address'][$act]) && $act == 'add'){
+         $controller_obj->addAddress();
+     }
+     else if(isset($_SESSION['privilege']['address'][$act]) && $act == 'store'){
+         $controller_obj->storeAddress();
+     }
+     else if(isset($_SESSION['privilege']['address'][$act]) && $act == 'updateStatus'){
+         $controller_obj->updateStatus();
+     }
+     else{
+         $controller_obj->userAddress();
+     }
+ }
 //authorization
 else if($_SESSION['login']['user_role'] == 1 || $mod=='authorization'){
     require_once('MVC/controllers/Authorization.php');

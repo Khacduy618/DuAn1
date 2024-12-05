@@ -8,7 +8,7 @@ class AdminVyModel
         $sql = "SELECT u.*, a.address_id, a.address_name, a.address_city, a.address_street 
                 FROM user u 
                 LEFT JOIN address a ON u.user_email = a.address_userEmail 
-                WHERE u.user_role = 0";
+                WHERE u.user_role != 1";
         return pdo_query($sql);
     }
 
@@ -48,11 +48,12 @@ class AdminVyModel
         pdo_execute($sql, $user_email);
     }
 
-    public function getAddressByEmail($user_email)
-    {
-        $sql = "SELECT * FROM address WHERE address_userEmail = ?";
-        return pdo_query($sql, $user_email);
-    }
+public function getAddressByEmail($user_email)
+{
+    $sql = "SELECT * FROM address WHERE address_userEmail = ?"; 
+    return pdo_query($sql, $user_email);
+}
+
 
         public function deleteAddress($address_id)
     {
@@ -60,26 +61,27 @@ class AdminVyModel
         pdo_execute($sql, $address_id);
     }
 
-    public function addAddress($user_email, $address_name, $address_city, $address_street)
-    {
+public function addAddress($user_email, $address_name, $address_city, $address_street)
+{
+    $sql = "UPDATE address SET address_status = 1 WHERE address_userEmail = ?";
+    pdo_execute($sql, $user_email);
+
+    $sql = "INSERT INTO address (address_userEmail, address_name, address_city, address_street, address_status) 
+            VALUES (?, ?, ?, ?, 0)";
+    pdo_execute($sql, $user_email, $address_name, $address_city, $address_street);
+}
+
+public function updateAddress($address_id, $user_email, $address_name, $address_city, $address_street)
+{
+    if ($address_id) {
+        $sql = "UPDATE address SET address_name = ?, address_city = ?, address_street = ? WHERE address_id = ?";
+        pdo_execute($sql, $address_name, $address_city, $address_street, $address_id);
+    } else {
         $sql = "INSERT INTO address (address_userEmail, address_name, address_city, address_street, address_status) 
                 VALUES (?, ?, ?, ?, 0)";
         pdo_execute($sql, $user_email, $address_name, $address_city, $address_street);
     }
-
-    public function updateAddress($address_id, $user_email, $address_name, $address_city, $address_street)
-    {
-        if ($address_id) {
-            $sql = "UPDATE address 
-                    SET address_name = ?, address_city = ?, address_street = ? 
-                    WHERE address_id = ?";
-            pdo_execute($sql, $address_name, $address_city, $address_street, $address_id);
-        } else {
-            $sql = "INSERT INTO address (address_userEmail, address_name, address_city, address_street, address_status) 
-                    VALUES (?, ?, ?, ?, 0)";
-            pdo_execute($sql, $user_email, $address_name, $address_city, $address_street);
-        }
-    }
+}
     
     
 
@@ -104,12 +106,21 @@ class AdminVyModel
         }
     }
 
-    public function updateAddressStatus($address_id, $address_status)
-    {
-    $sql = "UPDATE address 
-            SET address_status = ? 
-            WHERE address_id = ?";
-    return pdo_execute($sql, $address_status, $address_id);
+public function updateAddressStatus($address_id, $address_status)
+{
+    $sql = "SELECT address_userEmail FROM address WHERE address_id = ?";
+    $user_email = pdo_query_one($sql, $address_id)['address_userEmail'];
+
+    $sql = "UPDATE address SET address_status = 1 WHERE address_userEmail = ?";
+    pdo_execute($sql, $user_email);
+
+    if ($address_status == 0) { 
+        $sql = "UPDATE address SET address_status = 0 WHERE address_id = ?";
+        return pdo_execute($sql, $address_id);
     }
+
+    return false;
+}
+
 
 }

@@ -3,7 +3,7 @@
         <h1>Address Management</h1>
     </div>
 
-        <div class="row mb-3  justify-content-around">
+    <div class="row mb-3 justify-content-around">
         <div class="col-md-3">
             <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-search"></i></span>
@@ -34,16 +34,7 @@
         </div>
 
         <div class="col-md-3 d-flex gap-3 align-items-center">
-            <div class="btn-group">
-                <button class="btn" onclick="viewMode = 'list'">
-                    <i class="bi bi-list"></i>
-                </button>
-                <button class="btn" onclick="viewMode = 'grid'">
-                    <i class="bi bi-grid"></i>
-                </button>
-            </div>
-            <button type="submit" class="btn btn-danger" onclick="return confirmDeletion()">Delete All</button>
-            <a href="?mod=user&act=add" class="btn btn-success">Add New User</a>
+            <a href="?mod=address&act=add&user_email=<?=$_GET['user_email']?>" class="btn btn-success">Add Address</a>
         </div>
     </div>
 
@@ -54,7 +45,7 @@
     <?php endif; ?>
 
     <div class="row frmcontent">
-        <form id="bulkUpdateForm" action="?mod=user&act=updateAddress" method="post">
+        <form id="bulkUpdateForm" action="?mod=address&act=updateStatus" method="post">
             <div class="table-responsive">
                 <table class="table align-middle">
                     <thead>
@@ -68,6 +59,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php if (!empty($listaddress)): ?>
                         <?php foreach ($listaddress as $address): ?>
                             <tr>
                                 <td><?= $address['address_id']; ?></td>
@@ -78,23 +70,27 @@
                                     <?= $address['address_status'] == 0 ? 'Use' : 'Wait'; ?>
                                 </td>
                                 <td>
-                            <form action="?mod=user&act=updateStatus" method="post">
-                                <input type="hidden" name="address_id" value="<?= $address['address_id']; ?>">
-                                <select id="address_status" name="address_status" class="form-select shadow-sm">
-                                    <option value="0" <?= $address['address_status'] == "0" ? "selected" : "" ?>>Use</option>
-                                    <option value="1" <?= $address['address_status'] == "1" ? "selected" : "" ?>>Wait</option>
-                                </select>
-                            </form>
-
+                                <form action="?mod=address&act=updateStatus" method="post">
+                                    <input type="hidden" name="address_id" value="<?= $address['address_id']; ?>">
+                                    <input type="hidden" name="user_email" value="<?= $user_email; ?>">
+                                    <select id="address_status" name="address_status" class="form-select shadow-sm" onchange="this.form.submit()">
+                                        <option value="0" <?= $address['address_status'] == "0" ? "selected" : "" ?>>Use</option>
+                                        <option value="1" <?= $address['address_status'] == "1" ? "selected" : "" ?>>Wait</option>
+                                    </select>
+                                </form>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="6" class="text-center">No addresses found.</td>
+                        </tr>
+                    <?php endif; ?>
                     </tbody>
                 </table>
             </div>
 
             <div class="mt-4">
-                <button type="submit" class="btn btn-success px-4 py-2 shadow">Update</button>
                 <a href="?mod=user&act=list" class="btn btn-outline-secondary px-4 py-2 shadow ms-2">Cancel</a>
             </div>
         </form>

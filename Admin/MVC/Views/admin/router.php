@@ -39,28 +39,37 @@
                     }
             
             break;
-        case 'user':
-            switch ($act) {
-                case 'list':
-                    require_once('MVC/Views/user/list.php');
+            case 'user':
+                switch ($act) {
+                    case 'list':
+                        require_once('MVC/Views/user/list.php');
+                        break;
+                    case 'add':
+                        require_once('MVC/Views/user/add.php');
+                        break;
+                    case 'edit':
+                        require_once('MVC/Views/user/edit.php');
+                        break;
+                    default:
+                        require_once('MVC/Views/user/list.php');
+                        break;
+                }
+                break;
+    
+            case 'address':
+                switch ($act) {
+                    case 'list':
+                        require_once('MVC/Views/address/list.php');
+                        break;
                     break;
-                case 'add':
-                    require_once('MVC/Views/user/add.php');
-                    break;
-                case 'listAddress':
-                    require_once('MVC/Views/user/listAddress.php');
-                    break;
-                case 'updateStatus':
-                    $controller_obj->updateStatus(); 
-                    break;
-                case 'edit':
-                    require_once('MVC/Views/user/edit.php');
-                    break;
-                default:
-                    require_once('MVC/Views/user/list.php');
-                    break;
-            }
-            break;
+                    case 'add':
+                        require_once('MVC/Views/address/add.php');
+                        break;
+                    default:
+                        require_once('MVC/Views/address/list.php');
+                        break;
+                }
+                break;
             case 'blog':
                 require_once('MVC/controllers/AdminCuongController.php');
                 $controller_obj = new AdminCuongController();

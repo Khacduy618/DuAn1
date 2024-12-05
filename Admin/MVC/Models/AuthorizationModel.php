@@ -1,7 +1,7 @@
 <?php
 class Authorization_model{
     public function getEmployees(){
-         $sql = "SELECT user.* FROM user";
+         $sql = "SELECT user.* FROM user WHERE user_status = 1 AND user_role != 0";
          return pdo_query($sql);
          }
     public function getPrivilegeGroup(){

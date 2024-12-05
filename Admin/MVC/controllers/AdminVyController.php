@@ -24,22 +24,6 @@ public function list()
     require_once("MVC/Views/admin/index.php");
 }
 
-    public function listAddress()
-    {
-        $listaddress = $this->model->getAllAddress(); 
-        require_once("MVC/Views/user/detail.php");
-    }
-
-public function userAddress()
-{
-    if (isset($_GET['user_email'])) {
-        $user_email = $_GET['user_email'];
-        $listaddress = $this->model->getAddressByEmail($user_email);
-        require_once("MVC/Views/admin/index.php");
-    }
-}
-
-    
     public function add()
     {
         require_once("MVC/Views/admin/index.php");
@@ -112,7 +96,7 @@ public function userAddress()
                 $address_name = $_POST['address_name'];
                 $address_city = $_POST['address_city'];
                 $address_street = $_POST['address_street'];
-                $address_id = $_POST['address_id'] ?? null;
+                $address_id = $_POST['address_id'];
 
                 $this->model->updateAddress($address_id, $user_email, $address_name, $address_city, $address_street);
             }
@@ -132,36 +116,69 @@ public function userAddress()
         exit;
     }
 
-
-public function updateAddress()
+public function listAddress()
 {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $address_id = $_POST['address_id'] ?? null; 
-        $address_status = $_POST['address_status'] ?? null;
+    $user_email = $_GET['user_email'];
+    if ($user_email) {
+        $listaddress = $this->model->getAddressByEmail($user_email);
+    } else {
+        $listaddress = $this->model->getAllAddress();
+    }
+    require_once("MVC/Views/admin/index.php");
+}
 
-        if ($address_id && isset($address_status)) {
-            $updated = $this->model->updateAddressStatus($address_id, $address_status);
-
-            $_SESSION['message'] = $updated 
-                ? 'Cập nhật trạng thái địa chỉ thành công.' 
-                : 'Cập nhật trạng thái địa chỉ thất bại.';
-        }
-
-        header('Location: ?mod=user');
-        exit;
+public function userAddress()
+{
+    if (isset($_GET['user_email'])) {
+        $user_email = $_GET['user_email'];
+        $listaddress = $this->model->getAddressByEmail($user_email);
+        require_once("MVC/Views/admin/index.php");
     }
 }
 
+
+public function addAddress()
+{
+    $user_email = $_GET['user_email'];
+    
+    require_once("MVC/Views/admin/index.php");
+}
+
+public function storeAddress()
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $user_email = $_POST['user_email'];
+        $address_name = $_POST['address_name'];
+        $address_city = $_POST['address_city'];
+        $address_street = $_POST['address_street'];
+
+        if (!$user_email || !$address_name || !$address_city || !$address_street) {
+            $_SESSION['message'] = 'Vui lòng điền đầy đủ thông tin.';
+            header("Location: ?mod=address&act=add&user_email=".$user_email);
+            exit;
+        }
+
+        try {
+            $this->model->addAddress($user_email, $address_name, $address_city, $address_street);
+            $_SESSION['message'] = 'Thêm địa chỉ thành công!';
+        } catch (Exception $e) {
+            $_SESSION['message'] = 'Thêm địa chỉ thất bại. Vui lòng thử lại.';
+        }
+
+        header("Location: ?mod=address&act=list&user_email=".$user_email);
+        exit;
+    }
+}
 
 public function updateStatus()
 {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $address_id = $_POST['address_id'];
         $address_status = $_POST['address_status'];
-
         $this->model->updateAddressStatus($address_id, $address_status);
         $_SESSION['message'] = "Cập nhật trạng thái thành công!";
-        header('Location: ?mod=user&act=userAddress');
+        $user_email = $_POST['user_email'] ?? '';
+        header("Location: ?mod=address&act=list&user_email=".$user_email);
         exit;
     }
 }
@@ -175,11 +192,11 @@ public function updateStatus()
         $address = $this->model->getAddressByEmail($user_email);
 
         if (!$user) {
-            header('Location: ?mod=user&act=list');
+            header('Location: ?mod=address&act=list');
             exit;
         }
 
-        require_once("MVC/Views/user/listAddress.php");
+        require_once("MVC/Views/address/list.php");
     }
 
     

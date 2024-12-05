@@ -63,15 +63,6 @@
                 required>
         </div>
 
-        <div class="mb-3">
-            <label for="user_password" class="form-label fw-bold">Mật khẩu</label>
-            <input
-                type="password"
-                name="user_password"
-                id="user_password"
-                class="form-control shadow-sm"
-                required>
-        </div>
 
         <div class="mb-3">
             <label for="user_phone" class="form-label fw-bold">Điện thoại</label>
@@ -88,44 +79,6 @@
             <select name="user_role" id="user_role" class="form-select shadow-sm">
                 <option value="user">User</option>
                 <option value="admin">Admin</option>
-            </select>
-        </div>
-
-        <!-- Các trường thông tin địa chỉ -->
-        <div class="mb-3">
-            <label for="address_name" class="form-label fw-bold">Tên địa chỉ</label>
-            <input
-                type="text"
-                name="address_name"
-                id="address_name"
-                class="form-control shadow-sm"
-                placeholder="Nhập tên địa chỉ (VD: Nhà riêng)"
-                required>
-        </div>
-
-        <div class="mb-3">
-            <label for="address_city" class="form-label fw-bold">Thành phố</label>
-            <select name="address_city" id="address_city" class="form-select shadow-sm" required>
-                <option value="">Loading...</option>
-            </select>
-        </div>
-
-        <div class="mb-3">
-            <label for="address_street" class="form-label fw-bold">Đường phố</label>
-            <input
-                type="text"
-                name="address_street"
-                id="address_street"
-                class="form-control shadow-sm"
-                placeholder="Nhập tên đường phố"
-                required>
-        </div>
-
-        <div class="mb-3">
-            <label for="address_status" class="form-label fw-bold">Trạng thái địa chỉ</label>
-            <select name="address_status" id="address_status" class="form-select shadow-sm">
-                <option value="0">Chưa xác nhận</option>
-                <option value="1">Đã xác nhận</option>
             </select>
         </div>
 

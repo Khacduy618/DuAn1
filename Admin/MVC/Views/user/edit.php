@@ -49,25 +49,6 @@ $user_images_display = (is_file($imgPath) && !empty($user['user_images']))
                 <input type="text" id="user_phone" name="user_phone" class="form-control shadow-sm" value="<?= $user['user_phone'] ?>" required>
             </div>
 
-            <!-- Địa chỉ -->
-            <input type="hidden" name="address_id" value="<?= $address[0]['address_id'] ?? '' ?>">
-            <div class="mb-3">
-                <label for="address_name" class="form-label">Address</label>
-                <input type="text" id="address_name" name="address_name" class="form-control" value="<?= $address[0]['address_name'] ?? '' ?>">
-            </div>
-
-            <div class="mb-3">
-                <label for="address_street" class="form-label">Street</label>
-                <input type="text" id="address_street" name="address_street" class="form-control" value="<?= $address[0]['address_street'] ?? '' ?>">
-            </div>
-
-            <div class="mb-3">
-                <label for="address_city" class="form-label">City</label>
-                <select id="address_city" name="address_city" class="form-select">
-                    <option value="">Choose</option>
-                </select>
-            </div>
-
 
             <!-- Vai trò và trạng thái -->
             <div class="mb-3">
