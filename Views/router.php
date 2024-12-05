@@ -3,7 +3,7 @@ $act = isset($_GET['act']) ? $_GET['act'] : "home";
 switch ($act) {
     case "taikhoan":
         $act = isset($_GET['xuli']) ? $_GET['xuli'] : "login";
-        if (isset($_SESSION['isLogin']) && $_SESSION['isLogin'] == true) {
+        if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
             switch ($act) {
                 case 'login':
                     require_once("login/login.php");
