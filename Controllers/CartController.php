@@ -19,6 +19,7 @@ class CartController
            $userEmail = $_SESSION['login']['user_email'];
             $cartItems = $this->cartModel->getCartItems($userEmail);
             $address = $this->addressModel->getOneAddress($userEmail);
+            $addresses = $this->addressModel->getAllAddresses($userEmail);
             require_once 'Views/index.php';
         } else {
             header('location: ?act=taikhoan&xuli=login');

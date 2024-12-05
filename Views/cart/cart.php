@@ -153,7 +153,16 @@
                                 </tr><!-- End .summary-shipping-row -->
 
                                 <tr class="summary-shipping-estimate">
-                                    <td>Estimate for Your Country<br> <a href="dashboard.html">Change address</a></td>
+                                    <td>
+                                        Select Shipping Address<br>
+                                        <select class="form-select mt-2" name="shipping_address" style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; background-color: #fff; font-size: 14px;">
+                                            <?php foreach($addresses as $addr): ?>
+                                                <option value="<?=$addr['address_id']?>">
+                                                    <?=$addr['address_name']?> - <?=$addr['address_city']?>, <?=$addr['address_street']?>
+                                                </option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </td>
                                     <td>
                                         <?php
                                             if($address){

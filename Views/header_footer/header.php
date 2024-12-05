@@ -41,7 +41,7 @@
                                 <div class="header-dropdown">
                                     <a class="row align-items-center">
                                         <div class="avatar">
-                                            <img src="<?=BASE_URL?>uploaded/<?=$_SESSION['login']['user_images']?>"
+                                            <img src="<?= UPLOAD_DIR.$_SESSION['login']['user_images'] ?>"
                                                 alt="User Avatar">
                                         </div>
                                         <strong><span><?= $_SESSION['login']['user_name'] ?></span></strong>

@@ -2,7 +2,9 @@
 session_start();
 ob_start();
 
- define("BASE_URL","http://localhost/DuAn1/");
+define("UPLOAD_DIR","http://localhost/DuAn1/uploaded/");
+
+define("BASE_URL","http://localhost/DuAn1/");
 
 $mod = isset($_GET['act']) ? $_GET['act'] : "home";
 
@@ -34,23 +36,6 @@ switch ($mod) {
             }
             break;
         } else {
-            if ((isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) || (isset($_SESSION['isLogin_Nhanvien']) && $_SESSION['isLogin_Nhanvien'] == true)) {
-                switch ($act) {
-                    case 'dangxuat':
-                        $controller_obj->dangxuat();
-                        break;
-                    case 'account':
-                        $controller_obj->account();
-                        break;
-                    case 'update':
-                        $controller_obj->update();
-                        break;
-                    default:
-                        header('location: ?act=error');
-                        break;
-                }
-                break;
-            } else {
                 switch ($act) {
                     case 'login':
                         $controller_obj->login();
@@ -67,7 +52,6 @@ switch ($mod) {
                 }
                 break;
             }
-        }
     case 'shop':
         require_once('Controllers/ShopController.php');
         $controller_obj = new ShopController();

@@ -16,19 +16,6 @@ switch ($act) {
                     break;
             }
         } else {
-            if ((isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) || (isset($_SESSION['isLogin_Nhanvien']) && $_SESSION['isLogin_Nhanvien'] == true)) {
-                switch ($act) {
-                    case 'login':
-                        require_once("login/login.php");
-                        break;
-                    case 'account':
-                        require_once("login/account.php");
-                        break;
-                    default:
-                        require_once("login/login.php");
-                        break;
-                }
-            } else {
                 switch ($act) {
                     case 'login':
                         require_once("login/login.php");
@@ -38,8 +25,7 @@ switch ($act) {
                         break;
                 }
             }
-            break;
-        }
+        break;
     case "home":
         require_once "home/home.php";
         break;

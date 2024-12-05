@@ -6,7 +6,6 @@
     define("BASE_URL_Long","http://localhost:8080/du-an-voi-team/DuAn1/"); // này khi trên máy Long
     define("BASE_URL_Duy","http://localhost/DuAn1/"); // này khi bên máy test của DUy
 
-
 /**
  * Tạo 1 user defaul giả lập
 */

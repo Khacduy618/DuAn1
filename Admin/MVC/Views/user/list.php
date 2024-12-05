@@ -73,7 +73,7 @@
                                     <td><?= $user_phone ?></td>
                                     <td><?= $user_status_display ?></td>
                                     <td>
-                                            <a href="<?= $url_email ?>" class="btn btn-info" <?= !isset($_SESSION['privilege']['address']['list']) ? disabled : ''?>>DETAIL</a>
+                                            <a href="<?= $url_email ?>" class="btn btn-info" <?= !isset($_SESSION['privilege']['address']['list']) ? 'disabled' : ''?>>DETAIL</a>
                                     </td>
                                     <td>
                                         

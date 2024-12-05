@@ -86,10 +86,9 @@ class Login extends Model
 
     function account($user_email)
     {
-        $query = "SELECT u.*, a.*, i.user_images 
+        $query = "SELECT u.*, a.* 
               FROM user u
               LEFT JOIN address a ON u.user_email = a.address_userEmail
-              LEFT JOIN user_images i ON u.user_id = i.user_id
               WHERE u.user_email = ?";
         return pdo_query_one($query, $user_email);
     }

@@ -9,7 +9,7 @@ class Address extends Model {
     }
 
     function getOneAddress($userEmail) {
-        $sql = "SELECT * FROM address WHERE address_userEmail = ?";
+        $sql = "SELECT * FROM address WHERE address_userEmail = ? AND address_status = 0";
         return pdo_query_one($sql, $userEmail);
     }
 
