@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <form action="?act=taikhoan&xuli=update" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label for="user_name">Họ và tên:</label>
+                            <label for="user_name">Tên đăng nhập:</label>
                             <input type="text" name="user_name" class="form-control" value="<?= isset($data['user_name']) ? $data['user_name'] : '' ?>" required>
                         </div>
                         <div class="form-group">

@@ -73,7 +73,6 @@ class LoginController
                 'user_name' => $_POST['user_name'],
                 'user_full_name' => $_POST['user_full_name'],
                 'user_phone' => $_POST['user_phone'],
-                'user_status' => $_POST['user_status']
             );
 
             // Thông tin từ bảng address

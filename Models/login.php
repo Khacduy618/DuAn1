@@ -86,7 +86,7 @@ class Login extends Model
 
     function account($user_email)
     {
-        $query = "SELECT u.*, a.* 
+        $query = "SELECT u.*, a.address_name, a.address_city, a.address_street
               FROM user u
               LEFT JOIN address a ON u.user_email = a.address_userEmail
               WHERE u.user_email = ?";
@@ -95,22 +95,40 @@ class Login extends Model
     function update_account($data, $address_data, $user_email)
     {
         // Cập nhật thông tin user
-        $fields = "";
-        foreach ($data as $key => $value) {
-            $fields .= "$key = '$value',";
+        if (!empty($data)) {
+            $fields = "";
+            foreach ($data as $key => $value) {
+                $fields .= "$key = '$value',";
+            }
+            $fields = trim($fields, ",");
+            $query = "UPDATE user SET $fields WHERE user_email = ?";
+            pdo_execute($query, $user_email);
         }
-        $fields = trim($fields, ",");
-        $query = "UPDATE user SET $fields WHERE user_email = ?";
-        pdo_execute($query, $user_email);
 
         // Cập nhật thông tin địa chỉ
-        $address_fields = "";
-        foreach ($address_data as $key => $value) {
-            $address_fields .= "$key = '$value',";
+        if (!empty($address_data)) {
+            // Kiểm tra xem có địa chỉ nào tồn tại với user_email này không
+            $check_address_query = "SELECT * FROM address WHERE address_userEmail = ?";
+            $existing_address = pdo_query_one($check_address_query, $user_email);
+
+            if ($existing_address) {
+                // Nếu địa chỉ đã tồn tại, thực hiện cập nhật
+                $address_fields = "";
+                foreach ($address_data as $key => $value) {
+                    $address_fields .= "$key = '$value',";
+                }
+                $address_fields = trim($address_fields, ",");
+                $query = "UPDATE address SET $address_fields WHERE address_userEmail = ?";
+                pdo_execute($query, $user_email);
+            } else {
+                // Nếu địa chỉ chưa tồn tại, thực hiện thêm mới
+                $address_data['address_userEmail'] = $user_email;
+                $fields = implode(",", array_keys($address_data));
+                $values = implode("','", array_values($address_data));
+                $query = "INSERT INTO address ($fields) VALUES ('$values')";
+                pdo_execute($query);
+            }
         }
-        $address_fields = trim($address_fields, ",");
-        $query = "UPDATE address SET $address_fields WHERE address_userEmail = ?";
-        pdo_execute($query, $user_email);
 
         // Thông báo kết quả
         setcookie('msg', 'Cập nhật thành công', time() + 2);
