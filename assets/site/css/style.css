@@ -16187,13 +16187,13 @@ button:focus {
 
 .checkout-discount {
     position: relative;
-    max-width: 340px;
+    max-width: 380px;
     margin-bottom: .5rem
 }
 
 .checkout-discount label {
     position: absolute;
-    left: 0;
+    left: 0px;
     top: 50%;
     width: 100%;
     padding-left: 1.1rem;
@@ -16208,7 +16208,9 @@ button:focus {
 .checkout-discount label span {
     color: #c96
 }
-
+#checkout-discount-input:focus + label {
+    display: none;
+}
 .checkout-discount .form-control {
     background-color: transparent !important;
     border-radius: .3rem;
@@ -16221,6 +16223,7 @@ button:focus {
     border-color: #c96;
     outline: none !important
 }
+
 
 .summary {
     padding: 2.5rem 3rem 3rem;

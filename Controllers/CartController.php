@@ -17,9 +17,11 @@ class CartController
     {
         if (isset($_SESSION['isLogin']) && $_SESSION['isLogin'] == true) {
            $userEmail = $_SESSION['login']['user_email'];
+            $coupon_name = isset($_POST['coupon_name']) ? $_POST['coupon_name'] : '';
             $cartItems = $this->cartModel->getCartItems($userEmail);
             $address = $this->addressModel->getOneAddress($userEmail);
             $addresses = $this->addressModel->getAllAddresses($userEmail);
+            $coupon = $this->cartModel->coupon($coupon_name);
             require_once 'Views/index.php';
         } else {
             header('location: ?act=taikhoan&xuli=login');

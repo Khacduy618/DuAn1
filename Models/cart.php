@@ -80,4 +80,13 @@ class Cart extends Model
         $sql = "DELETE FROM cart_item WHERE cart_id = (SELECT cart_id FROM cart WHERE cart_userEmail = ?)";
          pdo_execute($sql, $userEmail);
     }
+    public function coupon($name){
+        $sql = "SELECT * FROM coupons WHERE coupon_name = ? AND coupon_count > 0 AND coupon_expiredate >= NOW()";
+        return pdo_query_one($sql, $name);
+       }
+    
+       public function coupon_update( $coupon_id){
+          $sql = "UPDATE coupons SET coupon_count = coupon_count - 1 WHERE coupon_id =?";
+          return pdo_execute($sql, $coupon_id);
+       }   
 }

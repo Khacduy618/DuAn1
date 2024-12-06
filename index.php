@@ -116,8 +116,11 @@ switch ($mod) {
             case 'save':
                 $controller_obj->save();
                 break;
-            case 'order_complete':
-                $controller_obj->order_complete();
+            case 'checkout_complete':
+                $controller_obj->checkout_complete();
+                break;
+            case 'order_history':
+                $controller_obj->order_history();
                 break;
             default:
                 $controller_obj->list();

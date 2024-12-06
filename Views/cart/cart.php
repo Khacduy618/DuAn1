@@ -19,17 +19,32 @@
     </button>
 </div>
 <?php endif; ?>
+
 <div class="page-content">
     <div class="cart">
         <div class="container">
+            <div class="checkout-discount">
+                <form action="" method="post">
+                    <input type="text" class="form-control" name="coupon_name" required id="checkout-discount-input"
+                        value="<?=isset($_POST['coupon_name']) ? $_POST['coupon_name'] : ''?>">
+                    <label for="checkout-discount-input" class="text-truncate"id="coupon-label">
+                        <?php if(isset($coupon)): ?>
+                            <?=$coupon['coupon_name']?>
+                        <?php else: ?>
+                            Have a coupon? <span>Click here to enter your code</span>
+                        <?php endif; ?>
+                    </label>
+                </form>
+            </div>
             <div class="row">
-                <div class="col-lg-9">
+            
+                <div class="col-lg-8">
 
                     <table class="table table-cart table-mobile">
                         <form id="cartForm" action="?act=checkout" method="POST">
                             <thead>
                                 <tr>
-                                    <th><input type="checkbox" onchange="selectAllCheckboxes()" name="select-all"
+                                    <th><input type="checkbox" class="select-all-checkbox" onchange="selectAllCheckboxes()" name="select-all"
                                             id="select-all"></th>
                                     <th>Product</th>
                                     <th>Price</th>
@@ -45,16 +60,19 @@
                                 $tong = 0;
                                 $shipping = 20000;
                                 $_SESSON['shipping'] = $shipping;
+                                $discount = 0;
+                                $total = 0;
                                 
 								foreach ($cartItems as $value) {
                                     $ttien=$value['product_price']*$value['quantity'];
                                     $tong+=$ttien; 
-                                    $checkout = $tong + $shipping;
                             ?>
                                 <tr>
                                     <td>
                                         <input type="checkbox" name="cart_items[]" id="<?=$value['cart_item_id']?>"
-                                            class="checkboxes" value="<?=$value['cart_item_id']?>">
+                                            class="checkboxes" value="<?=$value['cart_item_id']?>"
+                                            data-price="<?=$value['product_price']?>"
+                                            data-quantity="<?=$value['quantity']?>">
                                     </td>
                                     <td class="product-col">
                                         <label for="<?=$value['cart_item_id']?>">
@@ -75,7 +93,7 @@
                                             đ</label></td>
                                     <td class="quantity-col">
                                         <div class="cart-product-quantity">
-                                            <input type="number" class="form-control" value="<?= $value['quantity'] ?>"
+                                            <input type="number" class="form-control quantity-input" value="<?= $value['quantity'] ?>"
                                                 min="1" max="10" step="1" data-decimals="0" required>
                                         </div><!-- End .cart-product-quantity -->
                                     </td>
@@ -98,12 +116,9 @@
                             </tbody>
                     </table><!-- End .table table-wishlist -->
 
-                    <div class="cart-bottom">
-                        <a href="#" class="btn btn-outline-dark-2"><span>UPDATE CART</span><i
-                                class="icon-refresh"></i></a>
-                    </div><!-- End .cart-bottom -->
+                    
                 </div><!-- End .col-lg-9 -->
-                <aside class="col-lg-3">
+                <aside class="col-lg-4">
                     <div class="summary summary-cart">
                         <h3 class="summary-title">Cart Total</h3><!-- End .summary-title -->
 
@@ -111,27 +126,21 @@
                             <tbody>
                                 <tr class="summary-subtotal">
                                     <td>Subtotal:</td>
-                                    <td><?=number_format($tong,0,",",".")?> đ</td>
+                                    <td colspan="2" class="subtotal-amount"><?=number_format($tong,0,",",".")?> đ</td>
                                 </tr><!-- End .summary-subtotal -->
                                 <tr class="summary-shipping">
                                     <td>Shipping:</td>
-                                    <td>&nbsp;</td>
+                                    <td colspan="2"><?=number_format($shipping,0,",",".")?> đ</td>
                                 </tr>
-
-                                <tr class="summary-shipping-row">
-                                    <td>
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" id="free-shipping" name="shipping"
-                                                class="custom-control-input">
-                                            <label class="custom-control-label" for="free-shipping">Shipping</label>
-                                        </div><!-- End .custom-control -->
-                                    </td>
-                                    <td><?=number_format($shipping,0,",",".")?> đ</td>
-                                </tr><!-- End .summary-shipping-row -->
-
+                                <?php
+                                    if (isset($coupon)) {
+                                        $discount = $tong * ($coupon['coupon_discount'] / 100);
+                                    }
+                                    $total = $tong + $shipping - $discount;
+                                    ?>
                                 <tr class="summary-shipping-estimate">
                                     <td><label for="address_id">Select Shipping Address: </label></td>
-                                    <td>
+                                    <td colspan="2">
                                         <select class="form-select" id="address_id" name="address_id">
                                             <?php foreach($addresses as $addr): ?>
                                                 <option value="<?=$addr['address_id']?>">
@@ -141,32 +150,30 @@
                                         </select>
                                     </td>
                                 </tr><!-- End .summary-shipping-estimate -->
-                                    <!-- <div class="checkout-discount">
-                                        <form action="?act=checkout" method="POST">
-                                            <input type="text" class="form-control" name="coupon_name" required id="checkout-discount-input"
-                                                value="<?=isset($_POST['coupon_name']) ? $_POST['coupon_name'] : ''?>">
-                                            <label for="checkout-discount-input" class="text-truncate">
-                                                <?php if(isset($_POST['coupon_name'])): ?>
-                                                    <?=$_POST['coupon_name']?>
-                                                <?php else: ?>
-                                                    Have a coupon? <span>Click here to enter your code</span>
-                                                <?php endif; ?>
-                                            </label>
-                                        </form>
-                                    </div> -->
+                                <?php
+                                if(isset($coupon)){
+                                ?>
+                                <tr class="summary-coupon">
+                                    <td>Coupon:</td>
+                                    <td><?=$coupon['coupon_name']?></td>
+                                    <td class="discount-amount"><?=number_format($discount,0,",",".")?> đ</td>
+                                </tr>
+                                <?php } ?>
                                 <tr class="summary-total">
                                     <td>Total:</td>
-                                    <td><?=number_format($checkout,0,",",".")?> đ</td>
+                                    <td colspan="2" class="total-amount"><?=number_format($total,0,",",".")?> đ</td>
                                 </tr><!-- End .summary-total -->
                             </tbody>
                         </table><!-- End .table table-summary -->
-
+                        <input type="hidden" name="coupon" value="<?=$coupon['coupon_name']?>" >
+                        <input type="hidden" name="total" value="<?=$total?>">
                         <input type="hidden" name="shipping" value="<?=$shipping?>">
                         <button type='submit' class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO
                             CHECKOUT</button>
                         </form>
+                       
                     </div><!-- End .summary -->
-
+                    
                     <a href="?act=shop" class="btn btn-outline-dark-2 btn-block mb-3"><span>CONTINUE
                             SHOPPING</span><i class="icon-refresh"></i></a>
                 </aside><!-- End .col-lg-3 -->

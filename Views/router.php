@@ -41,6 +41,9 @@ switch ($act) {
             case 'checkout_complete':
                 require_once("checkout/checkout_complete.php");
                 break;
+            case 'order_history':
+                require_once("checkout/order_history.php");
+                break;
             default:
                 require_once("checkout/checkout.php");
                 break;

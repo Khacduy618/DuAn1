@@ -9,9 +9,9 @@ class Shop extends Model
    function loadall_product($keyword="", $orderCondition="", $product_cat=0, $item_per_page="", $offset=""){
         $sql = "SELECT p.*, COALESCE(SUM(bd.pro_count), 0) as total_sold 
                 FROM products p 
-                JOIN bill_details bd ON p.product_id = bd.pro_id
-                JOIN categories c ON c.category_id = p.product_cat
-                WHERE 1";
+                LEFT JOIN bill_details bd ON p.product_id = bd.pro_id
+                LEFT JOIN categories c ON c.category_id = p.product_cat
+                WHERE p.product_status = 1";
         
         if($product_cat > 0){
             $sql .= " AND product_cat=".$product_cat;

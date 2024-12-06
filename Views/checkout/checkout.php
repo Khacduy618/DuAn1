@@ -16,19 +16,6 @@
 <div class="page-content">
     <div class="checkout">
         <div class="container">
-            <div class="checkout-discount">
-                <form action="?act=checkout" method="POST">
-                    <input type="text" class="form-control" name="coupon_name" required id="checkout-discount-input"
-                        value="<?=isset($_POST['coupon_name']) ? $_POST['coupon_name'] : ''?>">
-                    <label for="checkout-discount-input" class="text-truncate">
-                        <?php if(isset($_POST['coupon_name'])): ?>
-                            <?=$_POST['coupon_name']?>
-                        <?php else: ?>
-                            Have a coupon? <span>Click here to enter your code</span>
-                        <?php endif; ?>
-                    </label>
-                </form>
-            </div><!-- End .checkout-discount -->
             <form action="?act=checkout&xuli=save" id='form_thanhtoan' method="POST">
                 
                 <div class="row">
@@ -37,7 +24,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <label>Full Name *</label>
-                                <input type="text" class="form-control"
+                                <input type="text" class="form-control" 
                                     placeholder="<?=$_SESSION['login']['user_name']?>" readonly>
                             </div><!-- End .col-sm-6 -->
 
@@ -45,6 +32,9 @@
                         <label>Email address *</label>
                         <input type="email" class="form-control" placeholder="<?=$_SESSION['login']['user_email']?>"
                             readonly>
+                        <label for="phone">Phone *</label>
+                        <input type="text" class="form-control" name="phone"
+                            placeholder="<?=isset($_SESSION['login']['user_phone']) ? $_SESSION['login']['user_phone'] : ''?>" readonly>
                         <label>Company Name (Optional)</label>
                         <input type="text" class="form-control"
                             placeholder="<?=isset($address['address_name']) ? $address['address_name'] : ''?>" readonly>
@@ -55,7 +45,7 @@
 
                         <label>Street address *</label>
                         <input type="text" class="form-control"
-                            placeholder="<?=isset($address['address_street']) ? $address['address_street'] :''?>"
+                            placeholder="<?=isset($address['address_street']) ? $address['address_street'] :''?> readonly"
                             readonly>
                         <?php if(!isset($_SESSION['login'])) {
                         ?>
@@ -85,7 +75,7 @@
                                 <tbody>
                                     <?php
                                     $tong = 0;
-                                    
+                                        $_SESSION['cart_items'] = $cartItems;
                                         foreach ($cartItems as $item) {
                                             
                                             $ttien = $item['product_price'] * $item['quantity'];
@@ -118,10 +108,10 @@
                                     <?php
                                     if(isset($coupon)){
                                 ?>
-                                    <tr>
+                                    <tr class="summary-coupon">
                                         <td>Coupon:</td>
                                         <td><?=$coupon['coupon_name']?></td>
-                                        <td><?=number_format($discount,0,",",".")?>
+                                        <td class="discount-amount"><?=number_format($discount,0,",",".")?>
                                             đ</td>
                                     </tr>
                                     <?php }
@@ -136,10 +126,10 @@
                             </table><!-- End .table table-summary -->
                             <?php
                                                 $paymentsMapping = [
-                                                    0 => 'Cash on delivery',
-                                                    1 => 'Direct bank transfer',
-                                                    2 => 'PayPal',
-                                                    3 => 'Credit Card (Stripe)'
+                                                    1 => 'Cash on delivery',
+                                                    2 => 'Direct bank transfer',
+                                                    3 => 'PayPal',
+                                                    4 => 'Credit Card (Stripe)'
                                                 ];
                                         ?>
                             <div class="accordion-summary" id="accordion-payment">
@@ -153,7 +143,11 @@
                                 </div><!-- End .card -->
                                 <?php } ?>
                             </div><!-- End .accordion -->
-
+                            <input type="hidden" name="address_id" value="<?=$address['address_id']?>">
+                            <input type="hidden" name="total" value="<?=$total?>">
+                            <input type="hidden" name="tong" value="<?=$tong?>">
+                            <input type="hidden" name="coupon_id" value="<?= isset($coupon['coupon_id']) ? $coupon['coupon_id'] : 0 ?>">
+                            <input type="hidden" name="shipping" value="<?=$shipping?>">
                             <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
                                 <span class="btn-text">Place Order</span>
                                 <span class="btn-hover-text">Proceed to Checkout</span>
