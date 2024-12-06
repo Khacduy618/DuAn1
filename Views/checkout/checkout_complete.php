@@ -75,7 +75,7 @@
             </div>
 
             <div class="text-center mt-5">
-                <a href="index.php" class="btn btn-primary btn-lg px-5">Continue Shopping</a>
+                <a href="index.php?act=shop" class="btn btn-primary btn-lg px-5">Continue Shopping</a>
                 <a href="index.php?act=checkout&xuli=order_history" class="btn btn-outline-primary btn-lg px-5 ml-3">View Order History</a>
             </div>
         </div>

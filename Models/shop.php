@@ -7,11 +7,11 @@ class Shop extends Model
     var $contents = "product_id";
 
    function loadall_product($keyword="", $orderCondition="", $product_cat=0, $item_per_page="", $offset=""){
-        $sql = "SELECT p.*, COALESCE(SUM(bd.pro_count), 0) as total_sold 
+        $sql = "SELECT p.*, COALESCE(SUM(bd.pro_count), 0) as total_sold, c.category_name, c.category_id
                 FROM products p 
                 LEFT JOIN bill_details bd ON p.product_id = bd.pro_id
                 LEFT JOIN categories c ON c.category_id = p.product_cat
-                WHERE p.product_status = 1";
+                WHERE 1";
         
         if($product_cat > 0){
             $sql .= " AND product_cat=".$product_cat;
@@ -57,7 +57,7 @@ class Shop extends Model
 
     function getPaginationAndOrderData(): array
     {
-        $orderCondition = "ORDER BY p.product_id DESC";
+        $orderCondition = "ORDER BY p.created_at DESC";
         $itemPerPage = !empty($_GET['per_page']) ? $_GET['per_page'] : 12;
         $currentPage = !empty($_GET['page']) ? $_GET['page'] : 1;
 

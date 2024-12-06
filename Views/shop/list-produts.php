@@ -7,32 +7,49 @@
         <div class="col-6 col-md-4 col-lg-4 col-xl-3">
             <div class="product product-7 text-center">
                 <figure class="product-media">
-                    <span class="product-label label-new">New</span>
-                    <a href="?act=product&id=<?=$value['product_id']?>">
-                        <img src="uploaded/<?=$value['product_img']?>" alt="Product image" class="product-image">
+                <?php 
+                    // Kiểm tra sản phẩm có được tạo trong vòng 1 tháng không
+                    $created_date = strtotime($value['created_at']);
+                    $one_month_ago = strtotime('-1 month');
+                    if ($created_date >= $one_month_ago) { 
+                    ?>
+                        <span class="product-label label-new">New</span>
+                    <?php } ?>
+                    <a <?php if ($value['product_status'] != 0 && $value['product_count'] != 0) { ?> href="?act=product&id=<?=$value['product_id']?>"  <?php } ?> >
+                        <div class="product-image">
+                            <img src="uploaded/<?=$value['product_img']?>" alt="Product image" >
+                        </div>
                     </a>
-
+                    <?php if ($value['product_status'] == 1 && $value['product_count'] > 0) { ?>
                     <div class="product-action-vertical">
                         <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
                                 wishlist</span></a>
-                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
-                            title="Quick view"><span>Quick view</span></a>
-                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                     </div><!-- End .product-action-vertical -->
 
                     <div class="product-action">
                         <a href="?act=cart&xuli=add&product_id=<?=$value['product_id']?>&quantity=1"
                             class="btn-product btn-cart"><span>add to cart</span></a>
                     </div><!-- End .product-action -->
+                    <?php } ?>
                 </figure><!-- End .product-media -->
 
                 <div class="product-body">
                     <div class="product-cat">
-                        <a href="#">Women</a>
+                        <a href="?act=shop&product_cat=<?=$value['category_id']?>"><?=$value['category_name']?></a>
                     </div><!-- End .product-cat -->
                     <h3 class="product-title"><a
-                            href="?act=product&id=<?=$value['product_id']?>"><?=$value['product_name']?></a></h3>
+                    <?php if ($value['product_status'] != 0 && $value['product_count'] != 0) { ?> href="?act=product&id=<?=$value['product_id']?>"  <?php } ?>><?=$value['product_name']?></a></h3>
                     <!-- End .product-title -->
+                    <?php if ($value['product_count'] == 0) { ?>
+                    <div class="outstock">
+                            <span class="outStockSpan">Out of Stock</span>
+                    </div><!-- End .product-nav -->
+                    <?php }else if($value['product_status']==0 || $value['product_count']==0){?>
+                        <div class="outstock">
+                            <span class="outStockSpan">Stop selling</span>
+                        </div><!-- End .product-nav -->
+                    <?php } else{?>
+                        
                     <div class="product-price">
                         <?=number_format($value['product_price'],0,",",".")?> đ
                     </div><!-- End .product-price -->
@@ -42,19 +59,9 @@
                         </div><!-- End .ratings -->
                         <span class="ratings-text">( 2 Reviews )</span>
                     </div><!-- End .rating-container -->
-
-                    <div class="product-nav product-nav-thumbs">
-                        <a href="#" class="active">
-                            <img src="uploaded/product-4-thumb.jpg" alt="product desc">
-                        </a>
-                        <a href="#">
-                            <img src="uploaded/product-4-2-thumb.jpg" alt="product desc">
-                        </a>
-
-                        <a href="#">
-                            <img src="uploaded/product-4-3-thumb.jpg" alt="product desc">
-                        </a>
-                    </div><!-- End .product-nav -->
+                    <?php } ?>
+                    
+                    
                 </div><!-- End .product-body -->
             </div><!-- End .product -->
         </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
