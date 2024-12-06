@@ -55,7 +55,7 @@ class Shop extends Model
         return $result[0]['sum'] ?? 0;  // Make sure to return the actual count value
     }
 
-    function getPaginationAndOrderData(): array
+    function getPaginationAndOrderData()
     {
         $orderCondition = "ORDER BY p.created_at DESC";
         $itemPerPage = !empty($_GET['per_page']) ? $_GET['per_page'] : 12;

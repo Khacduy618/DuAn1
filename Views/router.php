@@ -70,6 +70,23 @@ switch ($act) {
         $reviewController = new ReviewController();
         $reviewController->getReviews();
         break;
+    case 'handle-review-vote':
+        ob_clean();
+        header('Content-Type: application/json');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            require_once("Controllers/ReviewControllers.php");
+            $controller = new ReviewController();
+            $controller->handleVote();
+        } else {
+            echo json_encode(['error' => 'Method not allowed']);
+        }
+        exit();
+        break;
+    case 'get-user-votes':
+            require_once("Controllers/ReviewControllers.php");
+            $controller = new ReviewController();
+            $controller->getUserVotes();
+        break;
     case "about":
         require_once("introduce/about.php");
         break;
@@ -85,6 +102,7 @@ switch ($act) {
     case "blog_detail":
         require_once "blog/blog_detail.php";
         break;
+
     default:
         require_once("error-404.php");
         break;

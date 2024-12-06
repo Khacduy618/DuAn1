@@ -2,20 +2,26 @@
  $mod = isset($_GET['mod']) ? $_GET['mod'] : "login";
  $act = isset($_GET['act']) ? $_GET['act'] : "admin";
     switch ($mod) {
+        case 'category':
+            switch ($act) {
+                case 'list':
+                    require_once('MVC/Views/category/list.php');
+                    break;
+                case 'add':
+                    require_once('MVC/Views/category/add.php');
+                    break;
+                case 'edit':
+                    require_once('MVC/Views/category/edit.php');
+                    break;
+                default:
+                    require_once('MVC/Views/category/list.php');
+                    break;
+            }
+         break;
         case 'product':
             require_once('MVC/Views/product/list_product.php');   
             break;
-        case 'category':
-            if ( isset($_GET['act']) && isset($_GET['param']) ){
-                require_once('MVC/Views/category/'.$act.'.php');
-            }
-            elseif(isset($_GET['act'])){
-                $act = $_GET['act'];
-                require_once('MVC/Views/category/'.$act.'.php');
-            }else{
-                require_once('MVC/Views/category/list_category.php');
-            }
-         break;
+        
          case 'coupon':
                 switch ($act) {
                     case 'list':

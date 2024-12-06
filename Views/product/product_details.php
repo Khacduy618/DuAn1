@@ -378,7 +378,17 @@ window.sendVoteToServer = function (reviewId, voteType, action) {
     return fetch('index.php?act=handle-review-vote', {
         method: 'POST',
         body: formData,
-    }).then(response => response.json());
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        throw error;
+    });
 };
 
 </script>

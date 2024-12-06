@@ -7832,8 +7832,7 @@ p {
 .product-media {
     position: relative;
     display: block;
-    width: 200px;
-    height: 190px;
+    height: 200px;
     background-color: #d7d7d7;
     margin-bottom: 0;
     overflow: hidden
@@ -8492,7 +8491,7 @@ p {
     margin-bottom: .5rem
 }
 .outstock{
-    height: 10px;
+   display: block;
 }
 .outStockSpan {
     padding: 10px;
@@ -12509,10 +12508,10 @@ button:focus {
     display: flex;
     align-items: stretch
 }
-
+/* 
 .carousel-equal-height .product {
     width: 100%
-}
+} */
 
 .owl-carousel .entry {
     margin-bottom: 0

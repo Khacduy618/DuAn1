@@ -3,7 +3,7 @@
 // ini_set('display_startup_errors', 1);
 // error_reporting(E_ALL);
 session_start();
-define("BASE_URL","http://localhost:8080/DuAn1/"); 
+define("BASE_URL","http://localhost/DuAn1/"); 
 require_once 'MVC/Models/Privilege.php';
 
 
@@ -76,48 +76,83 @@ if(isset($_SESSION['privilege']['blog']) && $mod == 'blog' ){
 // các method category: list_category add_category insert_category delete_category edit_category update_category
 // các method api: insert_product_ajax get_categories_product_ajax edit_product_ajax upload_file_ajax insert_product_ajax 
 // get_categories_product_ajax edit_product_ajax upload_file_ajax upload_file_ajax_edit delete_product_ajax get_product_ajax
-else if(isset($_SESSION['privilege']['product']) && $mod == 'product' ){
-     spl_autoload_register(function($class){
-          include_once('../libs/'.$class.'.php');
-     });
-     require_once('MVC/controllers/AdminLongController.php');
-    $controller_obj = new AdminLongController();
-    if(isset($_SESSION['privilege']['product'][$act])){
-          $controller_obj->$action();  
-    }else{
-          $controller_obj->list_product(true);
-    }
-
-}
 
 ///CATEGORY 
 else if(isset($_SESSION['privilege']['category']) && $mod == 'category' ){
-     spl_autoload_register(function($class){
-          include_once('../libs/'.$class.'.php');
-     });
-    require_once('MVC/controllers/AdminLongController.php');
-    $controller_obj = new AdminLongController();
-     if(isset($_SESSION['privilege']['category'][$act]) && $act == 'add_category' ){
-         $controller_obj->add_category();
-    }
-    else if(isset($_SESSION['privilege']['category'][$act]) && $act == 'insert_category' ){
-         $controller_obj->insert_category();
-    }
-    else if(isset($_SESSION['privilege']['category'][$act]) && $act == 'delete_category' ){
-          $param = $_GET['param'];
-         $controller_obj->delete_category($param);
-    }
-    else if(isset($_SESSION['privilege']['category'][$act]) && $act == 'edit_category' ){
-          $param = $_GET['param'];
-         $controller_obj->edit_category($param);
-    }
-    else if(isset($_SESSION['privilege']['category'][$act]) && $act == 'update_category' ){
-          $param = $_GET['param'];
-         $controller_obj->update_category($param);
-    }
-    else{
-          $controller_obj->list_category();
-    }
+     require_once('MVC/controllers/CategoryController.php');
+     $controller_obj = new CategoryController();
+     if(isset($_SESSION['privilege']['category'][$act]) && $act == 'list'){
+          $controller_obj->list();
+     }
+     elseif (isset($_SESSION['privilege']['category'][$act]) && $act == 'add'){
+          $controller_obj->add();
+     }
+     elseif (isset($_SESSION['privilege']['category'][$act]) && $act == 'store'){
+          $controller_obj->store();
+     }
+     elseif (isset($_SESSION['privilege']['category'][$act]) && $act == 'delete'){
+          $controller_obj->delete();
+     }
+     elseif (isset($_SESSION['privilege']['category'][$act]) && $act == 'edit'){
+          $controller_obj->edit();
+     }
+     elseif (isset($_SESSION['privilege']['category'][$act]) && $act == 'update'){
+          $controller_obj->update();
+     }
+     else{
+          $controller_obj->list();
+     }
+}
+
+elseif (isset($_SESSION['privilege']['coupon']) && $mod == 'coupon' ){
+     require_once('MVC/controllers/coupon.php');
+     $controller_obj = new CouponController();
+     if(isset($_SESSION['privilege']['coupon'][$act]) && $act == 'list'){
+          $controller_obj->list();
+     }
+     elseif (isset($_SESSION['privilege']['coupon'][$act]) && $act == 'add'){
+          $controller_obj->add();
+     }
+     elseif (isset($_SESSION['privilege']['coupon'][$act]) && $act == 'store'){
+          $controller_obj->store();
+     }
+     elseif (isset($_SESSION['privilege']['coupon'][$act]) && $act == 'edit'){
+          $controller_obj->edit();
+     }
+     elseif (isset($_SESSION['privilege']['coupon'][$act]) && $act == 'update'){
+          $controller_obj->update();
+     }
+     elseif (isset($_SESSION['privilege']['coupon'][$act]) && $act == 'delete'){
+          $controller_obj->delete();
+     }
+     else{
+          $controller_obj->list();
+     }
+}
+else if(isset($_SESSION['privilege']['product']) && $mod == 'product' ){
+     require_once('MVC/controllers/ProductController.php');
+     $controller_obj = new ProductController();
+     if(isset($_SESSION['privilege']['product'][$act]) && $act == 'list'){
+          $controller_obj->list();
+     }
+     elseif (isset($_SESSION['privilege']['product'][$act]) && $act == 'add'){
+          $controller_obj->add();
+     }
+     elseif (isset($_SESSION['privilege']['product'][$act]) && $act == 'store'){
+          $controller_obj->store();
+     }
+     elseif (isset($_SESSION['privilege']['product'][$act]) && $act == 'delete'){
+          $controller_obj->delete();
+     }
+     elseif (isset($_SESSION['privilege']['product'][$act]) && $act == 'edit'){
+          $controller_obj->edit();
+     }
+     elseif (isset($_SESSION['privilege']['product'][$act]) && $act == 'update'){
+          $controller_obj->update();
+     }
+     else{
+          $controller_obj->list();
+     }
 }
 
 ///BILL

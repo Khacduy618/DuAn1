@@ -1,5 +1,5 @@
 <?php
-require_once '../Models/pdo.php';
+require_once 'model.php';
 class CouponModel {
     public static function getAllCoupons() {
         $sql = "SELECT * FROM coupons ORDER BY coupon_expiredate DESC";

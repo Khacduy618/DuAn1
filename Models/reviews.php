@@ -80,7 +80,11 @@ class Review {
                     $sql .= "ORDER BY r.review_category ASC, r.review_dateTime DESC";
                     break;
                 case 'helpful':
+                    $sql .= "ORDER BY r.helpful DESC, r.review_dateTime DESC";
+                    break;
                 case 'latest':
+                    $sql .= "ORDER BY r.review_dateTime DESC";
+                    break;
                 default:
                     $sql .= "ORDER BY r.review_dateTime DESC";
             }
