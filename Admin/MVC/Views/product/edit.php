@@ -1,20 +1,30 @@
-<?php
-    if(!empty($_GET['msg'])){
-        $msg = unserialize(urldecode($_GET['msg']));
-        foreach($msg as $key => $value){
-            echo '<span style="color:blue;font-weight:bold">'.$value.'</span>';
-        }
-    }
-    if(!empty($_SESSION['msg'])){
-        echo '<span style="color:blue;font-weight:bold">'.$_SESSION['msg'].'</span>';
-        unset($_SESSION['msg']);
-    }
-?>
+
 <div class="container-fluid py-4">
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h2 class="m-0 font-weight-bold">Edit Product</h2>
-        </div>
+<div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="m-0 font-weight-bold">Edit Product</h2>
+    </div>
+    <div class="messages mb-4">
+        <?php
+        if(!empty($_GET['msg'])){
+            $msg = unserialize(urldecode($_GET['msg']));
+            foreach($msg as $key => $value){
+                echo '<div class="alert alert-info alert-dismissible fade show" role="alert">
+                        '.$value.'
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>';
+            }
+        }
+        if(!empty($_SESSION['msg'])){
+            echo '<div class="alert alert-info alert-dismissible fade show" role="alert">
+                    '.$_SESSION['msg'].'
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>';
+            unset($_SESSION['msg']);
+        }
+        ?>
+    </div>
+    
+    <div class="card shadow">
         <div class="card-body">
             <?php
             if (isset($product) && is_array($product)) {
@@ -75,6 +85,56 @@
                             <img src="<?php echo BASE_URL ?>/uploaded/<?=$product_img?>" class="img-thumbnail" style="max-height: 150px;" id="preview_imgProduct">
                         </div>
                     </div>
+                    <div class="col-md-5 mb-3">
+                        <label for="screen_cam" class="form-label">Screen/Camera</label>
+                        <input type="text" class="form-control" id="screen_cam" name="screen_cam" value="<?=$screen_cam?>">
+                    </div>
+
+                    <div class="col-md-5 mb-3">
+                        <label for="os" class="form-label">Operating System</label>
+                        <input type="text" class="form-control" id="os" name="os" value="<?=$os?>">
+                    </div>
+
+                    <div class="col-md-5 mb-3">
+                        <label for="gpu" class="form-label">GPU</label>
+                        <input type="text" class="form-control" id="gpu" name="gpu" value="<?=$gpu?>">
+                    </div>
+
+                    <div class="col-md-5 mb-3">
+                        <label for="cpu" class="form-label">CPU</label>
+                        <input type="text" class="form-control" id="cpu" name="cpu" value="<?=$cpu?>">
+                    </div>
+
+                    <div class="col-md-5 mb-3">
+                        <label for="pin" class="form-label">Battery</label>
+                        <input type="text" class="form-control" id="pin" name="pin" value="<?=$pin?>">
+                    </div>
+
+                    <div class="col-md-5 mb-3">
+                        <label for="colors" class="form-label">Colors</label>
+                        <input type="text" class="form-control" id="colors" name="colors" value="<?=$colors?>">
+                    </div>
+
+                    <div class="col-md-5 mb-3">
+                        <label for="sizes" class="form-label">Sizes</label>
+                        <input type="text" class="form-control" id="sizes" name="sizes" value="<?=$sizes?>">
+                    </div>
+
+                    <div class="col-md-5 mb-3">
+                        <label for="ram" class="form-label">RAM</label>
+                        <input type="text" class="form-control" id="ram" name="ram" value="<?=$ram?>">
+                    </div>
+
+                    <div class="col-md-5 mb-3">
+                        <label for="rom" class="form-label">ROM/Storage</label>
+                        <input type="text" class="form-control" id="rom" name="rom" value="<?=$rom?>">
+                    </div>
+
+                    <div class="col-md-5 mb-3">
+                        <label for="bluetooth" class="form-label">Bluetooth</label>
+                        <input type="text" class="form-control" id="bluetooth" name="bluetooth" value="<?=$bluetooth?>">
+                    </div>
+
                 </div>
 
                 <!-- Form Buttons -->

@@ -30,7 +30,10 @@ body {
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden
 }
-
+a{
+    text-decoration: none;
+    font-size: 1.3rem;
+}
 /* menu */
 
 /* Main category menu styles */
@@ -846,7 +849,7 @@ blockquote.text-white cite span {
 
 .logo {
     display: block;
-    width: 120px;
+    width: 90px;
     margin-top: 2.55rem;
     margin-bottom: 2.95rem;
     flex-shrink: 0;
@@ -7832,6 +7835,9 @@ img{
     max-width: 100%;
     object-fit: cover;
 }
+
+
+
 .product-media {
     position: relative;
     display: block;
@@ -16845,6 +16851,9 @@ button:focus {
     color: #c96;
     border-bottom-color: #c96
 } */
+
+
+
 
 .summary-cart .table.table-summary thead th:last-child,
 .summary-cart .table.table-summary tbody td:last-child {

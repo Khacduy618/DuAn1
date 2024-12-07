@@ -29,11 +29,8 @@ $canReview = $isLoggedIn && ($purchaseCount > $reviewCount);
 <ul class="nav nav-pills justify-content-center" role="tablist">
     <li class="nav-item">
         <a class="nav-link " id="product-desc-link" data-toggle="tab" href="#product-desc-tab" role="tab"
-            aria-controls="product-desc-tab" aria-selected="true">Description</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="product-info-link" data-toggle="tab" href="#product-info-tab" role="tab"
-            aria-controls="product-info-tab" aria-selected="false">Additional information</a>
+            aria-controls="product-desc-tab" aria-selected="true">Technical Specifications
+            </a>
     </li>
     <li class="nav-item">
         <a class="nav-link active" id="product-review-link" data-toggle="tab" href="#product-review-tab" role="tab"
@@ -44,46 +41,75 @@ $canReview = $isLoggedIn && ($purchaseCount > $reviewCount);
 </ul>
 
 <div class="tab-content">
-    <!-- Tab Description -->
+    <!-- Tab Product Details -->
     <div class="tab-pane fade " id="product-desc-tab" role="tabpanel" aria-labelledby="product-desc-link">
         <div class="product-desc-content">
-            <h3>Product Information</h3>
-            <p>Lorem  </p>
-            <ul>
-                <li>Nunc nec . </li>
-                <li>Vivam</li>
-                <li>Nullam </li>
-            </ul>
-            <p>Lo </p>
+            <?php if (isset($detail) && $detail): ?>
+                <div class="product-specs row">
+                    <!-- Cột bên trái -->
+                    <div class="col-md-6">
+                        <div class="row gap-2">
+                            <p class="col-4"><strong>Operating System:</strong></p>
+                            <p ><?php echo htmlspecialchars($detail['os']); ?></p>
+                        </div>
+                        <div class="row">
+                            <p  class="col-4""><strong>Display & Camera:</strong></p>
+                            <p><?php echo htmlspecialchars($detail['screen_cam']); ?></p>
+                        </div>
+                        <div class="row">
+                            <p class="col-4"><strong>Graphics Card:</strong></p>
+                            <p><?php echo htmlspecialchars($detail['gpu']); ?></p>
+                        </div>
+                        <div class="row">
+                            <p class="col-4"><strong>CPU:</strong></p>
+                            <p><?php echo htmlspecialchars($detail['cpu']); ?></p>
+                        </div>
+                        <div class="row">
+                            <p class="col-4"><strong>Battery:</strong></p>
+                            <p><?php echo htmlspecialchars($detail['pin']); ?></p>
+                        </div>
+                    </div>
+                    
+                    <!-- Cột bên phải -->
+                    <div class="col-md-6">
+                        <div class="row">
+                            <p class="col-4"><strong>Colors:</strong></p>
+                            <p><?php echo htmlspecialchars($detail['colors']); ?></p>
+                        </div>
+                        <div class="row">
+                            <p class="col-4"><strong>Dimensions:</strong></p>
+                            <p><?php echo htmlspecialchars($detail['sizes']); ?></p>
+                        </div>
+                        <div class="row">
+                            <p class="col-4"><strong>RAM:</strong></p>
+                            <p><?php echo htmlspecialchars($detail['ram']); ?></p>
+                        </div>
+                        <div class="row">
+                            <p class="col-4"><strong>Storage:</strong></p>
+                            <p><?php echo htmlspecialchars($detail['rom']); ?></p>
+                        </div>
+                        <div class="row">
+                            <p class="col-4"><strong>Bluetooth:</strong></p>
+                            <p><?php echo htmlspecialchars($detail['bluetooth']); ?></p>
+                        </div>
+                    </div>
+                </div>
+            <?php else: ?>
+                <div class="error-message">
+                    <p>Technical Specifications not found</p>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 
-    <!-- Tab Additional Information -->
-    <div class="tab-pane fade" id="product-info-tab" role="tabpanel" aria-labelledby="product-info-link">
-        <div class="product-desc-content">
-            <h3>Information</h3>
-            <p>Lorem </p>
-            <h3>Fabric & care</h3>
-            <ul>
-                <li>Faux suede fabric</li>
-                <li>Gold ts.</li>
-                <li>RI branding</li>
-                <li>Snake </li>
-                <li>Adjus</li>
-                <li> Height:</li>
-            </ul>
-            <h3>Size</h3>
-            <p>one size</p>
-        </div>
-    </div>
 
     <!-- Tab Reviews -->
     <div class="tab-pane fade show active" id="product-review-tab" role="tabpanel" aria-labelledby="product-review-link">
         <div class="review-section container py-4">
-            <!-- Phần đánh giá trung bình -->
+            <!-- Average Rating Section -->
             <div class="row mb-4">
                 <div class="col-md-4 text-center">
-                    <h4>Đánh giá trung bình</h4>
+                    <h4>Average Rating</h4>
                     <div class="display-4 font-weight-bold text-warning mb-2">
                         <?= number_format($ratingInfo['rating'], 1) ?>
                         <i class="fas fa-star"></i>
@@ -93,7 +119,7 @@ $canReview = $isLoggedIn && ($purchaseCount > $reviewCount);
                             <i class="fas fa-star <?= $i <= round($ratingInfo['rating']) ? 'text-warning' : 'text-muted' ?>"></i>
                         <?php endfor; ?>
                     </div>
-                    <div class="text-muted"><?= $ratingInfo['count'] ?> đánh giá</div>
+                    <div class="text-muted"><?= $ratingInfo['count'] ?> reviews</div>
                 </div>
                 
                 <!-- Phần phân phối đánh giá -->
@@ -118,11 +144,11 @@ $canReview = $isLoggedIn && ($purchaseCount > $reviewCount);
             </div>
         </div>
 
-        <!-- Form đánh giá -->
+        <!-- Review Form -->
         <?php if ($canReview): ?>
             <div class="review-form card mb-4">
                 <div class="card-body">
-                    <h4>Viết đánh giá của bạn</h4>                    
+                    <h4>Write Your Review</h4>                    
                     <?php if (isset($_SESSION['success_message'])): ?>
                         <div class="alert alert-success">
                             <?= htmlspecialchars($_SESSION['success_message']); ?>
@@ -140,7 +166,7 @@ $canReview = $isLoggedIn && ($purchaseCount > $reviewCount);
                     <form method="POST" action="index.php?act=product-review" id="reviewForm">
                         <input type="hidden" name="id" value="<?= $product_id ?>">
                         <div class="form-group mb-3">
-                            <label>Đánh giá:</label>
+                            <label>Rating:</label>
                             <div class="star-rating">
                                 <div class="stars">
                                     <?php for ($i = 1; $i <= 5; $i++): ?>
@@ -151,41 +177,41 @@ $canReview = $isLoggedIn && ($purchaseCount > $reviewCount);
                             </div>
                         </div>
                         <div class="form-group mb-3">
-                            <label>Nội dung đánh giá:</label>
+                            <label>Review Content:</label>
                             <textarea name="review_content" class="form-control" required 
                                     minlength="10" rows="4" 
-                                    placeholder="Chia sẻ trải nghiệm của bạn về sản phẩm..."></textarea>
+                                    placeholder="Share your experience with this product..."></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Gửi đánh giá</button>
+                        <button type="submit" class="btn btn-primary">Submit Review</button>
                     </form>
                 </div>
             </div>
         <?php else: ?>
             <?php if (!$isLoggedIn): ?>
                 <div class="alert alert-warning">
-                    Vui lòng <a href="index.php?act=login">đăng nhập</a> để đánh giá sản phẩm.
+                    Please <a href="index.php?act=login">login</a> to review this product.
                 </div>
             <?php elseif ($purchaseCount == 0): ?>
                 <div class="alert alert-info">
-                    Bạn cần mua sản phẩm này để có thể đánh giá.
+                    You need to purchase this product to write a review.
                 </div>
             <?php elseif ($purchaseCount <= $reviewCount): ?>
                 <div class="alert alert-success">
-                    Bạn đã đánh giá cho sản phẩm này. Cảm ơn bạn đã đóng góp ý kiến!
+                    You have already reviewed this product. Thank you for your feedback!
                 </div>
             <?php endif; ?>
         <?php endif; ?>
 
-        <!-- Danh sách đánh giá -->
+        <!-- Review List -->
         <div class="reviews">
             <div class="review-heading d-flex align-items-center justify-content-between mb-4">
-                <h3 class="title">Đánh giá từ khách hàng</h3>
+                <h3 class="title">Customer Reviews</h3>
                 <div class="select-custom">
                     <select name="review-sort" id="review-sort" class="form-control">
-                        <option value="latest" <?= $sort === 'latest' ? 'selected' : '' ?>>Mới nhất</option>
-                        <option value="rating-desc" <?= $sort === 'rating-desc' ? 'selected' : '' ?>>Đánh giá cao nhất</option>
-                        <option value="rating-asc" <?= $sort === 'rating-asc' ? 'selected' : '' ?>>Đánh giá thấp nhất</option>
-                        <option value="helpful" <?= $sort === 'helpful' ? 'selected' : '' ?>>Hữu ích nhất</option>
+                        <option value="latest" <?= $sort === 'latest' ? 'selected' : '' ?>>Latest</option>
+                        <option value="rating-desc" <?= $sort === 'rating-desc' ? 'selected' : '' ?>>Highest Rating</option>
+                        <option value="rating-asc" <?= $sort === 'rating-asc' ? 'selected' : '' ?>>Lowest Rating</option>
+                        <option value="helpful" <?= $sort === 'helpful' ? 'selected' : '' ?>>Most Helpful</option>
                     </select>
                 </div>
             </div>
@@ -248,7 +274,7 @@ $canReview = $isLoggedIn && ($purchaseCount > $reviewCount);
                         </div>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <div class="alert alert-info">Chưa có đánh giá nào cho sản phẩm này.</div>
+                    <div class="alert alert-info">No reviews yet for this product.</div>
                 <?php endif; ?>
             </div>
         </div>
@@ -312,7 +338,7 @@ function updateVoteButtons() {
 
 window.handleVote = function (button, reviewId, type) {
     if (!isLoggedIn) {
-        alert('Vui lòng đăng nhập để thực hiện thao tác này');
+        alert('Please login to perform this action');
         return;
     }
 

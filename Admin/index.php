@@ -95,6 +95,9 @@ else if(isset($_SESSION['privilege']['product']) && $mod == 'product' ){
      elseif (isset($_SESSION['privilege']['product'][$act]) && $act == 'delete'){
           $controller_obj->delete();
      }
+     elseif (isset($_SESSION['privilege']['product'][$act]) && $act == 'details'){
+          $controller_obj->details();
+     }
      elseif (isset($_SESSION['privilege']['product'][$act]) && $act == 'edit'){
           $controller_obj->edit();
      }

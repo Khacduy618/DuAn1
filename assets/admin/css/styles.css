@@ -798,3 +798,41 @@ form.example::after {
   clear: both;
   display: table;
 }
+/* 
+.product-details-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+} */
+
+.product-specs {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.specs-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.specs-table tr {
+  border-bottom: 1px solid #eee;
+}
+
+.specs-table td {
+  padding: 12px;
+}
+
+.specs-table td:first-child {
+  font-weight: bold;
+  width: 30%;
+  color: #666;
+}
+
+.error-message {
+  text-align: center;
+  color: #dc3545;
+  padding: 20px;
+}

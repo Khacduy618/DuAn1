@@ -44,12 +44,21 @@ class ProductController
             $count = $_POST['product_count'];
             $cat = $_POST['product_cat'];
             $status = isset($_POST['product_status']) ? 1 : 0;
-            
+            $screen_cam = isset($_POST['screen_cam']) ? $_POST['screen_cam'] : '';
+            $os = isset($_POST['os']) ? $_POST['os'] : '';
+            $gpu = isset($_POST['gpu']) ? $_POST['gpu'] : '';
+            $cpu = isset($_POST['cpu']) ? $_POST['cpu'] : '';
+            $pin = isset($_POST['pin']) ? $_POST['pin'] : '';
+            $colors = isset($_POST['colors']) ? $_POST['colors'] : '';
+            $sizes = isset($_POST['sizes']) ? $_POST['sizes'] : '';
+            $ram = isset($_POST['ram']) ? $_POST['ram'] : '';
+            $rom = isset($_POST['rom']) ? $_POST['rom'] : '';
+            $bluetooth = isset($_POST['bluetooth']) ? $_POST['bluetooth'] : '';
             $product_img = $_FILES['product_img']['name'];
             $product_img_tmp = $_FILES['product_img']['tmp_name'];
             $product_img = $this->adminVyModel->handleImageUpload($product_img, $product_img_tmp);
             
-            $this->product_model->store($name, $price, $discount, $count, $cat, $status, $product_img);
+            $this->product_model->store($name, $price, $discount, $count, $cat, $status, $product_img, $screen_cam, $os, $gpu, $cpu, $pin, $colors, $sizes, $ram, $rom, $bluetooth);
             
             $_SESSION['msg'] = 'Product added successfully!';
             header('Location: ?mod=product&act=list');
@@ -75,6 +84,21 @@ class ProductController
         exit;
     }
 
+    public function details() {
+        if(isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $data = $this->product_model->getDetailById($id);
+            
+            // Kiểm tra nếu là AJAX request
+            if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+                // Trả về view AJAX
+                require_once("MVC/Views/product/details.php");
+            } else {
+               echo 'lỗi';
+            }
+        }
+    }
+
     public function update(){
         $id = $_POST['id'];
         $name = $_POST['product_name'];
@@ -83,7 +107,16 @@ class ProductController
         $count = $_POST['product_count'];
         $cat = $_POST['product_cat'];
         $status = isset($_POST['product_status']) ? 1 : 0;
-
+        $screen_cam = isset($_POST['screen_cam']) ? $_POST['screen_cam'] : '';
+        $os = isset($_POST['os']) ? $_POST['os'] : '';
+        $gpu = isset($_POST['gpu']) ? $_POST['gpu'] : '';
+        $cpu = isset($_POST['cpu']) ? $_POST['cpu'] : '';
+        $pin = isset($_POST['pin']) ? $_POST['pin'] : '';
+        $colors = isset($_POST['colors']) ? $_POST['colors'] : '';
+        $sizes = isset($_POST['sizes']) ? $_POST['sizes'] : '';
+        $ram = isset($_POST['ram']) ? $_POST['ram'] : '';
+        $rom = isset($_POST['rom']) ? $_POST['rom'] : '';
+        $bluetooth = isset($_POST['bluetooth']) ? $_POST['bluetooth'] : '';
         if (!empty($_FILES['product_img']['name'])) {
             $product_img = $_FILES['product_img']['name'];
             $product_img_tmp = $_FILES['product_img']['tmp_name'];
@@ -94,7 +127,7 @@ class ProductController
         }
         
         try {
-            $this->product_model->update($id, $name, $price, $discount, $count, $cat, $status, $product_img);
+            $this->product_model->update($id, $name, $price, $discount, $count, $cat, $status, $product_img, $screen_cam, $os, $gpu, $cpu, $pin, $colors, $sizes, $ram, $rom, $bluetooth);
             
             $_SESSION['msg'] = 'Product updated successfully!';
             header('Location: ?mod=product&act=list');

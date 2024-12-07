@@ -271,6 +271,7 @@
     <script src="assets/site/js/jquery.plugin.min.js"></script>
     <script src="assets/site/js/jquery.magnific-popup.min.js"></script>
     <script src="assets/site/js/jquery.countdown.min.js"></script>
+    <script id="chatway" async="true" src="https://cdn.chatway.app/widget.js?id=M4yfVSQANSNz"></script>
     <!-- Main JS File -->
     <script src="assets/site/js/main.js"></script>
     <script src="assets/site/js/demos/demo-3.js"></script>

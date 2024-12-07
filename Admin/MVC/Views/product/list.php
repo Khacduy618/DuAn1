@@ -106,6 +106,9 @@
                         </td>
                         <td>
                             <div class="btn-group btn-group-sm">
+                            <a class="btn btn-outline-primary" href="javascript:void(0)" onclick="showProductDetails(<?=$product['product_id']?>)">
+                                <i class="bi bi-eye"></i>
+                            </a>
                                 <a class="btn btn-outline-primary" href="?mod=product&act=edit&id=<?=$product['product_id']?>">
                                     <i class="bi bi-pencil"></i>
                                 </a>
@@ -121,7 +124,19 @@
             </table>
         </div>
     </div>
-
+</div>
+<div class="modal fade" id="productDetailsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Technical Specifications</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="productDetailsContent">
+                <!-- Nội dung chi tiết sản phẩm sẽ được load vào đây -->
+            </div>
+        </div>
+    </div>
 </div>
     <!-- Pagination Section -->
     <?php
@@ -190,3 +205,18 @@ if ($orderdata['totalRecord'] > 12) {
     </ul>
 </nav>
 <?php } ?>
+<script>
+function showProductDetails(productId) {
+    $.ajax({
+        url: '?mod=product&act=details&id=' + productId,
+        type: 'GET',
+        success: function(response) {
+            $('#productDetailsContent').html(response);
+            $('#productDetailsModal').modal('show');
+        },
+        error: function() {
+            alert('Có lỗi xảy ra khi tải thông tin sản phẩm');
+        }
+    });
+}
+</script>

@@ -92,6 +92,7 @@ class CategoryController {
                     // Single category without subcategories
                     $output .= '<div class="filter-item sub-cat">';
                     $output .= '<div class="custom-control">';
+                    
                     $output .= '<a href="index.php?act=shop&product_cat=' . $value['category_id'] . '" class="category-link">';
                     $output .= '<label class="custom-control-label" for="cat-' . $value['category_id'] . '">' . 
                             ucfirst($value['category_name']) . '</label>';
@@ -140,9 +141,12 @@ class CategoryController {
 
                 // Start list item
                 $output .= '<li class="' . ($hasChildren ? 'has-submenu' : '') . '">';
-               
+                $output .= '<a ';
                 // Add category link
-                $output .= '<a href="index.php?act=shop&product_cat=' . $value['category_id'] . '">';
+                if($value['parent_id'] != NULL){
+                $output .= 'href="index.php?act=shop&product_cat=' . $value['category_id'] . '"';
+                }
+                $output .= '>';
                 $output .= ucfirst($value['category_name']);
                 if ($hasChildren) {
                     $output .= '<i class="icon-angle-right"></i>';
