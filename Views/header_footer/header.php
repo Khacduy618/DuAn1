@@ -146,73 +146,83 @@
                         aria-expanded="false" data-display="static">
                         <div class="icon">
                             <i class="icon-shopping-cart"></i>
-                            <span class="cart-count">2</span>
+                            <?php
+                            if(isset($_SESSION['login'])) {
+                                require_once 'Models/cart.php';
+                                $cart = new Cart();
+                                $cartItems = $cart->getCartItems($_SESSION['login']['user_email']);
+                                $cartCount = count($cartItems);
+                            ?>
+                            <span class="cart-count"><?= $cartCount ?></span>
+                            <?php } else { ?>
+                            <span class="cart-count">0</span>
+                            <?php } ?>
                         </div>
                         <p>Cart</p>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right">
                         <div class="dropdown-cart-products">
+                            <?php 
+                            if(isset($_SESSION['login']) && !empty($cartItems)) {
+                                $total = 0;
+                                foreach($cartItems as $item) {
+                                    $subtotal = $item['product_price'] * $item['quantity'];
+                                    $total += $subtotal;
+                            ?>
                             <div class="product">
                                 <div class="product-cart-details">
                                     <h4 class="product-title">
-                                        <a href="product.html">Beige knitted elastic runner shoes</a>
+                                        <a href="?act=product&id=<?=$item['pro_id']?>"><?=$item['product_name']?></a>
                                     </h4>
 
                                     <span class="cart-product-info">
-                                        <span class="cart-product-qty">1</span>
-                                        x $84.00
+                                        <span class="cart-product-qty"><?=$item['quantity']?></span>
+                                        x <?=number_format($item['product_price'],0,",",".")?> đ
                                     </span>
-                                </div><!-- End .product-cart-details -->
+                                </div>
 
                                 <figure class="product-image-container">
-                                    <a href="product.html" class="product-image">
-                                        <img src="../assets/site/images/products/cart/product-1.jpg" alt="product">
+                                    <a href="?act=product&id=<?=$item['pro_id']?>" class="product-image">
+                                        <img src="uploaded/<?=$item['product_img']?>" alt="<?=$item['product_name']?>">
                                     </a>
                                 </figure>
-                                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                            </div><!-- End .product -->
-
-                            <div class="product">
-                                <div class="product-cart-details">
-                                    <h4 class="product-title">
-                                        <a href="product.html">Blue utility pinafore denim dress</a>
-                                    </h4>
-
-                                    <span class="cart-product-info">
-                                        <span class="cart-product-qty">1</span>
-                                        x $76.00
-                                    </span>
-                                </div><!-- End .product-cart-details -->
-
-                                <figure class="product-image-container">
-                                    <a href="product.html" class="product-image">
-                                        <img src="../assets/site/images/products/cart/product-2.jpg" alt="product">
-                                    </a>
-                                </figure>
-                                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                            </div><!-- End .product -->
-                        </div><!-- End .cart-product -->
+                                <a href="?act=cart&xuli=delete&product_id=<?=$item['pro_id']?>" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
+                            </div>
+                            <?php
+                                }
+                            } else {
+                            ?>
+                            <div class="text-center p-3">No products in cart</div>
+                            <?php } ?>
+                        </div>
 
                         <div class="dropdown-cart-total">
                             <span>Total</span>
-
-                            <span class="cart-total-price">$160.00</span>
-                        </div><!-- End .dropdown-cart-total -->
+                            <span class="cart-total-price">
+                                <?php 
+                                if(isset($total)) {
+                                    echo number_format($total,0,",",".") . ' đ';
+                                } else {
+                                    echo '0 đ';
+                                }
+                                ?>
+                            </span>
+                        </div>
 
                         <div class="dropdown-cart-action">
                             <?php if (isset($_SESSION['login'])) { ?>
                             <a href="?act=checkout&xuli=order_history" class="btn btn-outline-primary-2">Your Order
                             </a>
                             <?php } else { ?>
-                            <a class="btn  disabled">
+                            <a class="btn disabled">
                             </a>
                             <?php } ?>
 
                             <a href="?act=cart" class="btn btn-outline-primary-2 ms-auto">View Cart</a>
-                        </div><!-- End .dropdown-cart-total -->
-                    </div><!-- End .dropdown-menu -->
-                </div><!-- End .cart-dropdown -->
+                        </div>
+                    </div>
+                </div>
             </div><!-- End .header-right -->
         </div><!-- End .container -->
     </div><!-- End .header-middle -->

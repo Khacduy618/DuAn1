@@ -75,6 +75,18 @@ class CheckoutController
                 $userEmail = $_SESSION['login']['user_email'];
                 $user_name = $_SESSION['login']['user_name'];
 
+                // Kiểm tra session cart_items thay vì POST
+                if (!isset($_SESSION['cart_items']) || empty($_SESSION['cart_items'])) {
+                    setcookie('msg1', 'Vui lòng chọn sản phẩm để thanh toán', time() + 5);
+                    header('Location: ?act=cart');
+                    return;
+                }
+
+                // Lấy cart_item_ids từ session cart_items
+                $selectedItemIds = array_map(function($item) {
+                    return $item['cart_item_id'];
+                }, $_SESSION['cart_items']);
+
                 // Kiểm tra số lượng sản phẩm trước khi đặt hàng
                 foreach ($_SESSION['cart_items'] as $item) {
                     if (!$this->checkout_model->checkProductQuantity($item['pro_id'], $item['quantity'])) {
@@ -148,8 +160,9 @@ class CheckoutController
                         $detail_result = $this->checkout_model->insert_bill_detail($values_string);
 
                         if ($detail_result) {
-                            // Lưu thông tin đơn hàng vào session để hiển thị ở trang complete
-
+                            // Xóa các cart item đã chọn từ database
+                            $this->cartModel->deleteSelectedCartItems($userEmail, $selectedItemIds);
+                            
                             $_SESSION['order_complete'] = [
                                 'bill_var_id' => $bill_var_id,
                                 'bill_name' => $user_name,

@@ -3,8 +3,8 @@
     require_once 'MVC/Models/AdminVyModel.php';
 
     class CategoryController{
-        private $model;
-        private $adminVyModel;
+        public $model;
+        public $adminVyModel;
         public function __construct(){
             $this->model = new Category();
             $this->adminVyModel = new AdminVyModel();
@@ -12,7 +12,7 @@
 
 
 
-        public function list($keyword="", $status="", $orderCondition="", $item_per_page="", $offset=""){
+        public function list(){
             $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
             $status = isset($_GET['status']) ? $_GET['status'] : '';
             $orderdata = $this->model->getPaginationAndOrderData();
@@ -57,10 +57,17 @@
         }
 
         public function delete(){
-            $id = $_POST['id'];
-            $this->model->delete($id);
-            header('Location: ?mod=category&act=list');
-            exit;
+            $id = $_GET['id'];
+            try {
+                $this->model->delete($id);
+                $_SESSION['msg'] = 'Category deleted successfully!';
+                header('Location: ?mod=category&act=list');
+                exit;
+            } catch (Exception $e) {
+                $_SESSION['msg'] = 'Failed to delete category! Error: ' . $e->getMessage();
+                header('Location: ?mod=category&act=list');
+                exit;
+            }
         }
 
         public function edit(){

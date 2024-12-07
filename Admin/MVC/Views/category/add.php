@@ -25,10 +25,12 @@
                         </div>
                         <div class="form-group mb-3">
                             <label for="category_img">Category Image <span class="text-danger">*</span></label>
-                            <input type="file" name="category_img" class="form-control" required>
-                            <!-- <div class="mt-2">
-                                <img src="<?php echo BASE_URL ?>/uploaded/user.png" class="img-thumbnail" style="max-height: 150px;">
-                            </div> -->
+                            <input type="file" name="category_img" id="category_img" class="form-control" accept="image/*" required>
+                            <div class="col-12 mb-3">
+                                <div id="imagePreview" class="mt-2" style="max-width: 200px;">
+                                    <img id="preview_imgCategory" src="#" alt="Preview" style="max-width: 100%; display: none;">
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group mb-3">
                             <label>Status</label>
@@ -68,3 +70,14 @@
         </div>
     </div>
 </div>
+<script>
+document.getElementById('category_img').onchange = function(evt) {
+    const preview = document.getElementById('preview_imgCategory');
+    preview.style.display = 'block';
+    const [file] = this.files;
+    
+    if (file) {
+        preview.src = URL.createObjectURL(file);
+    }
+};
+</script>

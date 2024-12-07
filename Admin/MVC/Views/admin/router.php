@@ -19,7 +19,21 @@
             }
          break;
         case 'product':
-            require_once('MVC/Views/product/list_product.php');   
+            switch ($act) {
+                case 'list':
+                    require_once('MVC/Views/product/list.php'); 
+                    break;
+                case 'add':
+                    require_once('MVC/Views/product/add.php'); 
+                    break;
+                case 'edit':
+                    require_once('MVC/Views/product/edit.php'); 
+                    break;
+                default:
+                    require_once('MVC/Views/product/list.php'); 
+                    break;
+                
+            }
             break;
         
          case 'coupon':

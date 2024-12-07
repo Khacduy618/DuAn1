@@ -853,7 +853,7 @@ blockquote.text-white cite span {
 
 .logo img {
     display: block;
-    max-width: 20%;
+    max-width: 100%;
     height: auto
 }
 
@@ -16481,7 +16481,8 @@ button:focus {
     margin: 0;
     margin-right: 2.8rem;
     flex-shrink: 0;
-    max-width: 60px
+    max-width: 60px;
+    height: auto;
 }
 
 .product-col .product-title {

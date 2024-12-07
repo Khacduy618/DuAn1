@@ -78,7 +78,9 @@
                                         <label for="<?=$value['cart_item_id']?>">
                                             <div class="product">
                                                 <figure class="product-media">
+                                                    <div class="product-image">
                                                     <img src="uploaded/<?=$value['product_img']?>" alt="Product image">
+                                                    </div>
                                                 </figure>
 
                                                 <h3 class="product-title">

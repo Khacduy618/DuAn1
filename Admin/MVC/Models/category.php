@@ -3,10 +3,12 @@
 
     class Category extends Model{
         public $table = 'categories';
+        public $status = 'category_status';
         public $contents = 'category_id';
 
         public function __construct(){
             $this->table;
+            $this->status;
             $this->contents;    
         }
         
@@ -38,15 +40,6 @@
             }
         }
 
-        function delete($id){
-            $sql = "UPDATE $this->table SET category_status = 0 WHERE $this->contents = ?";
-             pdo_execute($sql, $id);
-        }
-
-        function edit($id){
-            $sql = "SELECT * FROM $this->table WHERE $this->contents = ?";
-            return pdo_query_one($sql, $id);
-        }
 
         function update($id, $name, $desc, $parent_id, $status, $category_img) {
             try {

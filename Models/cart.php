@@ -89,4 +89,26 @@ class Cart extends Model
           $sql = "UPDATE coupons SET coupon_count = coupon_count - 1 WHERE coupon_id =?";
           return pdo_execute($sql, $coupon_id);
        }   
+
+    public function deleteCartItemById($cartItemId) {
+        $sql = "DELETE FROM cart_item WHERE cart_item_id = ?";
+        return pdo_execute($sql, $cartItemId);
+    }
+
+    public function deleteSelectedCartItems($userEmail, $selectedItemIds) {
+        // Kiểm tra nếu $selectedItemIds không phải là mảng hoặc rỗng
+        if (!is_array($selectedItemIds) || empty($selectedItemIds)) {
+            return false;
+        }
+
+        $placeholders = str_repeat('?,', count($selectedItemIds) - 1) . '?';
+        $sql = "DELETE FROM cart_item 
+                WHERE cart_id = (SELECT cart_id FROM cart WHERE cart_userEmail = ?) 
+                AND cart_item_id IN ($placeholders)";
+        
+        // Thêm userEmail vào đầu m�ng params
+        array_unshift($selectedItemIds, $userEmail);
+        
+        return pdo_execute($sql, ...$selectedItemIds);
+    }
 }

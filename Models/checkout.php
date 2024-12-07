@@ -19,6 +19,7 @@ class Checkout extends Model
                            WHEN b.bill_status = 5 THEN 'Delivering'
                            WHEN b.bill_status = 6 THEN 'Delivered'
                            WHEN b.bill_status = 7 THEN 'Completed'
+                           WHEN b.bill_status = 8 THEN 'Cancelled'
                        END as status_name
                 FROM bills b 
                 WHERE b.bill_userEmail = ?
@@ -55,7 +56,7 @@ class Checkout extends Model
             throw new Exception("Email không hợp lệ");
         }
 
-        if (!in_array($status, [1, 2, 3, 4, 5])) { // Giả sử các trạng thái hợp lệ là 1-5
+        if (!in_array($status, [1, 2, 3, 4, 5, 6, 7, 8])) { // Giả sử các trạng thái hợp lệ là 1-5
             throw new Exception("Trạng thái đơn hàng không hợp lệ");
         }
 

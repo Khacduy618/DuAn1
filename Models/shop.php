@@ -27,11 +27,11 @@ class Shop extends Model
 
         return pdo_query($sql);
     }
-    function keyword($a) {
-        $a = "'%".$a."%'";
-        $query = "SELECT * FROM products WHERE product_name LIKE $a LIMIT 0,12";
-        return pdo_query($query, $a);
-    }
+    // function keyword($a) {
+    //     $a = "'%".$a."%'";
+    //     $query = "SELECT * FROM products WHERE product_name LIKE $a LIMIT 0,12";
+    //     return pdo_query($query, $a);
+    // }
 
     function product_price($a, $b) {
         if($a == 0) {
