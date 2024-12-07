@@ -274,7 +274,21 @@
     <!-- Main JS File -->
     <script src="assets/site/js/main.js"></script>
     <script src="assets/site/js/demos/demo-3.js"></script>
+    <script>
+    const textarea = document.getElementById('blog-content');
 
+    // Tự động điều chỉnh chiều cao
+    function adjustTextareaHeight(el) {
+        el.style.height = 'auto'; // Đặt chiều cao về tự động trước khi tính toán
+        el.style.height = el.scrollHeight + 'px'; // Đặt chiều cao dựa trên nội dung
+    }
+
+    // Gọi hàm khi tải trang
+    window.onload = () => adjustTextareaHeight(textarea);
+
+    // Gọi hàm mỗi khi người dùng chỉnh sửa nội dung
+    textarea.addEventListener('input', () => adjustTextareaHeight(textarea));
+    </script>
 </body>
 
 

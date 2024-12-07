@@ -11,6 +11,7 @@
 
         public function admin()
         {   
+            echo 'lõi';
             $limit = isset($_GET['allPro']) ? $_GET['allPro'] : '';
             $offset = '';
             $days = $this->model->getDaysInCurrentMonth();

@@ -81,7 +81,7 @@
                 </button>
 
                 <a href="?act=home" class="logo">
-                    <img src="uploaded/logo500x500.png" alt="Tede Logo" width="105" height="25">
+                    <img src="uploaded/logo500x500.png" alt="Tede Logo">
                 </a>
             </div><!-- End .header-left -->
 

@@ -4,11 +4,12 @@ if (isset($subcategories_products) && !empty($subcategories_products)) {
         if ($products) {
             foreach ($products as $product): ?>
                 <div class="product product-2">
-                    <figure class="product-media">
+                    <figure class="product-media-container">
                         <span class="product-label label-circle label-new">New</span>
                         <a href="product.html">
-                            <img src="assets/site/images/demos/demo-3/products/product-13.jpg"
-                                alt="Product image" class="product-image">
+                           <div class="product-image">
+                                <img src="uploaded/<?=$product['product_img']?>" alt="Product image">
+                           </div>
                         </a>
 
                         <div class="product-action-vertical">

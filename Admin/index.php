@@ -21,7 +21,16 @@ $mod = isset($_GET['mod']) ? $_GET['mod'] : "login";
 $act = isset($_GET['act']) ? $_GET['act'] : "admin";
 
 //1 mod cua switch, 1 act cuar switch con
-
+if($mod == 'login'){
+     require_once('MVC/controllers/LoginController.php');
+     $controller_obj = new LoginController();
+     $controller_obj->admin();
+ }
+ // Kiểm tra session login trước khi xử lý các mod khác
+ else if(!isset($_SESSION['login'])) {
+     header('Location: ?mod=login');
+     exit();
+ }
 if(isset($_SESSION['privilege']['blog']) && $mod == 'blog' ){
      require_once('MVC/controllers/AdminCuongController.php');
      $controller_obj = new AdminCuongController();
@@ -273,11 +282,7 @@ else if($_SESSION['login']['user_role'] == 1 || $mod=='authorization'){
 }
 else{
      header('Location: ?mod=login');
-}
-if($mod =='login'){
-     require_once('MVC/controllers/LoginController.php');
-     $controller_obj = new LoginController();
-     $controller_obj->admin();
+     exit();
 }
 
 if($mod == 'bill' && $act == 'api' ){

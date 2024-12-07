@@ -29,7 +29,7 @@
             extract($data);
     ?>
     <div class="product product-7 text-center">
-        <figure class="product-media">
+        <figure class="product-media-container">
         <?php 
             // Kiểm tra sản phẩm có được tạo trong vòng 1 tháng không
             $created_date = strtotime($created_at);
@@ -40,7 +40,7 @@
             <?php } ?>
             <a <?php if ($product_status != 0 && $product_count != 0) { ?> href="?act=product&id=<?=$product_id?>"  <?php } ?>  >
                 <div class="product-image">
-                <img src="uploaded/<?=$product_img?>" alt="Product image">
+                    <img src="uploaded/<?=$product_img?>" alt="Product image">
                 </div>    
            
             </a>

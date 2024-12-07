@@ -5,7 +5,7 @@
                 <div class="col-sm-6 col-lg-3">
                     <div class="widget widget-about">
                         <img src="uploaded/logo500x500.png" class="footer-logo" alt="Footer Logo" width="105"
-                            height="25">
+                            height="auto">
                         <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate
                             magna eros eu erat. </p>
 

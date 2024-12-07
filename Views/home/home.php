@@ -29,13 +29,13 @@
                         "0": {
                             "items":2
                         },
-                        "600": {
+                        "480": {
                             "items":2
                         },
-                        "992": {
+                        "768": {
                             "items":3
                         },
-                        "1200": {
+                        "992": {
                             "items":4
                         }
                     }
@@ -47,10 +47,12 @@
                 ?>
 
                 <div class="product product-2">
-                    <figure class="product-media">
+                    <figure class="product-media-container">
                         <span class="product-label label-circle label-new">New</span>
                         <a href="?act=product&id=<?=$item['product_id']?>">
-                            <img src="uploaded/<?=$item['product_img']?>" alt="Product image" class="product-image">
+                            <div class="product-image">
+                                <img src="uploaded/<?=$item['product_img']?>" alt="Product image" >
+                            </div>
                         </a>
 
                         <div class="product-action-vertical">
@@ -129,7 +131,7 @@
                 ?>
 
                 <div class="product product-2">
-                    <figure class="product-media">
+                    <figure class="product-media-container">
                         <span class="product-label label-circle label-new">New</span>
                         <a href="?act=product&id=<?=$item['product_id']?>">
                             <img src="uploaded/<?=$item['product_img']?>" alt="Product image" class="product-image">
@@ -211,7 +213,7 @@
                 ?>
 
                 <div class="product product-2">
-                    <figure class="product-media">
+                    <figure class="product-media-container">
                         <span class="product-label label-circle label-new">New</span>
                         <a href="?act=product&id=<?=$item['product_id']?>">
                             <img src="uploaded/<?=$item['product_img']?>" alt="Product image" class="product-image">
@@ -333,7 +335,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="product product-2">
-                                <figure class="product-media">
+                                <figure class="product-media-container">
                                     <span class="product-label label-circle label-top">Top</span>
                                     <span class="product-label label-circle label-sale">Sale</span>
                                     <a href="?act=product&id=<?=$item['product_id']?>">
@@ -377,7 +379,7 @@
 
                         <div class="col-6">
                             <div class="product product-2">
-                                <figure class="product-media">
+                                <figure class="product-media-container">
                                     <span class="product-label label-circle label-sale">Sale</span>
                                     <a href="?act=product&id=<?=$item['product_id']?>">
                                         <img src="uploaded/product-6.jpg" alt="Product image" class="product-image">
@@ -560,7 +562,7 @@
                         extract($value);
                 ?>
                 <div class="product product-2">
-                    <figure class="product-media">
+                    <figure class="product-media-container">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
                             <img src="assets/site/images/shop/<?=$product_img?>" alt="Product image"
@@ -636,7 +638,7 @@
                             extract($value);
                     ?>
                 <div class="product product-2">
-                    <figure class="product-media">
+                    <figure class="product-media-container">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
                             <img src="assets/site/images/shop/<?=$product_img?>" alt="Product image"
@@ -711,7 +713,7 @@
                             extract($value);
                     ?>
                 <div class="product product-2">
-                    <figure class="product-media">
+                    <figure class="product-media-container">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
                             <img src="assets/site/images/shop/<?=$product_img?>" alt="Product image"
@@ -786,7 +788,7 @@
                             extract($value);
                     ?>
                 <div class="product product-2">
-                    <figure class="product-media">
+                    <figure class="product-media-container">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
                             <img src="assets/site/images/shop/<?=$product_img?>" alt="Product image"
@@ -861,7 +863,7 @@
                             extract($value);
                     ?>
                 <div class="product product-2">
-                    <figure class="product-media">
+                    <figure class="product-media-container">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
                             <img src="assets/site/images/shop/<?=$product_img?>" alt="Product image"
@@ -936,7 +938,7 @@
                             extract($value);
                     ?>
                 <div class="product product-2">
-                    <figure class="product-media">
+                    <figure class="product-media-container">
                         <span class="product-label label-circle label-top">Top</span>
                         <a href="product.html">
                             <img src="assets/site/images/shop/<?=$product_img?>" alt="Product image"

@@ -5,7 +5,7 @@
                 <i class="bi bi-pencil-square"></i> Create New Blog Post
             </h5>
         </div>
-        
+
         <div class="card-body">
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="row">
@@ -16,11 +16,8 @@
                             <label for="title" class="form-label fw-bold">
                                 <i class="bi bi-type-h1"></i> Post Title
                             </label>
-                            <input type="text" name="title" 
-                                   class="form-control form-control-lg" 
-                                   id="title" 
-                                   placeholder="Enter post title"
-                                   required>
+                            <input type="text" name="title" class="form-control form-control-lg" id="title"
+                                placeholder="Enter post title" required>
                         </div>
 
                         <!-- Content -->
@@ -28,12 +25,12 @@
                             <label for="content" class="form-label fw-bold">
                                 <i class="bi bi-file-text"></i> Content
                             </label>
-                            <textarea name="content" 
-                                      class="form-control" 
-                                      id="content" 
-                                      rows="12"
-                                      placeholder="Write your blog content here..."
-                                      required></textarea>
+                            <div class="main-container">
+                                <textarea name="content" id="editor">
+
+                                </textarea>
+                            </div>
+
                         </div>
                     </div>
 
@@ -48,17 +45,12 @@
                             </div>
                             <div class="card-body">
                                 <div class="image-preview mb-3 text-center">
-                                    <img id="preview" src="assets/img/placeholder.png" 
-                                         class="img-fluid rounded" 
-                                         style="max-height: 200px; display: none;">
+                                    <img id="preview" src="assets/img/placeholder.png" class="img-fluid rounded"
+                                        style="max-height: 200px; display: none;">
                                 </div>
                                 <div class="input-group">
-                                    <input name="image" 
-                                           type="file" 
-                                           class="form-control" 
-                                           id="image"
-                                           accept="image/*"
-                                           required>
+                                    <input name="image" type="file" class="form-control" id="image" accept="image/*"
+                                        required>
                                 </div>
                                 <small class="text-muted">
                                     Recommended size: 1200x630px, Max: 2MB
@@ -74,9 +66,7 @@
                                 </h6>
                             </div>
                             <div class="card-body">
-                                <select name="blog_pro_id" 
-                                        class="form-select" 
-                                        required>
+                                <select name="blog_pro_id" class="form-select" required>
                                     <option value="">Select a product...</option>
                                     <?php foreach ($products as $item): ?>
                                     <option value="<?= $item['product_id'] ?>">

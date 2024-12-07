@@ -18,7 +18,7 @@
          </nav>
          <div class="page-content">
              <div class="container">
-                 <div class="row">
+                 <div class="row g-0">
                      <div class="col-lg-9">
                          <article class="entry single-entry">
                              <figure class="entry-media">
@@ -44,55 +44,37 @@
                                      in <a href="#">Lifestyle</a>,
                                      <a href="#">Shopping</a>
                                  </div><!-- End .entry-cats -->
+                                 <div class="entry-content">
  
-                                 <div class="entry-content editor-content">
-                                     <?php
-                                 echo $content_blog['blog_content']
-                                  ?>
+                                     <?php echo $content_blog['blog_content']; ?>
  
                                      <div class="col-md-auto mt-2 mt-md-0">
                                          <div class="social-icons social-icons-color">
                                              <span class="social-label">Share this post:</span>
                                              <a href="#" class="social-icon social-facebook" title="Facebook"
-                                                 target="_blank"><i class="icon-facebook-f"></i></a>
+                                                 target="_blank">
+                                                 <i class="icon-facebook-f"></i>
+                                             </a>
                                              <a href="#" class="social-icon social-twitter" title="Twitter"
-                                                 target="_blank"><i class="icon-twitter"></i></a>
+                                                 target="_blank">
+                                                 <i class="icon-twitter"></i>
+                                             </a>
                                              <a href="#" class="social-icon social-pinterest" title="Pinterest"
-                                                 target="_blank"><i class="icon-pinterest"></i></a>
+                                                 target="_blank">
+                                                 <i class="icon-pinterest"></i>
+                                             </a>
                                              <a href="#" class="social-icon social-linkedin" title="Linkedin"
-                                                 target="_blank"><i class="icon-linkedin"></i></a>
-                                         </div><!-- End .soial-icons -->
-                                     </div><!-- End .col-auto -->
-                                 </div><!-- End .entry-footer row no-gutters -->
-                             </div><!-- End .entry-body -->
+                                                 target="_blank">
+                                                 <i class="icon-linkedin"></i>
+                                             </a>
+                                         </div>
+                                     </div>
+                                 </div>
  
-                             <div class="entry-author-details">
-                                 <figure class="author-media">
-                                     <a href="#">
-                                         <img src="assets/site/images/blog/single/author.jpg" alt="User name">
-                                     </a>
-                                 </figure><!-- End .author-media -->
- 
-                                 <div class="author-body">
-                                     <div class="author-header row no-gutters flex-column flex-md-row">
-                                         <div class="col">
-                                             <h4><a href="#">John Doe</a></h4>
-                                         </div><!-- End .col -->
-                                         <div class="col-auto mt-1 mt-md-0">
-                                             <a href="#" class="author-link">View all posts by John Doe <i
-                                                     class="icon-long-arrow-right"></i></a>
-                                         </div><!-- End .col -->
-                                     </div><!-- End .row -->
- 
-                                     <div class="author-content">
-                                         <p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas auguae,
-                                             eu vulputate magna eros eu erat. Aliquam erat volutpat. </p>
-                                     </div><!-- End .author-content -->
-                                 </div><!-- End .author-body -->
-                             </div><!-- End .entry-author-details-->
+                                 <div class="entry-author-details">
                          </article><!-- End .entry -->
  
-                         <nav class="pager-nav" aria-label="Page navigation">
+                         <!-- <nav class="pager-nav" aria-label="Page navigation">
                              <a class="pager-link pager-link-prev" href="#" aria-label="Previous" tabindex="-1">
                                  Previous Post
                                  <span class="pager-link-title">Cras iaculis ultricies nulla</span>
@@ -102,7 +84,7 @@
                                  Next Post
                                  <span class="pager-link-title">Praesent placerat risus</span>
                              </a>
-                         </nav><!-- End .pager-nav -->
+                         </nav>End .pager-nav -->
  
                          <div class="related-posts">
                              <h3 class="title">Related Posts</h3><!-- End .title -->
@@ -157,6 +139,14 @@
  
  
                              </div><!-- End .owl-carousel -->
+                             <div class="widget widget-text">
+                                 <h3 class="widget-title">Best Seller Products</h3><!-- End .widget-title -->
+ 
+                             </div>
+ 
+ 
+ 
+ 
                          </div><!-- End .related-posts -->
  
                          <div class="comments">
@@ -226,9 +216,9 @@
                              <div class="widget widget-search">
                                  <h3 class="widget-title">Search</h3><!-- End .widget-title -->
  
-                                 <form action="#">
+                                 <form action="?act=blog" method="post">
                                      <label for="ws" class="sr-only">Search in blog</label>
-                                     <input type="search" class="form-control" name="ws" id="ws"
+                                     <input type="search" class="form-control" name="key_word" id="ws"
                                          placeholder="Search in blog" required>
                                      <button type="submit" class="btn"><i class="icon-search"></i><span
                                              class="sr-only">Search</span></button>
@@ -254,6 +244,68 @@
                                              </li>' ; } ?>
                                  </ul><!-- End .posts-list -->
                              </div><!-- End .widget -->
+                             <div class="widget widget-text">
+                                 <h1 class="widget-title">Best Seller Products</h1><!-- End .widget-title -->
+ 
+                             </div>
+                             <?php 
+                     if(isset($product_populars) && $product_populars != NULL){
+                         foreach($product_populars as $item){
+                     
+                 ?>
+ 
+                             <div class="product product-2">
+                                 <figure class="product-media">
+                                     <span class="product-label label-circle label-new">New</span>
+                                     <a href="?act=product&id=<?=$item['product_id']?>">
+                                         <img src="uploaded/<?=$item['product_img']?>" alt="Product image"
+                                             class="product-image">
+                                     </a>
+ 
+                                     <div class="product-action-vertical">
+                                         <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                                 wishlist</span></a>
+                                     </div><!-- End .product-action -->
+ 
+                                     <div class="product-action product-action-dark">
+                                         <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add
+                                                 to cart</span></a>
+                                         <a href="popup/quick_view.php" class="btn-product btn-quickview"
+                                             title="Quick view"><span>quick view</span></a>
+                                     </div><!-- End .product-action -->
+                                 </figure><!-- End .product-media -->
+ 
+                                 <div class="product-body">
+ 
+                                     <h3 class="product-title"><a href="#"><?=$item['product_name'];?> </a></h3>
+                                     <!-- End .product-title -->
+                                     <div class="product-price">
+                                         <?=number_format($item['product_price'],0,",",".")?> đ
+                                     </div><!-- End .product-price -->
+                                     <div class="ratings-container">
+                                         <div class="ratings">
+                                             <div class="ratings-val" style="width: 80%;"></div>
+                                             <!-- End .ratings-val -->
+                                         </div><!-- End .ratings -->
+                                         <span class="ratings-text">( 4 Reviews )</span>
+                                     </div><!-- End .rating-container -->
+ 
+                                     <div class="product-nav product-nav-dots">
+                                         <a href="#" style="background: #edd2c8;"><span class="sr-only">Color
+                                                 name</span></a>
+                                         <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
+                                                 name</span></a>
+                                         <a href="#" class="active" style="background: #333333;"><span
+                                                 class="sr-only">Color
+                                                 name</span></a>
+                                     </div><!-- End .product-nav -->
+                                 </div><!-- End .product-body -->
+                             </div><!-- End .product -->
+                             <?php
+             }}else{
+             echo "No data found";
+             }
+             ?>
  
  
  
