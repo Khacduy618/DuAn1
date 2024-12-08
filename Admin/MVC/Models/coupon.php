@@ -1,13 +1,17 @@
 <?php
 require_once 'model.php';
-class CouponModel {
+class CouponModel extends Model{
     public static function getAllCoupons() {
-        $sql = "SELECT * FROM coupons ORDER BY coupon_expiredate DESC";
+        $sql = "SELECT coupon_id, coupon_name,coupon_count, coupon_discount, coupon_expiredate 
+                FROM coupons 
+                ORDER BY coupon_expiredate DESC";
         return pdo_query($sql);
     }
 
     public static function getCouponById($id) {
-        $sql = "SELECT * FROM coupons WHERE coupon_id = ?";
+        $sql = "SELECT coupon_name, coupon_discount, coupon_expiredate 
+                FROM coupons 
+                WHERE coupon_id = ?";
         return pdo_query_one($sql, $id);
     }
 
