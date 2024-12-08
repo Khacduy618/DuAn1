@@ -160,31 +160,6 @@ elseif (isset($_SESSION['privilege']['coupon']) && $mod == 'coupon' ){
           $controller_obj->list();
      }
 }
-else if(isset($_SESSION['privilege']['product']) && $mod == 'product' ){
-     require_once('MVC/controllers/ProductController.php');
-     $controller_obj = new ProductController();
-     if(isset($_SESSION['privilege']['product'][$act]) && $act == 'list'){
-          $controller_obj->list();
-     }
-     elseif (isset($_SESSION['privilege']['product'][$act]) && $act == 'add'){
-          $controller_obj->add();
-     }
-     elseif (isset($_SESSION['privilege']['product']['add']) && $act == 'store'){
-          $controller_obj->store();
-     }
-     elseif (isset($_SESSION['privilege']['product'][$act]) && $act == 'delete'){
-          $controller_obj->delete();
-     }
-     elseif (isset($_SESSION['privilege']['product'][$act]) && $act == 'edit'){
-          $controller_obj->edit();
-     }
-     elseif (isset($_SESSION['privilege']['product']['edit']) && $act == 'update'){
-          $controller_obj->update();
-     }
-     else{
-          $controller_obj->list();
-     }
-}
 
 ///BILL
 else if(isset($_SESSION['privilege']['bill']) && $mod == 'bill' ){

@@ -21,9 +21,9 @@ class BillModel extends Model
                          coupons.coupon_name, 
                          bills.bill_status, 
                          bills.bill_time
-                  FROM $this->table
-                  LEFT JOIN Tede_Shop.user ON bills.bill_userEmail = user.user_email
-                  LEFT JOIN Tede_Shop.coupons ON bills.bill_coupon = coupons.coupon_id
+                  FROM Tede_Shop.bills AS bills
+                  LEFT JOIN Tede_Shop.user AS user ON bills.bill_userEmail = user.user_email
+                  LEFT JOIN Tede_Shop.coupons AS coupons ON bills.bill_coupon = coupons.coupon_id
                   /*WHERE bills.bill_id = ? AND bills.deleted = 0 */
                   WHERE bills.bill_status != 8
                   ORDER BY bills.bill_time DESC";
@@ -90,8 +90,8 @@ class BillModel extends Model
         // pdo_execute($query, $newStatus, $id);
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
-        $stmt->bindValue(":bill_status", $newStatus); 
-        $stmt->bindValue(":bill_id", $id); 
+        $stmt->bindValue(":bill_status", $newStatus);
+        $stmt->bindValue(":bill_id", $id);
         try {
             $conn->beginTransaction();
             $result = $stmt->execute();
@@ -105,7 +105,7 @@ class BillModel extends Model
         finally {
             unset($conn);
         }
-        
+
     }
     public function select_id_status_ajax($id){
         $sql = "SELECT (bill_id,bill_status) WHERE 

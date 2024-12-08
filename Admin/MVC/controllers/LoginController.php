@@ -10,7 +10,7 @@
         }
 
         public function admin()
-        {   
+        {
             $limit = isset($_GET['allPro']) ? $_GET['allPro'] : '';
             $offset = '';
             $days = $this->model->getDaysInCurrentMonth();
