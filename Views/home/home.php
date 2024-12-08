@@ -29,13 +29,13 @@
                         "0": {
                             "items":2
                         },
-                        "480": {
+                        "600": {
                             "items":2
                         },
-                        "768": {
+                        "992": {
                             "items":3
                         },
-                        "992": {
+                        "1200": {
                             "items":4
                         }
                     }
@@ -43,16 +43,19 @@
                 <?php 
                     if(isset($smartphone) && $smartphone != NULL){
                         foreach($smartphone as $item){
+                            if (isset($reviewsCount[$item['product_id']]) && isset($ratings[$item['product_id']])) {
+                                $reviewCount = $reviewsCount[$item['product_id']] ?? 0;
+                                $rating = $ratings[$item['product_id']] ?? 0;
                     
                 ?>
 
                 <div class="product product-2">
-                    <figure class="product-media-container">
+                    <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
                         <a href="?act=product&id=<?=$item['product_id']?>">
-                            <div class="product-image">
-                                <img src="uploaded/<?=$item['product_img']?>" alt="Product image" >
-                            </div>
+                           <div class="product-image">
+                           <img src="uploaded/<?=$item['product_img']?>" alt="Product image">
+                           </div>
                         </a>
 
                         <div class="product-action-vertical">
@@ -78,12 +81,12 @@
                             <?=number_format($item['product_price'],0,",",".")?> đ
                         </div><!-- End .product-price -->
                         <div class="ratings-container">
-                            <div class="ratings">
-                                <div class="ratings-val" style="width: 80%;"></div>
+                        <div class="ratings">
+                                <div class="ratings-val" style="width: <?= ($rating * 20) ?>%;"></div>
                                 <!-- End .ratings-val -->
-                            </div><!-- End .ratings -->
-                            <span class="ratings-text">( 4 Reviews )</span>
-                        </div><!-- End .rating-container -->
+                        </div><!-- End .ratings -->
+                        <span class="ratings-text">( <?= $reviewCount ?> Reviews )</span>
+                     </div><!-- End .ratings-container -->
 
                         <div class="product-nav product-nav-dots">
                             <a href="#" style="background: #edd2c8;"><span class="sr-only">Color
@@ -96,7 +99,7 @@
                     </div><!-- End .product-body -->
                 </div><!-- End .product -->
                 <?php
-            }}else{
+            }}}else{
             echo "No data found";
             }
             ?>
@@ -127,14 +130,19 @@
                 <?php 
                     if(isset($tablet) && $tablet != NULL){
                         foreach($tablet as $item){
+                            if (isset($reviewsCount[$item['product_id']]) && isset($ratings[$item['product_id']])) {
+                                $reviewCount = $reviewsCount[$item['product_id']] ?? 0;
+                                $rating = $ratings[$item['product_id']] ?? 0;
                     
                 ?>
 
                 <div class="product product-2">
-                    <figure class="product-media-container">
+                    <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
                         <a href="?act=product&id=<?=$item['product_id']?>">
-                            <img src="uploaded/<?=$item['product_img']?>" alt="Product image" class="product-image">
+                            <div class="product-image">
+                            <img src="uploaded/<?=$item['product_img']?>" alt="Product image" >
+                            </div>
                         </a>
 
                         <div class="product-action-vertical">
@@ -160,12 +168,12 @@
                             <?=number_format($item['product_price'],0,",",".")?> đ
                         </div><!-- End .product-price -->
                         <div class="ratings-container">
-                            <div class="ratings">
-                                <div class="ratings-val" style="width: 80%;"></div>
+                        <div class="ratings">
+                                <div class="ratings-val" style="width: <?= ($rating * 20) ?>%;"></div>
                                 <!-- End .ratings-val -->
-                            </div><!-- End .ratings -->
-                            <span class="ratings-text">( 4 Reviews )</span>
-                        </div><!-- End .rating-container -->
+                        </div><!-- End .ratings -->
+                        <span class="ratings-text">( <?= $reviewCount ?> Reviews )</span>
+                     </div><!-- End .ratings-container -->
 
                         <div class="product-nav product-nav-dots">
                             <a href="#" style="background: #edd2c8;"><span class="sr-only">Color
@@ -178,7 +186,7 @@
                     </div><!-- End .product-body -->
                 </div><!-- End .product -->
                 <?php
-            }}else{
+            }}}else{
             echo "No data found";
             }
             ?>
@@ -209,14 +217,19 @@
                 <?php 
                     if(isset($Laptop) && $Laptop != NULL){
                         foreach($Laptop as $item){
+                            if (isset($reviewsCount[$item['product_id']]) && isset($ratings[$item['product_id']])) {
+                                $reviewCount = $reviewsCount[$item['product_id']] ?? 0;
+                                $rating = $ratings[$item['product_id']] ?? 0;
                     
                 ?>
 
                 <div class="product product-2">
-                    <figure class="product-media-container">
+                    <figure class="product-media">
                         <span class="product-label label-circle label-new">New</span>
                         <a href="?act=product&id=<?=$item['product_id']?>">
-                            <img src="uploaded/<?=$item['product_img']?>" alt="Product image" class="product-image">
+                            <div class="product-image">
+                            <img src="uploaded/<?=$item['product_img']?>" alt="Product image">
+                            </div>
                         </a>
 
                         <div class="product-action-vertical">
@@ -242,12 +255,12 @@
                             <?=number_format($item['product_price'],0,",",".")?> đ
                         </div><!-- End .product-price -->
                         <div class="ratings-container">
-                            <div class="ratings">
-                                <div class="ratings-val" style="width: 80%;"></div>
+                        <div class="ratings">
+                                <div class="ratings-val" style="width: <?= ($rating * 20) ?>%;"></div>
                                 <!-- End .ratings-val -->
-                            </div><!-- End .ratings -->
-                            <span class="ratings-text">( 4 Reviews )</span>
-                        </div><!-- End .rating-container -->
+                        </div><!-- End .ratings -->
+                        <span class="ratings-text">( <?= $reviewCount ?> Reviews )</span>
+                     </div><!-- End .ratings-container -->
 
                         <div class="product-nav product-nav-dots">
                             <a href="#" style="background: #edd2c8;"><span class="sr-only">Color
@@ -260,7 +273,7 @@
                     </div><!-- End .product-body -->
                 </div><!-- End .product -->
                 <?php
-            }}else{
+            }}}else{
             echo "No data found";
             }
             ?>
@@ -295,7 +308,6 @@
         </div><!-- End .bg-white -->
     </div><!-- End .cta -->
 </div><!-- End .container -->
-
 <div class="bg-light deal-container pt-7 pb-7 mb-5">
     <div class="container">
         <div class="heading text-center mb-4">
@@ -305,7 +317,7 @@
 
         <div class="row">
             <div class="col-lg-6 deal-col">
-                <div class="deal" style="background-image: url('uploaded/deal/bg-1.jpg');">
+            <div class="deal" style="background-image: url('assets/site/images/demos/demo-3/bg-3.jpg');">
                     <div class="deal-top">
                         <h2>Deal of the Day.</h2>
                         <h4>Limited quantities. </h4>
@@ -333,13 +345,20 @@
             <div class="col-lg-6">
                 <div class="products">
                     <div class="row">
+                    <?php if (isset($sale_product)&& $sale_product != NULL){ 
+                        foreach ($sale_product as $item ){
+                            if (isset($reviewsCount[$item['product_id']]) && isset($ratings[$item['product_id']])) {
+                                $reviewCount = $reviewsCount[$item['product_id']] ?? 0;
+                                $rating = $ratings[$item['product_id']] ?? 0;?>
                         <div class="col-6">
                             <div class="product product-2">
-                                <figure class="product-media-container">
+                                <figure class="product-media">
                                     <span class="product-label label-circle label-top">Top</span>
                                     <span class="product-label label-circle label-sale">Sale</span>
                                     <a href="?act=product&id=<?=$item['product_id']?>">
-                                        <img src="uploaded/product-5.jpg" alt="Product image" class="product-image">
+                                        <div class="product-image">
+                                        <img src="uploaded/<?=$item['product_img']?>" alt="Product image">
+                                        </div>
                                     </a>
 
                                     <div class="product-action-vertical">
@@ -357,80 +376,38 @@
 
                                 <div class="product-body">
                                     <div class="product-cat">
-                                        <a href="#">Digital Cameras</a>
+                                        <a href="#"><?=$item['category_name']?></a>
                                     </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Canon -
-                                            EOS 5D Mark IV
-                                            DSLR Camera</a></h3><!-- End .product-title -->
+                                    <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">
+                                        <?= $item['product_name'];?></a>
+                                    </h3><!-- End .product-title -->
                                     <div class="product-price">
-                                        <span class="new-price">$3,599.99</span>
-                                        <span class="old-price">Was $3,999.99</span>
+                                        <span class="discounted-price">
+                                        <?= number_format($item['product_price'] * (1 - $item['product_discount'] / 100), 0, ",", ".") ?> đ
+                                        </span>
+                                        <span class="old-price"><?=number_format($item['product_price'],0,",",".")?> đ</span>
                                     </div><!-- End .product-price -->
                                     <div class="ratings-container">
                                         <div class="ratings">
-                                            <div class="ratings-val" style="width: 80%;"></div>
+                                            <div class="ratings-val" style="width: <?= ($rating * 20) ?>%;"></div>
                                             <!-- End .ratings-val -->
                                         </div><!-- End .ratings -->
-                                        <span class="ratings-text">( 5 Reviews )</span>
-                                    </div><!-- End .rating-container -->
+                                        <span class="ratings-text">( <?= $reviewCount ?> Reviews )</span>
+                                    </div><!-- End .ratings-container -->
                                 </div><!-- End .product-body -->
-                            </div><!-- End .product -->
+                            </div><!-- End .product -->                                      
                         </div><!-- End .col-sm-6 -->
-
-                        <div class="col-6">
-                            <div class="product product-2">
-                                <figure class="product-media-container">
-                                    <span class="product-label label-circle label-sale">Sale</span>
-                                    <a href="?act=product&id=<?=$item['product_id']?>">
-                                        <img src="uploaded/product-6.jpg" alt="Product image" class="product-image">
-                                    </a>
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add
-                                                to wishlist</span></a>
-                                    </div><!-- End .product-action -->
-
-                                    <div class="product-action product-action-dark">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
-                                                cart</span></a>
-                                        <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                            title="Quick view"><span>quick view</span></a>
-                                    </div><!-- End .product-action -->
-                                </figure><!-- End .product-media -->
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Computers & Tablets</a>
-                                    </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Apple -
-                                            Smart Keyboard
-                                            Folio for 11-inch iPad Pro</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        <span class="new-price">$179.00</span>
-                                        <span class="old-price">Was $200.99</span>
-                                    </div><!-- End .product-price -->
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 60%;"></div>
-                                            <!-- End .ratings-val -->
-                                        </div><!-- End .ratings -->
-                                        <span class="ratings-text">( 4 Reviews )</span>
-                                    </div><!-- End .rating-container -->
-                                </div><!-- End .product-body -->
-                            </div><!-- End .product -->
-                        </div><!-- End .col-sm-6 -->
+                        <?php }}} ?> 
                     </div><!-- End .row -->
                 </div><!-- End .products -->
             </div><!-- End .col-lg-6 -->
         </div><!-- End .row -->
-
         <div class="more-container text-center mt-3 mb-0">
             <a href="#" class="btn btn-outline-dark-2 btn-round btn-more"><span>Shop more Outlet
                     deals</span><i class="icon-long-arrow-right"></i></a>
         </div><!-- End .more-container -->
     </div><!-- End .container -->
 </div><!-- End .deal-container -->
-
 <div class="container">
     <div class="owl-carousel mt-5 mb-5 owl-simple" data-toggle="owl" data-owl-options='{
                 "nav": false, 
@@ -489,43 +466,31 @@
 
 <div class="container">
     <hr class="mt-5 mb-6">
-</div><!-- End .container -->
-
-<div class="container">
-    <hr class="mt-5 mb-6">
-</div><!-- End .container -->
+</div>
 
 <div class="container top">
     <div class="heading heading-flex mb-3">
         <div class="heading-left">
-            <h2 class="title">Top Selling Products</h2><!-- End .title -->
+            <h2 class="title">Product Hot</h2><!-- End .title -->
         </div><!-- End .heading-left -->
 
         <div class="heading-right">
             <ul class="nav nav-pills nav-border-anim justify-content-center" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="top-all-link" data-toggle="tab" href="#top-all-tab" role="tab"
-                        aria-controls="top-all-tab" aria-selected="true">All</a>
+                        aria-controls="top-all-tab" aria-selected="true">Big sale</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="top-tv-link" data-toggle="tab" href="#top-tv-tab" role="tab"
-                        aria-controls="top-tv-tab" aria-selected="false">Iphone</a>
+                        aria-controls="top-tv-tab" aria-selected="false">Top Review</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="top-computers-link" data-toggle="tab" href="#top-computers-tab" role="tab"
-                        aria-controls="top-computers-tab" aria-selected="false">Samsung</a>
+                        aria-controls="top-computers-tab" aria-selected="false">Top sale</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="top-phones-link" data-toggle="tab" href="#top-phones-tab" role="tab"
-                        aria-controls="top-phones-tab" aria-selected="false">Xiaomi</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="top-watches-link" data-toggle="tab" href="#top-watches-tab" role="tab"
-                        aria-controls="top-watches-tab" aria-selected="false">OOPO</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="top-acc-link" data-toggle="tab" href="#top-acc-tab" role="tab"
-                        aria-controls="top-acc-tab" aria-selected="false">MacBook</a>
+                        aria-controls="top-phones-tab" aria-selected="false">New product</a>
                 </li>
             </ul>
         </div><!-- End .heading-right -->
@@ -558,51 +523,55 @@
                 }'>
 
                 <?php
-                foreach($trendingSellAll as $key => $value ){
-                        extract($value);
+                if (isset($sale_product) && $sale_product != NULL) {
+                        foreach ($sale_product as $item) {
+                                if (isset($reviewsCount[$item['product_id']]) && isset($ratings[$item['product_id']])) {
+                                        $reviewCount = $reviewsCount[$item['product_id']] ?? 0;
+                                        $rating = $ratings[$item['product_id']] ?? 0;
                 ?>
-                <div class="product product-2">
-                    <figure class="product-media-container">
-                        <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/shop/<?=$product_img?>" alt="Product image"
-                                class="product-image">
-                        </a>
+            <!-- Hiển thị thông tin sản phẩm -->
+            <div class="product product-2">
+                <figure class="product-media">
+                    <span class="product-label label-circle label-top">Top</span>
+                    <a href="?act=product&id=<?=$item['product_id']?>">
+                        <div class="product-image">
+                        <img src="uploaded/<?=$item['product_img']?>" alt="Product image">
+                        </div>
+                    </a>
 
-                        <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                    wishlist</span></a>
-                        </div><!-- End .product-action -->
+                    <div class="product-action-vertical">
+                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                    </div><!-- End .product-action -->
 
-                        <div class="product-action product-action-dark">
-                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
-                                    cart</span></a>
-                            <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                title="Quick view"><span>quick view</span></a>
-                        </div><!-- End .product-action -->
-                    </figure><!-- End .product-media -->
+                    <div class="product-action product-action-dark">
+                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                        <a href="popup/quick_view.php" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
+                    </div><!-- End .product-action -->
+                </figure><!-- End .product-media -->
 
-                    <div class="product-body">
-                        <div class="product-cat">
-                            <a href="#"><?=$category_name;?></a>
-                        </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="#"><?=$product_name;?></a>
-                        </h3><!-- End .product-title -->
-                        <div class="product-price">
-                            <?=$product_price;?>
-                        </div><!-- End .product-price -->
-                        <div class="ratings-container">
-                            <div class="ratings">
-                                <div class="ratings-val" style="width: 100%;"></div>
-                                <!-- End .ratings-val -->
-                            </div><!-- End .ratings -->
-                            <span class="ratings-text">( 4 Reviews )</span>
-                        </div><!-- End .rating-container -->
-                    </div><!-- End .product-body -->
-                </div><!-- End .product -->
-                <?php
-                }
-                ?>
+                <div class="product-body">
+                    <div class="product-cat">
+                        <a href="#"><?=$item['category_name']?></a>
+                    </div><!-- End .product-cat -->
+                    <h3 class="product-title"><a href="#"><?=$item['product_name']?></a></h3><!-- End .product-title -->
+                    <div class="product-price">
+                        <?=number_format($item['product_price'],0,",",".")?> đ
+                    </div><!-- End .product-price -->
+                    <div class="ratings-container">
+                        <div class="ratings">
+                            <div class="ratings-val" style="width: <?= ($rating * 20) ?>%;"></div>
+                            <!-- End .ratings-val -->
+                        </div><!-- End .ratings -->
+                        <span class="ratings-text">( <?= $reviewCount ?> Reviews )</span>
+                    </div><!-- End .ratings-container -->
+                </div><!-- End .product-body -->
+            </div><!-- End .product -->
+							<?php
+											}
+									}
+							}
+							?>
+
 
 
 
@@ -633,16 +602,21 @@
                         }
                     }
                 }'>
-                <?php if (!empty($trendingSell) ){
-                    foreach($trendingSell[0] as $key => $value ){
-                            extract($value);
+                <?php 
+								if (isset($favorite_rv) && $favorite_rv!= NULL) {
+									foreach ($favorite_rv as $item) {
+										if (isset($reviewsCount[$item['product_id']]) && isset($ratings[$item['product_id']])) {
+											$reviewCount = $reviewsCount[$item['product_id']] ?? 0;
+											$rating = $ratings[$item['product_id']] ?? 0;
                     ?>
+										
                 <div class="product product-2">
-                    <figure class="product-media-container">
+                    <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/shop/<?=$product_img?>" alt="Product image"
-                                class="product-image">
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <div class="product-image">
+                            <img src="uploaded/<?=$item['product_img']?>" alt="Product image">
+                            </div>
                         </a>
 
                         <div class="product-action-vertical">
@@ -660,27 +634,27 @@
 
                     <div class="product-body">
                         <div class="product-cat">
-                            <a href="#"><?=$category_name;?></a>
+                            <a href="#"><?=$item['category_name'];?></a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="#"><?=$product_name;?></a>
+                        <h3 class="product-title"><a href="#"><?=$item['product_name'];?></a>
                         </h3><!-- End .product-title -->
                         <div class="product-price">
-                            <?=$product_price;?>
+												<?=number_format($item['product_price'],0,",",".")?> đ
                         </div><!-- End .product-price -->
                         <div class="ratings-container">
-                            <div class="ratings">
-                                <div class="ratings-val" style="width: 100%;"></div>
-                                <!-- End .ratings-val -->
-                            </div><!-- End .ratings -->
-                            <span class="ratings-text">( 4 Reviews )</span>
-                        </div><!-- End .rating-container -->
+												<div class="ratings">
+														<div class="ratings-val" style="width: <?= ($rating * 20) ?>%;"></div>
+														<!-- End .ratings-val -->
+												</div><!-- End .ratings -->
+												<span class="ratings-text">( <?= $reviewCount ?> Reviews )</span>
+            						</div><!-- End .ratings-container -->
                     </div><!-- End .product-body -->
                 </div><!-- End .product -->
                 <?php 
-                    }   
-                    }else{
-                        echo "No data available";
-                    } ?>
+											}
+										}
+									}
+										 ?>
             </div>
         </div><!-- End .owl-carousel -->
         <div class="tab-pane p-0 fade" id="top-computers-tab" role="tabpanel" aria-labelledby="top-computers-link">
@@ -708,15 +682,18 @@
                         }
                     }
                 }'>
-                <?php if (!empty($trendingSell) ){
-                    foreach($trendingSell[1] as $key => $value ){
-                            extract($value);
+                <?php if(isset($sell_pr) && $sell_pr != NULL) { 
+									foreach ($sell_pr as $item) {
+										if (isset($reviewsCount[$item['product_id']]) && isset($ratings[$item['product_id']])) {
+											$reviewCount = $reviewsCount[$item['product_id']] ?? 0;
+											$rating = $ratings[$item['product_id']] ?? 0;
                     ?>
+										
                 <div class="product product-2">
-                    <figure class="product-media-container">
+                    <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/shop/<?=$product_img?>" alt="Product image"
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/<?=$item['product_img']?>" alt="Product image"
                                 class="product-image">
                         </a>
 
@@ -735,22 +712,25 @@
 
                     <div class="product-body">
                         <div class="product-cat">
-                            <a href="#"><?=$category_name;?></a>
+                            <a href="#"><?=$item['category_name']?></a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="#"><?=$product_name;?></a>
+                        <h3 class="product-title"><a href="#"><?=$item['product_name']?></a>
                         </h3><!-- End .product-title -->
                         <div class="product-price">
-                            <?=$product_price;?>
+												<?=number_format($item['product_price'],0,",",".")?> đ
                         </div><!-- End .product-price -->
                         <div class="ratings-container">
-                            <div class="ratings">
-                                <div class="ratings-val" style="width: 100%;"></div>
+                        <div class="ratings">
+                                <div class="ratings-val" style="width: <?= ($rating * 20) ?>%;"></div>
                                 <!-- End .ratings-val -->
-                            </div><!-- End .ratings -->
-                            <span class="ratings-text">( 4 Reviews )</span>
-                        </div><!-- End .rating-container -->
+                        </div><!-- End .ratings -->
+                        <span class="ratings-text">( <?= $reviewCount ?> Reviews )</span>
+                     </div><!-- End .ratings-container -->
                     </div><!-- End .product-body -->
                 </div><!-- End .product -->
+								<?php
+										}
+								?>
                 <?php 
                     }   
                     }else{
@@ -783,15 +763,17 @@
                         }
                     }
                 }'>
-                <?php if (!empty($trendingSell) ){
-                    foreach($trendingSell[2] as $key => $value ){
-                            extract($value);
-                    ?>
+                <?php if(isset($New_pr)&& $New_pr != NULL){ 
+                        foreach($New_pr as $item){
+                            if (isset($reviewsCount[$item['product_id']]) && isset($ratings[$item['product_id']])) {
+                                $reviewCount = $reviewsCount[$item['product_id']] ?? 0;
+                                $rating = $ratings[$item['product_id']] ?? 0;
+                ?>
                 <div class="product product-2">
-                    <figure class="product-media-container">
+                    <figure class="product-media">
                         <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/shop/<?=$product_img?>" alt="Product image"
+                        <a href="?act=product&id=<?=$item['product_id']?>">
+                            <img src="uploaded/<?=$item['product_img']?>" alt="Product image"
                                 class="product-image">
                         </a>
 
@@ -810,189 +792,37 @@
 
                     <div class="product-body">
                         <div class="product-cat">
-                            <a href="#"><?=$category_name;?></a>
+                            <a href="#"><?=$item['category_name'];?></a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="#"><?=$product_name;?></a>
+                        <h3 class="product-title"><a href="#"><?=$item['product_name'];?></a>
                         </h3><!-- End .product-title -->
                         <div class="product-price">
-                            <?=$product_price;?>
+                            <?=number_format($item['product_price'],0,',','.');?> đ
                         </div><!-- End .product-price -->
                         <div class="ratings-container">
-                            <div class="ratings">
-                                <div class="ratings-val" style="width: 100%;"></div>
-                                <!-- End .ratings-val -->
-                            </div><!-- End .ratings -->
-                            <span class="ratings-text">( 4 Reviews )</span>
-                        </div><!-- End .rating-container -->
+												<div class="ratings">
+														<div class="ratings-val" style="width: <?= ($rating * 20) ?>%;"></div>
+														<!-- End .ratings-val -->
+												</div><!-- End .ratings -->
+												<span class="ratings-text">( <?= $reviewCount ?> Reviews )</span>
+            						</div><!-- End .ratings-container -->
                     </div><!-- End .product-body -->
                 </div><!-- End .product -->
+								<?php
+									}
+								?>
                 <?php 
                     }   
                     }else{
                         echo "No data available";
-                    } ?>
+                    } ?> 
+
+
             </div>
-        </div><!-- .End .tab-pane -->
-        <div class="tab-pane p-0 fade" id="top-watches-tab" role="tabpanel" aria-labelledby="top-watches-link">
-            <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
-                data-owl-options='{
-                    "nav": true, 
-                    "dots": false,
-                    "margin": 20,
-                    "loop": false,
-                    "responsive": {
-                        "0": {
-                            "items":2
-                        },
-                        "480": {
-                            "items":2
-                        },
-                        "768": {
-                            "items":3
-                        },
-                        "992": {
-                            "items":4
-                        },
-                        "1200": {
-                            "items":5
-                        }
-                    }
-                }'>
-                <?php if (!empty($trendingSell) ){
-                    foreach($trendingSell[3] as $key => $value ){
-                            extract($value);
-                    ?>
-                <div class="product product-2">
-                    <figure class="product-media-container">
-                        <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/shop/<?=$product_img?>" alt="Product image"
-                                class="product-image">
-                        </a>
-
-                        <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                    wishlist</span></a>
-                        </div><!-- End .product-action -->
-
-                        <div class="product-action product-action-dark">
-                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
-                                    cart</span></a>
-                            <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                title="Quick view"><span>quick view</span></a>
-                        </div><!-- End .product-action -->
-                    </figure><!-- End .product-media -->
-
-                    <div class="product-body">
-                        <div class="product-cat">
-                            <a href="#"><?=$category_name;?></a>
-                        </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="#"><?=$product_name;?></a>
-                        </h3><!-- End .product-title -->
-                        <div class="product-price">
-                            <?=$product_price;?>
-                        </div><!-- End .product-price -->
-                        <div class="ratings-container">
-                            <div class="ratings">
-                                <div class="ratings-val" style="width: 100%;"></div>
-                                <!-- End .ratings-val -->
-                            </div><!-- End .ratings -->
-                            <span class="ratings-text">( 4 Reviews )</span>
-                        </div><!-- End .rating-container -->
-                    </div><!-- End .product-body -->
-                </div><!-- End .product -->
-                <?php 
-                    }   
-                    }else{
-                        echo "No data available";
-                    } ?>
-            </div>
-        </div><!-- .End .tab-pane -->
-        <div class="tab-pane p-0 fade" id="top-acc-tab" role="tabpanel" aria-labelledby="top-acc-link">
-            <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
-                data-owl-options='{
-                    "nav": true, 
-                    "dots": false,
-                    "margin": 20,
-                    "loop": false,
-                    "responsive": {
-                        "0": {
-                            "items":2
-                        },
-                        "480": {
-                            "items":2
-                        },
-                        "768": {
-                            "items":3
-                        },
-                        "992": {
-                            "items":4
-                        },
-                        "1200": {
-                            "items":5
-                        }
-                    }
-                }'>
-                <?php if (!empty($trendingSell) ){
-                    foreach($trendingSell[4] as $key => $value ){
-                            extract($value);
-                    ?>
-                <div class="product product-2">
-                    <figure class="product-media-container">
-                        <span class="product-label label-circle label-top">Top</span>
-                        <a href="product.html">
-                            <img src="assets/site/images/shop/<?=$product_img?>" alt="Product image"
-                                class="product-image">
-                        </a>
-
-                        <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                    wishlist</span></a>
-                        </div><!-- End .product-action -->
-
-                        <div class="product-action product-action-dark">
-                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
-                                    cart</span></a>
-                            <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                title="Quick view"><span>quick view</span></a>
-                        </div><!-- End .product-action -->
-                    </figure><!-- End .product-media -->
-
-                    <div class="product-body">
-                        <div class="product-cat">
-                            <a href="#"><?=$category_name;?></a>
-                        </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="#"><?=$product_name;?></a>
-                        </h3><!-- End .product-title -->
-                        <div class="product-price">
-                            <?=$product_price;?>
-                        </div><!-- End .product-price -->
-                        <div class="ratings-container">
-                            <div class="ratings">
-                                <div class="ratings-val" style="width: 100%;"></div>
-                                <!-- End .ratings-val -->
-                            </div><!-- End .ratings -->
-                            <span class="ratings-text">( 4 Reviews )</span>
-                        </div><!-- End .rating-container -->
-                    </div><!-- End .product-body -->
-                </div><!-- End .product -->
-                <?php 
-                    }   
-                    }else{
-                        echo "No data available";
-                    } ?>
-            </div>
-        </div><!-- .End .tab-pane -->
-
-
-
-    </div><!-- End .tab-content -->
-</div><!-- End .container -->
 
 <div class="container">
-    <hr class="mt-5 mb-0">
-</div><!-- End .container -->
-
+    <hr class="mt-5 mb-6">
+</div>
 <div class="icon-boxes-container mt-2 mb-2 bg-transparent">
     <div class="container">
         <div class="row">

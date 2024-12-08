@@ -28,50 +28,31 @@ class Home extends Model
             WHERE c.parent_id IS NOT NULL AND c.category_id = ?";
         return pdo_query($sqlcate, $category_id); 
     }
-    function listproduct_trendingView($limt = 6,$ofset = 0,int $category_id = 4) {
-        $sql = "SELECT products.*, categories.category_name
-        FROM products
-        JOIN categories ON products.product_cat = categories.category_id
-        Where categories.category_id = $category_id
-        ORDER BY products.view_count DESC
-        LIMIT $limt OFFSET $ofset";
-        return pdo_query($sql); // PDO đâng sida nè sao mà stmt đơn giản vậy được
+    public function pro_discount() {
+        $sql ="SELECT 
+    products.*, 
+    categories.category_name FROM products JOIN categories ON 
+    products.product_cat = categories.category_id WHERE  products.product_discount > 20";
+        return pdo_query($sql);
     }
-
-    function listproduct_trendingSell($limt = 6,$ofset = 0,int $category_id = 4) {
-        $sql = "SELECT products.*, categories.category_name
-        FROM products 
-        JOIN categories ON products.product_cat = categories.category_id 
-        Where categories.category_id = $category_id
-        ORDER BY products.sell_count DESC
-        LIMIT $limt OFFSET $ofset";
-        // $params = [':limit' => $limt, ':ofset' => $ofset];
-        // return pdo_query($sql,$params); // PDO đâng sida nè sao mà stmt đơn giản vậy được
-        return pdo_query($sql); // PDO đâng sida nè sao mà stmt đơn giản vậy được
-        
+    public function favorite_reviews(){
+        $sql = "SELECT p.product_id, p.product_name, p.product_price, p.product_img, AVG(r.helpful - r.unhelpful)
+         AS average_rating, COUNT(r.review_id) AS total_reviews, c.category_name FROM products p JOIN reviews r ON 
+         p.product_id = r.pro_id JOIN categories c ON p.product_cat = c.category_id JOIN review_categories rc ON 
+         rc.review_categoryId = r.review_category GROUP BY p.product_id ORDER BY average_rating DESC, total_reviews 
+         DESC LIMIT 10";
+         return pdo_query($sql);
     }
-
-    function listproduct_trendingSell_All($limit = 6, $offset = 0) {
-    $sql = "SELECT products.*, categories.category_name
-            FROM products 
-            JOIN categories ON products.product_cat = categories.category_id 
-            ORDER BY products.sell_count DESC
-            LIMIT  $limit OFFSET $offset";
-    
+    public function Selling_product(){
+        $sql = "SELECT  p.product_id, p.product_name, p.product_price, p.product_img, SUM(bd.pro_count) AS total_sold,
+    c.category_name FROM bill_details bd JOIN products p ON bd.pro_id = p.product_id JOIN categories c ON 
+    p.product_cat = c.category_id GROUP BY p.product_id ORDER BY  total_sold DESC LIMIT 10";
     return pdo_query($sql);
-}
-
-     public function takeHotSell($limit = 6, $offset = 0, int $category_id = 4) {
-        $sql = "SELECT SP.*, SUM(DH.pro_count) AS SoLuongBan
-                FROM products SP
-                JOIN bill_details DH ON SP.product_id = DH.pro_id
-                WHERE SP.product_cat = ? 
-                GROUP BY SP.product_id
-                ORDER BY SoLuongBan DESC
-                LIMIT $limit OFFSET $offset
-                ";
-    
-    return pdo_query($sql, $category_id );
-}
-
+    }
+    public function New_Product(){
+        $sql = "SELECT p.product_id, p.product_name, p.product_price, p.product_img, p.created_at, c.category_name
+    FROM products p JOIN categories c ON p.product_cat = c.category_id WHERE p.product_status = 1 AND p.product_count > 0
+    ORDER BY p.created_at DESC LIMIT 10";
+    return pdo_query($sql);
+    }
 }

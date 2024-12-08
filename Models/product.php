@@ -24,7 +24,7 @@ class Product extends Model
     }
     
     function related_product($cat, $id) {
-        $sql = "SELECT p.*, c.category_name, c.category_id
+        $sql = "SELECT p.product_id, p.product_name, p.product_price, p.product_img, p.product_status, p.product_cat, c.category_name
                 FROM products p
                 JOIN categories c ON p.product_cat = c.category_id 
                 WHERE product_cat = ? AND product_id != ?";

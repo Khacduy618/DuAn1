@@ -206,7 +206,12 @@
 .product.product-2 {
     background-color: #fff;
     border: .1rem solid #ebebeb;
+    width: 100%;
     overflow: hidden
+}
+
+.product.product-2 .product-media {
+    height: 250px !important;
 }
 
 .product.product-2 .product-nav-dots {

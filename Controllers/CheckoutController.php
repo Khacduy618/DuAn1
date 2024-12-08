@@ -104,7 +104,18 @@ class CheckoutController
                 $total = isset($_POST['total']) ? (int)$_POST['total'] : 0;
                 $tong = isset($_POST['tong']) ? (int)$_POST['tong'] : 0;
                 $shipping = isset($_POST['shipping']) ? (int)$_POST['shipping'] : 0;
-                $coupon_id = isset($_POST['coupon_id']) ? (int)$_POST['coupon_id'] : 0;
+                $coupon_id = !empty($_POST['coupon_id']) ? (int)$_POST['coupon_id'] : null;
+            
+                // Thêm kiểm tra mã giảm giá
+                if ($coupon_id !== null) {
+                    // Kiểm tra xem mã giảm giá có tồn tại không
+                    $coupon = $this->cartModel->coupon_by_id($coupon_id);
+                    if (!$coupon) {
+                        setcookie('msg1', 'Mã giảm giá không hợp lệ', time() + 5);
+                        header('Location: ?act=cart');
+                        return;
+                    }
+                }
                 $bill_payment = (int)$_POST['bill_payment'];
                 $bill_status = $bill_payment == 1 ? 1 : 2;
 

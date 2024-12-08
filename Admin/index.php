@@ -89,7 +89,7 @@ else if(isset($_SESSION['privilege']['product']) && $mod == 'product' ){
      elseif (isset($_SESSION['privilege']['product'][$act]) && $act == 'add'){
           $controller_obj->add();
      }
-     elseif (isset($_SESSION['privilege']['product'][$act]) && $act == 'store'){
+     elseif (isset($_SESSION['privilege']['product']['add']) && $act == 'store'){
           $controller_obj->store();
      }
      elseif (isset($_SESSION['privilege']['product'][$act]) && $act == 'delete'){
@@ -101,7 +101,7 @@ else if(isset($_SESSION['privilege']['product']) && $mod == 'product' ){
      elseif (isset($_SESSION['privilege']['product'][$act]) && $act == 'edit'){
           $controller_obj->edit();
      }
-     elseif (isset($_SESSION['privilege']['product'][$act]) && $act == 'update'){
+     elseif (isset($_SESSION['privilege']['product']['edit']) && $act == 'update'){
           $controller_obj->update();
      }
      else{
@@ -118,7 +118,7 @@ else if(isset($_SESSION['privilege']['category']) && $mod == 'category' ){
      elseif (isset($_SESSION['privilege']['category'][$act]) && $act == 'add'){
           $controller_obj->add();
      }
-     elseif (isset($_SESSION['privilege']['category'][$act]) && $act == 'store'){
+     elseif (isset($_SESSION['privilege']['category']['add']) && $act == 'store'){
           $controller_obj->store();
      }
      elseif (isset($_SESSION['privilege']['category'][$act]) && $act == 'delete'){
@@ -127,7 +127,7 @@ else if(isset($_SESSION['privilege']['category']) && $mod == 'category' ){
      elseif (isset($_SESSION['privilege']['category'][$act]) && $act == 'edit'){
           $controller_obj->edit();
      }
-     elseif (isset($_SESSION['privilege']['category'][$act]) && $act == 'update'){
+     elseif (isset($_SESSION['privilege']['category']['edit']) && $act == 'update'){
           $controller_obj->update();
      }
      else{
@@ -144,13 +144,13 @@ elseif (isset($_SESSION['privilege']['coupon']) && $mod == 'coupon' ){
      elseif (isset($_SESSION['privilege']['coupon'][$act]) && $act == 'add'){
           $controller_obj->add();
      }
-     elseif (isset($_SESSION['privilege']['coupon'][$act]) && $act == 'store'){
+     elseif (isset($_SESSION['privilege']['coupon']['add']) && $act == 'store'){
           $controller_obj->store();
      }
      elseif (isset($_SESSION['privilege']['coupon'][$act]) && $act == 'edit'){
           $controller_obj->edit();
      }
-     elseif (isset($_SESSION['privilege']['coupon'][$act]) && $act == 'update'){
+     elseif (isset($_SESSION['privilege']['coupon']['edit']) && $act == 'update'){
           $controller_obj->update();
      }
      elseif (isset($_SESSION['privilege']['coupon'][$act]) && $act == 'delete'){
@@ -169,7 +169,7 @@ else if(isset($_SESSION['privilege']['product']) && $mod == 'product' ){
      elseif (isset($_SESSION['privilege']['product'][$act]) && $act == 'add'){
           $controller_obj->add();
      }
-     elseif (isset($_SESSION['privilege']['product'][$act]) && $act == 'store'){
+     elseif (isset($_SESSION['privilege']['product']['add']) && $act == 'store'){
           $controller_obj->store();
      }
      elseif (isset($_SESSION['privilege']['product'][$act]) && $act == 'delete'){
@@ -178,7 +178,7 @@ else if(isset($_SESSION['privilege']['product']) && $mod == 'product' ){
      elseif (isset($_SESSION['privilege']['product'][$act]) && $act == 'edit'){
           $controller_obj->edit();
      }
-     elseif (isset($_SESSION['privilege']['product'][$act]) && $act == 'update'){
+     elseif (isset($_SESSION['privilege']['product']['edit']) && $act == 'update'){
           $controller_obj->update();
      }
      else{
@@ -227,7 +227,7 @@ else if(isset($_SESSION['privilege']['user']) && $mod == 'user' ){
      else if(isset($_SESSION['privilege']['user'][$act]) && $act == 'add'){
          $controller_obj->add();
      }
-     else if(isset($_SESSION['privilege']['user'][$act]) && $act == 'store'){
+     else if(isset($_SESSION['privilege']['user']['add']) && $act == 'store'){
          $controller_obj->store();
      }
      else if(isset($_SESSION['privilege']['user'][$act]) && $act == 'detail'){
@@ -239,7 +239,7 @@ else if(isset($_SESSION['privilege']['user']) && $mod == 'user' ){
      else if(isset($_SESSION['privilege']['user'][$act]) && $act == 'edit'){
          $controller_obj->edit();
      }
-     else if(isset($_SESSION['privilege']['user'][$act]) && $act == 'update'){
+     else if(isset($_SESSION['privilege']['user']['edit']) && $act == 'update'){
          $controller_obj->update();
      }
      else{
@@ -256,7 +256,7 @@ else if(isset($_SESSION['privilege']['user']) && $mod == 'user' ){
      else if(isset($_SESSION['privilege']['address'][$act]) && $act == 'add'){
          $controller_obj->addAddress();
      }
-     else if(isset($_SESSION['privilege']['address'][$act]) && $act == 'store'){
+     else if(isset($_SESSION['privilege']['address']['add']) && $act == 'store'){
          $controller_obj->storeAddress();
      }
      else if(isset($_SESSION['privilege']['address'][$act]) && $act == 'updateStatus'){

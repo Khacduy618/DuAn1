@@ -106,9 +106,14 @@ class Cart extends Model
                 WHERE cart_id = (SELECT cart_id FROM cart WHERE cart_userEmail = ?) 
                 AND cart_item_id IN ($placeholders)";
         
-        // Thêm userEmail vào đầu m�ng params
+        // Thêm userEmail vào đầu mảng params
         array_unshift($selectedItemIds, $userEmail);
         
         return pdo_execute($sql, ...$selectedItemIds);
+    }
+
+    public function coupon_by_id($coupon_id) {
+        $sql = "SELECT * FROM coupons WHERE coupon_id = ?";
+        return pdo_query_one($sql, $coupon_id);
     }
 }

@@ -92,6 +92,17 @@ class Login extends Model
               WHERE u.user_email = ?";
         return pdo_query_one($query, $user_email);
     }
+    public function checkEmail($email)
+    {
+        $query = "SELECT * FROM user WHERE user_email = ?";
+        return pdo_query_one($query, $email);
+    }
+    public function dangky_google($google_id, $user_name, $user_full_name, $user_email, $user_images, $user_password)
+    {
+        $query = "INSERT INTO user (google_id, user_name, user_full_name, user_email, user_images, user_password) 
+                  VALUES (?, ?, ?, ?, ?, ?)";
+        return pdo_execute($query, $google_id, $user_name, $user_full_name, $user_email, $user_images, $user_password);
+    }
     function update_account($data, $address_data, $user_email)
     {
         // Cập nhật thông tin user

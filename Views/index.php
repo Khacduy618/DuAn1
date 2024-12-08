@@ -83,7 +83,6 @@
                         <ul class="mobile-menu">
                             <li class="active">
                                 <a href="index.html">Home</a>
-
                                 <ul>
                                     <li><a href="index-1.html">01 - furniture store</a></li>
                                     <li><a href="index-2.html">02 - furniture store</a></li>
@@ -272,6 +271,7 @@
     <script src="assets/site/js/jquery.magnific-popup.min.js"></script>
     <script src="assets/site/js/jquery.countdown.min.js"></script>
     <script id="chatway" async="true" src="https://cdn.chatway.app/widget.js?id=M4yfVSQANSNz"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <!-- Main JS File -->
     <script src="assets/site/js/main.js"></script>
     <script src="assets/site/js/demos/demo-3.js"></script>
