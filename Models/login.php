@@ -29,7 +29,7 @@ class Login extends Model
             }
 
         } else {
-            setcookie('msg1', 'Đăng nhập không thành công', time() + 5);
+            setcookie('msg1', 'Email or Password is incorrect', time() + 5);
             header('Location: ?act=taikhoan#dangnhap');
         }
     }
@@ -71,15 +71,15 @@ class Login extends Model
 
                 $status = pdo_execute($query);
                 if ($status == true) {
-                    setcookie('msg', 'Đăng ký thành công', time() + 2);
+                    setcookie('msg', 'Register successfully', time() + 2);
                 } else {
-                    setcookie('msg', 'Đăng ký không thành công', time() + 2);
+                    setcookie('msg1', 'Register failed', time() + 2);
                 }
             } else {
-                setcookie('msg', 'Mật khẩu không trùng nhau', time() + 2);
+                setcookie('msg1', 'Password is not match', time() + 2);
             }
         } else {
-            setcookie('msg', 'Tên tài khoản hoặc Email  đã tồn tại', time() + 2);
+            setcookie('msg1', 'Username or Email already exists', time() + 2);
         }
         header('Location: ?act=taikhoan#dangky');
     }
@@ -142,6 +142,6 @@ class Login extends Model
         }
 
         // Thông báo kết quả
-        setcookie('msg', 'Cập nhật thành công', time() + 2);
+        setcookie('msg', 'Update successfully', time() + 2);
     }
 }

@@ -30,6 +30,8 @@
     <link rel="stylesheet" href="assets/site/css/plugins/owl-carousel/owl.carousel.css">
     <link rel="stylesheet" href="assets/site/css/plugins/magnific-popup/magnific-popup.css">
     <link rel="stylesheet" href="assets/site/css/plugins/jquery.countdown.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
     <!-- Main CSS File -->
     <link rel="stylesheet" href="assets/site/css/style.css">
     <link rel="stylesheet" href="assets/site/css/skins/skin-demo-3.css">
@@ -271,7 +273,9 @@
     <script src="assets/site/js/jquery.magnific-popup.min.js"></script>
     <script src="assets/site/js/jquery.countdown.min.js"></script>
     <script id="chatway" async="true" src="https://cdn.chatway.app/widget.js?id=M4yfVSQANSNz"></script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
     <!-- Main JS File -->
     <script src="assets/site/js/main.js"></script>
     <script src="assets/site/js/demos/demo-3.js"></script>

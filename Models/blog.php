@@ -41,14 +41,26 @@ class Blog extends Model
    }
    function product_top() {
             $sql = "SELECT p.*, COALESCE(SUM(bd.pro_count), 0) AS total_sold
-    FROM products p
-    LEFT JOIN bill_details bd ON p.product_id = bd.pro_id
-    WHERE p.product_status = 1 AND p.product_count > 0
-    GROUP BY p.product_id
-    ORDER BY total_sold DESC
-    LIMIT 5
+FROM products p
+LEFT JOIN bill_details bd ON p.product_id = bd.pro_id
+WHERE p.product_status = 1 AND p.product_count > 0
+GROUP BY p.product_id
+ORDER BY total_sold DESC
+LIMIT 5
                 ";
             return pdo_query($sql);
         }
+        function related_product($cat, $id) {
+        $sql = "SELECT p.*
+                FROM products p
+                JOIN categories c ON p.product_cat = c.category_id 
+                WHERE product_cat = ? AND product_id != ?";
+        return pdo_query($sql, $cat, $id);
+    }
+    function detail_sp($id)
+    {
+        $sql =  "SELECT * from products where pro_id = ? ";
+        return pdo_query_one($sql, $id);
+    }
 }
 ?>

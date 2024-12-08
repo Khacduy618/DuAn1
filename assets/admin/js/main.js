@@ -79,4 +79,10 @@ $(document).ready(function () {
     $('#limit').hide();
     $('#onViewAll').hide();
   });
+  $('#onViewAll-table').on('click', function (e) {
+    e.preventDefault();
+    $('.all-table').removeClass('all-table');
+    $('#limit-table').hide();
+    $('#onViewAll-table').hide();
+  });
 });

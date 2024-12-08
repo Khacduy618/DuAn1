@@ -118,6 +118,12 @@
                             </tbody>
                     </table><!-- End .table table-wishlist -->
 
+                    <div class="cart-bottom">
+                        <a href="?act=cart&xuli=deleteall" class="btn btn-outline-danger" 
+                           onclick="return confirm('Are you sure you want to delete all items from cart?')">
+                            <i class="bi bi-trash"></i> Delete All Cart
+                        </a>
+                    </div>
                     
                 </div><!-- End .col-lg-9 -->
                 <aside class="col-lg-4">

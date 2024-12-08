@@ -77,7 +77,7 @@ switch ($mod) {
                 $controller_obj->add_cart();
                 break;
             case 'update':
-                $cartController->update_cart();
+                $controller_obj->update_cart();
                 break;
             case 'delete':
                 $controller_obj->delete_cart();
@@ -90,119 +90,105 @@ switch ($mod) {
                 break;
         }
         break;
-    case 'adminLong':
-        if ( isset($_GET['act']) && isset($_GET['ctlr']) && isset($_GET['method']) ){
-            require_once __DIR__.'/Controllers/'.$_GET['ctlr'].'.php';
-            $controller_obj = new $_GET['ctlr']();
-            $action = $_GET['method'];
-            $controller_obj->$action();
-        }
-        else{
-            require_once __DIR__.'/Controllers/AdminLongController.php';
-            $controller_obj = new AdminLongController();
-            $controller_obj->index();
-        }
-        
-        
-        break;
-        case 'googleCallBack':
-            //Client ID 923806569998-96n53k9bp5832dpnvu97bobigosk5h09.apps.googleusercontent.com
-            //Client secret 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
-            //Redirect http://localhost/DuAn1/?act=googleCallBack long
-            //Redirect http://localhost/DuAn1/?act=googleCallBack hosting
-            //DIR ('vendor/google/apiclient/src')
-            //DIR ('vendor/google/apiclient-services/src')
-            //DIR ('libs/credentials.json') key cua tui á mấy bro nhớ xóa kia lên hosting
-            //google_id 114374951914294437080
-            require __DIR__ . '/vendor/autoload.php';
     
-            try {
-                $client = new Google\Client();
+    case 'googleCallBack':
+        //Client ID 923806569998-96n53k9bp5832dpnvu97bobigosk5h09.apps.googleusercontent.com
+        //Client secret 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
+        //Redirect http://localhost/DuAn1/?act=googleCallBack long
+        //Redirect http://localhost/DuAn1/?act=googleCallBack hosting
+        //DIR ('vendor/google/apiclient/src')
+        //DIR ('vendor/google/apiclient-services/src')
+        //DIR ('libs/credentials.json') key cua tui á mấy bro nhớ xóa kia lên hosting
+        //google_id 114374951914294437080
+        require __DIR__ . '/vendor/autoload.php';
+
+        try {
+            $client = new Google\Client();
+            
+            // Cấu hình cơ bản
+            $client->setClientId('923806569998-96n53k9bp5832dpnvu97bobigosk5h09.apps.googleusercontent.com');
+            $client->setClientSecret('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');
+            $client->setRedirectUri('http://localhost/DuAn1/?act=googleCallBack');
+            
+            // Scope cơ bản
+            $client->addScope('https://www.googleapis.com/auth/userinfo.email');
+            $client->addScope('https://www.googleapis.com/auth/userinfo.profile');
+            
+            if (isset($_GET['code'])) {
+                $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+                $client->setAccessToken($token);
                 
-                // Cấu hình cơ bản
-                $client->setClientId('923806569998-96n53k9bp5832dpnvu97bobigosk5h09.apps.googleusercontent.com');
-                $client->setClientSecret('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');
-                $client->setRedirectUri('http://localhost/DuAn1/?act=googleCallBack');
+                $oauth2 = new Google\Service\Oauth2($client);
+                $userInfo = $oauth2->userinfo->get();
                 
-                // Scope cơ bản
-                $client->addScope('https://www.googleapis.com/auth/userinfo.email');
-                $client->addScope('https://www.googleapis.com/auth/userinfo.profile');
+                // Lấy thông tin cần thiết
+                $google_id = $userInfo->id;
+                $email = $userInfo->email;
+                $name = $userInfo->givenName;
+                $user_full_name = $userInfo->familyName.' '.$userInfo->givenName;
+                $picture = $userInfo->picture;
                 
-                if (isset($_GET['code'])) {
-                    $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
-                    $client->setAccessToken($token);
-                    
-                    $oauth2 = new Google\Service\Oauth2($client);
-                    $userInfo = $oauth2->userinfo->get();
-                    
-                    // Lấy thông tin cần thiết
-                    $google_id = $userInfo->id;
-                    $email = $userInfo->email;
-                    $name = $userInfo->givenName;
-                    $user_full_name = $userInfo->familyName.' '.$userInfo->givenName;
-                    $picture = $userInfo->picture;
-                    
-                    // Kiểm tra xem email đã tồn tại trong DB chưa
-                    require_once('Models/login.php');
-                    $loginModel = new Login();
-                    $user = $loginModel->checkEmail($email);
-                    if(isset($user)) {
-                        // Nếu email đã tồn tại, kiểm tra role và đăng nhập
-                        if($user['user_role'] == 1) {
-                            $_SESSION['isLogin_Admin'] = true;
-                            $_SESSION['login'] = $user;
-                            header('Location: /DuAn1/Admin');
-                            exit();
-                        } else if($user['user_role'] >= 2) {
-                            $_SESSION['isLogin_Nhanvien'] = true;
-                            $_SESSION['login'] = $user;
-                            header('Location: /DuAn1/Admin');
-                            exit();
-                            
-                        } else {
-                            $_SESSION['isLogin'] = true;
-                            $_SESSION['login'] = $user;
-                            header('Location: ?mod=home');
-                        }
+                // Kiểm tra xem email đã tồn tại trong DB chưa
+                require_once('Models/login.php');
+                $loginModel = new Login();
+                $user = $loginModel->checkEmail($email);
+                if(isset($user)) {
+                    // Nếu email đã tồn tại, kiểm tra role và đăng nhập
+                    if($user['user_role'] == 1) {
+                        $_SESSION['isLogin_Admin'] = true;
+                        $_SESSION['login'] = $user;
+                        header('Location: /DuAn1/Admin');
+                        exit();
+                    } else if($user['user_role'] >= 2) {
+                        $_SESSION['isLogin_Nhanvien'] = true;
+                        $_SESSION['login'] = $user;
+                        header('Location: /DuAn1/Admin');
+                        exit();
+                        
                     } else {
-                        // Nếu email chưa tồn tại, tạo tài khoản mới với role = 0
-                        $data = array(
-                            'google_id' => $google_id,
-                            'user_name' => $name,  // Có thể tách name thành Họ và Tên
-                            'user_full_name' => $user_full_name,
-                            'user_email' => $email,
-                            // 'user_images' => $picture,
-                            'user_images' => 'user.png',
-                            'user_password' => '', // Tài khoản Google không cần mật khẩu
-                        );
-                        $user_id = $loginModel->dangky_google(
-                            $data['google_id'],
-                            $data['user_name'],
-                            $data['user_full_name'],
-                            $data['user_email'],
-                            $data['user_images'],
-                            $data['user_password']
-                        );
-    
-                        if($user_id) {
-                            $_SESSION['isLogin'] = true;
-                            $_SESSION['login'] = $loginModel->checkEmail($email);
-                            header('Location: ?mod=home');
-                        }
+                        $_SESSION['isLogin'] = true;
+                        $_SESSION['login'] = $user;
+                        header('Location: ?act=home');
                     }
-                    // Chuyển hướng về trang chủ
-                    header('Location: ?mod=home');
-                    exit;
                 } else {
-                    $authUrl = $client->createAuthUrl();
-                    header('Location: ' . $authUrl);
-                    exit;
+                    // Nếu email chưa tồn tại, tạo tài khoản mới với role = 0
+                    $data = array(
+                        'google_id' => $google_id,
+                        'user_name' => $name,  // Có thể tách name thành Họ và Tên
+                        'user_full_name' => $user_full_name,
+                        'user_email' => $email,
+                        // 'user_images' => $picture,
+                        'user_images' => 'user.png',
+                        'user_password' => '', // Tài khoản Google không cần mật khẩu
+                    );
+                    $user_id = $loginModel->dangky_google(
+                        $data['google_id'],
+                        $data['user_name'],
+                        $data['user_full_name'],
+                        $data['user_email'],
+                        $data['user_images'],
+                        $data['user_password']
+                    );
+
+                    if($user_id) {
+                        $_SESSION['isLogin'] = true;
+                        $_SESSION['login'] = $loginModel->checkEmail($email);
+                        header('Location: ?act=home');
+                    }
                 }
-                
-            } catch (Exception $e) {
-                echo "Lỗi: " . $e->getMessage();
+                // Chuyển hướng về trang chủ
+                header('Location: ?act=home');
+                exit;
+            } else {
+                $authUrl = $client->createAuthUrl();
+                header('Location: ' . $authUrl);
+                exit;
             }
-            break;
+            
+        } catch (Exception $e) {
+            echo "Lỗi: " . $e->getMessage();
+        }
+        break;
     case 'checkout':
         $act = isset($_GET['xuli']) ? $_GET['xuli'] : "list";
         require_once('Controllers/CheckoutController.php');
@@ -217,6 +203,9 @@ switch ($mod) {
             case 'checkout_complete':
                 $controller_obj->checkout_complete();
                 break;
+            case 'details':
+                $controller_obj->details();
+                break;
             case 'order_history':
                 $controller_obj->order_history();
                 break;
@@ -225,7 +214,7 @@ switch ($mod) {
                 break;
         }
         break;
-     case 'blog': 
+    case 'blog': 
         require_once('Controllers/BlogController.php');
         $controller_obj = new BlogController() ;
         $controller_obj->Blog_View();
@@ -237,7 +226,7 @@ switch ($mod) {
         break;
     case 'comment':
         require_once('Controllers/CommentController.php');
-        $controller_obj = new commentControlller() ;
+        $controller_obj = new commentControlller();
         $controller_obj->comment_exc(); 
         break; 
     default:

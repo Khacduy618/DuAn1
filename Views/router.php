@@ -1,6 +1,12 @@
 <?php
-$act = isset($_GET['act']) ? $_GET['act'] : "home";
-switch ($act) {
+$mod = isset($_GET['act']) ? $_GET['act'] : "home";
+switch ($mod) {
+    case "blog": 
+        require_once "Views/blog/blog.php";
+        break;
+    case "blog_detail":
+        require_once "blog/blog_detail.php";
+        break;
     case "taikhoan":
         $act = isset($_GET['xuli']) ? $_GET['xuli'] : "login";
         if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
@@ -96,13 +102,6 @@ switch ($act) {
     case "cart":
         require_once("cart/cart.php");
         break;
-    case "blog": 
-        require_once "blog/blog.php";
-        break;
-    case "blog_detail":
-        require_once "blog/blog_detail.php";
-        break;
-
     default:
         require_once("error-404.php");
         break;

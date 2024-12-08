@@ -27,6 +27,7 @@
             $product_top = $this->model->product_top();
             $product_nonSell = $this->model->product_notIn_bill();
             $product_nonSell_5 = $this->model->product_notIn_bill(5);
+            $product_top_5 = $this->model->product_top(5);
             $category_revenue_report = $this->model->generate_category_revenue_report();
             require_once("MVC/Views/admin/index.php");
         }

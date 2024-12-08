@@ -1,4 +1,4 @@
-<main class="main">
+
     <div class="page-header text-center" style="background-image: url('assets/site/images/page-header-bg.jpg')">
         <div class="container">
             <h1 class="page-title">Blog Classic<span>Blog</span></h1>
@@ -50,10 +50,9 @@
                             </div><!-- End .entry-cats -->
 
                             <div class="entry-content">
-                                <p>Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget
-                                    blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas, ante et vulputate
-                                    volutpat, uctus metus libero eu augue.</p>
-                                <a href="single.html" class="read-more">Continue Reading</a>
+                                <?= htmlspecialchars(substr(strip_tags($blog['blog_content']), 0, 300)) ?>...
+                                <a href="?act=blog_detail&id_blog=<?=$blog['blog_id']?>" class="read-more">Continue
+                                    Reading</a>
                             </div><!-- End .entry-content -->
                         </div><!-- End .entry-body -->
                     </article><!-- End .entry -->
@@ -129,7 +128,6 @@
 
 
 
-
                         <div class="widget widget-text">
                             <h3 class="widget-title">Best Seller Products</h3><!-- End .widget-title -->
 
@@ -155,7 +153,7 @@
                                 </div><!-- End .product-action -->
 
                                 <div class="product-action product-action-dark">
-                                    <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add
+                                    <a href="?act=cart&xuli=add&product_id=<?=$item['product_id']?>&quantity=1" class="btn-product btn-cart" title="Add to cart"><span>add
                                             to cart</span></a>
                                     <a href="popup/quick_view.php" class="btn-product btn-quickview"
                                         title="Quick view"><span>quick view</span></a>
@@ -202,4 +200,3 @@
             </div><!-- End .row -->
         </div><!-- End .container -->
     </div><!-- End .page-content -->
-</main><!-- End .main -->

@@ -162,24 +162,22 @@
                             </div>
                             <?php
                                 }
+                            echo '<div class="dropdown-cart-total">
+                            <span>Total</span>
+                            <span class="cart-total-price"> 
+                                
+                                    '.number_format($total,0,",",".").'đ
+                              
+                            </span>
+                            </div>';
+
                             } else {
                             ?>
                             <div class="text-center p-3">No products in cart</div>
                             <?php } ?>
                         </div>
 
-                        <div class="dropdown-cart-total">
-                            <span>Total</span>
-                            <span class="cart-total-price">
-                                <?php 
-                                if(isset($total)) {
-                                    echo number_format($total,0,",",".") . ' đ';
-                                } else {
-                                    echo '0 đ';
-                                }
-                                ?>
-                            </span>
-                        </div>
+                        
 
                         <div class="dropdown-cart-action">
                             <?php if (isset($_SESSION['login'])) { ?>

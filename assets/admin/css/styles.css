@@ -534,6 +534,10 @@ table td .img {
   display: none;
 }
 
+.details table.all-table {
+  display: none;
+}
+
 .details table thead td {
   font-weight: 600;
 }

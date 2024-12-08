@@ -30,23 +30,22 @@
                                 <tr>
                                     <td class="ps-4 fw-bold">#<?php echo $order['bill_var_id']; ?></td>
                                     <td><?php echo date('F d, Y', strtotime($order['bill_time'])); ?></td>
-                                    <td class="fw-bold text-success">$<?php echo number_format($order['bill_totalPrice'], 2); ?></td>
+                                    <td class="fw-bold text-success"><?=number_format($order['bill_totalPrice'],0,",",".")?> đ</td>
                                     <td>
                                         <span class="badge-b rounded-pill <?php echo getStatusBadgeClass($order['bill_status']); ?>">
                                             <?php echo $order['status_name']; ?>
                                         </span>
                                     </td>
                                     <td class="text-end pe-4">
-                                        <a href="index.php?act=order_detail&id=<?php echo $order['bill_var_id']; ?>" 
-                                           class="btn btn-sm btn-outline-primary me-2">
-                                           <i class="fas fa-eye me-1"></i> Details
+                                     <a class="btn btn-sm btn-outline-primary" href="javascript:void(0)" onclick="showBillDetails(<?=$order['bill_id']?>)">
+                                            Details
                                         </a>
                                         
                                         <?php if($order['bill_status'] != 5 && $order['bill_status'] != 4): ?>
-                                            <button class="btn btn-sm btn-outline-danger" 
+                                            <!-- <button class="btn btn-sm btn-outline-danger" 
                                                     onclick="cancelOrder(<?php echo $order['bill_var_id']; ?>)">
                                                 <i class="fas fa-times me-1"></i> Cancel
-                                            </button>
+                                            </button> -->
                                         <?php endif; ?>
                                     </td>
                                 </tr>
@@ -69,7 +68,39 @@
         <?php endif; ?>
     </div>
 </div>
+<div class="modal fade" id="orderDetailsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            
+            <div class="modal-body" id="orderDetailsContent">
+                <!-- Nội dung chi tiết đơn hàng sẽ được load vào đây -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeOrderModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+function showBillDetails(billId) {
+    $.ajax({
+        url: '?act=checkout&xuli=details&id=' + billId,
+        type: 'GET',
+        success: function(response) {
+            $('#orderDetailsContent').html(response);
+            $('#orderDetailsModal').modal('show');  
+        },
+        error: function(xhr, status, error) {
+            console.error("Error:", error);
+            alert('Có lỗi xảy ra khi tải thông tin đơn hàng');
+        }
+    });
+}
 
+function closeOrderModal() {
+    $('#orderDetailsModal').modal('hide');
+}
+</script>
 <style>
 .badge-b {
     padding: 8px 16px;
@@ -115,7 +146,7 @@
 }
 </style>
 
-<script>
+<!-- <script>
 function cancelOrder(orderId) {
     Swal.fire({
         title: 'Cancel Order',
@@ -132,7 +163,7 @@ function cancelOrder(orderId) {
         }
     });
 }
-</script>
+</script> -->
 
 <?php
 function getStatusBadgeClass($status) {

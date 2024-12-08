@@ -35,7 +35,18 @@
             <div class="toggle">
                 <ion-icon name="menu-outline"></ion-icon>
             </div>
+            
             <div class="clock" id="clock"></div>
+            <?php
+            if(isset($_SESSION['login']) && $_SESSION['login'] == true){
+            ?>
+            <div class="logout">
+                <a class="btn btn-danger" href="../?act=taikhoan&xuli=dangxuat">Logout</a>
+            </div>
+            <?php
+            }
+            ?>
+            
 
         </div>
         <div class="container-fluid">

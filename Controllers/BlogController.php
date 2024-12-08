@@ -1,13 +1,13 @@
 <?php
 require_once("Models/blog.php");
-
+require_once("Models/product.php");
 class BlogController
 {
-    private $blog_model;
+    private $blog_model , $product_model ;
     public function __construct()
     {
        $this->blog_model = new Blog();
-     
+       $this->product_model = new Product() ;
     }
     function Blog_View(){
          $popular_posts = $this->blog_model->popular_post() ;
@@ -30,12 +30,17 @@ class BlogController
     function Blog_Detail(){
         $id = $_GET['id_blog']; 
         $comments = $this->blog_model->select_comments($id) ; 
+        //popular products
         $popular_posts = $this->blog_model->popular_post();  
         $content_blog = $this->blog_model->findBy($id);
         $pro_id = $content_blog['blog_pro_id'];
         $related_blogs = $this->blog_model->get_related_blog($pro_id);
         $this->blog_model->update_blog_view($id);
         $product_populars = $this->blog_model->product_top() ;
+        //related products
+        $product = $this->product_model->findByID($pro_id); 
+        $cat_id = $product['product_cat'];
+        $related_products = $this->blog_model->related_product($cat_id  , $pro_id) ;
         require_once('Views/index.php');
     }
 }

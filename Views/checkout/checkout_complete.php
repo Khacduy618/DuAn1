@@ -49,23 +49,23 @@
                                         <tr>
                                             <td class="align-middle"><?php echo $item['product_name']; ?></td>
                                             <td class="text-center align-middle"><?php echo $item['quantity']; ?></td>
-                                            <td class="text-center align-middle">$<?php echo number_format($item['price'], 2); ?></td>
-                                            <td class="text-right align-middle">$<?php echo number_format($item['total'], 2); ?></td>
+                                            <td class="text-center align-middle"><?=number_format($item['price'],0,",",".")?> đ</td>
+                                            <td class="text-right align-middle"><?=number_format($item['total'],0,",",".")?> đ</td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
                                 <tfoot class="bg-light">
                                     <tr>
                                         <td colspan="3" class="text-right"><strong>Subtotal:</strong></td>
-                                        <td class="text-right"><strong>$<?php echo number_format($_SESSION['order_complete']['total_amount'], 2); ?></strong></td>
+                                        <td class="text-right"><strong><?=number_format($_SESSION['order_complete']['total_amount'],0,",",".")?> đ</strong></td>
                                     </tr>
                                     <tr>
                                         <td colspan="3" class="text-right"><strong>Shipping Fee:</strong></td>
-                                        <td class="text-right"><strong>$<?php echo number_format($_SESSION['order_complete']['shipping_fee'], 2); ?></strong></td>
+                                        <td class="text-right"><strong><?=number_format($_SESSION['order_complete']['shipping_fee'],0,",",".")?> đ</strong></td>
                                     </tr>
                                     <tr class="border-top">
                                         <td colspan="3" class="text-right"><strong>Grand Total:</strong></td>
-                                        <td class="text-right"><h5 class="mb-0">$<?php echo number_format($_SESSION['order_complete']['final_total'], 2); ?></h5></td>
+                                        <td class="text-right"><h5 class="mb-0"><?=number_format($_SESSION['order_complete']['final_total'],0,",",".")?> đ</h5></td>
                                     </tr>
                                 </tfoot>
                             </table>

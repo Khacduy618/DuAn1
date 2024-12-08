@@ -35,7 +35,7 @@ class Cart extends Model
         $updated = pdo_execute($updateQuantitySql, $quantity, $cartId, $productId);
 
         if (!$updated) {
-            throw new Exception("Cập nhật không thành công!");
+            throw new Exception("Update quantity failed!");
         }
 
         return $updated;
@@ -44,7 +44,7 @@ class Cart extends Model
             $inserted = pdo_execute($insertProductSql, $cartId, $productId, $quantity);
 
             if (!$inserted) {
-                throw new Exception("Thêm sản phẩm mới thất bại!");
+                throw new Exception("Insert product failed!");
             }
 
             return $inserted;

@@ -18,6 +18,7 @@ class LoginController
         $user_password = md5($_POST['user_password']);
         if (strpos($user_email, "'") != false) {
             $user_email = str_replace("'", "\'", $user_email);
+            var_dump($user_email);
         }
         $this->login_model->login_action($user_email, $user_password);
         
@@ -85,9 +86,10 @@ class LoginController
             // Xử lý ảnh đại diện
             if (isset($_FILES['user_images']) && $_FILES['user_images']['error'] == 0) {
                 $target_dir = "uploaded/";
-                $target_file = $target_dir . basename($_FILES["user_images"]["name"]);
+                $user_images = $_FILES["user_images"]["name"];
+                $target_file = $target_dir . basename($user_images);
                 if (move_uploaded_file($_FILES["user_images"]["tmp_name"], $target_file)) {
-                    $data['user_images'] = $target_file; // Đường dẫn ảnh đại diện
+                    $data['user_images'] = $user_images; // Đường dẫn ảnh đại diện
                 }
             }
 

@@ -237,12 +237,25 @@ class CheckoutController
             $bill = array();
         }
         
-        // Lấy chi tiết đơn hàng
-        foreach ($bill as &$order) {
-            $order['details'] = $this->checkout_model->getBillDetailsByIdBill($order['bill_id']);
-        }
+       
 
         // Include view
         include 'Views/index.php';
+    }
+    public function details() {
+        if(isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $data = $this->checkout_model->getBillDetailsByIdBill($id);
+            
+            // Kiểm tra nếu là AJAX request
+            if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+                // Trả về view AJAX
+                require_once("Views/checkout/detail.php");
+            } else {
+                echo 'Không tìm thấy thông tin đơn hàng';
+            }
+        } else {
+            echo 'ID đơn hàng không hợp lệ';
+        }
     }
 }

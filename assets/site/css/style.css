@@ -16259,7 +16259,7 @@ button:focus {
 
 
 .summary {
-    padding: 2.5rem 3rem 3rem;
+    padding: 1.5rem 1.5rem;
     border: .1rem dashed #d7d7d7;
     background-color: #f9f9f9;
     border-radius: .3rem;
@@ -16428,6 +16428,7 @@ button:focus {
 }
 
 .table td {
+    font-size : 1.4rem;
     padding-top: 3rem;
     padding-bottom: 3rem
 }

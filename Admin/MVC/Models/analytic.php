@@ -5,12 +5,14 @@
     class Analytic extends Model
     {
 
-        function product_top() {
+        function product_top($limit="") {
             $sql = "SELECT p.*, COALESCE(SUM(bd.pro_count), 0) as total_sold 
                 FROM products p 
                 JOIN bill_details bd ON p.product_id = bd.pro_id
-                WHERE p.product_status = 1 AND p.product_count > 0 GROUP BY p.product_id ORDER BY total_sold DESC
-                ";
+                WHERE p.product_status = 1 AND p.product_count > 0 GROUP BY p.product_id ORDER BY total_sold DESC";
+            if($limit){
+                $sql.= " LIMIT $limit";
+            }
             return pdo_query($sql);
         }
 

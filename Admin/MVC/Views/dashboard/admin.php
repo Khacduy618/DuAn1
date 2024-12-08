@@ -57,7 +57,38 @@
         <div class="cardHeader">
             <h4>Product Best Selling</h4>
         </div>
-        <table>
+        <table id="limit-table">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Image</td>
+                    <td>Price</td>
+                    <td>Quantity in bill</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                <?php
+                    foreach ($product_top_5 as $pr) {
+                        extract($pr);
+                    ?>
+                <tr>
+                    <td><?=$product_name?></td>
+                    <td>
+                        <div class="img">
+                            <img src="../uploaded/<?=$product_img?>" alt="">
+                        </div>
+                    </td>
+                    <td><?=number_format($product_price,0,",",".")?> đ</td>
+                    <td><?=$total_sold?></td>
+                </tr>
+
+                <?php
+                            }
+                    ?>
+            </tbody>
+        </table>
+        <table class="all-table">
             <thead>
                 <tr>
                     <td>Name</td>
@@ -88,7 +119,7 @@
                     ?>
             </tbody>
         </table>
-
+        <button id="onViewAll-table" class="btn btn-danger">View All</button>
 
     </div>
 

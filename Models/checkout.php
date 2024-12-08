@@ -37,7 +37,7 @@ class Checkout extends Model
             throw new Exception("ID hóa đơn không hợp lệ");
         }
 
-        $sql = "SELECT bd.*, p.product_name, p.product_image, 
+        $sql = "SELECT bd.*, p.product_name, p.product_img, 
                        (bd.pro_price * bd.pro_count) as total_price
                 FROM bill_details bd 
                 LEFT JOIN products p ON bd.pro_id = p.product_id 

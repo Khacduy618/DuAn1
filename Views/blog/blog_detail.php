@@ -139,10 +139,91 @@
  
  
                              </div><!-- End .owl-carousel -->
+                             <br>
                              <div class="widget widget-text">
-                                 <h3 class="widget-title">Best Seller Products</h3><!-- End .widget-title -->
+                                 <h3 class="title">Related Products</h3><!-- End .title -->
  
                              </div>
+                             <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow"
+                                 data-toggle="owl" data-owl-options='{
+                     "nav": true, 
+                     "dots": true,
+                     "margin": 20,
+                     "loop": false,
+                     "responsive": {
+                         "0": {
+                             "items":2
+                         },
+                         "600": {
+                             "items":2
+                         },
+                         "992": {
+                             "items":3
+                         },
+                         "1200": {
+                             "items":4
+                         }
+                     }
+                 }'>
+                                 <?php 
+                     if(isset($related_products) && $related_products != NULL){
+                         foreach($related_products as $item){
+                     
+                 ?>
+ 
+                                 <div class="product product-2">
+                                     <figure class="product-media">
+                                         <span class="product-label label-circle label-new">New</span>
+                                         <a href="?act=product&id=<?=$item['product_id']?>">
+                                             <img src="uploaded/<?=$item['product_img']?>" alt="Product image"
+                                                 class="product-image">
+                                         </a>
+ 
+                                         <div class="product-action-vertical">
+                                             <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add
+                                                     to
+                                                     wishlist</span></a>
+                                         </div><!-- End .product-action -->
+ 
+                                         <div class="product-action product-action-dark">
+                                             <a href="?act=cart&xuli=add&product_id=<?=$item['product_id']?>&quantity=1" class="btn-product btn-cart" title="Add to cart"><span>add
+                                                     to cart</span></a>
+                                             <a href="popup/quick_view.php" class="btn-product btn-quickview"
+                                                 title="Quick view"><span>quick view</span></a>
+                                         </div><!-- End .product-action -->
+                                     </figure><!-- End .product-media -->
+ 
+                                     <div class="product-body">
+                                         <h3 class="product-title"><a href="#"><?=$item['product_name'];?> </a></h3>
+                                         <!-- End .product-title -->
+                                         <div class="product-price">
+                                             <?=number_format($item['product_price'],0,",",".")?> đ
+                                         </div><!-- End .product-price -->
+                                         <div class="ratings-container">
+                                             <div class="ratings">
+                                                 <div class="ratings-val" style="width: 80%;"></div>
+                                                 <!-- End .ratings-val -->
+                                             </div><!-- End .ratings -->
+                                             <span class="ratings-text">( 4 Reviews )</span>
+                                         </div><!-- End .rating-container -->
+ 
+                                         <div class="product-nav product-nav-dots">
+                                             <a href="#" style="background: #edd2c8;"><span class="sr-only">Color
+                                                     name</span></a>
+                                             <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
+                                                     name</span></a>
+                                             <a href="#" class="active" style="background: #333333;"><span
+                                                     class="sr-only">Color
+                                                     name</span></a>
+                                         </div><!-- End .product-nav -->
+                                     </div><!-- End .product-body -->
+                                 </div><!-- End .product -->
+                                 <?php
+             }}else{
+             echo "No data found";
+             }
+             ?>
+                             </div><!-- End .owl-carousel -->
  
  
  
@@ -268,7 +349,7 @@
                                      </div><!-- End .product-action -->
  
                                      <div class="product-action product-action-dark">
-                                         <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add
+                                         <a href="?act=cart&xuli=add&product_id=<?=$item['product_id']?>&quantity=1" class="btn-product btn-cart" title="Add to cart"><span>add
                                                  to cart</span></a>
                                          <a href="popup/quick_view.php" class="btn-product btn-quickview"
                                              title="Quick view"><span>quick view</span></a>
