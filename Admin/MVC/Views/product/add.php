@@ -27,6 +27,18 @@
         <div class="card-body">
             <form action="?mod=product&act=store" method="POST" enctype="multipart/form-data">
                 <div class="row gap-3">
+                <div class="col-5 mb-3">
+                        <label for="product_img" class="form-label">Product Image</label>
+                        <input type="file" class="form-control" id="product_img" name="product_img" accept="image/*" required>
+                        <div class="form-text">Recommended size: 800x800 pixels</div>
+                    </div>
+
+                    <!-- Preview Image -->
+                    <div class="col-5 mb-3">
+                        <div id="imagePreview" class="mt-2" style="max-width: 200px;">
+                            <img id="preview_imgProduct" src="#" alt="Preview" style="max-width: 100%; display: none;">
+                        </div>
+                    </div>
                     <!-- Product Name -->
                     <div class="col-md-5 mb-3">
                         <label for="product_name" class="form-label">Product Name</label>
@@ -70,20 +82,6 @@
                         <div class="group-control">
                         <input type="checkbox" class="form-check-input" id="product_status" name="product_status">
                         <label for="product_status">Active</label>
-                        </div>
-                    </div>
-
-                    <!-- Product Image -->
-                    <div class="col-5 mb-3">
-                        <label for="product_img" class="form-label">Product Image</label>
-                        <input type="file" class="form-control" id="product_img" name="product_img" accept="image/*" required>
-                        <div class="form-text">Recommended size: 800x800 pixels</div>
-                    </div>
-
-                    <!-- Preview Image -->
-                    <div class="col-5 mb-3">
-                        <div id="imagePreview" class="mt-2" style="max-width: 200px;">
-                            <img id="preview_imgProduct" src="#" alt="Preview" style="max-width: 100%; display: none;">
                         </div>
                     </div>
                     <div class="col-md-5 mb-3">

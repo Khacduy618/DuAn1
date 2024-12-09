@@ -18,12 +18,9 @@
         <div class="card-body">
             <form action="?mod=category&act=store" method="POST" enctype="multipart/form-data">
                 <div class="row gap-5">
+                    
                     <div class="col-md-5">
-                        <div class="form-group mb-3">
-                            <label for="category_name">Category Name <span class="text-danger">*</span></label>
-                            <input type="text" value="" name="category_name" class="form-control" required>
-                        </div>
-                        <div class="form-group mb-3">
+                    <div class="form-group mb-3">
                             <label for="category_img">Category Image <span class="text-danger">*</span></label>
                             <input type="file" name="category_img" id="category_img" class="form-control" accept="image/*" required>
                             <div class="col-12 mb-3">
@@ -32,6 +29,11 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group mb-3">
+                            <label for="category_name">Category Name <span class="text-danger">*</span></label>
+                            <input type="text" value="" name="category_name" class="form-control" required>
+                        </div>
+                       
                         <div class="form-group mb-3">
                             <label>Status</label>
                             <input type="checkbox" class="form-check-input" value="1" name="category_status" id="status">

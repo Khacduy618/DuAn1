@@ -76,7 +76,7 @@
         function getPaginationAndOrderData()
         {
             $orderCondition = " ORDER BY category_id ASC";
-            $itemPerPage = !empty($_GET['per_page']) ? $_GET['per_page'] : 12;
+            $itemPerPage = !empty($_GET['per_page']) ? $_GET['per_page'] : 14;
             $currentPage = !empty($_GET['page']) ? $_GET['page'] : 1;
 
             $orderField = $_GET['field'] ?? "";
@@ -98,6 +98,10 @@
                 'totalRecord' => $totalRecord,
                 'totalPages' => $totalPages
             ];
+        }
+        function CategoryNotParent() {
+            $sql= "SELECT category_name, category_id FROM categories WHERE parent_id IS NOT NULL";
+            return pdo_query($sql);
         }
     }
 ?>

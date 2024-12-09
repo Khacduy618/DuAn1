@@ -55,7 +55,6 @@ $user_images_display = (is_file($imgPath) && !empty($user['user_images']))
                 <label for="user_role" class="form-label fw-bold">Role</label>
                 <select id="user_role" name="user_role" class="form-select shadow-sm">
                     <option value="0" <?= $user['user_role'] == "0" ? "selected" : "" ?>>User</option>
-                    <option value="1" <?= $user['user_role'] == "1" ? "selected" : "" ?>>Admin</option>
                     <option value="2" <?= $user['user_role'] == "2" ? "selected" : "" ?>>Employee</option>
                 </select>
             </div>

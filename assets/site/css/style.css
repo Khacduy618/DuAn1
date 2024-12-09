@@ -11156,10 +11156,11 @@ tbody.product-detail td {
 
 .alert {
     font-weight: 300;
+    left: 620px;
     font-size: 1.6rem;
     line-height: 1.43;
     letter-spacing: -.01em;
-    border-radius: 0;
+    border-radius: 10px;
     margin: 0;
     border: none;
     position: absolute;
@@ -11189,6 +11190,7 @@ tbody.product-detail td {
 }
 
 .alert .close span {
+    padding: 10px;
     display: inline-block;
     line-height: 1;
     padding-bottom: .2rem

@@ -12,7 +12,18 @@ class AdminVyController
 
 public function list()
 {
-    $listuser = $this->model->getAllUserWithAddress();
+    $limit = 10;
+    $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    $offset = ($current_page - 1) * $limit;
+    
+    $searchQuery = isset($_GET['search']) ? $_GET['search'] : '';
+    $statusFilter = isset($_GET['status']) ? (int)$_GET['status'] : null;
+    
+    $total_users = $this->model->getTotalUser($searchQuery, $statusFilter);
+    $total_pages = ceil($total_users / $limit);
+    
+    $listuser = $this->model->getAllUserWithAddress($offset, $limit, $searchQuery, $statusFilter);
+    
     foreach ($listuser as &$user) {
         $user['address_display'] = (!empty($user['address_name']) || !empty($user['address_city']) || !empty($user['address_street']))
             ? $user['address_name'] . ', ' . $user['address_city'] . ', ' . $user['address_street']
@@ -20,7 +31,13 @@ public function list()
 
         $user['address_id'] = !empty($user['address']) ? $user['address'][0]['address_id'] : null;
     }
-
+    
+    $pagination = [
+        'current_page' => $current_page,
+        'total_pages' => $total_pages,
+        'limit' => $limit
+    ];
+    
     require_once("MVC/Views/admin/index.php");
 }
 
@@ -35,8 +52,13 @@ public function list()
             $user_name = $_POST['user_name'];
             $user_full_name = $_POST['user_full_name'];
             $user_email = $_POST['user_email'];
-            $user_password = $_POST['user_password'];
             $user_phone = $_POST['user_phone'];
+
+            if (!preg_match('/^[0-9]+$/', $user_phone)) {
+                $_SESSION['msg1'] = 'Your phone number must be a digits.';
+                header('Location: ?mod=user&act=add');
+                exit;
+            }
 
             $user_images = $_FILES['user_images']['name'];
             $user_images_tmp = $_FILES['user_images']['tmp_name'];
@@ -81,14 +103,16 @@ public function list()
             $user_role = $_POST['user_role'];
             $user_status = $_POST['user_status'];
 
-            $current_user_images = $_POST['current_user_images'] ?? '';
-            $user_images = $_FILES['user_images']['name'];
-            $user_images_tmp = $_FILES['user_images']['tmp_name'];
-            if (empty($user_images)) {
-                $user_images = $current_user_images;
-            } else {
-                $user_images = $this->model->handleImageUpload($user_images, $user_images_tmp);
-            }
+            $user = $this->model->getUserByEmail($user_email);
+
+            $user_images = $user['user_images']; // Giữ ảnh cũ
+                
+                if (!empty($_FILES['user_images']['name'])) {
+                    $user_images = $_FILES['user_images']['name'];
+                    $user_images_tmp = $_FILES['user_images']['tmp_name'];
+                    $user_images = $this->model->handleImageUpload($user_images, $user_images_tmp);
+                }
+            
 
             $this->model->updateUser($user_name, $user_email, $user_phone, $user_images, $user_role, $user_status);
 
@@ -198,6 +222,48 @@ public function updateStatus()
 
         require_once("MVC/Views/address/list.php");
     }
-
+    public function listFavorite()
+    {
+        $limit = 10;
+        $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $offset = ($current_page - 1) * $limit;
+        
+        $searchQuery = isset($_GET['search']) ? $_GET['search'] : '';
+        
+        if (isset($_GET['user_email'])) {
+            $user_email = $_GET['user_email'];
+            $listfavorites = $this->model->getFavoritesByEmail($user_email);
+            $total_favorites = count($listfavorites);
+        } else {
+            $total_favorites = $this->model->getTotalFavorites($searchQuery);
+            $listfavorites = $this->model->getAllFavorites($offset, $limit, $searchQuery);
+        }
+        
+        $total_pages = ceil($total_favorites / $limit);
+        
+        $pagination = [
+            'current_page' => $current_page,
+            'total_pages' => $total_pages,
+            'limit' => $limit
+        ];
+        
+        require_once("MVC/Views/admin/index.php");
+    }
+    
+    public function deleteFavorite()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['favorite_id'])) {
+            $favorite_id = $_POST['favorite_id'];
+            
+            if ($this->model->deleteFavorite($favorite_id)) {
+                $_SESSION['message'] = 'Xóa sản phẩm yêu thích thành công!';
+            } else {
+                $_SESSION['message'] = 'Có lỗi xảy ra khi xóa sản phẩm yêu thích!';
+            }
+            
+            header("Location: ?mod=favorite&act=list");
+            exit;
+        }
+    }
     
 }

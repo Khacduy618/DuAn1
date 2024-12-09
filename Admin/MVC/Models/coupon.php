@@ -9,7 +9,7 @@ class CouponModel extends Model{
     }
 
     public static function getCouponById($id) {
-        $sql = "SELECT coupon_name, coupon_discount, coupon_expiredate 
+        $sql = "SELECT *
                 FROM coupons 
                 WHERE coupon_id = ?";
         return pdo_query_one($sql, $id);

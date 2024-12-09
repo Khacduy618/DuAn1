@@ -1,3 +1,4 @@
+<h2 class="mb-4">Blog Management</h2>
 <div class="d-flex justify-content-between mb-4">
     <a class="btn btn-success <?=!isset($_SESSION['privilege']['blog']['add']) ? 'disabled' : ''?>" href="?mod=blog&act=add">
         <i class="bi bi-plus-circle"></i> Create New Blog Post
@@ -31,7 +32,7 @@
                     height="60px">
             </td>
             <td class="align-middle">
-                <?= htmlspecialchars(substr($blog['blog_content'], 0, 90))?>...
+            <?= htmlspecialchars(substr(strip_tags($blog['blog_content']), 0, 100)) ?>...
             </td>
             <td class="align-middle"><?= htmlspecialchars($blog['author_email']) ?></td>
             <td class="align-middle">

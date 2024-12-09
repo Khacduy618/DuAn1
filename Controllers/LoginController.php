@@ -18,7 +18,7 @@ class LoginController
         $user_password = md5($_POST['user_password']);
         if (strpos($user_email, "'") != false) {
             $user_email = str_replace("'", "\'", $user_email);
-            var_dump($user_email);
+            
         }
         $this->login_model->login_action($user_email, $user_password);
         
@@ -27,6 +27,12 @@ class LoginController
     {
         $check1 = 0;
         $check2 = 0;
+        $check3 = 0;
+        
+        if (strlen($_POST['user_password']) < 8) {
+            $check3 = 1;
+        }
+        
         $data_check = $this->login_model->check_account();
         foreach ($data_check as $value) {
             if ($value['user_email'] == $_POST['user_email']) {
@@ -51,7 +57,7 @@ class LoginController
             }
         }
 
-        $this->login_model->dangky_action($data, $check1, $check2);
+        $this->login_model->dangky_action($data, $check1, $check2, $check3);
     }
     function dangxuat()
     {

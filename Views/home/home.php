@@ -58,13 +58,29 @@
                            </div>
                         </a>
 
-                        <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                    wishlist</span></a>
-                        </div><!-- End .product-action -->
+                        <?php if ($value['product_status'] == 1 && $value['product_count'] > 0) { 
+    $isFavorited = false;
+    if(isset($_SESSION['login'])) {
+        require_once 'Models/favorite.php';
+        $favorite = new Favorite();
+        $isFavorited = $favorite->isProductFavorited($_SESSION['login']['user_email'], $value['product_id']);
+    }
+?>
+    <div class="product-action-vertical">
+        <form action="index.php?act=favorite&xuli=<?= $isFavorited ? 'delete' : 'add' ?>" method="POST">
+            <input type="hidden" name="product_id" value="<?=$value['product_id']?>">
+            <?php if($isFavorited): ?>
+                <input type="hidden" name="favorite_id" value="<?=$favorite->findByUserAndProduct($_SESSION['login']['user_email'], $value['product_id'])['favorite_id']?>">
+            <?php endif; ?>
+            <button type="submit" class="btn-product-icon btn-wishlist <?= $isFavorited ? 'active' : '' ?>">
+                <span><?= $isFavorited ? 'Xóa khỏi yêu thích' : 'Thêm vào yêu thích' ?></span>
+            </button>
+        </form>
+    </div>
+<?php } ?>
 
                         <div class="product-action product-action-dark">
-                            <a href="?act=cart&xuli=add&product_id=<?=$item['product_id']?>&quantity=1" class="btn-product btn-cart" title"Add to cart"><span>add
+                            <a href="?act=cart&xuli=add&product_id=<?=$item['product_id']?>&quantity=1" class="btn-product btn-cart" title="Add to cart"><span>add
                                     to cart</span></a>
                             <a href="popup/quick_view.php" class="btn-product btn-quickview"
                                 title="Quick view"><span>quick view</span></a>
@@ -75,7 +91,7 @@
                         <div class="product-cat">
                             <a href="#"><?=$item['category_name'];?></a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="#"><?=$item['product_name'];?> </a></h3>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>"><?=$item['product_name']?> </a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             <?=number_format($item['product_price'],0,",",".")?> đ
@@ -145,13 +161,29 @@
                             </div>
                         </a>
 
-                        <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                    wishlist</span></a>
-                        </div><!-- End .product-action -->
+                        <?php if ($value['product_status'] == 1 && $value['product_count'] > 0) { 
+    $isFavorited = false;
+    if(isset($_SESSION['login'])) {
+        require_once 'Models/favorite.php';
+        $favorite = new Favorite();
+        $isFavorited = $favorite->isProductFavorited($_SESSION['login']['user_email'], $value['product_id']);
+    }
+?>
+    <div class="product-action-vertical">
+        <form action="index.php?act=favorite&xuli=<?= $isFavorited ? 'delete' : 'add' ?>" method="POST">
+            <input type="hidden" name="product_id" value="<?=$value['product_id']?>">
+            <?php if($isFavorited): ?>
+                <input type="hidden" name="favorite_id" value="<?=$favorite->findByUserAndProduct($_SESSION['login']['user_email'], $value['product_id'])['favorite_id']?>">
+            <?php endif; ?>
+            <button type="submit" class="btn-product-icon btn-wishlist <?= $isFavorited ? 'active' : '' ?>">
+                <span><?= $isFavorited ? 'Xóa khỏi yêu thích' : 'Thêm vào yêu thích' ?></span>
+            </button>
+        </form>
+    </div>
+<?php } ?>
 
                         <div class="product-action product-action-dark">
-                            <a href="?act=cart&xuli=add&product_id=<?=$item['product_id']?>&quantity=1" class="btn-product btn-cart" title"Add to cart"><span>add
+                            <a href="?act=cart&xuli=add&product_id=<?=$item['product_id']?>&quantity=1" class="btn-product btn-cart" title="Add to cart"><span>add
                                     to cart</span></a>
                             <a href="popup/quick_view.php" class="btn-product btn-quickview"
                                 title="Quick view"><span>quick view</span></a>
@@ -162,7 +194,7 @@
                         <div class="product-cat">
                             <a href="#"><?=$item['category_name'];?></a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="#"><?=$item['product_name'];?> </a></h3>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>"><?=$item['product_name']?> </a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             <?=number_format($item['product_price'],0,",",".")?> đ
@@ -232,13 +264,29 @@
                             </div>
                         </a>
 
-                        <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                    wishlist</span></a>
-                        </div><!-- End .product-action -->
+                        <?php if ($value['product_status'] == 1 && $value['product_count'] > 0) { 
+    $isFavorited = false;
+    if(isset($_SESSION['login'])) {
+        require_once 'Models/favorite.php';
+        $favorite = new Favorite();
+        $isFavorited = $favorite->isProductFavorited($_SESSION['login']['user_email'], $value['product_id']);
+    }
+?>
+    <div class="product-action-vertical">
+        <form action="index.php?act=favorite&xuli=<?= $isFavorited ? 'delete' : 'add' ?>" method="POST">
+            <input type="hidden" name="product_id" value="<?=$value['product_id']?>">
+            <?php if($isFavorited): ?>
+                <input type="hidden" name="favorite_id" value="<?=$favorite->findByUserAndProduct($_SESSION['login']['user_email'], $value['product_id'])['favorite_id']?>">
+            <?php endif; ?>
+            <button type="submit" class="btn-product-icon btn-wishlist <?= $isFavorited ? 'active' : '' ?>">
+                <span><?= $isFavorited ? 'Xóa khỏi yêu thích' : 'Thêm vào yêu thích' ?></span>
+            </button>
+        </form>
+    </div>
+<?php } ?>
 
                         <div class="product-action product-action-dark">
-                            <a href="?act=cart&xuli=add&product_id=<?=$item['product_id']?>&quantity=1" class="btn-product btn-cart" title"Add to cart"><span>add
+                            <a href="?act=cart&xuli=add&product_id=<?=$item['product_id']?>&quantity=1" class="btn-product btn-cart" title="Add to cart"><span>add
                                     to cart</span></a>
                             <a href="popup/quick_view.php" class="btn-product btn-quickview"
                                 title="Quick view"><span>quick view</span></a>
@@ -249,7 +297,7 @@
                         <div class="product-cat">
                             <a href="#"><?=$item['category_name'];?></a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="#"><?=$item['product_name'];?> </a></h3>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>"><?=$item['product_name']?> </a></h3>
                         <!-- End .product-title -->
                         <div class="product-price">
                             <?=number_format($item['product_price'],0,",",".")?> đ
@@ -312,7 +360,7 @@
     <div class="container">
         <div class="heading text-center mb-4">
             <h2 class="title">Deals & Outlet</h2><!-- End .title -->
-            <p class="title-desc">Today’s deal and more</p><!-- End .title-desc -->
+            <p class="title-desc">Today's deal and more</p><!-- End .title-desc -->
         </div><!-- End .heading -->
 
         <div class="row">
@@ -361,13 +409,29 @@
                                         </div>
                                     </a>
 
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add
-                                                to wishlist</span></a>
-                                    </div><!-- End .product-action -->
+                                    <?php if ($value['product_status'] == 1 && $value['product_count'] > 0) { 
+    $isFavorited = false;
+    if(isset($_SESSION['login'])) {
+        require_once 'Models/favorite.php';
+        $favorite = new Favorite();
+        $isFavorited = $favorite->isProductFavorited($_SESSION['login']['user_email'], $value['product_id']);
+    }
+?>
+    <div class="product-action-vertical">
+        <form action="index.php?act=favorite&xuli=<?= $isFavorited ? 'delete' : 'add' ?>" method="POST">
+            <input type="hidden" name="product_id" value="<?=$value['product_id']?>">
+            <?php if($isFavorited): ?>
+                <input type="hidden" name="favorite_id" value="<?=$favorite->findByUserAndProduct($_SESSION['login']['user_email'], $value['product_id'])['favorite_id']?>">
+            <?php endif; ?>
+            <button type="submit" class="btn-product-icon btn-wishlist <?= $isFavorited ? 'active' : '' ?>">
+                <span><?= $isFavorited ? 'Xóa khỏi yêu thích' : 'Thêm vào yêu thích' ?></span>
+            </button>
+        </form>
+    </div>
+<?php } ?>
 
                                     <div class="product-action product-action-dark">
-                                        <a href="?act=cart&xuli=add&product_id=<?=$item['product_id']?>&quantity=1" class="btn-product btn-cart" title"Add to cart"><span>add to
+                                        <a href="?act=cart&xuli=add&product_id=<?=$item['product_id']?>&quantity=1" class="btn-product btn-cart" title="Add to cart"><span>add to
                                                 cart</span></a>
                                         <a href="popup/quick_view.php" class="btn-product btn-quickview"
                                             title="Quick view"><span>quick view</span></a>
@@ -538,13 +602,29 @@
                         <img src="uploaded/<?=$item['product_img']?>" alt="Product image">
                         </div>
                     </a>
-
-                    <div class="product-action-vertical">
-                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                    </div><!-- End .product-action -->
+                    <?php if ($value['product_status'] == 1 && $value['product_count'] > 0) { 
+    $isFavorited = false;
+    if(isset($_SESSION['login'])) {
+        require_once 'Models/favorite.php';
+        $favorite = new Favorite();
+        $isFavorited = $favorite->isProductFavorited($_SESSION['login']['user_email'], $value['product_id']);
+    }
+?>
+    <div class="product-action-vertical">
+        <form action="index.php?act=favorite&xuli=<?= $isFavorited ? 'delete' : 'add' ?>" method="POST">
+            <input type="hidden" name="product_id" value="<?=$value['product_id']?>">
+            <?php if($isFavorited): ?>
+                <input type="hidden" name="favorite_id" value="<?=$favorite->findByUserAndProduct($_SESSION['login']['user_email'], $value['product_id'])['favorite_id']?>">
+            <?php endif; ?>
+            <button type="submit" class="btn-product-icon btn-wishlist <?= $isFavorited ? 'active' : '' ?>">
+                <span><?= $isFavorited ? 'Xóa khỏi yêu thích' : 'Thêm vào yêu thích' ?></span>
+            </button>
+        </form>
+    </div>
+<?php } ?>
 
                     <div class="product-action product-action-dark">
-                        <a href="?act=cart&xuli=add&product_id=<?=$item['product_id']?>&quantity=1" class="btn-product btn-cart" title"Add to cart"><span>add to cart</span></a>
+                        <a href="?act=cart&xuli=add&product_id=<?=$item['product_id']?>&quantity=1" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
                         <a href="popup/quick_view.php" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
                     </div><!-- End .product-action -->
                 </figure><!-- End .product-media -->
@@ -553,7 +633,7 @@
                     <div class="product-cat">
                         <a href="#"><?=$item['category_name']?></a>
                     </div><!-- End .product-cat -->
-                    <h3 class="product-title"><a href="#"><?=$item['product_name']?></a></h3><!-- End .product-title -->
+                    <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>"><?=$item['product_name']?></a></h3><!-- End .product-title -->
                     <div class="product-price">
                         <?=number_format($item['product_price'],0,",",".")?> đ
                     </div><!-- End .product-price -->
@@ -619,13 +699,29 @@
                             </div>
                         </a>
 
-                        <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                    wishlist</span></a>
-                        </div><!-- End .product-action -->
+                        <?php if ($value['product_status'] == 1 && $value['product_count'] > 0) { 
+    $isFavorited = false;
+    if(isset($_SESSION['login'])) {
+        require_once 'Models/favorite.php';
+        $favorite = new Favorite();
+        $isFavorited = $favorite->isProductFavorited($_SESSION['login']['user_email'], $value['product_id']);
+    }
+?>
+    <div class="product-action-vertical">
+        <form action="index.php?act=favorite&xuli=<?= $isFavorited ? 'delete' : 'add' ?>" method="POST">
+            <input type="hidden" name="product_id" value="<?=$value['product_id']?>">
+            <?php if($isFavorited): ?>
+                <input type="hidden" name="favorite_id" value="<?=$favorite->findByUserAndProduct($_SESSION['login']['user_email'], $value['product_id'])['favorite_id']?>">
+            <?php endif; ?>
+            <button type="submit" class="btn-product-icon btn-wishlist <?= $isFavorited ? 'active' : '' ?>">
+                <span><?= $isFavorited ? 'Xóa khỏi yêu thích' : 'Thêm vào yêu thích' ?></span>
+            </button>
+        </form>
+    </div>
+<?php } ?>
 
                         <div class="product-action product-action-dark">
-                            <a href="?act=cart&xuli=add&product_id=<?=$item['product_id']?>&quantity=1" class="btn-product btn-cart" title"Add to cart"><span>add to
+                            <a href="?act=cart&xuli=add&product_id=<?=$item['product_id']?>&quantity=1" class="btn-product btn-cart" title="Add to cart"><span>add to
                                     cart</span></a>
                             <a href="popup/quick_view.php" class="btn-product btn-quickview"
                                 title="Quick view"><span>quick view</span></a>
@@ -636,7 +732,7 @@
                         <div class="product-cat">
                             <a href="#"><?=$item['category_name'];?></a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="#"><?=$item['product_name'];?></a>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>"><?=$item['product_name']?></a>
                         </h3><!-- End .product-title -->
                         <div class="product-price">
 												<?=number_format($item['product_price'],0,",",".")?> đ
@@ -697,13 +793,29 @@
                                 class="product-image">
                         </a>
 
-                        <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                    wishlist</span></a>
-                        </div><!-- End .product-action -->
+                        <?php if ($value['product_status'] == 1 && $value['product_count'] > 0) { 
+    $isFavorited = false;
+    if(isset($_SESSION['login'])) {
+        require_once 'Models/favorite.php';
+        $favorite = new Favorite();
+        $isFavorited = $favorite->isProductFavorited($_SESSION['login']['user_email'], $value['product_id']);
+    }
+?>
+    <div class="product-action-vertical">
+        <form action="index.php?act=favorite&xuli=<?= $isFavorited ? 'delete' : 'add' ?>" method="POST">
+            <input type="hidden" name="product_id" value="<?=$value['product_id']?>">
+            <?php if($isFavorited): ?>
+                <input type="hidden" name="favorite_id" value="<?=$favorite->findByUserAndProduct($_SESSION['login']['user_email'], $value['product_id'])['favorite_id']?>">
+            <?php endif; ?>
+            <button type="submit" class="btn-product-icon btn-wishlist <?= $isFavorited ? 'active' : '' ?>">
+                <span><?= $isFavorited ? 'Xóa khỏi yêu thích' : 'Thêm vào yêu thích' ?></span>
+            </button>
+        </form>
+    </div>
+<?php } ?>
 
                         <div class="product-action product-action-dark">
-                            <a href="?act=cart&xuli=add&product_id=<?=$item['product_id']?>&quantity=1" class="btn-product btn-cart" title"Add to cart"><span>add to
+                            <a href="?act=cart&xuli=add&product_id=<?=$item['product_id']?>&quantity=1" class="btn-product btn-cart" title="Add to cart"><span>add to
                                     cart</span></a>
                             <a href="popup/quick_view.php" class="btn-product btn-quickview"
                                 title="Quick view"><span>quick view</span></a>
@@ -714,7 +826,7 @@
                         <div class="product-cat">
                             <a href="#"><?=$item['category_name']?></a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="#"><?=$item['product_name']?></a>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>"><?=$item['product_name']?></a>
                         </h3><!-- End .product-title -->
                         <div class="product-price">
 												<?=number_format($item['product_price'],0,",",".")?> đ
@@ -777,13 +889,29 @@
                                 class="product-image">
                         </a>
 
-                        <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                    wishlist</span></a>
-                        </div><!-- End .product-action -->
+                        <?php if ($value['product_status'] == 1 && $value['product_count'] > 0) { 
+    $isFavorited = false;
+    if(isset($_SESSION['login'])) {
+        require_once 'Models/favorite.php';
+        $favorite = new Favorite();
+        $isFavorited = $favorite->isProductFavorited($_SESSION['login']['user_email'], $value['product_id']);
+    }
+?>
+    <div class="product-action-vertical">
+        <form action="index.php?act=favorite&xuli=<?= $isFavorited ? 'delete' : 'add' ?>" method="POST">
+            <input type="hidden" name="product_id" value="<?=$value['product_id']?>">
+            <?php if($isFavorited): ?>
+                <input type="hidden" name="favorite_id" value="<?=$favorite->findByUserAndProduct($_SESSION['login']['user_email'], $value['product_id'])['favorite_id']?>">
+            <?php endif; ?>
+            <button type="submit" class="btn-product-icon btn-wishlist <?= $isFavorited ? 'active' : '' ?>">
+                <span><?= $isFavorited ? 'Xóa khỏi yêu thích' : 'Thêm vào yêu thích' ?></span>
+            </button>
+        </form>
+    </div>
+<?php } ?>
 
                         <div class="product-action product-action-dark">
-                            <a href="?act=cart&xuli=add&product_id=<?=$item['product_id']?>&quantity=1" class="btn-product btn-cart" title"Add to cart"><span>add to
+                            <a href="?act=cart&xuli=add&product_id=<?=$item['product_id']?>&quantity=1" class="btn-product btn-cart" title="Add to cart"><span>add to
                                     cart</span></a>
                             <a href="popup/quick_view.php" class="btn-product btn-quickview"
                                 title="Quick view"><span>quick view</span></a>
@@ -794,7 +922,7 @@
                         <div class="product-cat">
                             <a href="#"><?=$item['category_name'];?></a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="#"><?=$item['product_name'];?></a>
+                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>"><?=$item['product_name']?></a>
                         </h3><!-- End .product-title -->
                         <div class="product-price">
                             <?=number_format($item['product_price'],0,',','.');?> đ
@@ -815,10 +943,11 @@
                     }   
                     }else{
                         echo "No data available";
-                    } ?> 
-
-
-            </div>
+                    } ?>
+            </div><!-- End .owl-carousel -->
+        </div><!-- End .tab-pane -->
+    </div><!-- End .tab-content -->
+</div><!-- End .container top -->
 
 <div class="container">
     <hr class="mt-5 mb-6">

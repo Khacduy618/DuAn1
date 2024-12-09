@@ -18,6 +18,7 @@
                     break;
             }
          break;
+         
         case 'product':
             switch ($act) {
                 case 'list':
@@ -35,7 +36,16 @@
                 
             }
             break;
-        
+            case 'favorite':
+                switch ($act) {
+                    case 'list':
+                        require_once('MVC/Views/favorite/list.php');
+                        break;
+                    default:
+                        require_once('MVC/Views/favorite/list.php');
+                        break;
+                }   
+                break;
          case 'coupon':
                 switch ($act) {
                     case 'list':

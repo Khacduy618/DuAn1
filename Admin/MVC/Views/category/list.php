@@ -31,7 +31,7 @@
         </div>
         
         <div class="col-md-3 text-end ms-auto">
-            <a class="btn btn-success shadow-sm" href="?mod=category&act=add">
+            <a class="btn btn-success shadow-sm <?=!isset($_SESSION['privilege']['category']['add']) ? 'disabled' : ''?>" href="?mod=category&act=add">
                 <i class="bi bi-plus-circle me-2"></i>Add new item
             </a>
         </div>
@@ -85,7 +85,20 @@
                         </td>
                         <td class="fw-semibold"><?= $category_name ?></td>
                         <td><small><?= $category_desc ?></small></td>
-                        <td class="text-center"><?= $parent_id ?></td>
+                        <td class="text-center"> <?php
+                                // Display parent category name instead of just ID
+                                if ($parent_id == NULL || $parent_id == 0) {
+                                    echo "Main Category";
+                                } else {
+                                    // Assuming you have the parent category information in the $categories array
+                                    foreach($categories as $parent) {
+                                        if ($parent['category_id'] == $parent_id) {
+                                            echo $parent['category_name'];
+                                            break;
+                                        }
+                                    }
+                                }
+                                ?></td>
                         <td>
                             <span class="badge <?= $category_status == 1 ? 'bg-success' : 'bg-danger' ?>">
                                 <?= $category_status == 1 ? "Active" : "Inactive" ?>
@@ -93,10 +106,10 @@
                         </td>
                         <td>
                             <div class="btn-group btn-group-sm">
-                                <a class="btn btn-outline-primary" href="?mod=category&act=edit&id=<?=$category_id?>">
+                                <a class="btn btn-outline-primary <?=!isset($_SESSION['privilege']['category']['edit']) ? 'disabled' : ''?>" href="?mod=category&act=edit&id=<?=$category_id?>">
                                     <i class="bi bi-pencil"></i>
                                 </a>
-                                <a class="btn btn-outline-danger" href="?mod=category&act=delete&id=<?=$category_id?>"
+                                <a class="btn btn-outline-danger <?=!isset($_SESSION['privilege']['category']['delete']) ? 'disabled' : ''?>" href="?mod=category&act=delete&id=<?=$category_id?>"
                                    onclick="return confirm('Are you sure you want to delete this item?')">
                                     <i class="bi bi-trash"></i>
                                 </a>
@@ -116,7 +129,7 @@ $field = isset($_GET['field']) ? $_GET['field'] : '';
 $sort = isset($_GET['sort']) ? $_GET['sort'] : '';
 $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
 $status = isset($_GET['status']) ? $_GET['status'] : '';
-$per_page = isset($orderdata['itemPerPage']) ? $orderdata['itemPerPage'] : 12; // Default to 12 if not set
+$per_page = isset($orderdata['itemPerPage']) ? $orderdata['itemPerPage'] : 14; // Default to 12 if not set
 
 if ($orderdata['totalRecord'] > $per_page) {
 ?>

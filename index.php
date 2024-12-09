@@ -229,6 +229,27 @@ switch ($mod) {
         $controller_obj = new commentControlller();
         $controller_obj->comment_exc(); 
         break; 
+    case 'favorite':
+        require_once('Controllers/FavoriteController.php');
+        $controller_obj = new FavoriteController();
+        $act = isset($_GET['xuli']) ? $_GET['xuli'] : "list";
+        switch ($act) {
+            case 'list':
+                $controller_obj->list();
+                require_once('Views/index.php');
+                break;
+            case 'add':
+                $controller_obj->add();
+                break;
+            case 'delete':
+                $controller_obj->delete();
+                break;
+            default:
+                $controller_obj->list();
+                require_once('Views/index.php');
+                break;
+            }
+            break;  
     default:
         require_once 'Controllers/HomeController.php';
         $controller_obj = new HomeController();

@@ -21,10 +21,26 @@
                         </div>
                     </a>
                     <?php if ($value['product_status'] == 1 && $value['product_count'] > 0) { ?>
-                    <div class="product-action-vertical">
-                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                wishlist</span></a>
-                    </div><!-- End .product-action-vertical -->
+                        <?php if ($value['product_status'] == 1 && $value['product_count'] > 0) { 
+    $isFavorited = false;
+    if(isset($_SESSION['login'])) {
+        require_once 'Models/favorite.php';
+        $favorite = new Favorite();
+        $isFavorited = $favorite->isProductFavorited($_SESSION['login']['user_email'], $value['product_id']);
+    }
+?>
+    <div class="product-action-vertical">
+        <form action="index.php?act=favorite&xuli=<?= $isFavorited ? 'delete' : 'add' ?>" method="POST">
+            <input type="hidden" name="product_id" value="<?=$value['product_id']?>">
+            <?php if($isFavorited): ?>
+                <input type="hidden" name="favorite_id" value="<?=$favorite->findByUserAndProduct($_SESSION['login']['user_email'], $value['product_id'])['favorite_id']?>">
+            <?php endif; ?>
+            <button type="submit" class="btn-product-icon btn-wishlist <?= $isFavorited ? 'active' : '' ?>">
+                <span><?= $isFavorited ? 'Xóa khỏi yêu thích' : 'Thêm vào yêu thích' ?></span>
+            </button>
+        </form>
+    </div>
+<?php } ?>
 
                     <div class="product-action">
                         <a href="?act=cart&xuli=add&product_id=<?=$value['product_id']?>&quantity=1"
@@ -136,3 +152,22 @@ if ($orderdata['totalRecord'] > 12) {
     </ul>
 </nav>
 <?php } ?>
+<style>
+.btn-wishlist {
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    border-radius: 50%; 
+    border: 0.1rem solid #d7d7d7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.btn-wishlist.active {
+    color: #fff; 
+    background-color: #dc3545; 
+    border-color: #dc3545; 
+}
+</style>

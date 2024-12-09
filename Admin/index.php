@@ -40,16 +40,16 @@ if(isset($_SESSION['privilege']['blog']) && $mod == 'blog' ){
      else if(isset($_SESSION['privilege']['blog'][$act]) && $act == 'add' ){
           $controller_obj->add();
      }
-     else if(isset($_SESSION['privilege']['blog'][$act]) && $act == 'soft_delete' ){
+     else if(isset($_SESSION['privilege']['blog']['delete']) && $act == 'soft_delete' ){
           $controller_obj->soft_delete();
      }
-     else if(isset($_SESSION['privilege']['blog']['soft_delete']) && $act == 'recycle' ){
+     else if(isset($_SESSION['privilege']['blog']['delete']) && $act == 'recycle' ){
           $controller_obj->recycle_bin();
      }
-     else if(isset($_SESSION['privilege']['blog']['soft_delete']) && $act == 'force_delete' ){
+     else if(isset($_SESSION['privilege']['blog']['delete']) && $act == 'force_delete' ){
           $controller_obj->force_delete();
      }
-     else if(isset($_SESSION['privilege']['blog']['soft_delete']) && $act == 'back_up' ){
+     else if(isset($_SESSION['privilege']['blog']['delete']) && $act == 'back_up' ){
           $controller_obj->back_up();
      }
      else{
@@ -63,16 +63,16 @@ if(isset($_SESSION['privilege']['blog']) && $mod == 'blog' ){
       if(isset($_SESSION['privilege']['comment'][$act]) && $act == 'list' ){
           $controller_obj->comment_index();
      }
-     else if(isset($_SESSION['privilege']['comment'][$act]) && $act == 'soft_delete' ){
+     else if(isset($_SESSION['privilege']['comment']['delete']) && $act == 'soft_delete' ){
           $controller_obj->soft_delete();
      }
-     else if(isset($_SESSION['privilege']['blog']['soft_delete']) && $act == 'recycle' ){
+     else if(isset($_SESSION['privilege']['comment']['delete']) && $act == 'recycle' ){
           $controller_obj->recycle_bin();
      }
-     else if(isset($_SESSION['privilege']['blog']['soft_delete']) && $act == 'force_delete' ){
+     else if(isset($_SESSION['privilege']['comment']['delete']) && $act == 'force_delete' ){
           $controller_obj->force_delete();
      }
-     else if(isset($_SESSION['privilege']['blog']['soft_delete']) && $act == 'back_up' ){
+     else if(isset($_SESSION['privilege']['comment']['delete']) && $act == 'back_up' ){
           $controller_obj->back_up();
      }
      else{
@@ -95,7 +95,7 @@ else if(isset($_SESSION['privilege']['product']) && $mod == 'product' ){
      elseif (isset($_SESSION['privilege']['product'][$act]) && $act == 'delete'){
           $controller_obj->delete();
      }
-     elseif (isset($_SESSION['privilege']['product'][$act]) && $act == 'details'){
+     elseif (isset($_SESSION['privilege']['product']['list']) && $act == 'details'){
           $controller_obj->details();
      }
      elseif (isset($_SESSION['privilege']['product'][$act]) && $act == 'edit'){
@@ -165,14 +165,20 @@ elseif (isset($_SESSION['privilege']['coupon']) && $mod == 'coupon' ){
 else if(isset($_SESSION['privilege']['bill']) && $mod == 'bill' ){
     require_once('MVC/controllers/BillController.php');
     $controller_obj = new BillController();
-      if(isset($_SESSION['privilege']['bill'][$act]) && $act == 'archived' ){
+      if(isset($_SESSION['privilege']['bill']['list']) && $act == 'archived' ){
          $controller_obj->archivedBills();
     }
-    else if(isset($_SESSION['privilege']['bill'][$act]) && $act == 'detail' ){
+    else if(isset($_SESSION['privilege']['bill']['list']) && $act == 'detail' ){
          $controller_obj->detail();
     }
-    else if(isset($_SESSION['privilege']['bill'][$act]) && $act == 'status' ){
+    else if(isset($_SESSION['privilege']['bill']['list']) && $act == 'status' ){
+    $controller_obj->edit_bill_status_ajax();
+    }
+    else if(isset($_SESSION['privilege']['bill']['list']) && $act == 'edit' ){
          $controller_obj->status();
+    }
+    else if(isset($_SESSION['privilege']['bill'][$act]) && $act == 'add' ){
+         $controller_obj->restoreBillArchived();
     }
     else{
           $controller_obj->listBills();
@@ -182,7 +188,10 @@ else if(isset($_SESSION['privilege']['bill']) && $mod == 'bill' ){
 else if(isset($_SESSION['privilege']['review']) && $mod == 'review' ){
     require_once('MVC/controllers/ReviewController.php');
     $controller_obj = new ReviewController();
-    if(isset($_SESSION['privilege']['review'][$act]) && $act == 'detail' ){
+    if (isset($_SESSION['privilege']['review']['list']) && $act == 'list') {
+        $controller_obj->list();
+    }
+    elseif(isset($_SESSION['privilege']['review']['list']) && $act == 'detail' ){
          $controller_obj->detail();
     }
     else if(isset($_SESSION['privilege']['review'][$act]) && $act == 'delete' ){
@@ -205,7 +214,7 @@ else if(isset($_SESSION['privilege']['user']) && $mod == 'user' ){
      else if(isset($_SESSION['privilege']['user']['add']) && $act == 'store'){
          $controller_obj->store();
      }
-     else if(isset($_SESSION['privilege']['user'][$act]) && $act == 'detail'){
+     else if(isset($_SESSION['privilege']['user']['list']) && $act == 'detail'){
          $controller_obj->detail();
      }
      else if(isset($_SESSION['privilege']['user'][$act]) && $act == 'delete'){
@@ -234,11 +243,25 @@ else if(isset($_SESSION['privilege']['user']) && $mod == 'user' ){
      else if(isset($_SESSION['privilege']['address']['add']) && $act == 'store'){
          $controller_obj->storeAddress();
      }
-     else if(isset($_SESSION['privilege']['address'][$act]) && $act == 'updateStatus'){
+     else if(isset($_SESSION['privilege']['address']['list']) && $act == 'updateStatus'){
          $controller_obj->updateStatus();
      }
      else{
          $controller_obj->userAddress();
+     }
+ }
+ ///FAVORITE
+ else if(isset($_SESSION['privilege']['favorite']) && $mod == 'favorite' ){
+     require_once('MVC/controllers/AdminVyController.php');
+     $controller_obj = new AdminVyController();
+     if(isset($_SESSION['privilege']['favorite'][$act]) && $act == 'list'){
+         $controller_obj->listFavorite();
+     }
+     elseif (isset($_SESSION['privilege']['favorite']['list']) && $act == 'delete'){
+          $controller_obj->deleteFavorite();
+     }
+     else {
+         $controller_obj->listFavorite();
      }
  }
 //authorization
@@ -263,6 +286,3 @@ else{
      exit();
 }
 
-if($mod == 'bill' && $act == 'api' ){
-     $controller_obj->edit_bill_status_ajax();
-}

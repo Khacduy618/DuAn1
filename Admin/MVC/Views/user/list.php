@@ -2,37 +2,39 @@
     <div class="row frmtitle">
         <h1>User Management</h1>
     </div>
-    <div class="row mb-3  justify-content-around">
-        <div class="col-md-3">
+    <div class="row mb-3 gap-3 justify-content-around">
+        <!-- Search -->
+        <div class="col-md-4">
             <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-search"></i></span>
-                <input type="text" class="form-control" v-model="searchQuery" placeholder="Search customer...">
+                <input type="text" class="form-control" 
+                       name="search" 
+                       value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>" 
+                       placeholder="Search customer..."
+                       onchange="this.form.submit()"
+                       form="searchForm">
             </div>
+            <form id="searchForm" action="" method="GET">
+                <input type="hidden" name="mod" value="user">
+                <input type="hidden" name="act" value="list">
+                <?php if (isset($_GET['status'])): ?>
+                    <input type="hidden" name="status" value="<?= htmlspecialchars($_GET['status']) ?>">
+                <?php endif; ?>
+            </form>
         </div>
+
+
+        <!-- Status Filter -->
         <div class="col-md-2">
-            <select class="form-select" v-model="roleFilter">
-                <option value="">All Roles</option>
-                <option value="0">User</option>
-                <option value="1">Admin</option>
-                <option value="2">Employee</option>
-            </select>
-        </div>
-        <div class="col-md-2">
-            <select class="form-select" v-model="statusFilter">
+            <select class="form-select" onchange="filterStatus(this.value)">
                 <option value="">All Status</option>
-                <option value="1">Active</option>
-                <option value="0">Inactive</option>
-            </select>
-        </div>
-        <div class="col-md-1">
-            <select class="form-select" v-model="sortBy">
-                <option value="">Sort by</option>
-                <option value="id">ID</option>
-                <option value="name">Name</option>
+                <option value="1" <?= isset($_GET['status']) && $_GET['status'] == '1' ? 'selected' : '' ?>>Active</option>
+                <option value="0" <?= isset($_GET['status']) && $_GET['status'] == '0' ? 'selected' : '' ?>>Inactive</option>
             </select>
         </div>
 
-        <div class="col-md-3 d-flex gap-3 align-items-center">
+
+        <div class="col-2 ms-auto">
             <a href="?mod=user&act=add" class="btn btn-success <?=!isset($_SESSION['privilege']['user']['add']) ? 'disabled' : ''?>">Add New User</a>
         </div>
     </div>
@@ -60,6 +62,7 @@
                                 extract($user);
                                 $edituser = "?mod=user&act=edit&user_email=" . $user_email;
                                 $deleteuser = "?mod=user&act=delete&user_email=" . $user_email;
+                                $user_images = empty($user_images) ? 'user.png' : $user_images;
                                 $images = "<img src='../uploaded/" . $user_images . "' alt='User Image' width='50'>";
                                 $url_email = "?mod=address&act=list&user_email=".$user_email;
                                 
@@ -98,15 +101,42 @@
         </form>
     </div>
 </div>
+ <!-- Pagination -->
+ <div class="d-flex justify-content-center mt-4">
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <?php if ($pagination['current_page'] > 1): ?>
+                        <li class="page-item">
+                            <a class="page-link" href="?mod=user&act=list&page=<?= $pagination['current_page'] - 1 ?><?= isset($_GET['search']) ? '&search=' . htmlspecialchars($_GET['search']) : '' ?>" aria-label="Previous">&laquo;</a>
+                        </li>
+                    <?php endif; ?>
+
+                    <?php for ($i = 1; $i <= $pagination['total_pages']; $i++): ?>
+                        <li class="page-item <?= $i == $pagination['current_page'] ? 'active' : '' ?>">
+                            <a class="page-link" href="?mod=user&act=list&page=<?= $i ?>"><?= $i ?></a>
+                        </li>
+                    <?php endfor; ?>
+
+                    <?php if ($pagination['current_page'] < $pagination['total_pages']): ?>
+                        <li class="page-item">
+                            <a class="page-link" href="?mod=user&act=list&page=<?= $pagination['current_page'] + 1 ?>" aria-label="Next">&raquo;</a>
+                        </li>
+                    <?php endif; ?>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
 
 <script>
-    // Kiểm tra nếu người dùng đã chọn ít nhất một tài khoản để xóa
-    function confirmDeletion() {
-        const selectedUsers = document.querySelectorAll('input[name="user_email[]"]:checked');
-        if (selectedUsers.length === 0) {
-            alert('Vui lòng chọn ít nhất một tài khoản để xóa!');
-            return false;
-        }
-        return confirm('Bạn có chắc chắn muốn xóa các tài khoản đã chọn không?');
+function filterStatus(status) {
+    const url = new URL(window.location.href);
+    if (status) {
+        url.searchParams.set('status', status);
+    } else {
+        url.searchParams.delete('status');
     }
+    url.searchParams.set('page', '1');
+    window.location.href = url.toString();
+}
 </script>

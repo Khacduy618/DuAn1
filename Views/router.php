@@ -102,6 +102,28 @@ switch ($mod) {
     case "cart":
         require_once("cart/cart.php");
         break;
+    case "favorite":
+        $act = isset($_GET['xuli']) ? $_GET['xuli'] : "list";
+        require_once("Controllers/FavoriteController.php");
+        $controller = new FavoriteController();
+        switch ($act) {
+            case 'list':
+                require_once("favorite/list.php");
+                break;
+            case 'add':
+                $controller->add();
+                break;
+            case 'delete':
+                $controller->delete();
+                break;
+            case 'count':
+                $controller->count();
+                break;
+            default:
+                require_once("favorite/list.php");
+                break;
+        }
+        break;
     default:
         require_once("error-404.php");
         break;

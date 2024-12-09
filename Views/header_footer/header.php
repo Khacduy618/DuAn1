@@ -48,14 +48,13 @@
                                     </a>
                                     <div class="header-menu">
                                         <ul>
-                                            <li><a href="?act=taikhoan&xuli=account">Tài khoản</a></li>
-                                            </li>
+                                            <li><a href="?act=taikhoan&xuli=account">My Account</a></li>
                                             <?php
                                                 if(isset($_SESSION['isLogin_Admin']) || isset($_SESSION['isLogin_Nhanvien'])){
-                                                    echo '<li><a href="Admin/?mod=login">Trang quản lý</a></li>';
+                                                    echo '<li><a href="Admin/?mod=login">Admin Panel</a></li>';
                                                 }
                                             ?>
-                                            <li><a href="?act=taikhoan&xuli=dangxuat">Đăng xuất</a></li>
+                                            <li><a href="?act=taikhoan&xuli=dangxuat">Sign Out</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -102,15 +101,85 @@
 
             <div class="header-right">
                 
-                <div class="wishlist">
-                    <a href="wishlist.html" title="Wishlist">
-                        <div class="icon">
-                            <i class="icon-heart-o"></i>
-                            <span class="wishlist-count badge">3</span>
-                        </div>
-                        <p>Wishlist</p>
+            <div class="dropdown cart-dropdown">
+    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false" data-display="static">
+        <div class="icon">
+            <i class="icon-heart-o"></i>
+            <?php
+            if(isset($_SESSION['login'])) {
+                require_once 'Models/favorite.php';
+                $favorite = new Favorite();
+                $count = $favorite->countFavorites($_SESSION['login']['user_email']);
+            ?>
+                <span class="cart-count"><?= $count ?></span>
+            <?php } else { ?>
+                <span class="cart-count">0</span>
+            <?php } ?>
+        </div>
+        <p>Wishlist</p>
+    </a>
+
+    <div class="dropdown-menu dropdown-menu-right">
+        <div class="dropdown-cart-products">
+            <?php 
+            if(isset($_SESSION['login'])) {
+                $recentFavorites = $favorite->getRecentFavorites($_SESSION['login']['user_email'], 3);
+                if(!empty($recentFavorites)) {
+                    foreach($recentFavorites as $item) {
+            ?>
+            <div class="product">
+                <div class="product-cart-details">
+                    <h4 class="product-title">
+                        <a href="?act=product&id=<?=$item['product_id']?>"><?=$item['product_name']?></a>
+                    </h4>
+                    <span class="cart-product-info">
+                        <span class="cart-product-price">
+                            <?=number_format($item['product_price'] ?? 0, 0, ",", ".")?> đ
+                        </span>
+                    </span>
+                </div>
+
+                <figure class="product-image-container">
+                    <a href="?act=product&id=<?=$item['product_id']?>" class="product-image">
+                        <img src="uploaded/<?=$item['product_img']?>" alt="<?=$item['product_name']?>">
                     </a>
-                </div><!-- End .compare-dropdown -->
+                </figure>
+                <?php
+                
+                var_dump($item['favorite_id']);
+                ?>
+                <form action="index.php?act=favorite&xuli=delete" method="POST" style="display: inline;">
+                    <input type="hidden" name="favorite_id" value="<?=$item['favorite_id']?>">
+                    <button type="submit" class="btn-remove" title="Remove Product">
+                        <i class="icon-close"></i>
+                    </button>
+                </form>
+            </div>
+            <?php 
+                    }
+                } else {
+            ?>
+            <div class="text-center p-3">No favorite products</div>
+            <?php 
+                }
+            } else {
+            ?>
+            <div class="text-center p-3">Please sign in</div>
+            <?php } ?>
+        </div>
+
+        <div class="dropdown-cart-total">
+            <span>Total Products</span>
+            <span class="cart-total-price"><?= isset($count) ? $count : 0 ?></span>
+        </div>
+
+        <div class="dropdown-cart-action">
+            <a href="?act=favorite" class="btn btn-outline-primary-2">View All</a>
+            <a href="?act=shop" class="btn btn-outline-primary-2">Continue Shopping</a>
+        </div>
+    </div>
+</div>
 
                 <div class="dropdown cart-dropdown">
                     <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -181,11 +250,9 @@
 
                         <div class="dropdown-cart-action">
                             <?php if (isset($_SESSION['login'])) { ?>
-                            <a href="?act=checkout&xuli=order_history" class="btn btn-outline-primary-2">Your Order
-                            </a>
+                            <a href="?act=checkout&xuli=order_history" class="btn btn-outline-primary-2">Order History</a>
                             <?php } else { ?>
-                            <a class="btn disabled">
-                            </a>
+                            <a class="btn disabled"></a>
                             <?php } ?>
 
                             <a href="?act=cart" class="btn btn-outline-primary-2 ms-auto">View Cart</a>

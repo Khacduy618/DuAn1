@@ -40,7 +40,7 @@
         </div>
         
         <div class="col-md-3 text-end ms-auto">
-            <a class="btn btn-success shadow-sm" href="?mod=product&act=add">
+            <a class="btn btn-success shadow-sm <?=!isset($_SESSION['privilege']['product']['add']) ? 'disabled' : ''?>" href="?mod=product&act=add">
                 <i class="bi bi-plus-circle me-2"></i>Add new product
             </a>
         </div>
@@ -109,10 +109,10 @@
                             <a class="btn btn-outline-primary" href="javascript:void(0)" onclick="showProductDetails(<?=$product['product_id']?>)">
                                 <i class="bi bi-eye"></i>
                             </a>
-                                <a class="btn btn-outline-primary" href="?mod=product&act=edit&id=<?=$product['product_id']?>">
+                                <a class="btn btn-outline-primary <?=!isset($_SESSION['privilege']['product']['edit']) ? 'disabled' : ''?>" href="?mod=product&act=edit&id=<?=$product['product_id']?>">
                                     <i class="bi bi-pencil"></i>
                                 </a>
-                                <a class="btn btn-outline-danger" href="?mod=product&act=delete&id=<?=$product['product_id']?>"
+                                <a class="btn btn-outline-danger <?=!isset($_SESSION['privilege']['product']['delete']) ? 'disabled' : ''?>" href="?mod=product&act=delete&id=<?=$product['product_id']?>"
                                    onclick="return confirm('Are you sure you want to delete this product?')">
                                     <i class="bi bi-trash"></i>
                                 </a>

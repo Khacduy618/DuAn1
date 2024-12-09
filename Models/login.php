@@ -9,7 +9,7 @@ class Login extends Model
         $query = "SELECT * from user WHERE user_email = ? AND user_password = ? AND user_status = 1";
         
         $login = pdo_query_one($query, $user_email, $user_password);
-
+        
         if ($login !== NULL) {
             if($login['user_role'] == 1){
                 $_SESSION['isLogin_Admin'] = true;
@@ -55,13 +55,14 @@ class Login extends Model
 
         return pdo_query($query);
     }
-      function dangky_action($data, $check1, $check2)
+      function dangky_action($data, $check1, $check2, $check3)
     {
         if ($check1 == 0) {
-            if ($check2 == 0) {
-                $f = "";
-                $v = "";
-                foreach ($data as $key => $value) {
+            if ($check3 == 0) {
+                if ($check2 == 0) {
+                    $f = "";
+                    $v = "";
+                    foreach ($data as $key => $value) {
                     $f .= $key . ",";
                     $v .= "'" . $value . "',";
                 }
@@ -77,6 +78,10 @@ class Login extends Model
                 }
             } else {
                 setcookie('msg1', 'Password is not match', time() + 2);
+            }
+       
+        } else{
+            setcookie('msg1', 'Password must be at least 8 characters long', time() + 2);
             }
         } else {
             setcookie('msg1', 'Username or Email already exists', time() + 2);

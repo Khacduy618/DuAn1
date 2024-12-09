@@ -33,6 +33,18 @@
             <form action="?mod=product&act=update" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="id" value="<?=$product_id?>">
                 <div class="row gap-3">
+                    <!-- Product Image -->
+                    <div class="col-5 mb-3">
+                        <label for="product_img" class="form-label">Product Image</label>
+                        <input type="file" class="form-control" id="product_img" name="product_img" accept="image/*">
+                        <div class="form-text">Recommended size: 800x800 pixels</div>
+                        
+                    </div>
+                    <div class="col-5 mb-3">
+                    <div class="mt-2">
+                            <img src="<?php echo BASE_URL ?>/uploaded/<?=$product_img?>" class="img-thumbnail" style="max-height: 150px;" id="preview_imgProduct">
+                        </div>
+                    </div>
                     <!-- Product Name -->
                     <div class="col-md-5 mb-3">
                         <label for="product_name" class="form-label">Product Name <span class="text-danger">*</span></label>
@@ -76,15 +88,7 @@
                         <label for="product_status">Active</label>
                     </div>
 
-                    <!-- Product Image -->
-                    <div class="col-5 mb-3">
-                        <label for="product_img" class="form-label">Product Image</label>
-                        <input type="file" class="form-control" id="product_img" name="product_img" accept="image/*">
-                        <div class="form-text">Recommended size: 800x800 pixels</div>
-                        <div class="mt-2">
-                            <img src="<?php echo BASE_URL ?>/uploaded/<?=$product_img?>" class="img-thumbnail" style="max-height: 150px;" id="preview_imgProduct">
-                        </div>
-                    </div>
+                    
                     <div class="col-md-5 mb-3">
                         <label for="screen_cam" class="form-label">Screen/Camera</label>
                         <input type="text" class="form-control" id="screen_cam" name="screen_cam" value="<?=$screen_cam?>">

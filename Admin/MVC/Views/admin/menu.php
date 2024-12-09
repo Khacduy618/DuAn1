@@ -18,7 +18,7 @@ $role = $_SESSION['login']['user_role'] ;
             <span class="icon">
                 <i class="fa-solid fa-house fa-xl"></i>
             </span>
-            <span class="title">Trang chủ</span>
+            <span class="title">Dashboard</span>
         </a>
     </li>
     <?php if(($role == 1)|| isset($_SESSION['privilege']['category']) ) {?>
@@ -38,6 +38,16 @@ $role = $_SESSION['login']['user_role'] ;
                 <i class="fa-solid fa-box fa-xl"></i>
             </span>
             <span class="title">Product</span>
+        </a>
+    </li>
+    <?php } ?>
+    <?php if( ($role == 1)|| isset($_SESSION['privilege']['favorite'])) {?>
+    <li class="nav-item">
+        <a class="nav-link" href="?mod=favorite">
+            <span class="icon">
+                <i class="fa-solid fa-heart fa-xl"></i>
+            </span>
+            <span class="title">Favorite</span>
         </a>
     </li>
     <?php } ?>

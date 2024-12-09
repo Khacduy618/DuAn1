@@ -26,7 +26,7 @@ class ProductController
     }
 
     public function add(){
-        $categories = $this->category_model->All();
+        $categories = $this->category_model->CategoryNotParent();
         require_once("MVC/Views/admin/index.php");
     }
 
