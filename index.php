@@ -10,6 +10,25 @@ $mod = isset($_GET['act']) ? $_GET['act'] : "home";
 
 
 switch ($mod) {
+    case 'forgot_password':
+        $xuli = isset($_GET['xuli']) ? $_GET['xuli'] : 'forgot_password';
+        require_once 'Controllers/AuthController.php';
+        $controller_obj = new AuthController();
+        switch ($xuli) {
+            case 'reset_pass':
+                $controller_obj->showForgotPassword();
+                break;
+            case 'send_reset_link':
+                $controller_obj->sendResetLink();
+                break;
+            case 'reset_password':
+                $controller_obj->resetPassword();
+                break;
+            default:
+                $controller_obj->showForgotPassword();
+                break;
+        }
+        break;
     case 'home':
         require_once 'Controllers/HomeController.php';
         $controller_obj = new HomeController();
