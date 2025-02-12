@@ -16,77 +16,44 @@
 <div class="page-content">
     <div class="checkout">
         <div class="container">
-            <div class="checkout-discount">
-                <form action="" method="GET">
-                    <input type="hidden" name="act" value="checkout">
-                    <input type="hidden" name="shipping" value="20000">
-                    <input type="text" class="form-control" name="coupon_name" required id="checkout-discount-input">
-                    <label for="checkout-discount-input" class="text-truncate">Have a coupon? <span>Click here to enter
-                            your code</span></label>
-                </form>
-            </div><!-- End .checkout-discount -->
-            <form action="#" id='form_thanhtoan'>
+            <form action="?act=checkout&xuli=save" id='form_thanhtoan' method="POST">
+                
                 <div class="row">
                     <div class="col-lg-9">
                         <h2 class="checkout-title">Billing Details</h2><!-- End .checkout-title -->
                         <div class="row">
                             <div class="col-sm-12">
                                 <label>Full Name *</label>
-                                <input type="text" class="form-control"
+                                <input type="text" class="form-control" 
                                     placeholder="<?=$_SESSION['login']['user_name']?>" readonly>
                             </div><!-- End .col-sm-6 -->
 
                         </div><!-- End .row -->
-
-                        <label>Company Name (Optional)</label>
-                        <input type="text" class="form-control" placeholder="<?=isset($address['address_name'])?>" readonly>
-
-                        <label>City *</label>
-                        <input type="text" class="form-control" placeholder="<?=isset($address['address_city'])?>" readonly>
-
-                        <label>Street address *</label>
-                        <input type="text" class="form-control" placeholder="<?=isset($address['address_street'])?>" readonly>
-
-                        <!-- <div class="row">
-                            <div class="col-sm-6">
-                                <label>Town / City *</label>
-                                <input type="text" class="form-control" required>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <label>State / County *</label>
-                                <input type="text" class="form-control" required>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label>Postcode / ZIP *</label>
-                                <input type="text" class="form-control" required>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <label>Phone *</label>
-                                <input type="tel" class="form-control" required>
-                            </div>
-                        </div> -->
-
                         <label>Email address *</label>
                         <input type="email" class="form-control" placeholder="<?=$_SESSION['login']['user_email']?>"
+                            readonly>
+                        <label for="phone">Phone *</label>
+                        <input type="text" class="form-control" name="phone"
+                            placeholder="<?=isset($_SESSION['login']['user_phone']) ? $_SESSION['login']['user_phone'] : ''?>" readonly>
+                        <label>Company Name (Optional)</label>
+                        <input type="text" class="form-control"
+                            placeholder="<?=isset($address['address_name']) ? $address['address_name'] : ''?>" readonly>
+
+                        <label>City *</label>
+                        <input type="text" class="form-control"
+                            placeholder="<?=isset($address['address_city']) ? $address['address_city'] : ''?>" readonly>
+
+                        <label>Street address *</label>
+                        <input type="text" class="form-control"
+                            placeholder="<?=isset($address['address_street']) ? $address['address_street'] :''?> readonly"
                             readonly>
                         <?php if(!isset($_SESSION['login'])) {
                         ?>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="checkout-create-acc">
-                            <label class="custom-control-label" for="checkout-create-acc">Create an account?</label>
+                            <a href="?act=taikhoan&xuli=dangky" class="custom-control-label">Create an account?</a>
                         </div><!-- End .custom-checkbox -->
                         <?php }
                         ?>
-                        <!-- <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="checkout-diff-address">
-                            <label class="custom-control-label" for="checkout-diff-address">Ship to a different
-                                address?</label>
-                        </div> -->
 
                         <label>Order notes (optional)</label>
                         <textarea class="form-control" cols="30" rows="4"
@@ -108,7 +75,7 @@
                                 <tbody>
                                     <?php
                                     $tong = 0;
-                                    
+                                        $_SESSION['cart_items'] = $cartItems;
                                         foreach ($cartItems as $item) {
                                             
                                             $ttien = $item['product_price'] * $item['quantity'];
@@ -141,10 +108,10 @@
                                     <?php
                                     if(isset($coupon)){
                                 ?>
-                                    <tr>
+                                    <tr class="summary-coupon">
                                         <td>Coupon:</td>
                                         <td><?=$coupon['coupon_name']?></td>
-                                        <td><?=number_format($discount,0,",",".")?>
+                                        <td class="discount-amount"><?=number_format($discount,0,",",".")?>
                                             đ</td>
                                     </tr>
                                     <?php }
@@ -157,100 +124,30 @@
                                     </tr><!-- End .summary-total -->
                                 </tbody>
                             </table><!-- End .table table-summary -->
-
+                            <?php
+                                                $paymentsMapping = [
+                                                    1 => 'Cash on delivery',
+                                                    2 => 'Direct bank transfer',
+                                                    3 => 'PayPal',
+                                                    4 => 'Credit Card (Stripe)'
+                                                ];
+                                        ?>
                             <div class="accordion-summary" id="accordion-payment">
-                                <div class="card">
-                                    <div class="card-header" id="heading-1">
-                                        <h2 class="card-title">
-                                            <a role="button" data-toggle="collapse" href="#collapse-1"
-                                                aria-expanded="true" aria-controls="collapse-1">
-                                                Direct bank transfer
-                                            </a>
-                                        </h2>
-                                    </div><!-- End .card-header -->
-                                    <div id="collapse-1" class="collapse show" aria-labelledby="heading-1"
-                                        data-parent="#accordion-payment">
-                                        <div class="card-body">
-                                            Make your payment directly into our bank account. Please use your Order ID
-                                            as the payment reference. Your order will not be shipped until the funds
-                                            have cleared in our account.
-                                        </div><!-- End .card-body -->
-                                    </div><!-- End .collapse -->
+                                <?php foreach ($paymentsMapping as $status => $statusText){?>
+                                <div class="d-flex align-item-center">
+                                    <input type="radio" id="bill_payment<?=$status?>" name="bill_payment"
+                                        value="<?=$status?>">
+                                    <label for="bill_payment<?=$status?>">
+                                        <?=$statusText?>
+                                    </label>
                                 </div><!-- End .card -->
-
-                                <div class="card">
-                                    <div class="card-header" id="heading-2">
-                                        <h2 class="card-title">
-                                            <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-2"
-                                                aria-expanded="false" aria-controls="collapse-2">
-                                                Check payments
-                                            </a>
-                                        </h2>
-                                    </div><!-- End .card-header -->
-                                    <div id="collapse-2" class="collapse" aria-labelledby="heading-2"
-                                        data-parent="#accordion-payment">
-                                        <div class="card-body">
-                                            Ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque
-                                            volutpat mattis eros. Nullam malesuada erat ut turpis.
-                                        </div><!-- End .card-body -->
-                                    </div><!-- End .collapse -->
-                                </div><!-- End .card -->
-
-                                <div class="card">
-                                    <div class="card-header" id="heading-3">
-                                        <h2 class="card-title">
-                                            <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-3"
-                                                aria-expanded="false" aria-controls="collapse-3">
-                                                Cash on delivery
-                                            </a>
-                                        </h2>
-                                    </div><!-- End .card-header -->
-                                    <div id="collapse-3" class="collapse" aria-labelledby="heading-3"
-                                        data-parent="#accordion-payment">
-                                        <div class="card-body">Quisque volutpat mattis eros. Lorem ipsum dolor sit amet,
-                                            consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.
-                                        </div><!-- End .card-body -->
-                                    </div><!-- End .collapse -->
-                                </div><!-- End .card -->
-
-                                <div class="card">
-                                    <div class="card-header" id="heading-4">
-                                        <h2 class="card-title">
-                                            <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-4"
-                                                aria-expanded="false" aria-controls="collapse-4">
-                                                PayPal <small class="float-right paypal-link">What is PayPal?</small>
-                                            </a>
-                                        </h2>
-                                    </div><!-- End .card-header -->
-                                    <div id="collapse-4" class="collapse" aria-labelledby="heading-4"
-                                        data-parent="#accordion-payment">
-                                        <div class="card-body">
-                                            Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper
-                                            suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.
-                                        </div><!-- End .card-body -->
-                                    </div><!-- End .collapse -->
-                                </div><!-- End .card -->
-
-                                <div class="card">
-                                    <div class="card-header" id="heading-5">
-                                        <h2 class="card-title">
-                                            <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-5"
-                                                aria-expanded="false" aria-controls="collapse-5">
-                                                Credit Card (Stripe)
-                                                <img src="assets/images/payments-summary.png" alt="payments cards">
-                                            </a>
-                                        </h2>
-                                    </div><!-- End .card-header -->
-                                    <div id="collapse-5" class="collapse" aria-labelledby="heading-5"
-                                        data-parent="#accordion-payment">
-                                        <div class="card-body"> Donec nec justo eget felis facilisis fermentum.Lorem
-                                            ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque
-                                            volutpat mattis eros. Lorem ipsum dolor sit ame.
-                                        </div><!-- End .card-body -->
-                                    </div><!-- End .collapse -->
-                                </div><!-- End .card -->
+                                <?php } ?>
                             </div><!-- End .accordion -->
-
+                            <input type="hidden" name="address_id" value="<?=$address['address_id']?>">
+                            <input type="hidden" name="total" value="<?=$total?>">
+                            <input type="hidden" name="tong" value="<?=$tong?>">
+                            <input type="hidden" name="coupon_id" value="<?= isset($coupon['coupon_id']) ? $coupon['coupon_id'] : 0 ?>">
+                            <input type="hidden" name="shipping" value="<?=$shipping?>">
                             <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
                                 <span class="btn-text">Place Order</span>
                                 <span class="btn-hover-text">Proceed to Checkout</span>

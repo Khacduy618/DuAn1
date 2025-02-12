@@ -9,7 +9,7 @@ class Address extends Model {
     }
 
     function getOneAddress($userEmail) {
-        $sql = "SELECT * FROM address WHERE address_userEmail = ?";
+        $sql = "SELECT * FROM address WHERE address_userEmail = ? AND address_status = 0";
         return pdo_query_one($sql, $userEmail);
     }
 
@@ -17,6 +17,11 @@ class Address extends Model {
     public function getAllAddresses($userEmail) {
         $sql = "SELECT * FROM address WHERE address_userEmail = ?";
         return pdo_query($sql, $userEmail);
+    }
+
+    public function getOneAddressById($addressId) {
+        $sql = "SELECT * FROM address WHERE address_id = ?";
+        return pdo_query_one($sql, $addressId);
     }
 
     // Thêm địa chỉ mới

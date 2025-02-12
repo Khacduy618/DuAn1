@@ -751,6 +751,55 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
+    $('.update-cart-form').on('submit', function (e) {
+        e.preventDefault();
+        var form = $(this);
+
+        $.ajax({
+            url: '?act=cart&xuli=update',
+            method: 'POST',
+            data: form.serialize(),
+            success: function (response) {
+                alert('Cart updated successfully!');
+                location.reload();
+            },
+            error: function (xhr, status, error) {
+                alert('Failed to update cart. Please try again.');
+                console.error('Error:', error);
+            }
+        });
+    });
+    //select all cart item
+    $('#select-all').on('change', function () {
+        $('.checkboxes').prop('checked', $(this).prop('checked'));
+    });
+    //check out 
+    $('form[action="?act=checkout"]').on('submit', function (e) {
+        var $form = $(this);
+        var selectedItems = $('.checkboxes:checked');
+        $form.find('input[name="cart_items[]"]').remove();
+        var uniqueItemIds = [];
+        selectedItems.each(function () {
+            var itemId = $(this).val();
+            if (uniqueItemIds.indexOf(itemId) === -1) {
+                uniqueItemIds.push(itemId);
+                $form.children(
+                    $('<input>')
+                        .attr('type', 'hidden')
+                        .attr('name', 'cart_items[]')
+                        .val(itemId)
+                );
+            }
+        });
+    });
+
+    // Confirm order
+    $('#form_thanhtoan').on('submit', function (e) {
+        if (!confirm('Bạn có chắc chắn muốn đặt hàng?')) {
+            e.preventDefault();
+        }
+    });
+
     if (document.getElementById('newsletter-popup-form')) {
         setTimeout(function () {
             var mpInstance = $.magnificPopup.instance;
@@ -779,29 +828,116 @@ $(document).ready(function () {
             }, 500)
         }, 1000)
     }
-});
-
-document.getElementById('form_thanhtoan').addEventListener('submit', function (event) {
-    var confirmation = confirm('Bạn có chắc chắn muốn đặt hàng?');
-    if (!confirmation) {
-        event.preventDefault();
+    function toggleLabelVisibility() {
+        var input = $('#checkout-discount-input');
+        var label = $('#coupon-label');
+        if (input.val().trim() !== '') {
+            label.hide();
+        } else {
+            label.show();
+        }
     }
+
+    // Initial check on page load
+    toggleLabelVisibility();
+
+    // Check on input change
+    $('#checkout-discount-input').on('input', function() {
+        toggleLabelVisibility();
+    });
+
+    function formatCurrency(number) {
+        return new Intl.NumberFormat('vi-VN').format(number) + ' đ';
+    }
+
+    // Hàm chuyển đổi chuỗi tiền về số
+    function parsePrice(priceString) {
+        return parseInt(priceString.replace(/\./g, '').replace(' đ', ''));
+    }
+
+    // Hàm cập nhật tất cả các tổng tiền
+    function updateTotals() {
+        let tong = 0;
+        const shipping = 20000;
+
+        // Chỉ tính tổng cho các sản phẩm được chọn
+        $('.checkboxes:checked').each(function() {
+            const $row = $(this).closest('tr');
+            const price = parsePrice($row.find('.price-col label').text());
+            const quantity = parseInt($row.find('.quantity-input').val());
+            const lineTotal = price * quantity;
+            
+            // Cập nhật tổng tiền của dòng
+            $row.find('.total-col label').text(formatCurrency(lineTotal));
+            tong += lineTotal;
+        });
+
+        // Cập nhật subtotal
+        $('.summary-subtotal td:last').text(formatCurrency(tong));
+
+        // Chỉ hiển thị shipping nếu có sản phẩm được chọn
+        const shippingAmount = tong > 0 ? shipping : 0;
+        $('.summary-shipping td:last').text(formatCurrency(shippingAmount));
+
+        // Tính giảm giá nếu có coupon
+        let discount = 0;
+        const discountPercent = parseFloat($('[name="coupon"]').data('discount') || 0);
+        if (discountPercent > 0 && tong > 0) {
+            discount = tong * (discountPercent / 100);
+        }
+
+        // Cập nhật giảm giá nếu có
+        if (discount > 0) {
+            $('.summary-coupon td:last').text(formatCurrency(discount));
+        }
+
+        // Tính tổng cuối cùng
+        const total = tong > 0 ? (tong + shippingAmount - discount) : 0;
+
+        // Cập nhật total
+        $('.summary-total td:last').text(formatCurrency(total));
+
+        // Cập nhật hidden input
+        $('input[name="total"]').val(total);
+
+        // Vô hiệu hóa/kích hoạt nút checkout
+        $('.btn-order').prop('disabled', tong === 0);
+    }
+
+    // Xử lý sự kiện thay đổi số lượng
+    $('.quantity-input').on('change', function() {
+        const $input = $(this);
+        const quantity = parseInt($input.val());
+
+        // Kiểm tra giới hạn số lượng
+        if (quantity < 1) $input.val(1);
+        if (quantity > 10) $input.val(10);
+
+        // Chỉ cập nhật nếu checkbox được chọn
+        if ($input.closest('tr').find('.checkboxes').is(':checked')) {
+            updateTotals();
+        }
+    });
+
+    // Xử lý sự kiện checkbox
+    $('.checkboxes').on('change', function() {
+        // Cập nhật trạng thái "select all"
+        const allChecked = $('.checkboxes').length === $('.checkboxes:checked').length;
+        $('.select-all-checkbox').prop('checked', allChecked);
+
+        updateTotals();
+    });
+
+    // Xử lý nút "Select All"
+    $('.select-all-checkbox').on('change', function() {
+        const isChecked = $(this).is(':checked');
+        $('.checkboxes').prop('checked', isChecked);
+        updateTotals();
+    });
+
+    // Khởi tạo ban đầu
+    updateTotals();
 });
 
-document.querySelectorAll('.update-cart-form').forEach(form => {
-    form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const formData = new FormData(this);
-        fetch('?act=cart&xuli=update', {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.text())
-            .then(data => {
-                // Cập nhật giao diện hoặc hiển thị thông báo
-                alert('Cart updated successfully!');
-                location.reload(); // Hoặc cập nhật động số lượng hiển thị
-            })
-            .catch(error => console.error('Error:', error));
-    });
-});
+
+

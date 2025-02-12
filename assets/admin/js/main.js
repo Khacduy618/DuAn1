@@ -71,3 +71,18 @@ function showSlides(n) {
   slides[slideIndex - 1].style.display = "block";
   dots[slideIndex - 1].className += " active";
 }
+
+$(document).ready(function () {
+  $('#onViewAll').on('click', function (e) {
+    e.preventDefault();
+    $('.all').removeClass('all');
+    $('#limit').hide();
+    $('#onViewAll').hide();
+  });
+  $('#onViewAll-table').on('click', function (e) {
+    e.preventDefault();
+    $('.all-table').removeClass('all-table');
+    $('#limit-table').hide();
+    $('#onViewAll-table').hide();
+  });
+});

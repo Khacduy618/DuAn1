@@ -30,6 +30,8 @@
     <link rel="stylesheet" href="assets/site/css/plugins/owl-carousel/owl.carousel.css">
     <link rel="stylesheet" href="assets/site/css/plugins/magnific-popup/magnific-popup.css">
     <link rel="stylesheet" href="assets/site/css/plugins/jquery.countdown.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
     <!-- Main CSS File -->
     <link rel="stylesheet" href="assets/site/css/style.css">
     <link rel="stylesheet" href="assets/site/css/skins/skin-demo-3.css">
@@ -83,7 +85,6 @@
                         <ul class="mobile-menu">
                             <li class="active">
                                 <a href="index.html">Home</a>
-
                                 <ul>
                                     <li><a href="index-1.html">01 - furniture store</a></li>
                                     <li><a href="index-2.html">02 - furniture store</a></li>
@@ -271,10 +272,28 @@
     <script src="assets/site/js/jquery.plugin.min.js"></script>
     <script src="assets/site/js/jquery.magnific-popup.min.js"></script>
     <script src="assets/site/js/jquery.countdown.min.js"></script>
+    <script id="chatway" async="true" src="https://cdn.chatway.app/widget.js?id=M4yfVSQANSNz"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
     <!-- Main JS File -->
     <script src="assets/site/js/main.js"></script>
     <script src="assets/site/js/demos/demo-3.js"></script>
+    <script>
+    const textarea = document.getElementById('blog-content');
 
+    // Tự động điều chỉnh chiều cao
+    function adjustTextareaHeight(el) {
+        el.style.height = 'auto'; // Đặt chiều cao về tự động trước khi tính toán
+        el.style.height = el.scrollHeight + 'px'; // Đặt chiều cao dựa trên nội dung
+    }
+
+    // Gọi hàm khi tải trang
+    window.onload = () => adjustTextareaHeight(textarea);
+
+    // Gọi hàm mỗi khi người dùng chỉnh sửa nội dung
+    textarea.addEventListener('input', () => adjustTextareaHeight(textarea));
+    </script>
 </body>
 
 

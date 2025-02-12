@@ -3,42 +3,26 @@ require_once("pdo.php");
 class Model
 {
     var $table;
+    var $status;
     var $contents;
 
     function All()
     {
-        $query = "select * from $this->table ORDER BY $this->contents DESC ";
+        $query = "select * from $this->table WHERE $this->status = 1 ORDER BY $this->contents DESC ";
 
         return pdo_query($query);
         
     }
-    function find($id)
+    function edit($id)
     {
-        $query = "select * from $this->table where $this->contents =$id";
+        $query = "select * from $this->table where $this->contents = ?";
         return pdo_query_one($query, $id);
     }
-    function delete($id)
-    {
-        $query = "DELETE from $this->table where $this->contents=$id";
-        
-        pdo_execute($query);
-        
-        header('Location: ?mod=' . $this->table);
+    
+    function delete($id){
+        $query = "UPDATE $this->table SET $this->status = 0 WHERE $this->contents = ?";
+         pdo_execute($query, $id);
     }
-    function store($data)
-    {
-        $f = "";
-        $v = "";
-        foreach ($data as $key => $value) {
-            $f .= $key . ",";
-            $v .= "'" . $value . "',";
-        }
-        $f = trim($f, ",");
-        $v = trim($v, ",");
-        $query = "INSERT INTO $this->table($f) VALUES ($v);";
-
-        pdo_execute($query);
-
-    }
+    
   
 }

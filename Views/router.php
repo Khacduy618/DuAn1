@@ -1,34 +1,27 @@
 <?php
-$act = isset($_GET['act']) ? $_GET['act'] : "home";
-switch ($act) {
+$mod = isset($_GET['act']) ? $_GET['act'] : "home";
+switch ($mod) {
+    case "blog": 
+        require_once "Views/blog/blog.php";
+        break;
+    case "blog_detail":
+        require_once "blog/blog_detail.php";
+        break;
     case "taikhoan":
         $act = isset($_GET['xuli']) ? $_GET['xuli'] : "login";
-        if (isset($_SESSION['isLogin']) && $_SESSION['isLogin'] == true) {
+        if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
             switch ($act) {
                 case 'login':
                     require_once("login/login.php");
                     break;
                 case 'account':
-                    require_once("login/my-account.php");
+                    require_once("login/account.php");
                     break;
                 default:
                     require_once("login/login.php");
                     break;
             }
         } else {
-            if ((isset($_SESSION['isLogin_Admin']) && $_SESSION['isLogin_Admin'] == true) || (isset($_SESSION['isLogin_Nhanvien']) && $_SESSION['isLogin_Nhanvien'] == true)) {
-                switch ($act) {
-                    case 'login':
-                        require_once("login/login.php");
-                        break;
-                    case 'account':
-                        require_once("login/my-account.php");
-                        break;
-                    default:
-                        require_once("login/login.php");
-                        break;
-                }
-            } else {
                 switch ($act) {
                     case 'login':
                         require_once("login/login.php");
@@ -38,8 +31,7 @@ switch ($act) {
                         break;
                 }
             }
-            break;
-        }
+        break;
     case "home":
         require_once "home/home.php";
         break;
@@ -55,6 +47,9 @@ switch ($act) {
             case 'checkout_complete':
                 require_once("checkout/checkout_complete.php");
                 break;
+            case 'order_history':
+                require_once("checkout/order_history.php");
+                break;
             default:
                 require_once("checkout/checkout.php");
                 break;
@@ -62,6 +57,41 @@ switch ($act) {
         break;
     case "product":
         require_once("product/product.php");
+        break;
+    case "product-review":
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            require_once("Controllers/ReviewControllers.php");
+            $controller = new ReviewController();
+            $controller->submitReview();
+            // Sau khi xử lý xong, redirect về trang product
+            $product_id = isset($_POST['id']) ? (int)$_POST['id'] : null;
+            header("Location: index.php?act=product&id=" . $product_id);
+            exit();
+        } else {
+            header("Location: index.php");
+            exit();
+        }
+        break;
+    case 'get-reviews':
+        $reviewController = new ReviewController();
+        $reviewController->getReviews();
+        break;
+    case 'handle-review-vote':
+        ob_clean();
+        header('Content-Type: application/json');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            require_once("Controllers/ReviewControllers.php");
+            $controller = new ReviewController();
+            $controller->handleVote();
+        } else {
+            echo json_encode(['error' => 'Method not allowed']);
+        }
+        exit();
+        break;
+    case 'get-user-votes':
+            require_once("Controllers/ReviewControllers.php");
+            $controller = new ReviewController();
+            $controller->getUserVotes();
         break;
     case "about":
         require_once("introduce/about.php");
@@ -72,11 +102,27 @@ switch ($act) {
     case "cart":
         require_once("cart/cart.php");
         break;
-    case "blog": 
-        require_once "blog/blog.php";
-        break;
-    case "blog_detail":
-        require_once "blog/blog_detail.php";
+    case "favorite":
+        $act = isset($_GET['xuli']) ? $_GET['xuli'] : "list";
+        require_once("Controllers/FavoriteController.php");
+        $controller = new FavoriteController();
+        switch ($act) {
+            case 'list':
+                require_once("favorite/list.php");
+                break;
+            case 'add':
+                $controller->add();
+                break;
+            case 'delete':
+                $controller->delete();
+                break;
+            case 'count':
+                $controller->count();
+                break;
+            default:
+                require_once("favorite/list.php");
+                break;
+        }
         break;
     default:
         require_once("error-404.php");

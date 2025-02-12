@@ -18,6 +18,7 @@ class LoginController
         $user_password = md5($_POST['user_password']);
         if (strpos($user_email, "'") != false) {
             $user_email = str_replace("'", "\'", $user_email);
+            
         }
         $this->login_model->login_action($user_email, $user_password);
         
@@ -26,6 +27,12 @@ class LoginController
     {
         $check1 = 0;
         $check2 = 0;
+        $check3 = 0;
+        
+        if (strlen($_POST['user_password']) < 8) {
+            $check3 = 1;
+        }
+        
         $data_check = $this->login_model->check_account();
         foreach ($data_check as $value) {
             if ($value['user_email'] == $_POST['user_email']) {
@@ -50,7 +57,7 @@ class LoginController
             }
         }
 
-        $this->login_model->dangky_action($data, $check1, $check2);
+        $this->login_model->dangky_action($data, $check1, $check2, $check3);
     }
     function dangxuat()
     {
@@ -58,44 +65,45 @@ class LoginController
     }
     function account()
     {
-       
-        $data = $this->login_model->account();
+
+        $user_email = $_SESSION['login']['user_email'];
+        $data = $this->login_model->account($user_email);
 
         require_once('Views/index.php');
     }
     function update()
     {
-
-        if (isset($_POST['Ho'])) {
+        $user_email = $_SESSION['login']['user_email'];
+        if (isset($_POST['user_name'])) {
+            // Thông tin từ bảng user
             $data = array(
-                'Ho' =>    $_POST['Ho'],
-                'Ten'  =>   $_POST['Ten'],
-                'GioiTinh' => $_POST['GioiTinh'],
-                'SDT' => $_POST['SĐT'],
-                'Email' =>    $_POST['Email'],
-                'DiaChi'  =>   $_POST['DiaChi'],
+                'user_name' => $_POST['user_name'],
+                'user_full_name' => $_POST['user_full_name'],
+                'user_phone' => $_POST['user_phone'],
             );
-            foreach ($data as $key => $value) {
-                if (strpos($value, "'") != false) {
-                    $value = str_replace("'", "\'", $value);
-                    $data[$key] = $value;
+
+            // Thông tin từ bảng address
+            $address_data = array(
+                'address_name' => $_POST['address_name'],
+                'address_city' => $_POST['address_city'],
+                'address_street' => $_POST['address_street']
+            );
+
+            // Xử lý ảnh đại diện
+            if (isset($_FILES['user_images']) && $_FILES['user_images']['error'] == 0) {
+                $target_dir = "uploaded/";
+                $user_images = $_FILES["user_images"]["name"];
+                $target_file = $target_dir . basename($user_images);
+                if (move_uploaded_file($_FILES["user_images"]["tmp_name"], $target_file)) {
+                    $data['user_images'] = $user_images; // Đường dẫn ảnh đại diện
                 }
             }
-            $this->login_model->update_account($data);
-        } else {
-            if ($_POST['MatKhauMoi'] == $_POST['MatKhauXN']) {
-                if (md5($_POST['MatKhau']) == $_SESSION['login']['MatKhau']) {
-                    $data = array(
-                        'MatKhau' => md5($_POST['MatKhauMoi']),
-                    );
-                    $this->login_model->update_account($data);
-                } else {
-                    setcookie('doimk', 'Mật khẩu không đúng', time() + 2);
-                }
-            } else {
-                setcookie('doimk', 'Mật khẩu mới không trùng nhau', time() + 2);
-            }
+
+            // Gọi hàm update từ model
+            $this->login_model->update_account($data, $address_data, $user_email);
         }
+
         header('location: ?act=taikhoan&xuli=account#doitk');
     }
+
 }

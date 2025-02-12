@@ -19,7 +19,7 @@ extract($data[0]);
         <div class="row">
             <div class="col-4">
                 <div class="text-center justify-content-center align-items-center div-avata">
-                    <img src="<?= BASE_URL?>/assets/upload/user_imgs/<?=$user_images?>"> <br>
+                    <img src="<?= BASE_URL?>/uploaded/<?=$user_images?>"> <br> <!-- /assets/upload/user_imgs/ bản không team -->
                 </div> 
             </div>
             <div class="col-8">

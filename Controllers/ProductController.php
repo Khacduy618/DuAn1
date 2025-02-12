@@ -13,6 +13,9 @@ class ProductController
     function list() {
         $id = isset($_GET["id"]) ? $_GET["id"] : 0;
         $data = $this->product_model->findById($id);
+        $detail = $this->product_model->getDetailById($id);
+        $related = $this->product_model->related_product($data['product_cat'], $data['product_id']);
         require_once('Views/index.php');
     }
+
 }

@@ -7,34 +7,67 @@
         <div class="col-6 col-md-4 col-lg-4 col-xl-3">
             <div class="product product-7 text-center">
                 <figure class="product-media">
-                    <span class="product-label label-new">New</span>
-                    <a href="?act=product&id=<?=$value['product_id']?>">
-                        <img src="uploaded/<?=$value['product_img']?>" alt="Product image" class="product-image">
+                <?php 
+                    // Kiểm tra sản phẩm có được tạo trong vòng 1 tháng không
+                    $created_date = strtotime($value['created_at']);
+                    $one_month_ago = strtotime('-1 month');
+                    if ($created_date >= $one_month_ago) { 
+                    ?>
+                        <span class="product-label label-new">New</span>
+                    <?php } ?>
+                    <a <?php if ($value['product_status'] != 0 && $value['product_count'] != 0) { ?> href="?act=product&id=<?=$value['product_id']?>"  <?php } ?> >
+                        <div class="product-image">
+                            <img src="uploaded/<?=$value['product_img']?>" alt="Product image" >
+                        </div>
                     </a>
-
-                    <div class="product-action-vertical">
-                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                wishlist</span></a>
-                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
-                            title="Quick view"><span>Quick view</span></a>
-                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                    </div><!-- End .product-action-vertical -->
+                    <?php if ($value['product_status'] == 1 && $value['product_count'] > 0) { ?>
+                        <?php if ($value['product_status'] == 1 && $value['product_count'] > 0) { 
+    $isFavorited = false;
+    if(isset($_SESSION['login'])) {
+        require_once 'Models/favorite.php';
+        $favorite = new Favorite();
+        $isFavorited = $favorite->isProductFavorited($_SESSION['login']['user_email'], $value['product_id']);
+    }
+?>
+    <div class="product-action-vertical">
+        <form action="index.php?act=favorite&xuli=<?= $isFavorited ? 'delete' : 'add' ?>" method="POST">
+            <input type="hidden" name="product_id" value="<?=$value['product_id']?>">
+            <?php if($isFavorited): ?>
+                <input type="hidden" name="favorite_id" value="<?=$favorite->findByUserAndProduct($_SESSION['login']['user_email'], $value['product_id'])['favorite_id']?>">
+            <?php endif; ?>
+            <button type="submit" class="btn-product-icon btn-wishlist <?= $isFavorited ? 'active' : '' ?>">
+                <span><?= $isFavorited ? 'Xóa khỏi yêu thích' : 'Thêm vào yêu thích' ?></span>
+            </button>
+        </form>
+    </div>
+<?php } ?>
 
                     <div class="product-action">
                         <a href="?act=cart&xuli=add&product_id=<?=$value['product_id']?>&quantity=1"
                             class="btn-product btn-cart"><span>add to cart</span></a>
                     </div><!-- End .product-action -->
+                    <?php } ?>
                 </figure><!-- End .product-media -->
 
                 <div class="product-body">
                     <div class="product-cat">
-                        <a href="#">Women</a>
+                        <a href="?act=shop&product_cat=<?=$value['category_id']?>"><?=$value['category_name']?></a>
                     </div><!-- End .product-cat -->
                     <h3 class="product-title"><a
-                            href="?act=product&id=<?=$value['product_id']?>"><?=$value['product_name']?></a></h3>
+                    <?php if ($value['product_status'] != 0 && $value['product_count'] != 0) { ?> href="?act=product&id=<?=$value['product_id']?>"  <?php } ?>><?=$value['product_name']?></a></h3>
                     <!-- End .product-title -->
+                    <?php if ($value['product_count'] == 0) { ?>
+                    <div class="outstock">
+                            <span class="outStockSpan">Out of Stock</span>
+                    </div><!-- End .product-nav -->
+                    <?php }else if($value['product_status']==0 || $value['product_count']==0){?>
+                        <div class="outstock">
+                            <span class="outStockSpan">Stop selling</span>
+                        </div><!-- End .product-nav -->
+                    <?php } else{?>
+                        
                     <div class="product-price">
-                        <?=$value['product_price']?>
+                        <?=number_format($value['product_price'],0,",",".")?> đ
                     </div><!-- End .product-price -->
                     <div class="ratings-container">
                         <div class="ratings">
@@ -42,19 +75,9 @@
                         </div><!-- End .ratings -->
                         <span class="ratings-text">( 2 Reviews )</span>
                     </div><!-- End .rating-container -->
-
-                    <div class="product-nav product-nav-thumbs">
-                        <a href="#" class="active">
-                            <img src="uploaded/product-4-thumb.jpg" alt="product desc">
-                        </a>
-                        <a href="#">
-                            <img src="uploaded/product-4-2-thumb.jpg" alt="product desc">
-                        </a>
-
-                        <a href="#">
-                            <img src="uploaded/product-4-3-thumb.jpg" alt="product desc">
-                        </a>
-                    </div><!-- End .product-nav -->
+                    <?php } ?>
+                    
+                    
                 </div><!-- End .product-body -->
             </div><!-- End .product -->
         </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
@@ -129,3 +152,22 @@ if ($orderdata['totalRecord'] > 12) {
     </ul>
 </nav>
 <?php } ?>
+<style>
+.btn-wishlist {
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    border-radius: 50%; 
+    border: 0.1rem solid #d7d7d7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.btn-wishlist.active {
+    color: #fff; 
+    background-color: #dc3545; 
+    border-color: #dc3545; 
+}
+</style>

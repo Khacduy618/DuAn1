@@ -36,40 +36,11 @@
         <div class="product-details-top">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="product-gallery product-gallery-vertical">
-                        <div class="row">
+                    <div class="d-flex justify-content-center align-items-center">
                             <figure class="product-main-image">
                                 <img id="product-zoom" src="uploaded/<?=$data['product_img']?>"
                                     data-zoom-image="uploaded/<?=$data['product_img']?>" alt="product image">
-
-                                <a href="#" id="btn-product-gallery" class="btn-product-gallery">
-                                    <i class="icon-arrows"></i>
-                                </a>
                             </figure><!-- End .product-main-image -->
-
-                            <div id="product-zoom-gallery" class="product-image-gallery">
-                                <a class="product-gallery-item active" href="#"
-                                    data-image="uploaded/<?=$data['product_img']?>"
-                                    data-zoom-image="uploaded/<?=$data['product_img']?>">
-                                    <img src="uploaded/<?=$data['product_img']?>" alt="product side">
-                                </a>
-
-                                <a class="product-gallery-item" href="#" data-image="uploaded/<?=$data['product_img']?>"
-                                    data-zoom-image="uploaded/<?=$data['product_img']?>">
-                                    <img src="uploaded/<?=$data['product_img']?>" alt="product cross">
-                                </a>
-
-                                <a class="product-gallery-item" href="#" data-image="uploaded/<?=$data['product_img']?>"
-                                    data-zoom-image="uploaded/<?=$data['product_img']?>">
-                                    <img src="uploaded/<?=$data['product_img']?>" alt="product with model">
-                                </a>
-
-                                <a class="product-gallery-item" href="#" data-image="uploaded/<?=$data['product_img']?>"
-                                    data-zoom-image="uploaded/<?=$data['product_img']?>">
-                                    <img src="uploaded/<?=$data['product_img']?>" alt="product back">
-                                </a>
-                            </div><!-- End .product-image-gallery -->
-                        </div><!-- End .row -->
                     </div><!-- End .product-gallery -->
                 </div><!-- End .col-md-6 -->
 
@@ -85,7 +56,7 @@
                         </div><!-- End .rating-container -->
 
                         <div class="product-price">
-                            $84.00
+                            <?=number_format($data['product_price'],0,",",".")?> đ
                         </div><!-- End .product-price -->
 
                         <div class="product-content">
@@ -93,33 +64,6 @@
                                 eu augue. Morbi purus libero, faucibus adipiscing. Sed lectus. </p>
                         </div><!-- End .product-content -->
 
-                        <div class="details-filter-row details-row-size">
-                            <label>Color:</label>
-
-                            <div class="product-nav product-nav-thumbs">
-                                <a href="#" class="active">
-                                    <img src="uploaded/<?=$data['product_img']?>" alt="product desc">
-                                </a>
-                                <a href="#">
-                                    <img src="uploaded/<?=$data['product_img']?>" alt="product desc">
-                                </a>
-                            </div><!-- End .product-nav -->
-                        </div><!-- End .details-filter-row -->
-
-                        <div class="details-filter-row details-row-size">
-                            <label for="size">Size:</label>
-                            <div class="select-custom">
-                                <select name="size" id="size" class="form-control">
-                                    <option value="#" selected="selected">Select a size</option>
-                                    <option value="s">Small</option>
-                                    <option value="m">Medium</option>
-                                    <option value="l">Large</option>
-                                    <option value="xl">Extra Large</option>
-                                </select>
-                            </div><!-- End .select-custom -->
-
-                            <a href="#" class="size-guide"><i class="icon-th-list"></i>size guide</a>
-                        </div><!-- End .details-filter-row -->
                         <form action="index.php" method="GET">
                             <div class="details-filter-row details-row-size">
                                 <label for="qty">Qty:</label>
@@ -138,18 +82,10 @@
                                 <div class="details-action-wrapper">
                                     <a href="#" class="btn-product btn-wishlist" title="Wishlist"><span>Add to
                                             Wishlist</span></a>
-                                    <a href="#" class="btn-product btn-compare" title="Compare"><span>Add to
-                                            Compare</span></a>
                                 </div><!-- End .details-action-wrapper -->
                             </div><!-- End .product-details-action -->
                         </form>
                         <div class="product-details-footer">
-                            <div class="product-cat">
-                                <span>Category:</span>
-                                <a href="#">Women</a>,
-                                <a href="#">Dresses</a>,
-                                <a href="#">Yellow</a>
-                            </div><!-- End .product-cat -->
 
                             <div class="social-icons social-icons-sm">
                                 <span class="social-label">Share:</span>

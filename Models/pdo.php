@@ -1,18 +1,25 @@
-<?php 
-   function pdo_get_connection()
-   {
-       $dburl = "mysql:host=s103d190-u2.interdata.vn;port=3306;dbname=Tede_Shop;charset=utf8";
-       $username = 'dichvun3';
-       $password = '3VwORS+87-jl4d'; 
-       try {
-           $conn = new PDO($dburl, $username, $password);
-           $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-           return $conn;
-       } catch (PDOException $e) {
-           echo 'Connection failed: ' . $e->getMessage();
-           return null; 
-       }
-   }  
+<?php
+function pdo_get_connection()
+{
+    static $conn = null;
+    if($conn === null){
+        $dburl = "mysql:host=s103d190-u2.interdata.vn;port=3306;dbname=Tede_Shop;charset=utf8";
+        $username = 'dichvun3';
+        $password = '3VwORS+87-jl4d';
+        try {
+            $conn = new PDO($dburl, $username, $password, [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_EMULATE_PREPARES => false,
+                PDO::ATTR_PERSISTENT => true, // Persistent connection
+            ]);
+        } catch (PDOException $e) {
+            error_log('Database connection failed: ' . $e->getMessage());
+            file_put_contents('db_errors.log', date('Y-m-d H:i:s') . " - " . $e->getMessage() . PHP_EOL, FILE_APPEND);
+            return null;
+        }
+    }
+    return $conn;
+}
    function pdo_query($sql, ...$args)
    {
        try {
@@ -57,3 +64,18 @@
            unset($conn);
        }
    }
+   function pdo_execute_id($sql){
+    $sql_args = array_slice(func_get_args(), 1);
+    try{
+        $conn = pdo_get_connection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($sql_args);
+        return $conn->lastInsertId();
+    }
+    catch(PDOException $e){
+        throw $e;
+    }
+    finally{
+        unset($conn);
+    }
+}

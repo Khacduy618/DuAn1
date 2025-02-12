@@ -12,7 +12,80 @@ body {
   position: relative;
   width: 100%;
 }
+.review-container {
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0,0,0,.05);
+}
 
+.page-title {
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.product-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 5px;
+}
+
+.table {
+  margin-bottom: 20px;
+}
+
+.thead-dark th {
+  background-color: #343a40;
+  color: white;
+  border-color: #454d55;
+}
+
+.rating {
+  color: #ffc107;
+}
+
+.rating .checked {
+  color: #ffc107;
+}
+
+.rating .la-star:not(.checked) {
+  color: #e4e5e9;
+}
+
+.btn-delete-selected {
+  padding: 8px 15px;
+}
+
+.btn-back {
+  margin-top: 20px;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+  transition: all 0.3s;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border: none;
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  transform: translateY(-1px);
+}
 
 .graphBoxTK td img {
   width: 100%;
@@ -20,11 +93,14 @@ body {
 }
 
 /* === search === */
-.advance{
-    display: block;
+.advance {
+  display: block;
 }
 
-
+a {
+  text-decoration: none !important;
+  color: #000000;
+}
 
 /* =============== sidebar ================ */
 
@@ -132,7 +208,7 @@ body {
 /* =============== navbar ================ */
 .navbar {
   position: fixed;
-  width: 230px;
+  width: 200px;
   height: 100%;
   background: var(--primary);
   border-left: 10px solid var(--primary);
@@ -165,7 +241,7 @@ body {
 }
 
 .navbar ul li:nth-child(1) {
-  margin-top: 10px;
+  margin-top: 40px;
   margin-bottom: 30px;
   pointer-events: none;
 }
@@ -246,8 +322,8 @@ body {
 /* ===================== main ===================== */
 .main {
   position: absolute;
-  width: calc(100% - 220px);
-  left: 240px;
+  width: calc(100% - 200px);
+  left: 200px;
   min-height: 100vh;
   background: var(--white);
   transition: 0.5s;
@@ -303,6 +379,16 @@ body {
 
 .row {
   --bs-gutter-x: 0;
+}
+
+table td .img {
+  width: 80px !important;
+
+}
+
+.recent table .img img {
+  max-width: 100%;
+  object-fit: cover;
 }
 
 .search label ion-icon {
@@ -400,20 +486,18 @@ body {
   border-radius: 20px;
 }
 
-/* ================== Order Details List ============== */
 .details {
   position: relative;
   width: 100%;
   padding: 20px;
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 30px;
   /* margin-top: 10px; */
 }
 
-.details .recentOrders {
+.details .recent {
   position: relative;
-  min-height: 500px;
   background: var(--white);
   padding: 20px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
@@ -446,38 +530,34 @@ body {
   margin-top: 10px;
 }
 
+.details table.all {
+  display: none;
+}
+
+.details table.all-table {
+  display: none;
+}
+
 .details table thead td {
   font-weight: 600;
 }
 
-.details .recentOrders table tr {
+.details .recent table tr {
   color: var(--black1);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.details .recentOrders table tr:last-child {
+.details .recent table tr:last-child {
   border-bottom: none;
 }
 
-.details .recentOrders table tbody tr:hover {
+.details .recent table tbody tr:hover {
   background: var(--primary);
   color: var(--white);
 }
 
-.details .recentOrders table tr td {
+.details .recent table tr td {
   padding: 10px;
-}
-
-.details .recentOrders table tr td:last-child {
-  text-align: end;
-}
-
-.details .recentOrders table tr td:nth-child(2) {
-  text-align: end;
-}
-
-.details .recentOrders table tr td:nth-child(3) {
-  text-align: center;
 }
 
 .status.delivered {
@@ -516,67 +596,40 @@ body {
   font-weight: 500;
 }
 
-.recentCustomers {
-  position: relative;
-  min-height: 500px;
-  padding: 20px;
-  background: var(--white);
-  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-  border-radius: 20px;
+.frmcontent .table-responsive {
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 1rem;
+  box-shadow: 0 5px 8px rgba(73, 72, 72, 0.3);
+  background-color: #fff;
 }
 
-.recentCustomers .imgBx {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  border-radius: 50px;
-  overflow: hidden;
+.button-item {
+  background: none;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  margin-right: 5px;
 }
 
-.recentCustomers .imgBx img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.table-responsive .hinhanh{
+.table-responsive .hinhanh {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
-.table-striped.p-detail{
+
+.table-striped.p-detail {
   width: 100%;
 }
-tbody.product-detail td:nth-child(1),tbody.product-detail td:nth-child(3) {
+
+tbody.product-detail td:nth-child(1),
+tbody.product-detail td:nth-child(3) {
   font-weight: bold;
 }
-tbody.product-detail td{
+
+tbody.product-detail td {
   padding: 10px;
 }
-.recentCustomers table tr td {
-  padding: 12px 10px;
-}
 
-.recentCustomers table tr td h4 {
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.2rem;
-}
-
-.recentCustomers table tr td h4 span {
-  font-size: 14px;
-  color: var(--black2);
-}
-
-.recentCustomers table tr:hover {
-  background: var(--primary);
-  color: var(--white);
-}
-
-.recentCustomers table tr:hover td h4 span {
-  color: var(--white);
-}
 
 /* ====================== Thống kê Design ========================== */
 
@@ -620,10 +673,11 @@ tbody.product-detail td{
 
 /* ====================== Responsive Design ========================== */
 @media (max-width: 991px) {
-  .table-responsive .hinhanh{
+  .table-responsive .hinhanh {
     grid-template-columns: 1fr 1fr;
     height: auto;
   }
+
   .graphBox {
     grid-template-columns: 1fr;
     height: auto;
@@ -632,15 +686,18 @@ tbody.product-detail td{
   .graphBoxTK1 {
     grid-template-columns: 1fr;
   }
-    .action-exc{
-        display: grid;
-        grid-auto-columns: 1fr;
-        gap:10px;
-    }
-    .action-exc a.col-2{
-        width: 200px;
 
-    }
+  .action-exc {
+    display: grid;
+    grid-auto-columns: 1fr;
+    gap: 10px;
+  }
+
+  .action-exc a.col-2 {
+    width: 200px;
+
+  }
+
   .navbar {
     left: -300px;
   }
@@ -669,7 +726,7 @@ tbody.product-detail td{
     grid-template-columns: 1fr;
   }
 
-  .recentOrders {
+  .recent {
     overflow-x: auto;
   }
 
@@ -713,11 +770,13 @@ tbody.product-detail td{
     left: initial;
   }
 }
-form.example{
-    position: relative;
-    display: block;
-    margin-bottom: 50px;
+
+form.example {
+  position: relative;
+  display: block;
+  margin-bottom: 50px;
 }
+
 form.example input[type=text] {
   position: absolute;
   padding: 10px;
@@ -728,6 +787,7 @@ form.example input[type=text] {
   border-radius: 10px;
   background: #f1f1f1;
 }
+
 form.example button {
   position: absolute;
   right: 5px;
@@ -741,4 +801,42 @@ form.example::after {
   content: "";
   clear: both;
   display: table;
+}
+/* 
+.product-details-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+} */
+
+.product-specs {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.specs-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.specs-table tr {
+  border-bottom: 1px solid #eee;
+}
+
+.specs-table td {
+  padding: 12px;
+}
+
+.specs-table td:first-child {
+  font-weight: bold;
+  width: 30%;
+  color: #666;
+}
+
+.error-message {
+  text-align: center;
+  color: #dc3545;
+  padding: 20px;
 }

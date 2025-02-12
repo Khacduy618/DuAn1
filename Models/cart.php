@@ -35,7 +35,7 @@ class Cart extends Model
         $updated = pdo_execute($updateQuantitySql, $quantity, $cartId, $productId);
 
         if (!$updated) {
-            throw new Exception("Cập nhật không thành công!");
+            throw new Exception("Update quantity failed!");
         }
 
         return $updated;
@@ -44,7 +44,7 @@ class Cart extends Model
             $inserted = pdo_execute($insertProductSql, $cartId, $productId, $quantity);
 
             if (!$inserted) {
-                throw new Exception("Thêm sản phẩm mới thất bại!");
+                throw new Exception("Insert product failed!");
             }
 
             return $inserted;
@@ -60,7 +60,7 @@ class Cart extends Model
         return pdo_query($sql, $userEmail);
     }
 
-    public function updateQuantity($userEmail, $productId, $quantity): int
+    public function updateQuantity($userEmail, $productId, $quantity)
     {
         $sql = "UPDATE cart_item 
                 SET quantity = ? 
@@ -69,15 +69,51 @@ class Cart extends Model
          pdo_execute($sql, $quantity, $userEmail, $productId);
     }
 
-    public function removeFromCart($userEmail, $productId): int
+    public function removeFromCart($userEmail, $productId)
     {
         $sql = "DELETE FROM cart_item WHERE cart_id = (SELECT cart_id FROM cart WHERE cart_userEmail = ?) AND pro_id = ?";
          pdo_execute($sql, $userEmail, $productId);
     }
 
-    public function clearCart($userEmail): int
+    public function clearCart($userEmail)
     {
         $sql = "DELETE FROM cart_item WHERE cart_id = (SELECT cart_id FROM cart WHERE cart_userEmail = ?)";
          pdo_execute($sql, $userEmail);
+    }
+    public function coupon($name){
+        $sql = "SELECT * FROM coupons WHERE coupon_name = ? AND coupon_count > 0 AND coupon_expiredate >= NOW()";
+        return pdo_query_one($sql, $name);
+       }
+    
+       public function coupon_update( $coupon_id){
+          $sql = "UPDATE coupons SET coupon_count = coupon_count - 1 WHERE coupon_id =?";
+          return pdo_execute($sql, $coupon_id);
+       }   
+
+    public function deleteCartItemById($cartItemId) {
+        $sql = "DELETE FROM cart_item WHERE cart_item_id = ?";
+        return pdo_execute($sql, $cartItemId);
+    }
+
+    public function deleteSelectedCartItems($userEmail, $selectedItemIds) {
+        // Kiểm tra nếu $selectedItemIds không phải là mảng hoặc rỗng
+        if (!is_array($selectedItemIds) || empty($selectedItemIds)) {
+            return false;
+        }
+
+        $placeholders = str_repeat('?,', count($selectedItemIds) - 1) . '?';
+        $sql = "DELETE FROM cart_item 
+                WHERE cart_id = (SELECT cart_id FROM cart WHERE cart_userEmail = ?) 
+                AND cart_item_id IN ($placeholders)";
+        
+        // Thêm userEmail vào đầu mảng params
+        array_unshift($selectedItemIds, $userEmail);
+        
+        return pdo_execute($sql, ...$selectedItemIds);
+    }
+
+    public function coupon_by_id($coupon_id) {
+        $sql = "SELECT * FROM coupons WHERE coupon_id = ?";
+        return pdo_query_one($sql, $coupon_id);
     }
 }
