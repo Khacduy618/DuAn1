@@ -393,7 +393,8 @@
                     </div><!-- End .deal-top -->
 
                     <div class="deal-content">
-                        <h3 class="product-title"><a href="?act=product&id=<?= $item['product_id'] ?>">Home Smart Speaker
+                        <h3 class="product-title"><a href="?act=product&id=<?= $item['product_id'] ?>">Home Smart
+                                Speaker
                                 with Google
                                 Assistant</a></h3><!-- End .product-title -->
 
@@ -402,8 +403,8 @@
                             <span class="old-price">Was $150.99</span>
                         </div><!-- End .product-price -->
 
-                        <a href="?act=product&id=<?= $item['product_id'] ?>" class="btn btn-link"><span>Shop Now</span><i
-                                class="icon-long-arrow-right"></i></a>
+                        <a href="?act=product&id=<?= $item['product_id'] ?>" class="btn btn-link"><span>Shop
+                                Now</span><i class="icon-long-arrow-right"></i></a>
                     </div><!-- End .deal-content -->
 
                     <div class="deal-bottom">
@@ -476,7 +477,8 @@
                                                         <?= number_format($item['product_price'] * (1 - $item['product_discount'] / 100), 0, ",", ".") ?>
                                                         đ
                                                     </span>
-                                                    <span class="old-price"><?= number_format($item['product_price'], 0, ",", ".") ?>
+                                                    <span
+                                                        class="old-price"><?= number_format($item['product_price'], 0, ",", ".") ?>
                                                         đ</span>
                                                 </div><!-- End .product-price -->
                                                 <div class="ratings-container">
@@ -788,7 +790,7 @@
                                     </div><!-- End .ratings-container -->
                                 </div><!-- End .product-body -->
                             </div><!-- End .product -->
-                        <?php
+                            <?php
                         }
                     }
                 }
@@ -889,7 +891,7 @@
                             <?php
                         }
                         ?>
-                    <?php
+                        <?php
                     }
                 } else {
                     echo "No data available";
@@ -989,7 +991,7 @@
                             <?php
                         }
                         ?>
-                    <?php
+                        <?php
                     }
                 } else {
                     echo "No data available";
