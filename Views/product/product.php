@@ -1,5 +1,38 @@
+<!-- filepath: c:\xampp\htdocs\DuAn1 2\DuAn1\Views\product\product.php -->
 <?php
-    if($data != NULL){
+if($data != NULL){
+    require_once "Models/reviews.php";
+    $reviewModel = new Review();
+    $product_id = $data['product_id']; 
+    
+    // Sử dụng phương thức giống như trong ShopController để lấy dữ liệu
+    $allReviews = $reviewModel->getAllProductReviews();
+    
+    // Xử lý dữ liệu theo cách tương tự như trong trang list-products
+    $reviewCount = 0;
+    $rating = 0;
+    
+    foreach ($allReviews as $review) {
+        if ($review['product_id'] == $product_id) {
+            if (!isset($reviewCount)) {
+                $reviewCount = 0;
+            }
+            $reviewCount++;
+            
+            if (!isset($ratingSum)) {
+                $ratingSum = 0;
+            }
+            $ratingSum += $review['rating'];
+        }
+    }
+    
+    // Tính trung bình điểm đánh giá - không làm tròn để giữ nhất quán với list-products
+    if ($reviewCount > 0) {
+        $rating = $ratingSum / $reviewCount;
+    }
+    
+    // Debug - có thể xóa sau khi sửa xong
+    echo "<!-- Rating: $rating, Count: $reviewCount -->";
 ?>
 <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
     <div class="container d-flex align-items-center">
@@ -50,11 +83,11 @@
 
                         <div class="ratings-container">
                             <div class="ratings">
-                                <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
-                            </div><!-- End .ratings -->
-                            <a class="ratings-text" href="#product-review-link" id="review-link">( 2 Reviews )</a>
-                        </div><!-- End .rating-container -->
-
+                                <!-- Sử dụng công thức giống như trong list-products.php -->
+                                <div class="ratings-val" style="width: <?= ($rating * 20) ?>%;"></div>
+                            </div>
+                            <span class="ratings-text">( <?= $reviewCount ?> Reviews )</span>
+                        </div>
                         <div class="product-price">
                             <?=number_format($data['product_price'],0,",",".")?> đ
                         </div><!-- End .product-price -->

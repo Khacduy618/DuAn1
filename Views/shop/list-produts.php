@@ -1,9 +1,20 @@
 <div class="products mb-3">
     <div class="row justify-content-center">
         <?php 
-			if(isset($data) && $data != NULL){
-				foreach ($data as $value) {
-		?>
+        if(isset($data) && $data != NULL){
+            foreach ($data as $value) {
+                // Kiểm tra và gán giá trị mặc định nếu không có đánh giá
+                $reviewCount = 0;
+                $rating = 0;
+                
+                if (isset($reviewsCount[$value['product_id']])) {
+                    $reviewCount = $reviewsCount[$value['product_id']];
+                }
+                
+                if (isset($ratings[$value['product_id']])) {
+                    $rating = $ratings[$value['product_id']];
+                }
+        ?>
         <div class="col-6 col-md-4 col-lg-4 col-xl-3">
             <div class="product product-7 text-center">
                 <figure class="product-media">
@@ -69,12 +80,15 @@
                     <div class="product-price">
                         <?=number_format($value['product_price'],0,",",".")?> đ
                     </div><!-- End .product-price -->
-                    <div class="ratings-container">
+                   <!-- filepath: c:\xampp\htdocs\DuAn1 2\DuAn1\Views\shop\list-produts.php -->
+                   <div class="ratings-container">
                         <div class="ratings">
-                            <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
+                                <div class="ratings-val" style="width: <?= ($rating * 20) ?>%;"></div>
+                                <!-- End .ratings-val -->
                         </div><!-- End .ratings -->
-                        <span class="ratings-text">( 2 Reviews )</span>
-                    </div><!-- End .rating-container -->
+                        <span class="ratings-text">( <?= $reviewCount ?> Reviews )</span>
+                     </div><!-- End .ratings-container -->
+
                     <?php } ?>
                     
                     
