@@ -2,14 +2,34 @@
 session_start();
 ob_start();
 
-define("UPLOAD_DIR","http://localhost/DuAn1/uploaded/");
+define("UPLOAD_DIR", "http://localhost/DuAn1/uploaded/");
 
-define("BASE_URL","http://localhost/DuAn1/");
+define("BASE_URL", "http://localhost/DuAn1/");
 
 $mod = isset($_GET['act']) ? $_GET['act'] : "home";
 
+require __DIR__ . '/vendor/autoload.php';
 
 switch ($mod) {
+    case 'forgot_password':
+        $xuli = isset($_GET['xuli']) ? $_GET['xuli'] : 'forgot_password';
+        require_once 'Controllers/AuthController.php';
+        $controller_obj = new AuthController();
+        switch ($xuli) {
+            case 'reset_pass':
+                $controller_obj->showForgotPassword();
+                break;
+            case 'send_reset_link':
+                $controller_obj->sendResetLink();
+                break;
+            case 'reset_password':
+                $controller_obj->resetPassword();
+                break;
+            default:
+                $controller_obj->showForgotPassword();
+                break;
+        }
+        break;
     case 'home':
         require_once 'Controllers/HomeController.php';
         $controller_obj = new HomeController();
@@ -36,22 +56,22 @@ switch ($mod) {
             }
             break;
         } else {
-                switch ($act) {
-                    case 'login':
-                        $controller_obj->login();
-                        break;
-                    case 'dangnhap':
-                        $controller_obj->login_action();
-                        break;
-                    case 'dangky':
-                        $controller_obj->dangky();
-                        break;
-                    default:
-                        $controller_obj->login();
-                        break;
-                }
-                break;
+            switch ($act) {
+                case 'login':
+                    $controller_obj->login();
+                    break;
+                case 'dangnhap':
+                    $controller_obj->login_action();
+                    break;
+                case 'dangky':
+                    $controller_obj->dangky();
+                    break;
+                default:
+                    $controller_obj->login();
+                    break;
             }
+            break;
+        }
     case 'shop':
         require_once('Controllers/ShopController.php');
         $controller_obj = new ShopController();
@@ -90,7 +110,7 @@ switch ($mod) {
                 break;
         }
         break;
-    
+
     case 'googleCallBack':
         //Client ID 923806569998-96n53k9bp5832dpnvu97bobigosk5h09.apps.googleusercontent.com
         //Client secret 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
@@ -100,51 +120,51 @@ switch ($mod) {
         //DIR ('vendor/google/apiclient-services/src')
         //DIR ('libs/credentials.json') key cua tui á mấy bro nhớ xóa kia lên hosting
         //google_id 114374951914294437080
-        require __DIR__ . '/vendor/autoload.php';
+
 
         try {
             $client = new Google\Client();
-            
+
             // Cấu hình cơ bản
             $client->setClientId('923806569998-96n53k9bp5832dpnvu97bobigosk5h09.apps.googleusercontent.com');
             $client->setClientSecret('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');
             $client->setRedirectUri('http://localhost/DuAn1/?act=googleCallBack');
-            
+
             // Scope cơ bản
             $client->addScope('https://www.googleapis.com/auth/userinfo.email');
             $client->addScope('https://www.googleapis.com/auth/userinfo.profile');
-            
+
             if (isset($_GET['code'])) {
                 $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
                 $client->setAccessToken($token);
-                
+
                 $oauth2 = new Google\Service\Oauth2($client);
                 $userInfo = $oauth2->userinfo->get();
-                
+
                 // Lấy thông tin cần thiết
                 $google_id = $userInfo->id;
                 $email = $userInfo->email;
                 $name = $userInfo->givenName;
-                $user_full_name = $userInfo->familyName.' '.$userInfo->givenName;
+                $user_full_name = $userInfo->familyName . ' ' . $userInfo->givenName;
                 $picture = $userInfo->picture;
-                
+
                 // Kiểm tra xem email đã tồn tại trong DB chưa
                 require_once('Models/login.php');
                 $loginModel = new Login();
                 $user = $loginModel->checkEmail($email);
-                if(isset($user)) {
+                if (isset($user)) {
                     // Nếu email đã tồn tại, kiểm tra role và đăng nhập
-                    if($user['user_role'] == 1) {
+                    if ($user['user_role'] == 1) {
                         $_SESSION['isLogin_Admin'] = true;
                         $_SESSION['login'] = $user;
                         header('Location: /DuAn1/Admin');
                         exit();
-                    } else if($user['user_role'] >= 2) {
+                    } else if ($user['user_role'] >= 2) {
                         $_SESSION['isLogin_Nhanvien'] = true;
                         $_SESSION['login'] = $user;
                         header('Location: /DuAn1/Admin');
                         exit();
-                        
+
                     } else {
                         $_SESSION['isLogin'] = true;
                         $_SESSION['login'] = $user;
@@ -170,7 +190,7 @@ switch ($mod) {
                         $data['user_password']
                     );
 
-                    if($user_id) {
+                    if ($user_id) {
                         $_SESSION['isLogin'] = true;
                         $_SESSION['login'] = $loginModel->checkEmail($email);
                         header('Location: ?act=home');
@@ -184,7 +204,7 @@ switch ($mod) {
                 header('Location: ' . $authUrl);
                 exit;
             }
-            
+
         } catch (Exception $e) {
             echo "Lỗi: " . $e->getMessage();
         }
@@ -214,21 +234,21 @@ switch ($mod) {
                 break;
         }
         break;
-    case 'blog': 
+    case 'blog':
         require_once('Controllers/BlogController.php');
-        $controller_obj = new BlogController() ;
+        $controller_obj = new BlogController();
         $controller_obj->Blog_View();
-        break; 
+        break;
     case 'blog_detail':
         require_once('Controllers/BlogController.php');
-        $controller_obj = new BlogController() ;
+        $controller_obj = new BlogController();
         $controller_obj->Blog_Detail();
         break;
     case 'comment':
         require_once('Controllers/CommentController.php');
         $controller_obj = new commentControlller();
-        $controller_obj->comment_exc(); 
-        break; 
+        $controller_obj->comment_exc();
+        break;
     case 'favorite':
         require_once('Controllers/FavoriteController.php');
         $controller_obj = new FavoriteController();
@@ -248,8 +268,8 @@ switch ($mod) {
                 $controller_obj->list();
                 require_once('Views/index.php');
                 break;
-            }
-            break;  
+        }
+        break;
     default:
         require_once 'Controllers/HomeController.php';
         $controller_obj = new HomeController();

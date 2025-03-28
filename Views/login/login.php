@@ -69,7 +69,7 @@
                                     <label class="custom-control-label" for="signin-remember">Remember
                                         Me</label>
                                 </div>
-                                <a href="index.php?controller=account&action=forgotPassword" class="forgot-link">Forgot
+                                <a href="?act=forgot_password&xuli=reset_pass" class="forgot-link">Forgot
                                     Your Password?</a>
                             </div>
                         </form>

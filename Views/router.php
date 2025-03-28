@@ -1,6 +1,20 @@
 <?php
 $mod = isset($_GET['act']) ? $_GET['act'] : "home";
 switch ($mod) {
+    case "forgot_password":
+        $xuli = isset($_GET['xuli']) ? $_GET['xuli'] : "reset_pass";
+        switch ($xuli) {
+            case "reset_pass":
+                require_once "forgot_password/reset_pass.php";
+                break;
+            case "reset_form":
+                require_once "forgot_password/reset_form.php";
+                break;
+            default:
+                require_once "forgot_password/reset_pass.php";
+                break;
+        }
+        break;
     case "blog": 
         require_once "Views/blog/blog.php";
         break;
