@@ -3,9 +3,9 @@ function pdo_get_connection()
 {
     static $conn = null;
     if($conn === null){
-        $dburl = "mysql:host=localhost;port=3306;dbname=Tede_Shop;charset=utf8";
-        $username = 'root';
-        $password = '';
+        $dburl = "mysql:host=s103d190-u2.interdata.vn;port=3306;dbname=Tede_Shop;charset=utf8";
+        $username = 'dichvun4';
+        $password = 'O(8#0bYJwMi5q8';
         try {
             $conn = new PDO($dburl, $username, $password, [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
