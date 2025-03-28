@@ -26,8 +26,9 @@ class AuthController
 
         // Kiểm tra email có tồn tại trong hệ thống
         if (!$this->authModel->checkEmailExists($email)) {
-            echo "Email không tồn tại trong hệ thống!";
-            return;
+            $_SESSION['error'] = "Email không tồn tại trong hệ thống!";
+            header("Location: index.php?act=forgot_password&xuli=reset_pass");
+            exit();
         }
 
         // Tạo token và lưu vào cơ sở dữ liệu
@@ -35,15 +36,18 @@ class AuthController
         $this->authModel->storeResetToken($email, $token);
 
         // Tạo liên kết đặt lại mật khẩu
-        $resetLink = "https://tedeshopplus.kesug.com/?mod=auth&act=resetPasswordForm&token=$token";
+        $resetLink = "https://localhost/?act=forgot_password&xuli=reset_form&token=$token";
         $subject = "Đặt lại mật khẩu";
         $body = "Nhấn vào liên kết sau để đặt lại mật khẩu của bạn: <a href='$resetLink'>$resetLink</a>";
 
         if ($this->mailService->sendEmail($email, $subject, $body)) {
-            echo "Đã gửi email đặt lại mật khẩu, vui lòng kiểm tra email của bạn.";
+            $_SESSION['success'] = "Đã gửi email đặt lại mật khẩu, vui lòng kiểm tra email của bạn.";
+            header("Location: index.php?act=forgot_password&xuli=reset_pass");
         } else {
-            echo "Không thể gửi email, vui lòng thử lại.";
+            $_SESSION['error'] = "Không thể gửi email, vui lòng thử lại.";
+            header("Location: index.php?act=forgot_password&xuli=reset_pass");
         }
+        exit();
     }
 
     // Hiển thị form đặt lại mật khẩu
@@ -53,10 +57,11 @@ class AuthController
 
         // Kiểm tra token hợp lệ
         if (!$this->authModel->isValidToken($token)) {
-            echo "Liên kết không hợp lệ hoặc đã hết hạn!";
-            return;
+            $_SESSION['error'] = "Liên kết không hợp lệ hoặc đã hết hạn!";
+            header("Location: index.php?act=forgot_password&xuli=reset_pass");
+            exit();
         }
-
+        $data['token'] = $token;
         require_once("Views/index.php");
     }
 
@@ -64,7 +69,9 @@ class AuthController
     public function resetPassword()
     {
         $token = $_POST['token'] ?? null;
-        $newPassword = $_POST['password'] ?? null;
+        $password = $_POST['password'] ?? null;
+        $confirm_password = $_POST['confirm_password'] ?? null;
+        // $newPassword = $_POST['password'] ?? null;
 
         // Cập nhật mật khẩu mới
         if ($this->authModel->updatePassword($token, $newPassword)) {
@@ -72,5 +79,30 @@ class AuthController
         } else {
             echo "Đặt lại mật khẩu thất bại!";
         }
+
+        // Kiểm tra token hợp lệ
+        if (!$this->authModel->isValidToken($token)) {
+            $_SESSION['error'] = "Liên kết không hợp lệ hoặc đã hết hạn!";
+            header("Location: index.php?act=forgot_password&xuli=reset_pass");
+            exit();
+        }
+
+        // Kiểm tra mật khẩu và xác nhận mật khẩu
+        if ($password !== $confirm_password) {
+            $_SESSION['error'] = "Mật khẩu và xác nhận mật khẩu không khớp!";
+            header("Location: index.php?act=forgot_password&xuli=reset_form&token=$token");
+            exit();
+        }
+
+        // Cập nhật mật khẩu mới
+        if ($this->authModel->updatePassword($token, $password)) {
+            $_SESSION['success'] = "Đặt lại mật khẩu thành công! Vui lòng đăng nhập với mật khẩu mới.";
+            header("Location: index.php?act=taikhoan&xuli=login");
+        } else {
+            $_SESSION['error'] = "Đặt lại mật khẩu thất bại!";
+            header("Location: index.php?act=forgot_password&xuli=reset_form&token=$token");
+        }
+        exit();
+    
     }
 }

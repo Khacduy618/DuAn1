@@ -30,17 +30,11 @@ class MailService
     public function sendEmail($toEmail, $subject, $body)
     {
         try {
-            // Người nhận
+            $this->mail->clearAddresses();
             $this->mail->addAddress($toEmail);
-
-            // Nội dung email
-            $this->mail->isHTML(true);
             $this->mail->Subject = $subject;
             $this->mail->Body    = $body;
-
-            // Gửi email
-            $this->mail->send();
-            return true;
+            return $this->mail->send();
         } catch (Exception $e) {
             error_log("Không thể gửi email. Lỗi: {$this->mail->ErrorInfo}");
             return false;

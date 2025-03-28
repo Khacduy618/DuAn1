@@ -11,8 +11,9 @@ class AuthModel extends Model
 
     public function storeResetToken($email, $token)
     {
-        $query = "UPDATE user SET reset_token = ?, token_expiry = NOW() + INTERVAL 1 HOUR WHERE user_email = ?";
-        pdo_execute($query, $token, $email);
+        $expiryTime = date('Y-m-d H:i:s', strtotime('+1 hour'));
+        $query = "UPDATE user SET reset_token = ?, token_expiry = ? WHERE user_email = ?";
+        pdo_execute($query, $token, $expiryTime, $email);
     }
 
     public function isValidToken($token)
