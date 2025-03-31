@@ -1,5 +1,21 @@
 <?php require_once 'banner.php' ?>
+<?php if (isset($_COOKIE['msg'])): ?>
+    <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+        <strong><?= $_COOKIE['msg'] ?></strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+<?php endif; ?>
 
+<?php if (isset($_COOKIE['msg1'])): ?>
+    <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+        <strong><?= $_COOKIE['msg1'] ?></strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+<?php endif; ?>
 <div class="container featured">
     <ul class="nav nav-pills nav-border-anim nav-big justify-content-center mb-3" role="tablist">
         <li class="nav-item">
@@ -1089,10 +1105,10 @@
                         <p class="cta-desc">and <br>receive <span class="text-primary">$20 coupon</span> for
                             first shopping</p><!-- End .cta-desc -->
 
-                        <form action="#">
+                        <form action="?act=send_mail" method="POST">
                             <div class="input-group">
-                                <input type="email" class="form-control" placeholder="Enter your Email Address"
-                                    aria-label="Email Adress" required>
+                                <input type="email" class="form-control" name="email"
+                                    placeholder="Enter your Email Address" aria-label="Email Adress" required>
                                 <div class="input-group-append">
                                     <button class="btn btn-primary btn-rounded" type="submit"><i
                                             class="icon-long-arrow-right"></i></button>

@@ -12,25 +12,6 @@
     </div><!-- End .container -->
 </nav><!-- End .breadcrumb-nav -->
 <!-- login content section start -->
-<div class="container mt-4">
-    <?php if(isset($_COOKIE['msg'])): ?>
-    <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
-        <strong><?php echo htmlspecialchars($_COOKIE['msg']); ?></strong>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <?php endif; ?>
-
-    <?php if(isset($_COOKIE['msg1'])): ?>
-    <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
-        <strong><?php echo htmlspecialchars($_COOKIE['msg1']); ?></strong>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <?php endif; ?>
-</div>
 <div class="modal-content">
     <div class="modal-body">
         <div class="form-box">
@@ -92,22 +73,22 @@
 
                     <!-- Register Tab -->
                     <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
-                        <?php if(isset($_SESSION['error_messages'])): ?>
-                        <?php foreach($_SESSION['error_messages'] as $field => $message): ?>
-                        <div class="alert alert-danger">
-                            <?php echo htmlspecialchars($message); ?>
-                        </div>
-                        <?php endforeach; ?>
-                        <?php unset($_SESSION['error_messages']); ?>
+                        <?php if (isset($_SESSION['error_messages'])): ?>
+                            <?php foreach ($_SESSION['error_messages'] as $field => $message): ?>
+                                <div class="alert alert-danger">
+                                    <?php echo htmlspecialchars($message); ?>
+                                </div>
+                            <?php endforeach; ?>
+                            <?php unset($_SESSION['error_messages']); ?>
                         <?php endif; ?>
 
-                        <?php if(isset($_SESSION['success_message'])): ?>
-                        <div class="alert alert-success">
-                            <?php 
-                            echo htmlspecialchars($_SESSION['success_message']);
-                            unset($_SESSION['success_message']); 
-                        ?>
-                        </div>
+                        <?php if (isset($_SESSION['success_message'])): ?>
+                            <div class="alert alert-success">
+                                <?php
+                                echo htmlspecialchars($_SESSION['success_message']);
+                                unset($_SESSION['success_message']);
+                                ?>
+                            </div>
                         <?php endif; ?>
 
                         <form action="?act=taikhoan&xuli=dangky" method="POST">

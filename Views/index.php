@@ -46,6 +46,25 @@
         <?php require_once('Views/header_footer/header.php'); ?>
 
         <main class="main">
+            <div class="container mt-4">
+                <?php if (isset($_COOKIE['msg'])): ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <?php echo htmlspecialchars($_COOKIE['msg']); ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (isset($_COOKIE['msg1'])): ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <?php echo htmlspecialchars($_COOKIE['msg1']); ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
+            </div>
             <?php require_once 'Views/router.php' ?>
         </main><!-- End .main -->
 

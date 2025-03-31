@@ -35,7 +35,7 @@ class AuthController
         $this->authModel->storeResetToken($email, $token);
 
         // Tạo liên kết đặt lại mật khẩu
-        $resetLink = "https://tedeshopplus.kesug.com/?mod=auth&act=resetPasswordForm&token=$token";
+        $resetLink = "http://localhost/DuAn1/?mod=auth&act=resetPasswordForm&token=$token";
         $subject = "Đặt lại mật khẩu";
         $body = "Nhấn vào liên kết sau để đặt lại mật khẩu của bạn: <a href='$resetLink'>$resetLink</a>";
 

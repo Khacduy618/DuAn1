@@ -13,26 +13,26 @@ class LoginController
     }
     function login_action()
     {
-        
+
         $user_email = $_POST['user_email'];
         $user_password = md5($_POST['user_password']);
         if (strpos($user_email, "'") != false) {
             $user_email = str_replace("'", "\'", $user_email);
-            
+
         }
         $this->login_model->login_action($user_email, $user_password);
-        
+
     }
     function dangky()
     {
         $check1 = 0;
         $check2 = 0;
         $check3 = 0;
-        
+
         if (strlen($_POST['user_password']) < 8) {
             $check3 = 1;
         }
-        
+
         $data_check = $this->login_model->check_account();
         foreach ($data_check as $value) {
             if ($value['user_email'] == $_POST['user_email']) {
@@ -45,9 +45,9 @@ class LoginController
         }
 
         $data = array(
-            'user_name' =>    $_POST['user_name'],
+            'user_name' => $_POST['user_name'],
             'user_password' => md5($_POST['user_password']),
-            'user_email'  =>   $_POST['user_email'],
+            'user_email' => $_POST['user_email'],
             'user_images' => 'user.png',
         );
         foreach ($data as $key => $value) {
@@ -106,4 +106,90 @@ class LoginController
         header('location: ?act=taikhoan&xuli=account#doitk');
     }
 
+    function forgotPassword()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $email = $_POST['user_email'];
+
+            // Validate email
+            if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                // Check if email exists in database
+                $user = $this->login_model->checkEmail($email);
+
+                if ($user) {
+                    // Generate token and expiration time (24 hours)
+                    $token = bin2hex(random_bytes(32));
+                    $expires = date('Y-m-d H:i:s', time() + 86400);
+
+                    // Save token to database
+                    $this->login_model->saveResetToken($email, $token, $expires);
+
+                    // Create reset link
+                    $reset_link = "http://" . $_SERVER['HTTP_HOST'] . "/DuAn1/?act=forgot_password&xuli=reset_form&token=" . $token;
+
+                    // Send email with link using PHPMailer
+                    require_once('Controllers/MailService.php');
+                    $mailService = new MailService();
+                    $emailSent = $mailService->sendPasswordResetEmail($email, $reset_link);
+                    // $isDev = true; // Đặt thành false khi triển khai thực tế
+                    // // $emailSent = $isDev 
+                    // //     ? $mailService->sendPasswordResetEmailDev($email, $reset_link) 
+                    // //     : $mailService->sendPasswordResetEmail($email, $reset_link);
+
+                    if ($emailSent) {
+                        setcookie('msg', 'Hướng dẫn đặt lại mật khẩu đã được gửi vào email của bạn', time() + 5);
+                    } else {
+                        setcookie('msg1', 'Không thể gửi email. Vui lòng thử lại sau.', time() + 5);
+                    }
+                } else {
+                    setcookie('msg1', 'Email không tồn tại trong hệ thống', time() + 5);
+                }
+            } else {
+                setcookie('msg1', 'Vui lòng nhập email hợp lệ', time() + 5);
+            }
+            header('Location: ?act=forgot_password&xuli=reset_pass');
+        }
+    }
+
+    function resetPassword()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $token = $_POST['token'];
+            $password = $_POST['user_password'];
+            $confirm_password = $_POST['confirm_password'];
+
+            // Validate token
+            $tokenData = $this->login_model->validateResetToken($token);
+
+            if (!$tokenData) {
+                setcookie('msg1', 'Invalid or expired token', time() + 5);
+                header('Location: ?act=taikhoan');
+                return;
+            }
+
+            // Validate password
+            if (strlen($password) < 8) {
+                setcookie('msg1', 'Password must be at least 8 characters long', time() + 5);
+                header('Location: ?act=forgot_password&xuli=reset_form&token=' . $token);
+                return;
+            }
+
+            if ($password !== $confirm_password) {
+                setcookie('msg1', 'Passwords do not match', time() + 5);
+                header('Location: ?act=forgot_password&xuli=reset_form&token=' . $token);
+                return;
+            }
+
+            // Update password
+            $email = $tokenData['user_email'];
+            $hashed_password = md5($password);
+            $this->login_model->updatePassword($email, $hashed_password);
+
+            // Clear token
+            $this->login_model->clearResetToken($email);
+
+            setcookie('msg', 'Your password has been updated successfully', time() + 5);
+            header('Location: ?act=taikhoan');
+        }
+    }
 }

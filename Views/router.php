@@ -1,21 +1,7 @@
 <?php
 $mod = isset($_GET['act']) ? $_GET['act'] : "home";
 switch ($mod) {
-    case "forgot_password":
-        $xuli = isset($_GET['xuli']) ? $_GET['xuli'] : "reset_pass";
-        switch ($xuli) {
-            case "reset_pass":
-                require_once "forgot_password/reset_pass.php";
-                break;
-            case "reset_form":
-                require_once "forgot_password/reset_form.php";
-                break;
-            default:
-                require_once "forgot_password/reset_pass.php";
-                break;
-        }
-        break;
-    case "blog": 
+    case "blog":
         require_once "Views/blog/blog.php";
         break;
     case "blog_detail":
@@ -36,15 +22,15 @@ switch ($mod) {
                     break;
             }
         } else {
-                switch ($act) {
-                    case 'login':
-                        require_once("login/login.php");
-                        break;
-                    default:
-                        require_once("login/login.php");
-                        break;
-                }
+            switch ($act) {
+                case 'login':
+                    require_once("login/login.php");
+                    break;
+                default:
+                    require_once("login/login.php");
+                    break;
             }
+        }
         break;
     case "home":
         require_once "home/home.php";
@@ -78,7 +64,7 @@ switch ($mod) {
             $controller = new ReviewController();
             $controller->submitReview();
             // Sau khi xử lý xong, redirect về trang product
-            $product_id = isset($_POST['id']) ? (int)$_POST['id'] : null;
+            $product_id = isset($_POST['id']) ? (int) $_POST['id'] : null;
             header("Location: index.php?act=product&id=" . $product_id);
             exit();
         } else {
@@ -86,6 +72,41 @@ switch ($mod) {
             exit();
         }
         break;
+    case "forgot_password":
+        $xuli = isset($_GET['xuli']) ? $_GET['xuli'] : "reset_pass";
+        switch ($xuli) {
+            case "reset_pass":
+                require_once "forgot_password/reset_pass.php";
+                break;
+            case "reset_form":
+                require_once "forgot_password/reset_form.php";
+                break;
+            case "request":
+                require_once("Controllers/LoginController.php");
+                $controller = new LoginController();
+                $controller->forgotPassword();
+                break;
+            case "update":
+                require_once("Controllers/LoginController.php");
+                $controller = new LoginController();
+                $controller->resetPassword();
+                break;
+            default:
+                require_once "forgot_password/reset_pass.php";
+                break;
+        }
+        break;
+    case "send_mail":
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            require_once("Controllers/ShopController.php");
+            $controller = new ShopController();
+            $controller->send_mail();
+        } else {
+            header("Location: index.php?act=home");
+            exit();
+        }
+        break;
+
     case 'get-reviews':
         $reviewController = new ReviewController();
         $reviewController->getReviews();
@@ -103,9 +124,9 @@ switch ($mod) {
         exit();
         break;
     case 'get-user-votes':
-            require_once("Controllers/ReviewControllers.php");
-            $controller = new ReviewController();
-            $controller->getUserVotes();
+        require_once("Controllers/ReviewControllers.php");
+        $controller = new ReviewController();
+        $controller->getUserVotes();
         break;
     case "about":
         require_once("introduce/about.php");

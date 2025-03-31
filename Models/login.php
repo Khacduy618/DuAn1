@@ -7,21 +7,21 @@ class Login extends Model
     function login_action($user_email, $user_password)
     {
         $query = "SELECT * from user WHERE user_email = ? AND user_password = ? AND user_status = 1";
-        
+
         $login = pdo_query_one($query, $user_email, $user_password);
-        
+
         if ($login !== NULL) {
-            if($login['user_role'] == 1){
+            if ($login['user_role'] == 1) {
                 $_SESSION['isLogin_Admin'] = true;
                 $_SESSION['login'] = $login;
 
-            header('Location: /DuAn1/Admin');
-            } else if($login['user_role'] >= 2){
+                header('Location: /DuAn1/Admin');
+            } else if ($login['user_role'] >= 2) {
                 $_SESSION['isLogin_Nhanvien'] = true;
                 $_SESSION['login'] = $login;
 
-               
-            header('Location: /DuAn1/Admin');
+
+                header('Location: /DuAn1/Admin');
             } else {
                 $_SESSION['isLogin'] = true;
                 $_SESSION['login'] = $login;
@@ -35,15 +35,15 @@ class Login extends Model
     }
     function logout()
     {
-        if(isset($_SESSION['isLogin_Admin'])){
+        if (isset($_SESSION['isLogin_Admin'])) {
             unset($_SESSION['isLogin_Admin']);
             unset($_SESSION['login']);
         }
-        if(isset($_SESSION['isLogin_Nhanvien'])){
+        if (isset($_SESSION['isLogin_Nhanvien'])) {
             unset($_SESSION['isLogin_Nhanvien']);
             unset($_SESSION['login']);
         }
-        if(isset($_SESSION['isLogin'])){
+        if (isset($_SESSION['isLogin'])) {
             unset($_SESSION['isLogin']);
             unset($_SESSION['login']);
         }
@@ -51,11 +51,35 @@ class Login extends Model
     }
     function check_account()
     {
-        $query =  "SELECT * from user";
+        $query = "SELECT * from user";
 
         return pdo_query($query);
     }
-      function dangky_action($data, $check1, $check2, $check3)
+
+    function saveResetToken($email, $token, $expires)
+    {
+        $query = "UPDATE user SET reset_token = ?, reset_token_expires = ? WHERE user_email = ?";
+        pdo_execute($query, $token, $expires, $email);
+    }
+
+    function validateResetToken($token)
+    {
+        $query = "SELECT user_email FROM user WHERE reset_token = ? AND reset_token_expires > NOW()";
+        return pdo_query_one($query, $token);
+    }
+
+    function updatePassword($email, $password)
+    {
+        $query = "UPDATE user SET user_password = ? WHERE user_email = ?";
+        pdo_execute($query, $password, $email);
+    }
+
+    function clearResetToken($email)
+    {
+        $query = "UPDATE user SET reset_token = NULL, reset_token_expires = NULL WHERE user_email = ?";
+        pdo_execute($query, $email);
+    }
+    function dangky_action($data, $check1, $check2, $check3)
     {
         if ($check1 == 0) {
             if ($check3 == 0) {
@@ -63,25 +87,25 @@ class Login extends Model
                     $f = "";
                     $v = "";
                     foreach ($data as $key => $value) {
-                    $f .= $key . ",";
-                    $v .= "'" . $value . "',";
-                }
-                $f = trim($f, ",");
-                $v = trim($v, ",");
-                $query = "INSERT INTO user($f) VALUES ($v);";
+                        $f .= $key . ",";
+                        $v .= "'" . $value . "',";
+                    }
+                    $f = trim($f, ",");
+                    $v = trim($v, ",");
+                    $query = "INSERT INTO user($f) VALUES ($v);";
 
-                $status = pdo_execute($query);
-                if ($status == true) {
-                    setcookie('msg', 'Register successfully', time() + 2);
+                    $status = pdo_execute($query);
+                    if ($status == true) {
+                        setcookie('msg', 'Register successfully', time() + 2);
+                    } else {
+                        setcookie('msg1', 'Register failed', time() + 2);
+                    }
                 } else {
-                    setcookie('msg1', 'Register failed', time() + 2);
+                    setcookie('msg1', 'Password is not match', time() + 2);
                 }
+
             } else {
-                setcookie('msg1', 'Password is not match', time() + 2);
-            }
-       
-        } else{
-            setcookie('msg1', 'Password must be at least 8 characters long', time() + 2);
+                setcookie('msg1', 'Password must be at least 8 characters long', time() + 2);
             }
         } else {
             setcookie('msg1', 'Username or Email already exists', time() + 2);
