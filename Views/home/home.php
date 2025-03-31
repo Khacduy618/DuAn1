@@ -40,85 +40,92 @@
                         }
                     }
                 }'>
-                <?php 
-                    if(isset($smartphone) && $smartphone != NULL){
-                        foreach($smartphone as $item){
-                            if (isset($reviewsCount[$item['product_id']]) && isset($ratings[$item['product_id']])) {
-                                $reviewCount = $reviewsCount[$item['product_id']] ?? 0;
-                                $rating = $ratings[$item['product_id']] ?? 0;
-                    
-                ?>
-
-                <div class="product product-2">
-                    <figure class="product-media">
-                        <span class="product-label label-circle label-new">New</span>
-                        <a href="?act=product&id=<?=$item['product_id']?>">
-                           <div class="product-image">
-                           <img src="uploaded/<?=$item['product_img']?>" alt="Product image">
-                           </div>
-                        </a>
-
-                        <?php if ($value['product_status'] == 1 && $value['product_count'] > 0) { 
-    $isFavorited = false;
-    if(isset($_SESSION['login'])) {
-        require_once 'Models/favorite.php';
-        $favorite = new Favorite();
-        $isFavorited = $favorite->isProductFavorited($_SESSION['login']['user_email'], $value['product_id']);
-    }
-?>
-    <div class="product-action-vertical">
-        <form action="index.php?act=favorite&xuli=<?= $isFavorited ? 'delete' : 'add' ?>" method="POST">
-            <input type="hidden" name="product_id" value="<?=$value['product_id']?>">
-            <?php if($isFavorited): ?>
-                <input type="hidden" name="favorite_id" value="<?=$favorite->findByUserAndProduct($_SESSION['login']['user_email'], $value['product_id'])['favorite_id']?>">
-            <?php endif; ?>
-            <button type="submit" class="btn-product-icon btn-wishlist <?= $isFavorited ? 'active' : '' ?>">
-                <span><?= $isFavorited ? 'Xóa khỏi yêu thích' : 'Thêm vào yêu thích' ?></span>
-            </button>
-        </form>
-    </div>
-<?php } ?>
-
-                        <div class="product-action product-action-dark">
-                            <a href="?act=cart&xuli=add&product_id=<?=$item['product_id']?>&quantity=1" class="btn-product btn-cart" title="Add to cart"><span>add
-                                    to cart</span></a>
-                            <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                title="Quick view"><span>quick view</span></a>
-                        </div><!-- End .product-action -->
-                    </figure><!-- End .product-media -->
-
-                    <div class="product-body">
-                        <div class="product-cat">
-                            <a href="#"><?=$item['category_name'];?></a>
-                        </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>"><?=$item['product_name']?> </a></h3>
-                        <!-- End .product-title -->
-                        <div class="product-price">
-                            <?=number_format($item['product_price'],0,",",".")?> đ
-                        </div><!-- End .product-price -->
-                        <div class="ratings-container">
-                        <div class="ratings">
-                                <div class="ratings-val" style="width: <?= ($rating * 20) ?>%;"></div>
-                                <!-- End .ratings-val -->
-                        </div><!-- End .ratings -->
-                        <span class="ratings-text">( <?= $reviewCount ?> Reviews )</span>
-                     </div><!-- End .ratings-container -->
-
-                        <div class="product-nav product-nav-dots">
-                            <a href="#" style="background: #edd2c8;"><span class="sr-only">Color
-                                    name</span></a>
-                            <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
-                                    name</span></a>
-                            <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
-                                    name</span></a>
-                        </div><!-- End .product-nav -->
-                    </div><!-- End .product-body -->
-                </div><!-- End .product -->
                 <?php
-            }}}else{
-            echo "No data found";
-            }
-            ?>
+                if (isset($smartphone) && $smartphone != NULL) {
+                    foreach ($smartphone as $item) {
+                        if (isset($reviewsCount[$item['product_id']]) && isset($ratings[$item['product_id']])) {
+                            $reviewCount = $reviewsCount[$item['product_id']] ?? 0;
+                            $rating = $ratings[$item['product_id']] ?? 0;
+
+                            ?>
+
+                            <div class="product product-2">
+                                <figure class="product-media">
+                                    <span class="product-label label-circle label-new">New</span>
+                                    <a href="?act=product&id=<?= $item['product_id'] ?>">
+                                        <div class="product-image">
+                                            <img src="uploaded/<?= $item['product_img'] ?>" alt="Product image">
+                                        </div>
+                                    </a>
+
+                                    <?php if ($item['product_status'] == 1 && $item['product_count'] > 0) {
+                                        $isFavorited = false;
+                                        if (isset($_SESSION['login'])) {
+                                            require_once 'Models/favorite.php';
+                                            $favorite = new Favorite();
+                                            $isFavorited = $favorite->isProductFavorited($_SESSION['login']['user_email'], $item['product_id']);
+                                        }
+                                        ?>
+                                        <div class="product-action-vertical">
+                                            <form action="index.php?act=favorite&xuli=<?= $isFavorited ? 'delete' : 'add' ?>"
+                                                method="POST">
+                                                <input type="hidden" name="product_id" value="<?= $item['product_id'] ?>">
+                                                <?php if ($isFavorited): ?>
+                                                    <input type="hidden" name="favorite_id"
+                                                        value="<?= $favorite->findByUserAndProduct($_SESSION['login']['user_email'], $item['product_id'])['favorite_id'] ?>">
+                                                <?php endif; ?>
+                                                <button type="submit"
+                                                    class="btn-product-icon btn-wishlist <?= $isFavorited ? 'active' : '' ?>">
+                                                    <span><?= $isFavorited ? 'Xóa khỏi yêu thích' : 'Thêm vào yêu thích' ?></span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    <?php } ?>
+
+                                    <div class="product-action product-action-dark">
+                                        <a href="?act=cart&xuli=add&product_id=<?= $item['product_id'] ?>&quantity=1"
+                                            class="btn-product btn-cart" title="Add to cart"><span>add
+                                                to cart</span></a>
+                                        <a href="popup/quick_view.php" class="btn-product btn-quickview"
+                                            title="Quick view"><span>quick view</span></a>
+                                    </div><!-- End .product-action -->
+                                </figure><!-- End .product-media -->
+
+                                <div class="product-body">
+                                    <div class="product-cat">
+                                        <a href="#"><?= $item['category_name']; ?></a>
+                                    </div><!-- End .product-cat -->
+                                    <h3 class="product-title"><a
+                                            href="?act=product&id=<?= $item['product_id'] ?>"><?= $item['product_name'] ?> </a></h3>
+                                    <!-- End .product-title -->
+                                    <div class="product-price">
+                                        <?= number_format($item['product_price'], 0, ",", ".") ?> đ
+                                    </div><!-- End .product-price -->
+                                    <div class="ratings-container">
+                                        <div class="ratings">
+                                            <div class="ratings-val" style="width: <?= ($rating * 20) ?>%;"></div>
+                                            <!-- End .ratings-val -->
+                                        </div><!-- End .ratings -->
+                                        <span class="ratings-text">( <?= $reviewCount ?> Reviews )</span>
+                                    </div><!-- End .ratings-container -->
+
+                                    <div class="product-nav product-nav-dots">
+                                        <a href="#" style="background: #edd2c8;"><span class="sr-only">Color
+                                                name</span></a>
+                                        <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
+                                                name</span></a>
+                                        <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
+                                                name</span></a>
+                                    </div><!-- End .product-nav -->
+                                </div><!-- End .product-body -->
+                            </div><!-- End .product -->
+                            <?php
+                        }
+                    }
+                } else {
+                    echo "No data found";
+                }
+                ?>
             </div><!-- End .owl-carousel -->
         </div><!-- .End .tab-pane -->
         <div class="tab-pane p-0 fade" id="products-sale-tab" role="tabpanel" aria-labelledby="products-sale-link">
@@ -143,85 +150,92 @@
                         }
                     }
                 }'>
-                <?php 
-                    if(isset($tablet) && $tablet != NULL){
-                        foreach($tablet as $item){
-                            if (isset($reviewsCount[$item['product_id']]) && isset($ratings[$item['product_id']])) {
-                                $reviewCount = $reviewsCount[$item['product_id']] ?? 0;
-                                $rating = $ratings[$item['product_id']] ?? 0;
-                    
-                ?>
-
-                <div class="product product-2">
-                    <figure class="product-media">
-                        <span class="product-label label-circle label-new">New</span>
-                        <a href="?act=product&id=<?=$item['product_id']?>">
-                            <div class="product-image">
-                            <img src="uploaded/<?=$item['product_img']?>" alt="Product image" >
-                            </div>
-                        </a>
-
-                        <?php if ($value['product_status'] == 1 && $value['product_count'] > 0) { 
-    $isFavorited = false;
-    if(isset($_SESSION['login'])) {
-        require_once 'Models/favorite.php';
-        $favorite = new Favorite();
-        $isFavorited = $favorite->isProductFavorited($_SESSION['login']['user_email'], $value['product_id']);
-    }
-?>
-    <div class="product-action-vertical">
-        <form action="index.php?act=favorite&xuli=<?= $isFavorited ? 'delete' : 'add' ?>" method="POST">
-            <input type="hidden" name="product_id" value="<?=$value['product_id']?>">
-            <?php if($isFavorited): ?>
-                <input type="hidden" name="favorite_id" value="<?=$favorite->findByUserAndProduct($_SESSION['login']['user_email'], $value['product_id'])['favorite_id']?>">
-            <?php endif; ?>
-            <button type="submit" class="btn-product-icon btn-wishlist <?= $isFavorited ? 'active' : '' ?>">
-                <span><?= $isFavorited ? 'Xóa khỏi yêu thích' : 'Thêm vào yêu thích' ?></span>
-            </button>
-        </form>
-    </div>
-<?php } ?>
-
-                        <div class="product-action product-action-dark">
-                            <a href="?act=cart&xuli=add&product_id=<?=$item['product_id']?>&quantity=1" class="btn-product btn-cart" title="Add to cart"><span>add
-                                    to cart</span></a>
-                            <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                title="Quick view"><span>quick view</span></a>
-                        </div><!-- End .product-action -->
-                    </figure><!-- End .product-media -->
-
-                    <div class="product-body">
-                        <div class="product-cat">
-                            <a href="#"><?=$item['category_name'];?></a>
-                        </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>"><?=$item['product_name']?> </a></h3>
-                        <!-- End .product-title -->
-                        <div class="product-price">
-                            <?=number_format($item['product_price'],0,",",".")?> đ
-                        </div><!-- End .product-price -->
-                        <div class="ratings-container">
-                        <div class="ratings">
-                                <div class="ratings-val" style="width: <?= ($rating * 20) ?>%;"></div>
-                                <!-- End .ratings-val -->
-                        </div><!-- End .ratings -->
-                        <span class="ratings-text">( <?= $reviewCount ?> Reviews )</span>
-                     </div><!-- End .ratings-container -->
-
-                        <div class="product-nav product-nav-dots">
-                            <a href="#" style="background: #edd2c8;"><span class="sr-only">Color
-                                    name</span></a>
-                            <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
-                                    name</span></a>
-                            <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
-                                    name</span></a>
-                        </div><!-- End .product-nav -->
-                    </div><!-- End .product-body -->
-                </div><!-- End .product -->
                 <?php
-            }}}else{
-            echo "No data found";
-            }
-            ?>
+                if (isset($tablet) && $tablet != NULL) {
+                    foreach ($tablet as $item) {
+                        if (isset($reviewsCount[$item['product_id']]) && isset($ratings[$item['product_id']])) {
+                            $reviewCount = $reviewsCount[$item['product_id']] ?? 0;
+                            $rating = $ratings[$item['product_id']] ?? 0;
+
+                            ?>
+
+                            <div class="product product-2">
+                                <figure class="product-media">
+                                    <span class="product-label label-circle label-new">New</span>
+                                    <a href="?act=product&id=<?= $item['product_id'] ?>">
+                                        <div class="product-image">
+                                            <img src="uploaded/<?= $item['product_img'] ?>" alt="Product image">
+                                        </div>
+                                    </a>
+
+                                    <?php if ($item['product_status'] == 1 && $item['product_count'] > 0) {
+                                        $isFavorited = false;
+                                        if (isset($_SESSION['login'])) {
+                                            require_once 'Models/favorite.php';
+                                            $favorite = new Favorite();
+                                            $isFavorited = $favorite->isProductFavorited($_SESSION['login']['user_email'], $item['product_id']);
+                                        }
+                                        ?>
+                                        <div class="product-action-vertical">
+                                            <form action="index.php?act=favorite&xuli=<?= $isFavorited ? 'delete' : 'add' ?>"
+                                                method="POST">
+                                                <input type="hidden" name="product_id" value="<?= $item['product_id'] ?>">
+                                                <?php if ($isFavorited): ?>
+                                                    <input type="hidden" name="favorite_id"
+                                                        value="<?= $favorite->findByUserAndProduct($_SESSION['login']['user_email'], $item['product_id'])['favorite_id'] ?>">
+                                                <?php endif; ?>
+                                                <button type="submit"
+                                                    class="btn-product-icon btn-wishlist <?= $isFavorited ? 'active' : '' ?>">
+                                                    <span><?= $isFavorited ? 'Xóa khỏi yêu thích' : 'Thêm vào yêu thích' ?></span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    <?php } ?>
+
+                                    <div class="product-action product-action-dark">
+                                        <a href="?act=cart&xuli=add&product_id=<?= $item['product_id'] ?>&quantity=1"
+                                            class="btn-product btn-cart" title="Add to cart"><span>add
+                                                to cart</span></a>
+                                        <a href="popup/quick_view.php" class="btn-product btn-quickview"
+                                            title="Quick view"><span>quick view</span></a>
+                                    </div><!-- End .product-action -->
+                                </figure><!-- End .product-media -->
+
+                                <div class="product-body">
+                                    <div class="product-cat">
+                                        <a href="#"><?= $item['category_name']; ?></a>
+                                    </div><!-- End .product-cat -->
+                                    <h3 class="product-title"><a
+                                            href="?act=product&id=<?= $item['product_id'] ?>"><?= $item['product_name'] ?> </a></h3>
+                                    <!-- End .product-title -->
+                                    <div class="product-price">
+                                        <?= number_format($item['product_price'], 0, ",", ".") ?> đ
+                                    </div><!-- End .product-price -->
+                                    <div class="ratings-container">
+                                        <div class="ratings">
+                                            <div class="ratings-val" style="width: <?= ($rating * 20) ?>%;"></div>
+                                            <!-- End .ratings-val -->
+                                        </div><!-- End .ratings -->
+                                        <span class="ratings-text">( <?= $reviewCount ?> Reviews )</span>
+                                    </div><!-- End .ratings-container -->
+
+                                    <div class="product-nav product-nav-dots">
+                                        <a href="#" style="background: #edd2c8;"><span class="sr-only">Color
+                                                name</span></a>
+                                        <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
+                                                name</span></a>
+                                        <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
+                                                name</span></a>
+                                    </div><!-- End .product-nav -->
+                                </div><!-- End .product-body -->
+                            </div><!-- End .product -->
+                            <?php
+                        }
+                    }
+                } else {
+                    echo "No data found";
+                }
+                ?>
             </div><!-- End .owl-carousel -->
         </div><!-- .End .tab-pane -->
         <div class="tab-pane p-0 fade" id="products-top-tab" role="tabpanel" aria-labelledby="products-top-link">
@@ -246,85 +260,92 @@
                         }
                     }
                 }'>
-                <?php 
-                    if(isset($Laptop) && $Laptop != NULL){
-                        foreach($Laptop as $item){
-                            if (isset($reviewsCount[$item['product_id']]) && isset($ratings[$item['product_id']])) {
-                                $reviewCount = $reviewsCount[$item['product_id']] ?? 0;
-                                $rating = $ratings[$item['product_id']] ?? 0;
-                    
-                ?>
-
-                <div class="product product-2">
-                    <figure class="product-media">
-                        <span class="product-label label-circle label-new">New</span>
-                        <a href="?act=product&id=<?=$item['product_id']?>">
-                            <div class="product-image">
-                            <img src="uploaded/<?=$item['product_img']?>" alt="Product image">
-                            </div>
-                        </a>
-
-                        <?php if ($value['product_status'] == 1 && $value['product_count'] > 0) { 
-    $isFavorited = false;
-    if(isset($_SESSION['login'])) {
-        require_once 'Models/favorite.php';
-        $favorite = new Favorite();
-        $isFavorited = $favorite->isProductFavorited($_SESSION['login']['user_email'], $value['product_id']);
-    }
-?>
-    <div class="product-action-vertical">
-        <form action="index.php?act=favorite&xuli=<?= $isFavorited ? 'delete' : 'add' ?>" method="POST">
-            <input type="hidden" name="product_id" value="<?=$value['product_id']?>">
-            <?php if($isFavorited): ?>
-                <input type="hidden" name="favorite_id" value="<?=$favorite->findByUserAndProduct($_SESSION['login']['user_email'], $value['product_id'])['favorite_id']?>">
-            <?php endif; ?>
-            <button type="submit" class="btn-product-icon btn-wishlist <?= $isFavorited ? 'active' : '' ?>">
-                <span><?= $isFavorited ? 'Xóa khỏi yêu thích' : 'Thêm vào yêu thích' ?></span>
-            </button>
-        </form>
-    </div>
-<?php } ?>
-
-                        <div class="product-action product-action-dark">
-                            <a href="?act=cart&xuli=add&product_id=<?=$item['product_id']?>&quantity=1" class="btn-product btn-cart" title="Add to cart"><span>add
-                                    to cart</span></a>
-                            <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                title="Quick view"><span>quick view</span></a>
-                        </div><!-- End .product-action -->
-                    </figure><!-- End .product-media -->
-
-                    <div class="product-body">
-                        <div class="product-cat">
-                            <a href="#"><?=$item['category_name'];?></a>
-                        </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>"><?=$item['product_name']?> </a></h3>
-                        <!-- End .product-title -->
-                        <div class="product-price">
-                            <?=number_format($item['product_price'],0,",",".")?> đ
-                        </div><!-- End .product-price -->
-                        <div class="ratings-container">
-                        <div class="ratings">
-                                <div class="ratings-val" style="width: <?= ($rating * 20) ?>%;"></div>
-                                <!-- End .ratings-val -->
-                        </div><!-- End .ratings -->
-                        <span class="ratings-text">( <?= $reviewCount ?> Reviews )</span>
-                     </div><!-- End .ratings-container -->
-
-                        <div class="product-nav product-nav-dots">
-                            <a href="#" style="background: #edd2c8;"><span class="sr-only">Color
-                                    name</span></a>
-                            <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
-                                    name</span></a>
-                            <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
-                                    name</span></a>
-                        </div><!-- End .product-nav -->
-                    </div><!-- End .product-body -->
-                </div><!-- End .product -->
                 <?php
-            }}}else{
-            echo "No data found";
-            }
-            ?>
+                if (isset($Laptop) && $Laptop != NULL) {
+                    foreach ($Laptop as $item) {
+                        if (isset($reviewsCount[$item['product_id']]) && isset($ratings[$item['product_id']])) {
+                            $reviewCount = $reviewsCount[$item['product_id']] ?? 0;
+                            $rating = $ratings[$item['product_id']] ?? 0;
+
+                            ?>
+
+                            <div class="product product-2">
+                                <figure class="product-media">
+                                    <span class="product-label label-circle label-new">New</span>
+                                    <a href="?act=product&id=<?= $item['product_id'] ?>">
+                                        <div class="product-image">
+                                            <img src="uploaded/<?= $item['product_img'] ?>" alt="Product image">
+                                        </div>
+                                    </a>
+
+                                    <?php if ($item['product_status'] == 1 && $item['product_count'] > 0) {
+                                        $isFavorited = false;
+                                        if (isset($_SESSION['login'])) {
+                                            require_once 'Models/favorite.php';
+                                            $favorite = new Favorite();
+                                            $isFavorited = $favorite->isProductFavorited($_SESSION['login']['user_email'], $item['product_id']);
+                                        }
+                                        ?>
+                                        <div class="product-action-vertical">
+                                            <form action="index.php?act=favorite&xuli=<?= $isFavorited ? 'delete' : 'add' ?>"
+                                                method="POST">
+                                                <input type="hidden" name="product_id" value="<?= $item['product_id'] ?>">
+                                                <?php if ($isFavorited): ?>
+                                                    <input type="hidden" name="favorite_id"
+                                                        value="<?= $favorite->findByUserAndProduct($_SESSION['login']['user_email'], $item['product_id'])['favorite_id'] ?>">
+                                                <?php endif; ?>
+                                                <button type="submit"
+                                                    class="btn-product-icon btn-wishlist <?= $isFavorited ? 'active' : '' ?>">
+                                                    <span><?= $isFavorited ? 'Xóa khỏi yêu thích' : 'Thêm vào yêu thích' ?></span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    <?php } ?>
+
+                                    <div class="product-action product-action-dark">
+                                        <a href="?act=cart&xuli=add&product_id=<?= $item['product_id'] ?>&quantity=1"
+                                            class="btn-product btn-cart" title="Add to cart"><span>add
+                                                to cart</span></a>
+                                        <a href="popup/quick_view.php" class="btn-product btn-quickview"
+                                            title="Quick view"><span>quick view</span></a>
+                                    </div><!-- End .product-action -->
+                                </figure><!-- End .product-media -->
+
+                                <div class="product-body">
+                                    <div class="product-cat">
+                                        <a href="#"><?= $item['category_name']; ?></a>
+                                    </div><!-- End .product-cat -->
+                                    <h3 class="product-title"><a
+                                            href="?act=product&id=<?= $item['product_id'] ?>"><?= $item['product_name'] ?> </a></h3>
+                                    <!-- End .product-title -->
+                                    <div class="product-price">
+                                        <?= number_format($item['product_price'], 0, ",", ".") ?> đ
+                                    </div><!-- End .product-price -->
+                                    <div class="ratings-container">
+                                        <div class="ratings">
+                                            <div class="ratings-val" style="width: <?= ($rating * 20) ?>%;"></div>
+                                            <!-- End .ratings-val -->
+                                        </div><!-- End .ratings -->
+                                        <span class="ratings-text">( <?= $reviewCount ?> Reviews )</span>
+                                    </div><!-- End .ratings-container -->
+
+                                    <div class="product-nav product-nav-dots">
+                                        <a href="#" style="background: #edd2c8;"><span class="sr-only">Color
+                                                name</span></a>
+                                        <a href="#" style="background: #eaeaec;"><span class="sr-only">Color
+                                                name</span></a>
+                                        <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color
+                                                name</span></a>
+                                    </div><!-- End .product-nav -->
+                                </div><!-- End .product-body -->
+                            </div><!-- End .product -->
+                            <?php
+                        }
+                    }
+                } else {
+                    echo "No data found";
+                }
+                ?>
             </div><!-- End .owl-carousel -->
         </div><!-- .End .tab-pane -->
     </div><!-- End .tab-content -->
@@ -365,14 +386,15 @@
 
         <div class="row">
             <div class="col-lg-6 deal-col">
-            <div class="deal" style="background-image: url('assets/site/images/demos/demo-3/bg-3.jpg');">
+                <div class="deal" style="background-image: url('assets/site/images/demos/demo-3/bg-3.jpg');">
                     <div class="deal-top">
                         <h2>Deal of the Day.</h2>
                         <h4>Limited quantities. </h4>
                     </div><!-- End .deal-top -->
 
                     <div class="deal-content">
-                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">Home Smart Speaker
+                        <h3 class="product-title"><a href="?act=product&id=<?= $item['product_id'] ?>">Home Smart
+                                Speaker
                                 with Google
                                 Assistant</a></h3><!-- End .product-title -->
 
@@ -381,8 +403,8 @@
                             <span class="old-price">Was $150.99</span>
                         </div><!-- End .product-price -->
 
-                        <a href="?act=product&id=<?=$item['product_id']?>" class="btn btn-link"><span>Shop Now</span><i
-                                class="icon-long-arrow-right"></i></a>
+                        <a href="?act=product&id=<?= $item['product_id'] ?>" class="btn btn-link"><span>Shop
+                                Now</span><i class="icon-long-arrow-right"></i></a>
                     </div><!-- End .deal-content -->
 
                     <div class="deal-bottom">
@@ -393,75 +415,85 @@
             <div class="col-lg-6">
                 <div class="products">
                     <div class="row">
-                    <?php if (isset($sale_product)&& $sale_product != NULL){ 
-                        foreach ($sale_product as $item ){
-                            if (isset($reviewsCount[$item['product_id']]) && isset($ratings[$item['product_id']])) {
-                                $reviewCount = $reviewsCount[$item['product_id']] ?? 0;
-                                $rating = $ratings[$item['product_id']] ?? 0;?>
-                        <div class="col-6">
-                            <div class="product product-2">
-                                <figure class="product-media">
-                                    <span class="product-label label-circle label-top">Top</span>
-                                    <span class="product-label label-circle label-sale">Sale</span>
-                                    <a href="?act=product&id=<?=$item['product_id']?>">
-                                        <div class="product-image">
-                                        <img src="uploaded/<?=$item['product_img']?>" alt="Product image">
-                                        </div>
-                                    </a>
+                        <?php if (isset($sale_product) && $sale_product != NULL) {
+                            foreach ($sale_product as $item) {
+                                if (isset($reviewsCount[$item['product_id']]) && isset($ratings[$item['product_id']])) {
+                                    $reviewCount = $reviewsCount[$item['product_id']] ?? 0;
+                                    $rating = $ratings[$item['product_id']] ?? 0; ?>
+                                    <div class="col-6">
+                                        <div class="product product-2">
+                                            <figure class="product-media">
+                                                <span class="product-label label-circle label-top">Top</span>
+                                                <span class="product-label label-circle label-sale">Sale</span>
+                                                <a href="?act=product&id=<?= $item['product_id'] ?>">
+                                                    <div class="product-image">
+                                                        <img src="uploaded/<?= $item['product_img'] ?>" alt="Product image">
+                                                    </div>
+                                                </a>
 
-                                    <?php if ($value['product_status'] == 1 && $value['product_count'] > 0) { 
-    $isFavorited = false;
-    if(isset($_SESSION['login'])) {
-        require_once 'Models/favorite.php';
-        $favorite = new Favorite();
-        $isFavorited = $favorite->isProductFavorited($_SESSION['login']['user_email'], $value['product_id']);
-    }
-?>
-    <div class="product-action-vertical">
-        <form action="index.php?act=favorite&xuli=<?= $isFavorited ? 'delete' : 'add' ?>" method="POST">
-            <input type="hidden" name="product_id" value="<?=$value['product_id']?>">
-            <?php if($isFavorited): ?>
-                <input type="hidden" name="favorite_id" value="<?=$favorite->findByUserAndProduct($_SESSION['login']['user_email'], $value['product_id'])['favorite_id']?>">
-            <?php endif; ?>
-            <button type="submit" class="btn-product-icon btn-wishlist <?= $isFavorited ? 'active' : '' ?>">
-                <span><?= $isFavorited ? 'Xóa khỏi yêu thích' : 'Thêm vào yêu thích' ?></span>
-            </button>
-        </form>
-    </div>
-<?php } ?>
+                                                <?php if ($item['product_status'] == 1 && $item['product_count'] > 0) {
+                                                    $isFavorited = false;
+                                                    if (isset($_SESSION['login'])) {
+                                                        require_once 'Models/favorite.php';
+                                                        $favorite = new Favorite();
+                                                        $isFavorited = $favorite->isProductFavorited($_SESSION['login']['user_email'], $item['product_id']);
+                                                    }
+                                                    ?>
+                                                    <div class="product-action-vertical">
+                                                        <form
+                                                            action="index.php?act=favorite&xuli=<?= $isFavorited ? 'delete' : 'add' ?>"
+                                                            method="POST">
+                                                            <input type="hidden" name="product_id" value="<?= $item['product_id'] ?>">
+                                                            <?php if ($isFavorited): ?>
+                                                                <input type="hidden" name="favorite_id"
+                                                                    value="<?= $favorite->findByUserAndProduct($_SESSION['login']['user_email'], $item['product_id'])['favorite_id'] ?>">
+                                                            <?php endif; ?>
+                                                            <button type="submit"
+                                                                class="btn-product-icon btn-wishlist <?= $isFavorited ? 'active' : '' ?>">
+                                                                <span><?= $isFavorited ? 'Xóa khỏi yêu thích' : 'Thêm vào yêu thích' ?></span>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                <?php } ?>
 
-                                    <div class="product-action product-action-dark">
-                                        <a href="?act=cart&xuli=add&product_id=<?=$item['product_id']?>&quantity=1" class="btn-product btn-cart" title="Add to cart"><span>add to
-                                                cart</span></a>
-                                        <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                            title="Quick view"><span>quick view</span></a>
-                                    </div><!-- End .product-action -->
-                                </figure><!-- End .product-media -->
+                                                <div class="product-action product-action-dark">
+                                                    <a href="?act=cart&xuli=add&product_id=<?= $item['product_id'] ?>&quantity=1"
+                                                        class="btn-product btn-cart" title="Add to cart"><span>add to
+                                                            cart</span></a>
+                                                    <a href="popup/quick_view.php" class="btn-product btn-quickview"
+                                                        title="Quick view"><span>quick view</span></a>
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#"><?=$item['category_name']?></a>
-                                    </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>">
-                                        <?= $item['product_name'];?></a>
-                                    </h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        <span class="discounted-price">
-                                        <?= number_format($item['product_price'] * (1 - $item['product_discount'] / 100), 0, ",", ".") ?> đ
-                                        </span>
-                                        <span class="old-price"><?=number_format($item['product_price'],0,",",".")?> đ</span>
-                                    </div><!-- End .product-price -->
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: <?= ($rating * 20) ?>%;"></div>
-                                            <!-- End .ratings-val -->
-                                        </div><!-- End .ratings -->
-                                        <span class="ratings-text">( <?= $reviewCount ?> Reviews )</span>
-                                    </div><!-- End .ratings-container -->
-                                </div><!-- End .product-body -->
-                            </div><!-- End .product -->                                      
-                        </div><!-- End .col-sm-6 -->
-                        <?php }}} ?> 
+                                            <div class="product-body">
+                                                <div class="product-cat">
+                                                    <a href="#"><?= $item['category_name'] ?></a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title"><a href="?act=product&id=<?= $item['product_id'] ?>">
+                                                        <?= $item['product_name']; ?></a>
+                                                </h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    <span class="discounted-price">
+                                                        <?= number_format($item['product_price'] * (1 - $item['product_discount'] / 100), 0, ",", ".") ?>
+                                                        đ
+                                                    </span>
+                                                    <span
+                                                        class="old-price"><?= number_format($item['product_price'], 0, ",", ".") ?>
+                                                        đ</span>
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: <?= ($rating * 20) ?>%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( <?= $reviewCount ?> Reviews )</span>
+                                                </div><!-- End .ratings-container -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 -->
+                                <?php }
+                            }
+                        } ?>
                     </div><!-- End .row -->
                 </div><!-- End .products -->
             </div><!-- End .col-lg-6 -->
@@ -588,69 +620,76 @@
 
                 <?php
                 if (isset($sale_product) && $sale_product != NULL) {
-                        foreach ($sale_product as $item) {
-                                if (isset($reviewsCount[$item['product_id']]) && isset($ratings[$item['product_id']])) {
-                                        $reviewCount = $reviewsCount[$item['product_id']] ?? 0;
-                                        $rating = $ratings[$item['product_id']] ?? 0;
+                    foreach ($sale_product as $item) {
+                        if (isset($reviewsCount[$item['product_id']]) && isset($ratings[$item['product_id']])) {
+                            $reviewCount = $reviewsCount[$item['product_id']] ?? 0;
+                            $rating = $ratings[$item['product_id']] ?? 0;
+                            ?>
+                            <!-- Hiển thị thông tin sản phẩm -->
+                            <div class="product product-2">
+                                <figure class="product-media">
+                                    <span class="product-label label-circle label-top">Top</span>
+                                    <a href="?act=product&id=<?= $item['product_id'] ?>">
+                                        <div class="product-image">
+                                            <img src="uploaded/<?= $item['product_img'] ?>" alt="Product image">
+                                        </div>
+                                    </a>
+                                    <?php if ($item['product_status'] == 1 && $item['product_count'] > 0) {
+                                        $isFavorited = false;
+                                        if (isset($_SESSION['login'])) {
+                                            require_once 'Models/favorite.php';
+                                            $favorite = new Favorite();
+                                            $isFavorited = $favorite->isProductFavorited($_SESSION['login']['user_email'], $item['product_id']);
+                                        }
+                                        ?>
+                                        <div class="product-action-vertical">
+                                            <form action="index.php?act=favorite&xuli=<?= $isFavorited ? 'delete' : 'add' ?>"
+                                                method="POST">
+                                                <input type="hidden" name="product_id" value="<?= $item['product_id'] ?>">
+                                                <?php if ($isFavorited): ?>
+                                                    <input type="hidden" name="favorite_id"
+                                                        value="<?= $favorite->findByUserAndProduct($_SESSION['login']['user_email'], $item['product_id'])['favorite_id'] ?>">
+                                                <?php endif; ?>
+                                                <button type="submit"
+                                                    class="btn-product-icon btn-wishlist <?= $isFavorited ? 'active' : '' ?>">
+                                                    <span><?= $isFavorited ? 'Xóa khỏi yêu thích' : 'Thêm vào yêu thích' ?></span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    <?php } ?>
+
+                                    <div class="product-action product-action-dark">
+                                        <a href="?act=cart&xuli=add&product_id=<?= $item['product_id'] ?>&quantity=1"
+                                            class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                                        <a href="popup/quick_view.php" class="btn-product btn-quickview"
+                                            title="Quick view"><span>quick view</span></a>
+                                    </div><!-- End .product-action -->
+                                </figure><!-- End .product-media -->
+
+                                <div class="product-body">
+                                    <div class="product-cat">
+                                        <a href="#"><?= $item['category_name'] ?></a>
+                                    </div><!-- End .product-cat -->
+                                    <h3 class="product-title"><a
+                                            href="?act=product&id=<?= $item['product_id'] ?>"><?= $item['product_name'] ?></a></h3>
+                                    <!-- End .product-title -->
+                                    <div class="product-price">
+                                        <?= number_format($item['product_price'], 0, ",", ".") ?> đ
+                                    </div><!-- End .product-price -->
+                                    <div class="ratings-container">
+                                        <div class="ratings">
+                                            <div class="ratings-val" style="width: <?= ($rating * 20) ?>%;"></div>
+                                            <!-- End .ratings-val -->
+                                        </div><!-- End .ratings -->
+                                        <span class="ratings-text">( <?= $reviewCount ?> Reviews )</span>
+                                    </div><!-- End .ratings-container -->
+                                </div><!-- End .product-body -->
+                            </div><!-- End .product -->
+                            <?php
+                        }
+                    }
+                }
                 ?>
-            <!-- Hiển thị thông tin sản phẩm -->
-            <div class="product product-2">
-                <figure class="product-media">
-                    <span class="product-label label-circle label-top">Top</span>
-                    <a href="?act=product&id=<?=$item['product_id']?>">
-                        <div class="product-image">
-                        <img src="uploaded/<?=$item['product_img']?>" alt="Product image">
-                        </div>
-                    </a>
-                    <?php if ($value['product_status'] == 1 && $value['product_count'] > 0) { 
-    $isFavorited = false;
-    if(isset($_SESSION['login'])) {
-        require_once 'Models/favorite.php';
-        $favorite = new Favorite();
-        $isFavorited = $favorite->isProductFavorited($_SESSION['login']['user_email'], $value['product_id']);
-    }
-?>
-    <div class="product-action-vertical">
-        <form action="index.php?act=favorite&xuli=<?= $isFavorited ? 'delete' : 'add' ?>" method="POST">
-            <input type="hidden" name="product_id" value="<?=$value['product_id']?>">
-            <?php if($isFavorited): ?>
-                <input type="hidden" name="favorite_id" value="<?=$favorite->findByUserAndProduct($_SESSION['login']['user_email'], $value['product_id'])['favorite_id']?>">
-            <?php endif; ?>
-            <button type="submit" class="btn-product-icon btn-wishlist <?= $isFavorited ? 'active' : '' ?>">
-                <span><?= $isFavorited ? 'Xóa khỏi yêu thích' : 'Thêm vào yêu thích' ?></span>
-            </button>
-        </form>
-    </div>
-<?php } ?>
-
-                    <div class="product-action product-action-dark">
-                        <a href="?act=cart&xuli=add&product_id=<?=$item['product_id']?>&quantity=1" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                        <a href="popup/quick_view.php" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
-                    </div><!-- End .product-action -->
-                </figure><!-- End .product-media -->
-
-                <div class="product-body">
-                    <div class="product-cat">
-                        <a href="#"><?=$item['category_name']?></a>
-                    </div><!-- End .product-cat -->
-                    <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>"><?=$item['product_name']?></a></h3><!-- End .product-title -->
-                    <div class="product-price">
-                        <?=number_format($item['product_price'],0,",",".")?> đ
-                    </div><!-- End .product-price -->
-                    <div class="ratings-container">
-                        <div class="ratings">
-                            <div class="ratings-val" style="width: <?= ($rating * 20) ?>%;"></div>
-                            <!-- End .ratings-val -->
-                        </div><!-- End .ratings -->
-                        <span class="ratings-text">( <?= $reviewCount ?> Reviews )</span>
-                    </div><!-- End .ratings-container -->
-                </div><!-- End .product-body -->
-            </div><!-- End .product -->
-							<?php
-											}
-									}
-							}
-							?>
 
 
 
@@ -682,75 +721,80 @@
                         }
                     }
                 }'>
-                <?php 
-								if (isset($favorite_rv) && $favorite_rv!= NULL) {
-									foreach ($favorite_rv as $item) {
-										if (isset($reviewsCount[$item['product_id']]) && isset($ratings[$item['product_id']])) {
-											$reviewCount = $reviewsCount[$item['product_id']] ?? 0;
-											$rating = $ratings[$item['product_id']] ?? 0;
-                    ?>
-										
-                <div class="product product-2">
-                    <figure class="product-media">
-                        <span class="product-label label-circle label-top">Top</span>
-                        <a href="?act=product&id=<?=$item['product_id']?>">
-                            <div class="product-image">
-                            <img src="uploaded/<?=$item['product_img']?>" alt="Product image">
-                            </div>
-                        </a>
+                <?php
+                if (isset($favorite_rv) && $favorite_rv != NULL) {
+                    foreach ($favorite_rv as $item) {
+                        if (isset($reviewsCount[$item['product_id']]) && isset($ratings[$item['product_id']])) {
+                            $reviewCount = $reviewsCount[$item['product_id']] ?? 0;
+                            $rating = $ratings[$item['product_id']] ?? 0;
+                            ?>
 
-                        <?php if ($value['product_status'] == 1 && $value['product_count'] > 0) { 
-    $isFavorited = false;
-    if(isset($_SESSION['login'])) {
-        require_once 'Models/favorite.php';
-        $favorite = new Favorite();
-        $isFavorited = $favorite->isProductFavorited($_SESSION['login']['user_email'], $value['product_id']);
-    }
-?>
-    <div class="product-action-vertical">
-        <form action="index.php?act=favorite&xuli=<?= $isFavorited ? 'delete' : 'add' ?>" method="POST">
-            <input type="hidden" name="product_id" value="<?=$value['product_id']?>">
-            <?php if($isFavorited): ?>
-                <input type="hidden" name="favorite_id" value="<?=$favorite->findByUserAndProduct($_SESSION['login']['user_email'], $value['product_id'])['favorite_id']?>">
-            <?php endif; ?>
-            <button type="submit" class="btn-product-icon btn-wishlist <?= $isFavorited ? 'active' : '' ?>">
-                <span><?= $isFavorited ? 'Xóa khỏi yêu thích' : 'Thêm vào yêu thích' ?></span>
-            </button>
-        </form>
-    </div>
-<?php } ?>
+                            <div class="product product-2">
+                                <figure class="product-media">
+                                    <span class="product-label label-circle label-top">Top</span>
+                                    <a href="?act=product&id=<?= $item['product_id'] ?>">
+                                        <div class="product-image">
+                                            <img src="uploaded/<?= $item['product_img'] ?>" alt="Product image">
+                                        </div>
+                                    </a>
 
-                        <div class="product-action product-action-dark">
-                            <a href="?act=cart&xuli=add&product_id=<?=$item['product_id']?>&quantity=1" class="btn-product btn-cart" title="Add to cart"><span>add to
-                                    cart</span></a>
-                            <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                title="Quick view"><span>quick view</span></a>
-                        </div><!-- End .product-action -->
-                    </figure><!-- End .product-media -->
+                                    <?php if ($item['product_status'] == 1 && $item['product_count'] > 0) {
+                                        $isFavorited = false;
+                                        if (isset($_SESSION['login'])) {
+                                            require_once 'Models/favorite.php';
+                                            $favorite = new Favorite();
+                                            $isFavorited = $favorite->isProductFavorited($_SESSION['login']['user_email'], $item['product_id']);
+                                        }
+                                        ?>
+                                        <div class="product-action-vertical">
+                                            <form action="index.php?act=favorite&xuli=<?= $isFavorited ? 'delete' : 'add' ?>"
+                                                method="POST">
+                                                <input type="hidden" name="product_id" value="<?= $item['product_id'] ?>">
+                                                <?php if ($isFavorited): ?>
+                                                    <input type="hidden" name="favorite_id"
+                                                        value="<?= $favorite->findByUserAndProduct($_SESSION['login']['user_email'], $item['product_id'])['favorite_id'] ?>">
+                                                <?php endif; ?>
+                                                <button type="submit"
+                                                    class="btn-product-icon btn-wishlist <?= $isFavorited ? 'active' : '' ?>">
+                                                    <span><?= $isFavorited ? 'Xóa khỏi yêu thích' : 'Thêm vào yêu thích' ?></span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    <?php } ?>
 
-                    <div class="product-body">
-                        <div class="product-cat">
-                            <a href="#"><?=$item['category_name'];?></a>
-                        </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>"><?=$item['product_name']?></a>
-                        </h3><!-- End .product-title -->
-                        <div class="product-price">
-												<?=number_format($item['product_price'],0,",",".")?> đ
-                        </div><!-- End .product-price -->
-                        <div class="ratings-container">
-												<div class="ratings">
-														<div class="ratings-val" style="width: <?= ($rating * 20) ?>%;"></div>
-														<!-- End .ratings-val -->
-												</div><!-- End .ratings -->
-												<span class="ratings-text">( <?= $reviewCount ?> Reviews )</span>
-            						</div><!-- End .ratings-container -->
-                    </div><!-- End .product-body -->
-                </div><!-- End .product -->
-                <?php 
-											}
-										}
-									}
-										 ?>
+                                    <div class="product-action product-action-dark">
+                                        <a href="?act=cart&xuli=add&product_id=<?= $item['product_id'] ?>&quantity=1"
+                                            class="btn-product btn-cart" title="Add to cart"><span>add to
+                                                cart</span></a>
+                                        <a href="popup/quick_view.php" class="btn-product btn-quickview"
+                                            title="Quick view"><span>quick view</span></a>
+                                    </div><!-- End .product-action -->
+                                </figure><!-- End .product-media -->
+
+                                <div class="product-body">
+                                    <div class="product-cat">
+                                        <a href="#"><?= $item['category_name']; ?></a>
+                                    </div><!-- End .product-cat -->
+                                    <h3 class="product-title"><a
+                                            href="?act=product&id=<?= $item['product_id'] ?>"><?= $item['product_name'] ?></a>
+                                    </h3><!-- End .product-title -->
+                                    <div class="product-price">
+                                        <?= number_format($item['product_price'], 0, ",", ".") ?> đ
+                                    </div><!-- End .product-price -->
+                                    <div class="ratings-container">
+                                        <div class="ratings">
+                                            <div class="ratings-val" style="width: <?= ($rating * 20) ?>%;"></div>
+                                            <!-- End .ratings-val -->
+                                        </div><!-- End .ratings -->
+                                        <span class="ratings-text">( <?= $reviewCount ?> Reviews )</span>
+                                    </div><!-- End .ratings-container -->
+                                </div><!-- End .product-body -->
+                            </div><!-- End .product -->
+                            <?php
+                        }
+                    }
+                }
+                ?>
             </div>
         </div><!-- End .owl-carousel -->
         <div class="tab-pane p-0 fade" id="top-computers-tab" role="tabpanel" aria-labelledby="top-computers-link">
@@ -778,76 +822,80 @@
                         }
                     }
                 }'>
-                <?php if(isset($sell_pr) && $sell_pr != NULL) { 
-									foreach ($sell_pr as $item) {
-										if (isset($reviewsCount[$item['product_id']]) && isset($ratings[$item['product_id']])) {
-											$reviewCount = $reviewsCount[$item['product_id']] ?? 0;
-											$rating = $ratings[$item['product_id']] ?? 0;
-                    ?>
-										
-                <div class="product product-2">
-                    <figure class="product-media">
-                        <span class="product-label label-circle label-top">Top</span>
-                        <a href="?act=product&id=<?=$item['product_id']?>">
-                            <img src="uploaded/<?=$item['product_img']?>" alt="Product image"
-                                class="product-image">
-                        </a>
+                <?php if (isset($sell_pr) && $sell_pr != NULL) {
+                    foreach ($sell_pr as $item) {
+                        if (isset($reviewsCount[$item['product_id']]) && isset($ratings[$item['product_id']])) {
+                            $reviewCount = $reviewsCount[$item['product_id']] ?? 0;
+                            $rating = $ratings[$item['product_id']] ?? 0;
+                            ?>
 
-                        <?php if ($value['product_status'] == 1 && $value['product_count'] > 0) { 
-    $isFavorited = false;
-    if(isset($_SESSION['login'])) {
-        require_once 'Models/favorite.php';
-        $favorite = new Favorite();
-        $isFavorited = $favorite->isProductFavorited($_SESSION['login']['user_email'], $value['product_id']);
-    }
-?>
-    <div class="product-action-vertical">
-        <form action="index.php?act=favorite&xuli=<?= $isFavorited ? 'delete' : 'add' ?>" method="POST">
-            <input type="hidden" name="product_id" value="<?=$value['product_id']?>">
-            <?php if($isFavorited): ?>
-                <input type="hidden" name="favorite_id" value="<?=$favorite->findByUserAndProduct($_SESSION['login']['user_email'], $value['product_id'])['favorite_id']?>">
-            <?php endif; ?>
-            <button type="submit" class="btn-product-icon btn-wishlist <?= $isFavorited ? 'active' : '' ?>">
-                <span><?= $isFavorited ? 'Xóa khỏi yêu thích' : 'Thêm vào yêu thích' ?></span>
-            </button>
-        </form>
-    </div>
-<?php } ?>
+                            <div class="product product-2">
+                                <figure class="product-media">
+                                    <span class="product-label label-circle label-top">Top</span>
+                                    <a href="?act=product&id=<?= $item['product_id'] ?>">
+                                        <img src="uploaded/<?= $item['product_img'] ?>" alt="Product image" class="product-image">
+                                    </a>
 
-                        <div class="product-action product-action-dark">
-                            <a href="?act=cart&xuli=add&product_id=<?=$item['product_id']?>&quantity=1" class="btn-product btn-cart" title="Add to cart"><span>add to
-                                    cart</span></a>
-                            <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                title="Quick view"><span>quick view</span></a>
-                        </div><!-- End .product-action -->
-                    </figure><!-- End .product-media -->
+                                    <?php if ($item['product_status'] == 1 && $item['product_count'] > 0) {
+                                        $isFavorited = false;
+                                        if (isset($_SESSION['login'])) {
+                                            require_once 'Models/favorite.php';
+                                            $favorite = new Favorite();
+                                            $isFavorited = $favorite->isProductFavorited($_SESSION['login']['user_email'], $item['product_id']);
+                                        }
+                                        ?>
+                                        <div class="product-action-vertical">
+                                            <form action="index.php?act=favorite&xuli=<?= $isFavorited ? 'delete' : 'add' ?>"
+                                                method="POST">
+                                                <input type="hidden" name="product_id" value="<?= $item['product_id'] ?>">
+                                                <?php if ($isFavorited): ?>
+                                                    <input type="hidden" name="favorite_id"
+                                                        value="<?= $favorite->findByUserAndProduct($_SESSION['login']['user_email'], $item['product_id'])['favorite_id'] ?>">
+                                                <?php endif; ?>
+                                                <button type="submit"
+                                                    class="btn-product-icon btn-wishlist <?= $isFavorited ? 'active' : '' ?>">
+                                                    <span><?= $isFavorited ? 'Xóa khỏi yêu thích' : 'Thêm vào yêu thích' ?></span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    <?php } ?>
 
-                    <div class="product-body">
-                        <div class="product-cat">
-                            <a href="#"><?=$item['category_name']?></a>
-                        </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>"><?=$item['product_name']?></a>
-                        </h3><!-- End .product-title -->
-                        <div class="product-price">
-												<?=number_format($item['product_price'],0,",",".")?> đ
-                        </div><!-- End .product-price -->
-                        <div class="ratings-container">
-                        <div class="ratings">
-                                <div class="ratings-val" style="width: <?= ($rating * 20) ?>%;"></div>
-                                <!-- End .ratings-val -->
-                        </div><!-- End .ratings -->
-                        <span class="ratings-text">( <?= $reviewCount ?> Reviews )</span>
-                     </div><!-- End .ratings-container -->
-                    </div><!-- End .product-body -->
-                </div><!-- End .product -->
-								<?php
-										}
-								?>
-                <?php 
-                    }   
-                    }else{
-                        echo "No data available";
-                    } ?>
+                                    <div class="product-action product-action-dark">
+                                        <a href="?act=cart&xuli=add&product_id=<?= $item['product_id'] ?>&quantity=1"
+                                            class="btn-product btn-cart" title="Add to cart"><span>add to
+                                                cart</span></a>
+                                        <a href="popup/quick_view.php" class="btn-product btn-quickview"
+                                            title="Quick view"><span>quick view</span></a>
+                                    </div><!-- End .product-action -->
+                                </figure><!-- End .product-media -->
+
+                                <div class="product-body">
+                                    <div class="product-cat">
+                                        <a href="#"><?= $item['category_name'] ?></a>
+                                    </div><!-- End .product-cat -->
+                                    <h3 class="product-title"><a
+                                            href="?act=product&id=<?= $item['product_id'] ?>"><?= $item['product_name'] ?></a>
+                                    </h3><!-- End .product-title -->
+                                    <div class="product-price">
+                                        <?= number_format($item['product_price'], 0, ",", ".") ?> đ
+                                    </div><!-- End .product-price -->
+                                    <div class="ratings-container">
+                                        <div class="ratings">
+                                            <div class="ratings-val" style="width: <?= ($rating * 20) ?>%;"></div>
+                                            <!-- End .ratings-val -->
+                                        </div><!-- End .ratings -->
+                                        <span class="ratings-text">( <?= $reviewCount ?> Reviews )</span>
+                                    </div><!-- End .ratings-container -->
+                                </div><!-- End .product-body -->
+                            </div><!-- End .product -->
+                            <?php
+                        }
+                        ?>
+                        <?php
+                    }
+                } else {
+                    echo "No data available";
+                } ?>
             </div>
         </div><!-- .End .tab-pane -->
         <div class="tab-pane p-0 fade" id="top-phones-tab" role="tabpanel" aria-labelledby="top-phones-link">
@@ -875,75 +923,79 @@
                         }
                     }
                 }'>
-                <?php if(isset($New_pr)&& $New_pr != NULL){ 
-                        foreach($New_pr as $item){
-                            if (isset($reviewsCount[$item['product_id']]) && isset($ratings[$item['product_id']])) {
-                                $reviewCount = $reviewsCount[$item['product_id']] ?? 0;
-                                $rating = $ratings[$item['product_id']] ?? 0;
-                ?>
-                <div class="product product-2">
-                    <figure class="product-media">
-                        <span class="product-label label-circle label-top">Top</span>
-                        <a href="?act=product&id=<?=$item['product_id']?>">
-                            <img src="uploaded/<?=$item['product_img']?>" alt="Product image"
-                                class="product-image">
-                        </a>
+                <?php if (isset($New_pr) && $New_pr != NULL) {
+                    foreach ($New_pr as $item) {
+                        if (isset($reviewsCount[$item['product_id']]) && isset($ratings[$item['product_id']])) {
+                            $reviewCount = $reviewsCount[$item['product_id']] ?? 0;
+                            $rating = $ratings[$item['product_id']] ?? 0;
+                            ?>
+                            <div class="product product-2">
+                                <figure class="product-media">
+                                    <span class="product-label label-circle label-top">Top</span>
+                                    <a href="?act=product&id=<?= $item['product_id'] ?>">
+                                        <img src="uploaded/<?= $item['product_img'] ?>" alt="Product image" class="product-image">
+                                    </a>
 
-                        <?php if ($value['product_status'] == 1 && $value['product_count'] > 0) { 
-    $isFavorited = false;
-    if(isset($_SESSION['login'])) {
-        require_once 'Models/favorite.php';
-        $favorite = new Favorite();
-        $isFavorited = $favorite->isProductFavorited($_SESSION['login']['user_email'], $value['product_id']);
-    }
-?>
-    <div class="product-action-vertical">
-        <form action="index.php?act=favorite&xuli=<?= $isFavorited ? 'delete' : 'add' ?>" method="POST">
-            <input type="hidden" name="product_id" value="<?=$value['product_id']?>">
-            <?php if($isFavorited): ?>
-                <input type="hidden" name="favorite_id" value="<?=$favorite->findByUserAndProduct($_SESSION['login']['user_email'], $value['product_id'])['favorite_id']?>">
-            <?php endif; ?>
-            <button type="submit" class="btn-product-icon btn-wishlist <?= $isFavorited ? 'active' : '' ?>">
-                <span><?= $isFavorited ? 'Xóa khỏi yêu thích' : 'Thêm vào yêu thích' ?></span>
-            </button>
-        </form>
-    </div>
-<?php } ?>
+                                    <?php if ($item['product_status'] == 1 && $item['product_count'] > 0) {
+                                        $isFavorited = false;
+                                        if (isset($_SESSION['login'])) {
+                                            require_once 'Models/favorite.php';
+                                            $favorite = new Favorite();
+                                            $isFavorited = $favorite->isProductFavorited($_SESSION['login']['user_email'], $item['product_id']);
+                                        }
+                                        ?>
+                                        <div class="product-action-vertical">
+                                            <form action="index.php?act=favorite&xuli=<?= $isFavorited ? 'delete' : 'add' ?>"
+                                                method="POST">
+                                                <input type="hidden" name="product_id" value="<?= $item['product_id'] ?>">
+                                                <?php if ($isFavorited): ?>
+                                                    <input type="hidden" name="favorite_id"
+                                                        value="<?= $favorite->findByUserAndProduct($_SESSION['login']['user_email'], $item['product_id'])['favorite_id'] ?>">
+                                                <?php endif; ?>
+                                                <button type="submit"
+                                                    class="btn-product-icon btn-wishlist <?= $isFavorited ? 'active' : '' ?>">
+                                                    <span><?= $isFavorited ? 'Xóa khỏi yêu thích' : 'Thêm vào yêu thích' ?></span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    <?php } ?>
 
-                        <div class="product-action product-action-dark">
-                            <a href="?act=cart&xuli=add&product_id=<?=$item['product_id']?>&quantity=1" class="btn-product btn-cart" title="Add to cart"><span>add to
-                                    cart</span></a>
-                            <a href="popup/quick_view.php" class="btn-product btn-quickview"
-                                title="Quick view"><span>quick view</span></a>
-                        </div><!-- End .product-action -->
-                    </figure><!-- End .product-media -->
+                                    <div class="product-action product-action-dark">
+                                        <a href="?act=cart&xuli=add&product_id=<?= $item['product_id'] ?>&quantity=1"
+                                            class="btn-product btn-cart" title="Add to cart"><span>add to
+                                                cart</span></a>
+                                        <a href="popup/quick_view.php" class="btn-product btn-quickview"
+                                            title="Quick view"><span>quick view</span></a>
+                                    </div><!-- End .product-action -->
+                                </figure><!-- End .product-media -->
 
-                    <div class="product-body">
-                        <div class="product-cat">
-                            <a href="#"><?=$item['category_name'];?></a>
-                        </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="?act=product&id=<?=$item['product_id']?>"><?=$item['product_name']?></a>
-                        </h3><!-- End .product-title -->
-                        <div class="product-price">
-                            <?=number_format($item['product_price'],0,',','.');?> đ
-                        </div><!-- End .product-price -->
-                        <div class="ratings-container">
-												<div class="ratings">
-														<div class="ratings-val" style="width: <?= ($rating * 20) ?>%;"></div>
-														<!-- End .ratings-val -->
-												</div><!-- End .ratings -->
-												<span class="ratings-text">( <?= $reviewCount ?> Reviews )</span>
-            						</div><!-- End .ratings-container -->
-                    </div><!-- End .product-body -->
-                </div><!-- End .product -->
-								<?php
-									}
-								?>
-                <?php 
-                    }   
-                    }else{
-                        echo "No data available";
-                    } ?>
+                                <div class="product-body">
+                                    <div class="product-cat">
+                                        <a href="#"><?= $item['category_name']; ?></a>
+                                    </div><!-- End .product-cat -->
+                                    <h3 class="product-title"><a
+                                            href="?act=product&id=<?= $item['product_id'] ?>"><?= $item['product_name'] ?></a>
+                                    </h3><!-- End .product-title -->
+                                    <div class="product-price">
+                                        <?= number_format($item['product_price'], 0, ',', '.'); ?> đ
+                                    </div><!-- End .product-price -->
+                                    <div class="ratings-container">
+                                        <div class="ratings">
+                                            <div class="ratings-val" style="width: <?= ($rating * 20) ?>%;"></div>
+                                            <!-- End .ratings-val -->
+                                        </div><!-- End .ratings -->
+                                        <span class="ratings-text">( <?= $reviewCount ?> Reviews )</span>
+                                    </div><!-- End .ratings-container -->
+                                </div><!-- End .product-body -->
+                            </div><!-- End .product -->
+                            <?php
+                        }
+                        ?>
+                        <?php
+                    }
+                } else {
+                    echo "No data available";
+                } ?>
             </div><!-- End .owl-carousel -->
         </div><!-- End .tab-pane -->
     </div><!-- End .tab-content -->

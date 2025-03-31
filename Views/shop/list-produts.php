@@ -52,14 +52,6 @@
         </form>
     </div>
 <?php } ?>
-
-                    <div class="product-action">
-                        <a href="?act=cart&xuli=add&product_id=<?=$value['product_id']?>&quantity=1"
-                            class="btn-product btn-cart"><span>add to cart</span></a>
-                    </div><!-- End .product-action -->
-                    <?php } ?>
-                </figure><!-- End .product-media -->
-
                 <div class="product-body">
                     <div class="product-cat">
                         <a href="?act=shop&product_cat=<?=$value['category_id']?>"><?=$value['category_name']?></a>
@@ -96,8 +88,15 @@
             </div><!-- End .product -->
         </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
 
-        <?php }}else{
-			echo '<p> KHÔNG CÓ DỮ LIỆU </p>';}?>
+
+                        </div><!-- End .product-body -->
+                    </div><!-- End .product -->
+                </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+
+            <?php }
+        } else {
+            echo '<p> KHÔNG CÓ DỮ LIỆU </p>';
+        } ?>
         <!-- single product end -->
     </div><!-- End .row -->
 </div><!-- End .products -->
@@ -109,79 +108,79 @@ $product_cat = isset($_GET['product_cat']) ? $_GET['product_cat'] : 0;
 $per_page = isset($orderdata['itemPerPage']) ? $orderdata['itemPerPage'] : 12; // Default to 12 if not set
 
 if ($orderdata['totalRecord'] > 12) {
-?>
-<nav aria-label="Page navigation">
-    <ul class="pagination justify-content-center">
-        <?php
+    ?>
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            <?php
             // Link to first page
             if ($orderdata['currentPage'] > 2) {
                 $first_page = 1;
                 ?>
-        <li class="page-item"><a class="page-link"
-                href="index.php?act=shop&product_cat=<?= $product_cat ?>&per_page=<?= $per_page ?>&page=<?= $first_page ?>&field=<?= $field ?>&sort=<?= $sort ?>">First</a>
-        </li>
-        <?php
+                <li class="page-item"><a class="page-link"
+                        href="index.php?act=shop&product_cat=<?= $product_cat ?>&per_page=<?= $per_page ?>&page=<?= $first_page ?>&field=<?= $field ?>&sort=<?= $sort ?>">First</a>
+                </li>
+                <?php
             }
             // Link to previous page
             if ($orderdata['currentPage'] > 1) {
                 $prev_page = $orderdata['currentPage'] - 1;
                 ?>
-        <li class="page-item"><a class="page-link page-link-prev"
-                href="index.php?act=shop&product_cat=<?= $product_cat ?>&per_page=<?= $per_page ?>&page=<?= $prev_page ?>&field=<?= $field ?>&sort=<?= $sort ?>"><i
-                    class="icon-long-arrow-left"></i>Prev</a></li>
-        <?php }
-        // Numbered page links
-        for ($num = 1; $num <= $orderdata['totalPages']; $num++) {
-            if ($num != $orderdata['currentPage']) {
-                if ($num > $orderdata['currentPage'] - 3 && $num < $orderdata['currentPage'] + 3) {
-                    ?>
-        <li class="page-item"><a class="page-link"
-                href="index.php?act=shop&product_cat=<?= $product_cat ?>&per_page=<?= $per_page ?>&page=<?= $num ?>&field=<?= $field ?>&sort=<?= $sort ?>"><?= $num ?></a>
-        </li>
-        <?php 
-                }
-            } else { ?>
-        <li class="page-item active"><a class="page-link"><?= $num ?></a></li>
-        <?php }
-        }
-        // Link to next page
-        if ($orderdata['currentPage'] < $orderdata['totalPages']) {
-            $next_page = $orderdata['currentPage'] + 1;
+                <li class="page-item"><a class="page-link page-link-prev"
+                        href="index.php?act=shop&product_cat=<?= $product_cat ?>&per_page=<?= $per_page ?>&page=<?= $prev_page ?>&field=<?= $field ?>&sort=<?= $sort ?>"><i
+                            class="icon-long-arrow-left"></i>Prev</a></li>
+            <?php }
+            // Numbered page links
+            for ($num = 1; $num <= $orderdata['totalPages']; $num++) {
+                if ($num != $orderdata['currentPage']) {
+                    if ($num > $orderdata['currentPage'] - 3 && $num < $orderdata['currentPage'] + 3) {
+                        ?>
+                        <li class="page-item"><a class="page-link"
+                                href="index.php?act=shop&product_cat=<?= $product_cat ?>&per_page=<?= $per_page ?>&page=<?= $num ?>&field=<?= $field ?>&sort=<?= $sort ?>"><?= $num ?></a>
+                        </li>
+                        <?php
+                    }
+                } else { ?>
+                    <li class="page-item active"><a class="page-link"><?= $num ?></a></li>
+                <?php }
+            }
+            // Link to next page
+            if ($orderdata['currentPage'] < $orderdata['totalPages']) {
+                $next_page = $orderdata['currentPage'] + 1;
+                ?>
+                <li class="page-item"><a class="page-link page-link-next"
+                        href="index.php?act=shop&product_cat=<?= $product_cat ?>&per_page=<?= $per_page ?>&page=<?= $next_page ?>&field=<?= $field ?>&sort=<?= $sort ?>">Next<span><i
+                                class="icon-long-arrow-right"></i></span></a></li>
+                <?php
+            }
+            // Link to last page
+            if ($orderdata['currentPage'] < $orderdata['totalPages'] - 2) {
+                $end_page = $orderdata['totalPages'];
+                ?>
+                <li class="page-item"><a class="page-link"
+                        href="index.php?act=shop&product_cat=<?= $product_cat ?>&per_page=<?= $per_page ?>&page=<?= $end_page ?>&field=<?= $field ?>&sort=<?= $sort ?>">Last</a>
+                </li>
+                <?php
+            }
             ?>
-        <li class="page-item"><a class="page-link page-link-next"
-                href="index.php?act=shop&product_cat=<?= $product_cat ?>&per_page=<?= $per_page ?>&page=<?= $next_page ?>&field=<?= $field ?>&sort=<?= $sort ?>">Next<span><i
-                        class="icon-long-arrow-right"></i></span></a></li>
-        <?php
-        }
-        // Link to last page
-        if ($orderdata['currentPage'] < $orderdata['totalPages'] - 2) {
-            $end_page = $orderdata['totalPages'];
-            ?>
-        <li class="page-item"><a class="page-link"
-                href="index.php?act=shop&product_cat=<?= $product_cat ?>&per_page=<?= $per_page ?>&page=<?= $end_page ?>&field=<?= $field ?>&sort=<?= $sort ?>">Last</a>
-        </li>
-        <?php
-        }
-        ?>
-    </ul>
-</nav>
+        </ul>
+    </nav>
 <?php } ?>
 <style>
-.btn-wishlist {
-    width: 35px;
-    height: 35px;
-    padding: 0;
-    border-radius: 50%; 
-    border: 0.1rem solid #d7d7d7;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s;
-}
+    .btn-wishlist {
+        width: 35px;
+        height: 35px;
+        padding: 0;
+        border-radius: 50%;
+        border: 0.1rem solid #d7d7d7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+    }
 
-.btn-wishlist.active {
-    color: #fff; 
-    background-color: #dc3545; 
-    border-color: #dc3545; 
-}
+    .btn-wishlist.active {
+        color: #fff;
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
 </style>

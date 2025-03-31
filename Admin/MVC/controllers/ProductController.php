@@ -25,18 +25,32 @@ class ProductController
         require_once("MVC/Views/admin/index.php");
     }
 
-    public function add(){
+    public function add()
+    {
         $categories = $this->category_model->CategoryNotParent();
         require_once("MVC/Views/admin/index.php");
     }
 
-    public function store(){
-        if (empty($_POST['product_name']) || empty($_POST['product_price']) || empty($_POST['product_discount']) || empty($_POST['product_count']) || empty($_POST['product_cat']))  {
+    public function store()
+    {
+        if (empty($_POST['product_name']) || empty($_POST['product_price']) || empty($_POST['product_discount']) || empty($_POST['product_count']) || empty($_POST['product_cat'])) {
             $_SESSION['msg'] = 'Fill in all required fields!';
             header('Location: ?mod=product&act=add');
             exit;
         }
-        
+
+        if (!empty($_FILES['product_img']['name'])) {
+            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+            $fileExtension = pathinfo($_FILES['product_img']['name'], PATHINFO_EXTENSION);
+            if (!in_array(strtolower($fileExtension), $allowedExtensions)) {
+                $errors[] = 'Hình ảnh phải có định dạng jpg, jpeg, png hoặc gif.';
+            }
+        }
+
+        if (!empty($_FILES['product_img']['name']) && $_FILES['product_img']['size'] > 2000000) {
+            $errors[] = 'Kích thước hình ảnh không được vượt quá 2MB.';
+        }
+
         try {
             $name = $_POST['product_name'];
             $price = $_POST['product_price'];
@@ -57,9 +71,9 @@ class ProductController
             $product_img = $_FILES['product_img']['name'];
             $product_img_tmp = $_FILES['product_img']['tmp_name'];
             $product_img = $this->adminVyModel->handleImageUpload($product_img, $product_img_tmp);
-            
+
             $this->product_model->store($name, $price, $discount, $count, $cat, $status, $product_img, $screen_cam, $os, $gpu, $cpu, $pin, $colors, $sizes, $ram, $rom, $bluetooth);
-            
+
             $_SESSION['msg'] = 'Product added successfully!';
             header('Location: ?mod=product&act=list');
             exit;
@@ -70,36 +84,40 @@ class ProductController
         }
     }
 
-    public function edit(){
+    public function edit()
+    {
         $id = $_GET['id'];
         $product = $this->product_model->edit($id);
         $categories = $this->category_model->All();
         require_once("MVC/Views/admin/index.php");
     }
-    
-    public function delete(){
+
+    public function delete()
+    {
         $id = $_GET['id'];
         $this->product_model->delete($id);
         header('Location: ?mod=product&act=list');
         exit;
     }
 
-    public function details() {
-        if(isset($_GET['id'])) {
+    public function details()
+    {
+        if (isset($_GET['id'])) {
             $id = $_GET['id'];
             $data = $this->product_model->getDetailById($id);
-            
+
             // Kiểm tra nếu là AJAX request
-            if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+            if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
                 // Trả về view AJAX
                 require_once("MVC/Views/product/details.php");
             } else {
-               echo 'lỗi';
+                echo 'lỗi';
             }
         }
     }
 
-    public function update(){
+    public function update()
+    {
         $id = $_POST['id'];
         $name = $_POST['product_name'];
         $price = $_POST['product_price'];
@@ -125,10 +143,10 @@ class ProductController
             $current_product = $this->product_model->edit($id);
             $product_img = $current_product['product_img'];
         }
-        
+
         try {
             $this->product_model->update($id, $name, $price, $discount, $count, $cat, $status, $product_img, $screen_cam, $os, $gpu, $cpu, $pin, $colors, $sizes, $ram, $rom, $bluetooth);
-            
+
             $_SESSION['msg'] = 'Product updated successfully!';
             header('Location: ?mod=product&act=list');
             exit;
@@ -138,6 +156,6 @@ class ProductController
             exit;
         }
     }
-     
-   
+
+
 }

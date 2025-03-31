@@ -130,22 +130,22 @@ if($data != NULL){
                                         class="icon-instagram"></i></a>
                                 <a href="#" class="social-icon" title="Pinterest" target="_blank"><i
                                         class="icon-pinterest"></i></a>
-                            </div>
-                        </div><!-- End .product-details-footer -->
-                    </div><!-- End .product-details -->
-                </div><!-- End .col-md-6 -->
-            </div><!-- End .row -->
-        </div><!-- End .product-details-top -->
+                                </div>
+                            </div><!-- End .product-details-footer -->
+                        </div><!-- End .product-details -->
+                    </div><!-- End .col-md-6 -->
+                </div><!-- End .row -->
+            </div><!-- End .product-details-top -->
 
-        <div class="product-details-tab">
-            <?php require_once 'product_details.php' ?>
-        </div><!-- End .product-details-tab -->
+            <div class="product-details-tab">
+                <?php require_once 'product_details.php' ?>
+            </div><!-- End .product-details-tab -->
 
-        <h2 class="title text-center mb-4">You May Also Like</h2><!-- End .title text-center -->
+            <h2 class="title text-center mb-4">You May Also Like</h2><!-- End .title text-center -->
 
-        <?php require_once 'product_related.php' ?>
-    </div><!-- End .container -->
-</div><!-- End .page-content -->
+            <?php require_once 'product_related.php' ?>
+        </div><!-- End .container -->
+    </div><!-- End .page-content -->
 <?php } else {
     require_once("Views/error-404.php");
 } ?>
