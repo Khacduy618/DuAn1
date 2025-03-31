@@ -40,15 +40,15 @@ if ($data != NULL) {
                             <div class="row">
                                 <figure class="product-main-image">
 
-                                    <img id="product-zoom" src="assets/site/images/products/single/1.jpg"
-                                        data-zoom-image="assets/site/images/products/single/1-big.jpg" alt="product image">
+                                    <img id="product-zoom" src="uploaded/<?= $data['product_img'] ?>"
+                                        data-zoom-image="uploaded/<?= $data['product_img'] ?>" alt="product image">
 
                                     <a href="#" id="btn-product-gallery" class="btn-product-gallery">
                                         <i class="icon-arrows"></i>
                                     </a>
 
                                 </figure><!-- End .product-main-image -->
-                                <div id="product-zoom-gallery" class="product-image-gallery">
+                                <!-- <div id="product-zoom-gallery" class="product-image-gallery">
                                     <a class="product-gallery-item active" href="#"
                                         data-image="assets/site/images/products/single/1.jpg"
                                         data-zoom-image="assets/site/images/products/single/1-big.jpg">
@@ -75,7 +75,7 @@ if ($data != NULL) {
                                             <img id="product-zoom" src="assets/site/images/products/single/4-small.jpg"
                                                 alt="product back">
                                         </a>
-                                </div><!-- End .product-image-gallery -->
+                                </div> -->
                             </div>
                         </div><!-- End .product-gallery -->
                     </div><!-- End .col-md-6 -->
