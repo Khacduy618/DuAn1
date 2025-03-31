@@ -250,5 +250,15 @@ class Review {
             return false;
         }
     }
+
+    public function getAllProductReviews() {
+        try {
+            $sql = "SELECT pro_id as product_id, review_category as rating FROM reviews WHERE 1";
+            return pdo_query($sql);
+        } catch (Exception $e) {
+            error_log("Lỗi lấy đánh giá sản phẩm: " . $e->getMessage());
+            return [];
+        }
+    }
 }
 ?>
