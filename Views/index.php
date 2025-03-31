@@ -53,6 +53,8 @@
     </div><!-- End .page-wrapper -->
     <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
 
+
+
     <!-- Mobile Menu -->
     <div class="mobile-menu-overlay"></div><!-- End .mobil-menu-overlay -->
 
@@ -260,6 +262,62 @@
             </div><!-- End .social-icons -->
         </div><!-- End .mobile-menu-wrapper -->
     </div><!-- End .mobile-menu-container -->
+    <div class="container newsletter-popup-container mfp-hide" id="newsletter-popup-form">
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <div class="row no-gutters bg-white newsletter-popup-content">
+                    <div class="col-xl-3-12 col col-lg-12 banner-content-wrap">
+                        <div class="banner-content text-center p-4">
+                            <img src="uploaded/logo500x500.png" class="logo" alt="logo" width="60" height="60">
+                            <h2 class="banner-title">Khảo sát người dùng</h2>
+                            <a class="btn btn-danger" target="_blank"
+                                href="https://docs.google.com/forms/d/e/1FAIpQLSeeYtqsNn7WOvKKYIXCM1a7OsV_wi_0xz3zicCY-FYh9RLPow/viewform?usp=sharing">Bấm
+                                vào đây để khảo sát</a>
+                            <p class="banner-text">Chúng tôi rất cảm ơn bạn đã dành thời gian để giúp chúng tôi cải
+                                thiện trang web này. Chúng tôi sẽ sử dụng thông tin của bạn để cải thiện trải nghiệm
+                                của bạn trên trang web này.</p>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="register-policy-2" required>
+                                <label class="custom-control-label" for="register-policy-2">Do not show this popup
+                                    again</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const popup = document.getElementById('newsletter-popup-form');
+            const checkbox = document.getElementById('register-policy-2');
+            const closeButton = document.createElement('button');
+
+            // Tạo nút đóng popup
+            closeButton.textContent = 'Đóng';
+            closeButton.classList.add('btn', 'btn-secondary');
+            closeButton.style.marginTop = '10px';
+            popup.querySelector('.banner-content').appendChild(closeButton);
+
+            // Kiểm tra trạng thái trong localStorage
+            const isPopupHidden = localStorage.getItem('popupHidden');
+
+            if (isPopupHidden === 'true') {
+                popup.classList.add('mfp-hide'); // Ẩn popup nếu đã chọn "Do not show this popup again"
+            } else {
+                popup.classList.remove('mfp-hide'); // Hiển thị popup nếu chưa chọn
+            }
+
+            // Xử lý sự kiện khi nhấn nút đóng
+            closeButton.addEventListener('click', function () {
+                if (checkbox.checked) {
+                    localStorage.setItem('popupHidden', 'true'); // Lưu trạng thái vào localStorage
+                }
+                popup.classList.add('mfp-hide'); // Ẩn popup
+            });
+        });
+    </script>
 
     <!-- Plugins JS File -->
     <script src="assets/site/js/jquery.min.js"></script>
@@ -269,33 +327,18 @@
     <script src="assets/site/js/superfish.min.js"></script>
     <script src="assets/site/js/owl.carousel.min.js"></script>
     <script src="assets/site/js/bootstrap-input-spinner.js"></script>
-    <script src="assets/site/js/jquery.elevateZoom.min.js"></script>
-
     <script src="assets/site/js/jquery.plugin.min.js"></script>
     <script src="assets/site/js/jquery.magnific-popup.min.js"></script>
     <script src="assets/site/js/jquery.countdown.min.js"></script>
-    <script id="chatway" async="true" src="https://cdn.chatway.app/widget.js?id=M4yfVSQANSNz"></script>
+    <script async data-id="4264611121" id="chatling-embed-script" type="text/javascript"
+        src="https://chatling.ai/js/embed.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
     <!-- Main JS File -->
     <script src="assets/site/js/main.js"></script>
     <script src="assets/site/js/demos/demo-3.js"></script>
-    <script>
-        const textarea = document.getElementById('blog-content');
 
-        // Tự động điều chỉnh chiều cao
-        function adjustTextareaHeight(el) {
-            el.style.height = 'auto'; // Đặt chiều cao về tự động trước khi tính toán
-            el.style.height = el.scrollHeight + 'px'; // Đặt chiều cao dựa trên nội dung
-        }
-
-        // Gọi hàm khi tải trang
-        window.onload = () => adjustTextareaHeight(textarea);
-
-        // Gọi hàm mỗi khi người dùng chỉnh sửa nội dung
-        textarea.addEventListener('input', () => adjustTextareaHeight(textarea));
-    </script>
 </body>
 
 

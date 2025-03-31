@@ -498,10 +498,7 @@
                 </div><!-- End .products -->
             </div><!-- End .col-lg-6 -->
         </div><!-- End .row -->
-        <div class="more-container text-center mt-3 mb-0">
-            <a href="#" class="btn btn-outline-dark-2 btn-round btn-more"><span>Shop more Outlet
-                    deals</span><i class="icon-long-arrow-right"></i></a>
-        </div><!-- End .more-container -->
+
     </div><!-- End .container -->
 </div><!-- End .deal-container -->
 <div class="container">

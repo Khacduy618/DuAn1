@@ -1,5 +1,6 @@
 <!-- filepath: c:\xampp\htdocs\DuAn1 2\DuAn1\Views\product\product.php -->
 <?php
+
 if($data != NULL){
     require_once "Models/reviews.php";
     $reviewModel = new Review();

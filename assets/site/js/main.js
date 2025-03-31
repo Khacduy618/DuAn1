@@ -799,39 +799,44 @@ $(document).ready(function () {
             e.preventDefault();
         }
     });
-
-    if (document.getElementById('newsletter-popup-form')) {
-        setTimeout(function () {
-            var mpInstance = $.magnificPopup.instance;
-            if (mpInstance.isOpen) {
-                mpInstance.close();
-            }
-
+    const isPopupHidden = localStorage.getItem('popupHidden');
+    if (isPopupHidden != 'true') {
+        if (document.getElementById('newsletter-popup-form')) {
             setTimeout(function () {
-                $.magnificPopup.open({
-                    items: {
-                        src: '#newsletter-popup-form'
-                    },
-                    type: 'inline',
-                    removalDelay: 350,
-                    callbacks: {
-                        open: function () {
-                            $('body').css('overflow-x', 'visible');
-                            $('.sticky-header.fixed').css('padding-right', '1.7rem');
+                var mpInstance = $.magnificPopup.instance;
+
+                if (mpInstance.isOpen) {
+                    mpInstance.close();
+                }
+
+
+                setTimeout(function () {
+                    $.magnificPopup.open({
+                        items: {
+                            src: '#newsletter-popup-form'
                         },
-                        close: function () {
-                            $('body').css('overflow-x', 'hidden');
-                            $('.sticky-header.fixed').css('padding-right', '0');
+                        type: 'inline',
+                        removalDelay: 350,
+                        callbacks: {
+                            open: function () {
+                                $('body').css('overflow-x', 'visible');
+                                $('.sticky-header.fixed').css('padding-right', '1.7rem');
+                            },
+                            close: function () {
+                                $('body').css('overflow-x', 'hidden');
+                                $('.sticky-header.fixed').css('padding-right', '0');
+                            }
                         }
-                    }
-                });
-            }, 500)
-        }, 1000)
+                    });
+                }, 500)
+            }, 1000)
+        }
     }
     function toggleLabelVisibility() {
         var input = $('#checkout-discount-input');
         var label = $('#coupon-label');
-        if (input.val().trim() !== '') {
+        const value = input?.value?.trim?.() || '';
+        if (value === '') {
             label.hide();
         } else {
             label.show();
@@ -842,7 +847,7 @@ $(document).ready(function () {
     toggleLabelVisibility();
 
     // Check on input change
-    $('#checkout-discount-input').on('input', function() {
+    $('#checkout-discount-input').on('input', function () {
         toggleLabelVisibility();
     });
 
@@ -861,12 +866,12 @@ $(document).ready(function () {
         const shipping = 20000;
 
         // Chỉ tính tổng cho các sản phẩm được chọn
-        $('.checkboxes:checked').each(function() {
+        $('.checkboxes:checked').each(function () {
             const $row = $(this).closest('tr');
             const price = parsePrice($row.find('.price-col label').text());
             const quantity = parseInt($row.find('.quantity-input').val());
             const lineTotal = price * quantity;
-            
+
             // Cập nhật tổng tiền của dòng
             $row.find('.total-col label').text(formatCurrency(lineTotal));
             tong += lineTotal;
@@ -905,7 +910,7 @@ $(document).ready(function () {
     }
 
     // Xử lý sự kiện thay đổi số lượng
-    $('.quantity-input').on('change', function() {
+    $('.quantity-input').on('change', function () {
         const $input = $(this);
         const quantity = parseInt($input.val());
 
@@ -920,7 +925,7 @@ $(document).ready(function () {
     });
 
     // Xử lý sự kiện checkbox
-    $('.checkboxes').on('change', function() {
+    $('.checkboxes').on('change', function () {
         // Cập nhật trạng thái "select all"
         const allChecked = $('.checkboxes').length === $('.checkboxes:checked').length;
         $('.select-all-checkbox').prop('checked', allChecked);
@@ -929,7 +934,7 @@ $(document).ready(function () {
     });
 
     // Xử lý nút "Select All"
-    $('.select-all-checkbox').on('change', function() {
+    $('.select-all-checkbox').on('change', function () {
         const isChecked = $(this).is(':checked');
         $('.checkboxes').prop('checked', isChecked);
         updateTotals();
