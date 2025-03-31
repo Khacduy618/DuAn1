@@ -1,13 +1,13 @@
 <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
     <div class="container">
-        <h1 class="page-title">Login</h1>
+        <h1 class="page-title">Đăng Nhập</h1>
     </div><!-- End .container -->
 </div><!-- End .page-header -->
 <nav aria-label="breadcrumb" class="breadcrumb-nav">
     <div class="container">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="?act=login">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Login</li>
+            <li class="breadcrumb-item"><a href="?act=login">Trang chủ</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Đăng nhập</li>
         </ol>
     </div><!-- End .container -->
 </nav><!-- End .breadcrumb-nav -->
@@ -19,11 +19,11 @@
                 <ul class="nav nav-pills nav-fill nav-border-anim" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="signin-tab" data-toggle="tab" href="#signin" role="tab"
-                            aria-controls="signin" aria-selected="true">Sign In</a>
+                            aria-controls="signin" aria-selected="true">Đăng Nhập</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab"
-                            aria-controls="register" aria-selected="false">Register</a>
+                            aria-controls="register" aria-selected="false">Đăng Kí</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="tab-content-5">
@@ -35,36 +35,34 @@
                                 <input type="text" class="form-control" id="signin-username" name="user_email" required>
                             </div>
                             <div class="form-group">
-                                <label for="signin-password">Password *</label>
+                                <label for="signin-password">Mật Khẩu *</label>
                                 <input type="password" class="form-control" id="signin-password" name="user_password"
                                     required>
                             </div>
                             <div class="form-footer">
                                 <button type="submit" class="btn btn-outline-primary-2">
-                                    <span>LOG IN</span>
+                                    <span>Vào</span>
                                     <i class="icon-long-arrow-right"></i>
                                 </button>
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" id="signin-remember"
                                         name="remember_me">
-                                    <label class="custom-control-label" for="signin-remember">Remember
-                                        Me</label>
+                                    <label class="custom-control-label" for="signin-remember">Nhớ Mật Khẩu</label>
                                 </div>
-                                <a href="?act=forgot_password&xuli=reset_pass" class="forgot-link">Forgot
-                                    Your Password?</a>
+                                <a href="?act=forgot_password&xuli=reset_pass" class="forgot-link">Quên Mật Khẩu?</a>
                             </div>
                         </form>
                         <div class="form-choice">
-                            <p class="text-center">or sign in with</p>
+                            <p class="text-center">hoặc đăng nhập bằng</p>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <a href="<?php BASE_URL ?>/DuAn1/?act=googleCallBack" class="btn btn-login btn-g">
-                                        <i class="icon-google"></i>Login With Google
+                                        <i class="icon-google"></i>Đăng Nhập Bằng Google
                                     </a>
                                 </div><!-- End .col-6 -->
                                 <div class="col-sm-6">
                                     <a href="#" class="btn btn-login btn-f">
-                                        <i class="icon-facebook-f"></i>Login With Facebook
+                                        <i class="icon-facebook-f"></i>Đăng Nhập Bằng Facebook
                                     </a>
                                 </div><!-- End .col-6 -->
                             </div><!-- End .row -->
@@ -93,39 +91,39 @@
 
                         <form action="?act=taikhoan&xuli=dangky" method="POST">
                             <div class="form-group">
-                                <label for="register-email">Your email address *</label>
+                                <label for="register-email">Địa chỉ Email của bạn *</label>
                                 <input type="email" class="form-control" name="user_email" required>
                             </div>
                             <div class="form-group">
-                                <label for="register-username">Username *</label>
+                                <label for="register-username">Tài khoản *</label>
                                 <input type="text" class="form-control" name="user_name" required>
                             </div>
                             <div class="form-group">
-                                <label for="register-password">Password *</label>
+                                <label for="register-password">Mật khẩu *</label>
                                 <input type="password" class="form-control" name="user_password" required>
                             </div>
                             <div class="form-group">
-                                <label for="register-confirm-password">Confirm Password *</label>
+                                <label for="register-confirm-password">Mật Khẩu xác nhận *</label>
                                 <input type="password" class="form-control" name="check_password" required>
                             </div>
                             <div class="form-footer">
                                 <button type="submit" class="btn btn-outline-primary-2">
-                                    <span>SIGN UP</span>
+                                    <span>Đăng Kí</span>
                                     <i class="icon-long-arrow-right"></i>
                                 </button>
                             </div>
                         </form>
                         <div class="form-choice">
-                            <p class="text-center">or sign in with</p>
+                            <p class="text-center">hoặc đăng nhập bằng</p>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <a href="<?php BASE_URL ?>/DuAn1/?act=googleCallBack" class="btn btn-login btn-g">
-                                        <i class="icon-google"></i>Login With Google
+                                        <i class="icon-google"></i>Đăng Nhập Bằng Google
                                     </a>
                                 </div><!-- End .col-6 -->
                                 <div class="col-sm-6">
                                     <a href="#" class="btn btn-login btn-f">
-                                        <i class="icon-facebook-f"></i>Login With Facebook
+                                        <i class="icon-facebook-f"></i>Đăng Nhập Bằng Facebook
                                     </a>
                                 </div>
                             </div>

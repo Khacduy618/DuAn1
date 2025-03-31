@@ -3,22 +3,22 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="text-center">Set New Password</h4>
+                    <h4 class="text-center">Thiết lập mật khẩu mới</h4>
                 </div>
                 <div class="card-body">
 
 
-                    <p>Please enter your new password below.</p>
+                    <p>Vui lòng nhập mật khẩu mới của bạn ở dưới.</p>
                     <form action="?act=forgot_password&xuli=update" method="POST">
                         <input type="hidden" name="token" value="<?php echo htmlspecialchars($_GET['token'] ?? ''); ?>">
                         <div class="form-group">
-                            <label for="user_password">New Password <span class="text-danger">*</span></label>
+                            <label for="user_password">Mật khẩu mới <span class="text-danger">*</span></label>
                             <input type="password" class="form-control" id="user_password" name="user_password" required
                                 minlength="8">
-                            <small class="form-text text-muted">Password must be at least 8 characters long</small>
+                            <small class="form-text text-muted">Mật khẩu phải ít nhất 8 kí tự dài.</small>
                         </div>
                         <div class="form-group">
-                            <label for="confirm_password">Confirm New Password <span
+                            <label for="confirm_password">Xác nhận mật khẩu mới <span
                                     class="text-danger">*</span></label>
                             <input type="password" class="form-control" id="confirm_password" name="confirm_password"
                                 required minlength="8">
